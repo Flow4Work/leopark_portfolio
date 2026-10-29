@@ -11,7 +11,7 @@ window.PORTFOLIO_WEB_SERVICES = [
     type: "AI 법률 로드맵",
     description: "법률 상담과 대응 절차 흐름도",
     previewLabel: "상담에서 후속 절차까지",
-    webImage: "./assets/law-showcase-clean-20261029.png",
+    webImage: "./assets/law-showcase-fit-20261029.jpg",
     icon: ""
   },
   {
