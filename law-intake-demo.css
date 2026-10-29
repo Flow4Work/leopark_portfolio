@@ -1,0 +1,283 @@
+/* Independent, read-only reproduction of the 3700 conversation intake. Scoped to portfolio step 02. */
+.law-story-step--intake{align-items:center;padding-top:12px;padding-bottom:24px}
+.law-story-step--intake .law-story-copy{align-self:start;padding-top:16px}
+.law-story-step + .law-story-step--intake,.law-story-step--intake + .law-story-step{border-top:0}
+.law-intake-demo{--demo-text:#20242b;--demo-secondary:#687486;--demo-border:#e1e5ec;--demo-accent:#ca092b;--demo-soft:#f1f3f6;max-width:520px;min-width:0;width:100%;justify-self:end;color:var(--demo-text);font-family:Pretendard,"Apple SD Gothic Neo",sans-serif;letter-spacing:-.025em}
+.law-intake-demo *, .law-intake-demo *::before,.law-intake-demo *::after{box-sizing:border-box}
+.law-intake-demo button,.law-intake-demo textarea{font:inherit}
+.law-intake-window{background:#fff;border:1px solid #e3e6eb;border-radius:12px;overflow:hidden;box-shadow:0 4px 22px rgba(25,30,45,.06)}
+.law-intake-top{display:flex;align-items:center;gap:9px;height:45px;padding:0 18px;border-bottom:1px solid #e1e5eb;font-size:14px;font-weight:730}
+.law-intake-top::before{content:"";width:3px;height:17px;background:#ca092b;border-radius:3px}
+.law-intake-thread{height:615px;overflow:auto;scrollbar-width:thin;scrollbar-color:#d6dae1 transparent;padding:22px 19px 14px;overscroll-behavior:contain}
+.law-intake-user{width:max-content;max-width:94%;margin:0 0 18px auto;padding:13px 15px;background:#f0f2f6;border-radius:18px 18px 5px 18px;font-size:14.25px;line-height:1.6;text-align:left;overflow-wrap:anywhere}
+.law-intake-history{margin:0 0 15px;display:flex;flex-direction:column;gap:9px}
+.law-intake-history-question{position:relative;max-width:93%;padding-left:21px;color:#424b59;font-size:12px;line-height:1.65}
+.law-intake-history-question::before{content:"";position:absolute;left:1px;top:6px;width:10px;height:10px;border:1.5px solid #6c7685;border-radius:50%}
+.law-intake-history-answer{align-self:flex-end;max-width:93%;border:1px solid #e8ebef;background:#f0f2f6;border-radius:13px 13px 4px 13px;padding:8px 11px;font-size:12.25px;line-height:1.6;color:#293240}
+.law-intake-card{border:1px solid #dfe4ec;border-radius:12px;padding:19px 17px 17px;box-shadow:0 2px 9px rgba(0,0,0,.025);background:white;animation:law-demo-enter .3s ease-out}
+.law-intake-progress{display:flex;align-items:center;gap:5px;font-size:11px;font-weight:640;color:#626d7d;white-space:nowrap}
+.law-intake-progress .law-demo-icon{width:16px;height:16px;display:flex;align-items:center;justify-content:center}
+.law-intake-progress .law-demo-wait{margin-left:auto;color:#697487;font-size:10px;font-weight:520}
+.law-intake-progress .law-demo-wait::before{content:"";display:inline-block;width:6px;height:6px;margin-right:4px;background:#c6807b;border-radius:50%;vertical-align:1px;animation:law-demo-breathe 1.8s ease-in-out infinite}
+.law-intake-progress b{color:#2a303b;font-size:11px;font-weight:730}
+.law-intake-track{height:3px;overflow:hidden;border-radius:5px;background:#e1e5eb;margin:14px 0 19px}
+.law-intake-track span{display:block;height:100%;background:#3e4149;transition:width .25s}
+.law-intake-card h4{font-size:19.25px;line-height:1.48;font-weight:750;letter-spacing:-.04em;color:#18202c;margin:0 0 11px;word-break:keep-all}
+.law-intake-hint{font-size:13.25px;line-height:1.72;color:#69778a;margin:0 0 17px;word-break:keep-all}
+.law-intake-options{display:flex;flex-direction:column;gap:9px}
+.law-intake-options button{display:flex;align-items:center;gap:11px;width:100%;min-height:49px;text-align:left;padding:10px 13px;border:1px solid #e0e4eb;background:white;border-radius:10px;font-size:14.25px;line-height:1.5;color:#232c3a;cursor:pointer;transition:background .18s,border-color .18s}
+.law-intake-options button:hover{background:#f7f8fa}
+.law-intake-options button[aria-pressed="true"]{border-color:#c90b2c;background:#fbf0f2;font-weight:700}
+.law-intake-radio{width:16px;height:16px;flex-shrink:0;border:1.5px solid #9ca7b8;border-radius:50%}
+.law-intake-options button[aria-pressed="true"] .law-intake-radio{border:5px solid #c90b2c;background:#fff}
+.law-intake-open-text{display:flex;justify-content:space-between;align-items:center;width:100%;margin:14px 0 0;padding:10px 0 6px;border:0;background:transparent;cursor:pointer;text-align:left;font-size:12px;font-weight:620;color:#657286}
+.law-intake-textlabel{display:block;margin:0 0 8px;font-size:13px;font-weight:620}
+.law-intake-textarea{display:block;width:100%;min-height:100px;resize:vertical;padding:11px 12px;border:1px solid #dee3eb;border-radius:9px;background:white;color:#242b35;line-height:1.6;font-size:13px}
+.law-intake-textarea:focus{outline:2px solid #c90b2c;outline-offset:1px}
+.law-intake-actions{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:19px}
+.law-intake-actions button{border:0;background:transparent;cursor:pointer;font-size:12px;font-weight:600;color:#687487;padding:11px 0}
+.law-intake-actions .law-intake-next{border-radius:8px;padding:11px 14px;background:#c9002c;color:white;font-weight:720;display:flex;align-items:center;gap:8px}
+.law-intake-actions .law-intake-next:disabled{background:#eceef2;color:#929aa8;cursor:default}
+.law-intake-composer{border-top:1px solid #eceef2;padding:10px 17px 13px}
+.law-intake-composebox{min-height:70px;border:1px solid #dee3eb;border-radius:11px;padding:10px 12px;display:flex;flex-direction:column;justify-content:space-between;gap:9px;color:#8995a5;font-size:12px;line-height:1.5}
+.law-intake-composebar{display:flex;justify-content:space-between;align-items:center;color:#464b53;font-size:15px}
+.law-intake-composebar span{letter-spacing:8px}
+.law-intake-send{width:28px;height:28px;display:grid;place-items:center;background:#f5f6f8;color:#afb5c0;border-radius:8px;font-size:19px}
+.law-intake-playback{display:flex;align-items:center;gap:12px;margin:13px 2px 0;color:#9098a5;font-size:11px;font-weight:600}
+.law-intake-playback strong{white-space:nowrap;color:var(--demo-accent);font-weight:700;font-variant-numeric:tabular-nums}
+.law-intake-dots{display:flex;gap:5px;flex:1}
+.law-intake-dots i{display:block;width:19px;max-width:25%;height:3px;border-radius:4px;background:#e4e6ec}
+.law-intake-dots i.active{background:var(--demo-accent)}
+.law-intake-playback button{border:0;background:transparent;color:#667184;cursor:pointer;padding:5px 0;font-size:11px;font-weight:600}
+.law-intake-loading{padding:23px 8px 17px}
+.law-intake-loading h4{display:flex;align-items:center;gap:9px;margin:0 0 12px;font-size:16px}
+.law-intake-spinner{display:inline-block;width:18px;height:18px;border:2px solid #e1e5ed;border-top-color:#c9002c;border-radius:50%;animation:law-demo-spin .8s linear infinite}
+.law-intake-loading p{margin:0 0 20px;font-size:13px;color:#697487;line-height:1.6}
+.law-intake-activity{display:flex;align-items:center;gap:10px;padding:12px;border-radius:10px;background:#f7f8fa;font-size:12px;line-height:1.6;color:#555d6a}
+.law-intake-activity::before{content:"";width:6px;height:18px;border-radius:4px;background:#c9002c;opacity:.8;animation:law-demo-breathe 1.6s ease-in-out infinite}
+.law-intake-loading-steps{display:flex;gap:6px;margin:18px 0 0;padding:0;list-style:none}
+.law-intake-loading-steps li{flex:1;text-align:center;padding:9px 3px;background:#f4f5f7;border-radius:6px;color:#7c8797;font-size:11px}
+.law-intake-loading-steps li:first-child{background:#fbf0f2;color:#a40022;font-weight:650}
+@keyframes law-demo-enter{from{opacity:1;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@keyframes law-demo-spin{to{transform:rotate(360deg)}}
+@keyframes law-demo-breathe{50%{opacity:.3}}
+@media(max-width:760px){.law-story-step--intake .law-story-copy{align-self:start}}
+@media(max-width:680px){.law-story-step--intake{padding-top:14px;padding-bottom:19px}.law-story-step--intake .law-story-copy{padding-top:0}.law-intake-demo{max-width:500px;margin:0 auto}.law-intake-thread{height:660px}}
+@media(max-width:410px){.law-intake-thread{height:710px;padding:16px 12px}.law-intake-card{padding:15px 12px}.law-intake-card h4{font-size:16px}.law-intake-hint{font-size:12px}.law-intake-options button{font-size:12px;padding:10px}.law-intake-progress{font-size:10px}.law-intake-progress b{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.law-intake-demo *{animation:none!important;transition:none!important}}
+
+
+/* Fixed viewport / no document scroll anchoring or vertical camera movement on scene changes. */
+.law-story-step--intake,
+.law-intake-demo,
+.law-intake-window,
+.law-intake-thread{overflow-anchor:none}
+.law-intake-window{height:764px;display:flex;flex-direction:column;contain:layout}
+.law-intake-top{flex:0 0 45px}
+.law-intake-thread{height:auto!important;flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;scrollbar-gutter:stable}
+.law-intake-composer{flex:0 0 auto}
+.law-intake-card{animation:none;transform:none}
+.law-intake-demo:focus-within{scroll-margin-top:100px}
+
+/* Progress panel copied from the 3700 app's visible loading states, kept
+   independently scoped so the portfolio and the source application stay isolated. */
+.law-demo-processing{display:flex;gap:9px;align-items:flex-start;margin:8px 0 18px;color:#20242a}
+.law-demo-processing-icon{display:grid;place-items:center;flex:0 0 19px;width:19px;height:29px;color:#6b7280}
+.law-demo-progress-card{flex:1;min-width:0;padding:15px 14px 12px;border:1px solid #e4e6ea;border-radius:14px;background:#fff;box-shadow:0 6px 22px #151b270a}
+.law-demo-progress-title{display:flex;align-items:center;gap:9px;font-size:14px;line-height:1.45;letter-spacing:-.028em}
+.law-demo-progress-title strong{font-weight:680;color:#20242a}
+.law-demo-spinner-frame{display:grid;place-items:center;flex:0 0 28px;width:28px;height:28px;border-radius:9px;background:#f2f3f5;color:#3b424e}
+.law-demo-spinner-frame .law-intake-spinner{display:block;width:17px;height:17px;border-color:#c9ced6;border-top-color:#5d6570}
+.law-demo-progress-message{margin:7px 0 0;font-size:12px;line-height:1.65;color:#69727d;word-break:keep-all}
+.law-demo-progress-activity{display:flex;align-items:center;gap:10px;min-height:40px;padding:9px 10px;margin-top:11px;border:1px solid #eef0f2;border-radius:9px;background:#f8f9fa}
+.law-demo-progress-activity>[data-law-activity]{flex:1;min-width:0;color:#4e5865;font-size:11.5px;line-height:1.5;word-break:keep-all;overflow-wrap:anywhere}
+.law-demo-wave{display:flex;align-items:center;justify-content:center;gap:3px;flex:0 0 15px;height:16px}
+.law-demo-wave i{display:block;width:3px;height:5px;border-radius:3px;background:#a95159;animation:law-demo-wave 1.15s ease-in-out infinite}
+.law-demo-wave i:nth-child(2){animation-delay:.16s}
+.law-demo-wave i:nth-child(3){animation-delay:.32s}
+.law-demo-progress-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;margin:13px 0 0;padding:0;list-style:none}
+.law-demo-progress-steps li{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:5px;padding:7px 2px;border:1px solid transparent;border-radius:7px;background:transparent;color:#89909a;font-size:11px;line-height:1.4;font-weight:500}
+.law-demo-progress-number{display:grid;place-items:center;flex:0 0 18px;width:18px;height:18px;border-radius:50%;border:1px solid #e4e7eb;background:#fff;color:#858e9a;font-size:10px}
+.law-demo-progress-steps li.active{background:#f1f3f5;border-color:transparent;color:#252930;font-weight:670}
+.law-demo-progress-steps li.active .law-demo-progress-number{background:#292d33;border-color:#292d33;color:#fff}
+.law-demo-progress-steps li.finished{color:#59636f}
+.law-demo-progress-steps li.finished .law-demo-progress-number{background:#e9edef;border-color:#e9edef;color:#59636f}
+.law-demo-progress-meta{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:12px;padding-top:11px;border-top:1px solid #eef0f2;color:#818995;font-size:11px}
+.law-demo-progress-elapsed{display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
+.law-demo-progress-meta button{min-height:30px;padding:5px 10px;border:1px solid #e4e6ea;border-radius:7px;background:#fff;color:#56606d;font-size:11px;cursor:pointer}
+.law-demo-progress-meta button:hover{background:#f3f4f6;color:#20242a}
+@keyframes law-demo-wave{0%,75%,100%{height:5px;opacity:.55}35%{height:14px;opacity:1}}
+@media(max-width:410px){
+ .law-demo-processing{gap:5px}
+ .law-demo-processing-icon{flex-basis:15px;width:15px}
+ .law-demo-progress-card{padding:12px 10px}
+ .law-demo-progress-title{font-size:12px}
+ .law-demo-progress-steps li{gap:3px;font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){
+ .law-demo-wave i{animation:none}
+ .law-demo-spinner-frame .law-intake-spinner{animation:none}
+}
+
+
+/* Compact the conversational history on narrow screens so the entire current
+   question remains visible without forcing the panel to scroll. */
+@media(max-width:410px){
+ .law-intake-thread{padding:12px 10px 8px}
+ .law-intake-user{margin-bottom:10px;padding:10px 12px}
+ .law-intake-history{gap:5px;margin-bottom:8px}
+ .law-intake-history-question{display:block;font-size:12px;line-height:1.55}
+ .law-intake-history-answer{padding:7px 10px}
+ .law-intake-card{padding:13px 11px 11px}
+ .law-intake-card h4{margin-bottom:8px}
+ .law-intake-track{margin:10px 0 15px}
+ .law-intake-hint{margin-bottom:11px}
+ .law-intake-options{gap:7px}
+ .law-intake-options button{min-height:43px;padding:8px 10px}
+ .law-intake-open-text{margin-top:8px;padding:6px 0 3px}
+ .law-intake-actions{margin-top:10px}
+}
+
+/* Keep desktop scrollbar entirely dormant at each step without shrinking content. */
+@media(min-width:411px){.law-intake-thread{padding-bottom:6px}}
+
+/* 02: Wider explanation column, three scan-friendly checks, no forced bold line breaks.
+   The replay stays right aligned and retains its existing fixed-height playback. */
+.law-story-step--intake{grid-template-columns:minmax(0,320px) minmax(0,1fr);column-gap:20px}
+.law-story-step--intake .law-story-copy{max-width:320px}
+.law-story-step--intake .law-story-copy h3{margin-bottom:13px}
+.law-story-step--intake .law-story-copy p.law-intake-summary-lead{max-width:none;margin:0 0 18px;font-size:14px;line-height:1.75}
+.law-story-step--intake .law-story-copy p strong{color:var(--text);font-weight:730}
+.law-intake-summary-list{list-style:none;margin:0;padding:0}
+.law-intake-summary-list li{display:flex;gap:13px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line)}
+.law-intake-summary-list li:first-child{border-top:1px solid var(--line)}
+.law-intake-summary-number{flex:0 0 21px;color:var(--law-accent);font-size:11px;line-height:1.7;font-weight:700;font-variant-numeric:tabular-nums}
+.law-intake-summary-list li>div{display:flex;flex-direction:column;gap:3px;min-width:0}
+.law-intake-summary-list li strong{color:var(--text);font-size:13px;font-weight:710;line-height:1.5}
+.law-intake-summary-list li div span{color:var(--law-body);font-size:12px;line-height:1.65;word-break:keep-all}
+.law-story-step--intake .law-story-copy p.law-intake-summary-result{max-width:none;margin:18px 0 0;padding-left:12px;border-left:2px solid var(--law-accent);font-size:13px;line-height:1.75}
+@media(min-width:681px) and (max-width:940px){
+ .law-story-step--intake{grid-template-columns:minmax(0,218px) minmax(0,1fr);column-gap:20px}
+ .law-story-step--intake .law-story-copy{max-width:218px}
+}
+@media(max-width:680px){
+ .law-story-step--intake .law-story-copy{max-width:none}
+ .law-story-step--intake .law-story-copy p.law-intake-summary-lead{margin-bottom:14px}
+ .law-intake-summary-list li{padding:9px 0}
+ .law-story-step--intake .law-story-copy p.law-intake-summary-result{margin-top:14px}
+}
+
+/* One shared viewport across the welcome and all question scenes.
+   Further 10% reduction, identical on both axes (previous zoom .9 -> .81). */
+.law-story-step--intake .law-intake-demo{
+  width:90%;
+  max-width:456px;
+  justify-self:end;
+  zoom:.81;
+}
+.law-intake-window{height:872px;border-radius:13px;box-shadow:0 5px 22px rgba(18,25,39,.045)}
+.law-intake-thread{padding:25px 25px 15px;scrollbar-gutter:stable}
+.law-intake-top{height:49px;flex-basis:49px;padding:0 25px;font-size:14px}
+.law-intake-user{font-size:14px;padding:12px 15px;line-height:1.65;margin-bottom:23px}
+.law-intake-history{gap:12px;margin-bottom:22px}
+.law-intake-history-question{font-size:13px;line-height:1.65}
+.law-intake-history-answer{font-size:13px;padding:10px 13px}
+.law-intake-card{border-color:#e4e7ed;padding:23px 19px 20px;border-radius:13px;box-shadow:0 2px 12px rgba(20,30,48,.025)}
+.law-intake-progress{gap:9px;font-size:12px;letter-spacing:0}
+.law-intake-progress b{margin-left:auto;font-size:12px;letter-spacing:0}
+.law-intake-track{height:3px;margin:14px 0 21px}
+.law-intake-card h4{font-size:19px;line-height:1.55;letter-spacing:-.04em;margin-bottom:15px}
+.law-intake-hint{font-size:13px;line-height:1.65;margin-bottom:17px}
+.law-intake-options{gap:10px}
+.law-intake-options button{font-size:14px;min-height:51px;line-height:1.55;padding:11px 14px}
+.law-intake-textlabel{font-size:13px;margin-bottom:9px}
+.law-intake-textarea{font-size:14px;min-height:117px;padding:13px 14px}
+.law-intake-actions{margin-top:19px}
+.law-intake-actions button{font-size:12px}
+.law-intake-composer{padding:13px 24px 22px;background:#fff;border-top:1px solid #f0f1f3}
+.law-intake-composebox{min-height:100px;border-radius:14px;padding:14px 15px;gap:22px;font-size:13px;color:#8993a2}
+.law-intake-composebar{font-size:13px;letter-spacing:0}
+.law-intake-composebar span{letter-spacing:0}
+.law-intake-send{width:33px;height:33px;font-size:23px;background:#f5f6f7;color:#b7bcc4}
+.law-intake-playback{margin:14px 1px 0;font-size:12px;gap:12px}
+.law-intake-playback button{font-size:12px}
+/* The very first frame is the native welcome/selection experience. */
+.law-intake-home{display:flex;flex-direction:column;flex:1 1 auto;min-height:0;padding:24px 27px 0;color:#151923}
+.law-intake-home-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.law-intake-home-header h4{margin:0;font-size:22px;line-height:1.5;letter-spacing:-.046em;font-weight:750}
+.law-intake-home-fold{display:flex;align-items:center;gap:6px;flex:0 0 auto;margin-top:4px;border:0;background:transparent;color:#4c5260;font-size:12px;cursor:default}
+.law-intake-home-subtitle{margin:12px 0 45px;font-size:14px;color:#778091;line-height:1.7}
+.law-intake-home-title{margin:0 0 14px;font-size:14px;line-height:1.6;font-weight:720}
+.law-intake-examples{display:grid;gap:10px}
+.law-intake-example{display:flex;align-items:center;justify-content:space-between;gap:18px;width:100%;min-height:80px;padding:14px 18px;background:#f2f3f6;border:0;border-radius:13px;color:#111827;text-align:left;cursor:pointer;transition:background .2s}
+.law-intake-example:hover{background:#eceef2}
+.law-intake-example span{display:grid;gap:5px;font-size:14px;line-height:1.42;font-weight:700;letter-spacing:-.02em}
+.law-intake-example small{display:block;color:#687487;font-size:13px;font-weight:400;line-height:1.45}
+.law-intake-example svg{flex:0 0 18px;color:#596170}
+/* The same composer dimensions on welcome and question screens. */
+.law-intake-window--home .law-intake-composer{border-top:1px solid #f0f1f3}
+.law-intake-model{display:inline-flex;gap:6px;align-items:center;color:#252b35;font-size:13px;font-weight:700}
+.law-intake-settings{display:inline-flex;align-items:center;margin-left:24px;font-size:17px;color:#606875}
+@media(max-width:940px) and (min-width:681px){
+  .law-story-step--intake{grid-template-columns:minmax(0,218px) minmax(0,1fr)}
+  .law-story-step--intake .law-intake-demo{max-width:456px}
+}
+@media(max-width:680px){
+  .law-story-step--intake .law-intake-demo{width:81%;max-width:456px;justify-self:center}
+  .law-intake-window{height:852px}
+}
+@media(max-width:410px){
+  .law-intake-window{height:820px}
+  .law-intake-thread{padding:15px 13px 10px}
+  .law-intake-top{padding:0 16px}
+  .law-intake-composer{padding:10px 13px 16px}
+  .law-intake-home{padding:21px 18px 0}
+  .law-intake-home-header h4{font-size:20px}
+  .law-intake-home-subtitle{margin-bottom:37px}
+  .law-intake-example{min-height:77px;padding:12px}
+  .law-intake-card{padding:16px 13px}
+  .law-intake-card h4{font-size:17px}
+  .law-intake-progress,.law-intake-progress b{font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){.law-intake-example{transition:none}}
+
+/* Intake replay: increase supporting text 1px; keep scene headings and camera dimensions. */
+.law-story-step--intake .law-intake-demo .law-intake-user{font-size:15px}
+.law-story-step--intake .law-intake-demo .law-intake-history-question,
+.law-story-step--intake .law-intake-demo .law-intake-history-answer{font-size:14px}
+.law-story-step--intake .law-intake-demo .law-intake-progress,
+.law-story-step--intake .law-intake-demo .law-intake-progress b{font-size:13px}
+.law-story-step--intake .law-intake-demo .law-intake-progress .law-demo-wait{font-size:11px}
+.law-story-step--intake .law-intake-demo .law-intake-hint{font-size:14px}
+.law-story-step--intake .law-intake-demo .law-intake-options button{font-size:15px}
+.law-story-step--intake .law-intake-demo .law-intake-open-text{font-size:13px}
+.law-story-step--intake .law-intake-demo .law-intake-textlabel{font-size:14px}
+.law-story-step--intake .law-intake-demo .law-intake-textarea{font-size:15px}
+.law-story-step--intake .law-intake-demo .law-intake-actions button{font-size:13px}
+.law-story-step--intake .law-intake-demo .law-intake-composebox,
+.law-story-step--intake .law-intake-demo .law-intake-composebar{font-size:14px}
+.law-story-step--intake .law-intake-demo .law-intake-playback,
+.law-story-step--intake .law-intake-demo .law-intake-playback button{font-size:13px}
+.law-story-step--intake .law-intake-demo .law-intake-model{font-size:14px}
+.law-story-step--intake .law-intake-demo .law-intake-home-fold{font-size:13px}
+.law-story-step--intake .law-intake-demo .law-intake-home-subtitle{font-size:15px}
+.law-story-step--intake .law-intake-demo .law-intake-example span{font-size:15px}
+.law-story-step--intake .law-intake-demo .law-intake-example small{font-size:14px}
+.law-story-step--intake .law-intake-demo .law-intake-loading p{font-size:14px}
+.law-story-step--intake .law-intake-demo .law-intake-activity{font-size:13px}
+.law-story-step--intake .law-intake-demo .law-intake-loading-steps li{font-size:12px}
+.law-story-step--intake .law-intake-demo .law-demo-progress-title{font-size:15px}
+.law-story-step--intake .law-intake-demo .law-demo-progress-message{font-size:13px}
+.law-story-step--intake .law-intake-demo .law-demo-progress-activity>[data-law-activity]{font-size:12.5px}
+.law-story-step--intake .law-intake-demo .law-demo-progress-steps li{font-size:12px}
+.law-story-step--intake .law-intake-demo .law-demo-progress-number{font-size:11px}
+.law-story-step--intake .law-intake-demo .law-demo-progress-meta,
+.law-story-step--intake .law-intake-demo .law-demo-progress-meta button{font-size:12px}
+@media(max-width:410px){
+ .law-story-step--intake .law-intake-demo .law-intake-hint{font-size:13px}
+ .law-story-step--intake .law-intake-demo .law-intake-options button{font-size:13px}
+ .law-story-step--intake .law-intake-demo .law-intake-progress,
+ .law-story-step--intake .law-intake-demo .law-intake-progress b{font-size:12px}
+ .law-story-step--intake .law-intake-demo .law-demo-progress-title{font-size:13px}
+ .law-story-step--intake .law-intake-demo .law-demo-progress-steps li{font-size:11px}
+}

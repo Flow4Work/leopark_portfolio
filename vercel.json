@@ -1,0 +1,20 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "",
+  "outputDirectory": ".",
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/profile",
+      "destination": "/perspective"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/planning-agent",
+      "destination": "/law-project",
+      "permanent": true
+    }
+  ]
+}

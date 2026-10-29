@@ -1,0 +1,481 @@
+/* Match the portfolio's editorial layout; reserve the brand color for links and focus. */
+:root{--law-accent:#c8102e;--law-body:#d4d4d8}
+:root[data-theme="light"]{--law-body:#313131}
+.law-project-page{min-width:0}
+.law-project-page a:focus-visible,.law-project-page button:focus-visible{outline-color:var(--law-accent)}
+.law-project-page .project-facts__link svg{color:var(--law-accent)}
+.site-header{max-width:1088px;height:80px;padding:0 32px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.header-brand{font-size:14px;font-weight:750;text-decoration:none;letter-spacing:-.3px}
+.header-right{display:flex;align-items:center;gap:25px}
+.detail-nav{display:flex;align-items:center;gap:22px}
+.back-link{text-decoration:none;font-size:13px;color:var(--muted);font-weight:600}
+.back-link:hover{color:var(--text)}
+.law-hero{margin-bottom:29px}
+.law-hero .eyebrow{font-weight:650}
+.law-hero .subtitle{text-wrap:pretty}
+.law-hero-media{max-width:1024px;margin:0 auto 64px}
+.law-hero-media img,.law-figure img{display:block;width:100%;height:auto;border-radius:8px;background:#f6f8fb}
+.law-hero-media figcaption,.law-figure figcaption{text-align:center;margin:11px 0 0;color:var(--muted);font-size:12px;line-height:1.65;word-break:keep-all}
+.law-project-page .project-facts{margin-bottom:31px}
+.law-project-page .project-sections{grid-template-columns:minmax(0,1fr);gap:64px}
+.law-project-page .project-section{min-width:0;border:0;padding:0}
+.law-section .section-no{margin:0 0 12px;color:#e58d8b;font-size:11px;font-weight:650;letter-spacing:.09em}
+:root[data-theme="light"] .law-section .section-no{color:#b75451}
+.law-section h2{margin:0 0 19px;font-size:clamp(26px,2.7vw,31px);font-weight:710;line-height:1.4;letter-spacing:-.045em;word-break:keep-all;text-wrap:pretty}
+.law-section .body-copy{margin:0 0 16px;color:var(--law-body);font-size:16px;line-height:1.83;letter-spacing:-.017em;word-break:keep-all;text-wrap:pretty}
+.law-section .body-copy:last-child{margin-bottom:0}
+.law-section strong{color:var(--text);font-weight:650}
+/* Marks inherit the shared portfolio highlight treatment. */
+.law-figure{margin:27px 0 25px}
+.law-work-status{margin:24px 0 0;font-size:13px;line-height:1.8;color:var(--muted);word-break:keep-all}
+.law-project-page nav[data-project-navigation]{border:0;padding-top:0;margin-top:64px}
+
+/* 02 PROBLEM: three editorial cards following the Instagram Card Agent reference. */
+.law-problem-section{--law-problem-accent:#e58d8b;--law-problem-line:rgba(232,125,122,.2);--law-problem-tint:rgba(232,125,122,.045)}
+:root[data-theme="light"] .law-problem-section{--law-problem-accent:#b75451;--law-problem-line:rgba(190,84,80,.2);--law-problem-tint:rgba(190,84,80,.045)}
+.law-problem-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:30px;border-top:1px solid var(--law-problem-line);border-bottom:1px solid var(--law-problem-line);background:var(--law-problem-tint)}
+.law-problem-card{position:relative;min-width:0;padding:24px 23px 27px;transition:background .22s ease}
+.law-problem-card+.law-problem-card{border-left:1px solid var(--law-problem-line)}
+.law-problem-card::before{content:"";position:absolute;top:-1px;left:23px;width:28px;height:2px;background:var(--law-problem-accent);opacity:.65;transition:width .25s ease,opacity .25s ease}
+.law-problem-card:hover::before{width:48px;opacity:1}
+.law-problem-card__meta{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:30px;margin-bottom:18px;color:var(--muted);font-size:11px;line-height:1.5}
+.law-problem-card__number{color:var(--law-problem-accent);font-variant-numeric:tabular-nums}
+.law-problem-icon{position:relative;display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;flex:0 0 30px;color:var(--law-problem-accent);vertical-align:middle}
+.law-problem-icon svg{display:block;width:30px;height:30px;max-width:100%;max-height:100%;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;overflow:hidden}
+.law-problem-card h3{margin:0 0 15px;color:var(--text);font-size:19px;font-weight:670;letter-spacing:-.035em;line-height:1.55;word-break:keep-all;text-wrap:pretty}
+.law-problem-card h3 span{display:block}
+.law-problem-card p{margin:0;color:var(--law-body);font-size:14px;line-height:1.86;letter-spacing:-.012em;word-break:keep-all;overflow-wrap:break-word;text-wrap:pretty}
+/* Problem copy highlights use the shared portfolio mark treatment. */
+ 
+.law-section .body-copy.law-problem-summary{margin:27px 0 0;font-size:15px;line-height:1.85;letter-spacing:-.014em;word-break:keep-all;text-wrap:pretty}
+@media(hover:hover){.law-problem-card:hover{background:var(--law-problem-tint)}}
+@media(prefers-reduced-motion:reduce){.law-problem-card,.law-problem-card::before{transition:none}}
+
+/* Describe work and its reason, using the same restrained list as KOL Scout. */
+.law-work-list{list-style:none;padding:0;margin:27px 0 0;border-top:1px solid var(--line)}
+.law-work-list li{display:grid;grid-template-columns:30px minmax(0,1fr);gap:16px;padding:23px 0;border-bottom:1px solid var(--line)}
+.law-work-no{padding-top:4px;color:var(--muted);font-size:11px;line-height:1.8;font-variant-numeric:tabular-nums}
+.law-work-list h3{margin:0 0 8px;color:var(--text);font-size:18px;font-weight:650;line-height:1.6;letter-spacing:-.025em;word-break:keep-all}
+.law-work-list p{margin:0;color:var(--law-body);font-size:15px;line-height:1.85;letter-spacing:-.014em;word-break:keep-all;text-wrap:pretty}
+.law-screen-notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;margin:27px 0 0;padding-top:24px;border-top:1px solid var(--line)}
+.law-screen-notes>div{min-width:0}
+.law-screen-notes dt{margin:0 0 9px;color:var(--text);font-size:15px;line-height:1.65;font-weight:650}
+.law-screen-notes dd{margin:0;color:var(--law-body);font-size:15px;line-height:1.85;word-break:keep-all;text-wrap:pretty}
+
+/* 01 background: preserve the four evidence rows and readable sentence breaks. */
+.law-research{margin-top:43px}
+.law-research-kicker{margin:0 0 10px;color:var(--muted);font-size:14px;font-weight:400;line-height:1.5}
+.law-research h3{margin:0 0 17px;color:var(--text);font-size:25px;font-weight:710;line-height:1.42;letter-spacing:-.038em;word-break:keep-all}
+.law-section .law-research-intro{white-space:nowrap}
+.law-research-cases{display:grid;gap:39px;margin:35px 0 0}
+.law-research-case{display:grid;grid-template-columns:minmax(0,320px) minmax(0,483px);gap:57px;align-items:center;min-width:0;margin:0;padding:0;border:0;background:none}
+.law-research-case__copy{min-width:0;max-width:320px}
+.law-research-case__eyebrow{display:flex;align-items:center;gap:12px;margin:0 0 15px;color:var(--muted);font-size:13px;font-weight:650;line-height:1.5;letter-spacing:-.01em}
+.law-research-case__eyebrow span:first-child{font-variant-numeric:tabular-nums;letter-spacing:.035em}
+.law-research-case__copy h4{margin:0 0 12px;color:var(--text);font-size:21px;line-height:1.43;letter-spacing:-.04em;font-weight:720;word-break:keep-all}
+.law-research-case__insight{margin:0;color:var(--soft);font-size:15px;line-height:1.78;letter-spacing:-.015em;word-break:keep-all;text-wrap:pretty;overflow-wrap:break-word}
+:root[data-theme="light"] .law-research-case__insight{color:#41444a}
+.law-research-case__insight+.law-research-case__insight{margin-top:11px}
+/* Research highlights use the same shared mark rule. */
+ 
+.law-research-case__tags{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin-top:22px}
+.law-research-case__tags span{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:7px 11px;border:1px solid rgba(255,255,255,.14);border-radius:999px;background:rgba(255,255,255,.065);color:#e5e5e7;font-size:14px;font-weight:570;line-height:1.25;letter-spacing:-.022em;white-space:nowrap}
+:root[data-theme="light"] .law-research-case__tags span{border-color:rgba(27,27,29,.11);background:rgba(23,23,25,.047);color:#343434}
+.law-research-case__media{width:100%;max-width:483px;min-width:0;margin:0;overflow:hidden;border-radius:4px;background:#0e0f11}
+.law-research-case__media img{display:block;width:100%;height:auto;aspect-ratio:483 / 410;object-fit:contain;pointer-events:none;user-select:none}
+.law-section .law-research-conclusion{margin:42px 0 0}
+
+@media(max-width:900px){.site-header{padding:0 24px}.law-section .law-research-intro{white-space:normal}}
+@media(max-width:760px){
+ .law-problem-card{padding:21px 17px 23px}
+ .law-problem-card::before{left:17px}
+ .law-problem-card h3{font-size:17px}
+ .law-problem-card p{font-size:13px}
+}
+@media(max-width:560px){
+ .law-problem-grid{grid-template-columns:1fr;margin-top:24px}
+ .law-problem-card{padding:23px 16px}
+ .law-problem-card+.law-problem-card{border-left:0;border-top:1px solid var(--law-problem-line)}
+ .law-problem-card::before{display:none}
+ .law-problem-card__meta{margin-bottom:12px}
+ .law-problem-card h3{font-size:18px;margin-bottom:12px}
+ .law-problem-card h3 span{display:inline}
+ .law-problem-card h3 span+span::before{content:" "}
+ .law-problem-card p{font-size:14px;line-height:1.85}
+}
+@media(max-width:800px){
+ .law-research-cases{gap:42px}
+ .law-research-case{grid-template-columns:minmax(0,1fr);gap:18px}
+ .law-research-case__copy,.law-research-case__media{max-width:483px}
+ .law-research-case__eyebrow{margin-bottom:10px}
+}
+@media(max-width:650px){
+ .site-header{height:68px;padding:0 19px;gap:12px}
+ .header-right{gap:14px}.detail-nav{gap:13px}.back-link{font-size:12px}
+ .site-header .theme-switch{min-width:88px;padding:0 13px}
+ .law-hero{margin-bottom:26px}.law-hero-media{margin-bottom:44px}
+ .law-hero .eyebrow{margin-bottom:16px}
+ .law-hero .subtitle{margin-top:15px;font-size:19px}
+ .law-hero-media figcaption,.law-figure figcaption{font-size:11px}
+ .law-project-page .project-facts{margin-bottom:27px}
+ .law-project-page .project-sections{gap:48px}
+ .law-project-page nav[data-project-navigation]{margin-top:48px}
+ .law-section h2{font-size:24px;line-height:1.42}
+ .law-section .body-copy{font-size:15px;line-height:1.8}
+ .law-work-list p,.law-screen-notes dd{font-size:14px;line-height:1.82}
+ .law-work-list{margin-top:23px}
+ .law-work-list li{grid-template-columns:23px minmax(0,1fr);gap:11px;padding:20px 0}
+ .law-work-list h3{font-size:17px}
+ .law-screen-notes{grid-template-columns:1fr;gap:22px;margin-top:23px;padding-top:22px}
+ .law-work-status{font-size:12px}
+ .law-research{margin-top:34px}.law-research h3{font-size:22px}
+ .law-research-cases{gap:34px;margin-top:28px}.law-research-case{gap:15px}
+ .law-research-case__eyebrow{font-size:12px;margin-bottom:8px}
+ .law-research-case__copy h4{font-size:19px;margin-bottom:9px}
+ .law-research-case__insight{font-size:14px;line-height:1.75}
+ .law-section .law-research-conclusion{margin-top:37px}
+}
+@media(max-width:360px){
+ .header-brand{font-size:13px}.detail-nav .back-link:nth-child(2){display:none}
+ .site-header .theme-switch{min-width:73px;padding:0 10px}
+}
+
+
+/* PM portfolio: match the existing article hierarchy and use actual screens as evidence. */
+.law-main-picture{display:block;width:100%;border-radius:8px;border:1px solid var(--line);background:white}
+.law-main-picture img{display:block;width:100%;height:auto;object-fit:contain}
+#service,#details,#iteration,#reflection{scroll-margin-top:12px}
+/* Every crop follows the information being explained; no common screenshot frame or aspect ratio. */
+.law-excerpt-row{display:flex;align-items:flex-start;gap:40px;margin-top:31px;min-width:0}
+.law-excerpt-row+.law-excerpt-row{margin-top:34px}
+.law-excerpt-row>p,.law-excerpt-row>div{flex:1;min-width:0}
+.law-excerpt-row>p.body-copy{margin:0}
+.law-excerpt{flex:0 0 auto;width:var(--excerpt-width);max-width:100%;min-width:0;margin:0}
+.law-excerpt>img{display:block;width:100%;height:auto}
+.law-excerpt figcaption,.law-pm-branches figcaption{margin:10px 0 0;color:var(--muted);font-size:12px;line-height:1.7;letter-spacing:-.012em;word-break:keep-all}
+.law-excerpt-route{margin:27px auto 0}
+.law-excerpt-detail-row{align-items:start;margin-top:31px}
+.law-pm-branches{width:660px;max-width:100%;margin:27px auto 0}
+.law-pm-branch-image{position:relative;overflow:hidden}
+.law-pm-branch-image>img{display:block;width:100%;height:auto}
+.law-pm-branch-image>svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.law-pm-path-dot{opacity:0;animation:law-pm-path 3.6s ease-in-out 1 both;animation-play-state:paused}
+.is-visible .law-pm-path-dot{animation-play-state:running}
+@keyframes law-pm-path{0%,18%{opacity:0;transform:translateX(0)}25%{opacity:1}74%{opacity:1;transform:translateX(168px)}84%,100%{opacity:0;transform:translateX(168px)}}
+@media(max-width:760px){.law-excerpt-row{gap:26px}.law-excerpt-row>.law-excerpt{flex-shrink:1}.law-excerpt-row>p,.law-excerpt-row>div{flex-basis:45%}}
+@media(max-width:650px){
+.law-excerpt-row{display:block;margin-top:25px}.law-excerpt-row+.law-excerpt-row{margin-top:27px}
+.law-excerpt-row>.law-excerpt{margin-top:18px}.law-excerpt figcaption{font-size:11px}
+.law-excerpt-route{margin-top:22px}.law-pm-branches{margin-top:23px}.law-pm-branches figcaption{font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){.law-pm-path-dot{animation:none;opacity:0}}
+
+/* 03 service planning — genuine screenshots from the local service showcase, not mockups. */
+.law-story-intro{max-width:820px}
+.law-story{list-style:none;margin:28px 0 0;padding:0}
+.law-story-step{display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr);gap:34px;align-items:start;padding:24px 0}
+.law-story-step + .law-story-step{border-top:1px solid var(--line)}
+.law-story-copy{padding-top:9px;min-width:0}
+.law-story-index{display:block;margin:0 0 13px;color:var(--law-accent);font-size:11px;font-weight:700;letter-spacing:.06em;font-variant-numeric:tabular-nums}
+.law-story-copy h3{margin:0 0 12px;color:var(--text);font-size:20px;font-weight:700;line-height:1.45;letter-spacing:-.038em}
+.law-story-copy p{margin:0;color:var(--law-body);font-size:14px;line-height:1.75;word-break:keep-all;text-wrap:pretty}
+.law-story figure{margin:0;min-width:0}
+.law-story figure figcaption{font-size:12px;line-height:1.5;font-weight:560;color:var(--muted);margin:0 0 11px}
+.law-story figure img{display:block;width:100%;height:auto;max-width:100%;background:#fff;border:1px solid rgba(30,34,42,.12);border-radius:8px}
+.law-story-visual{min-width:0}
+.law-story-entry{display:grid;gap:16px;width:100%;max-width:520px;justify-self:end;overflow-anchor:none}
+.law-story-entry figure{width:100%;min-width:0}
+.law-story-entry figure img{aspect-ratio:16 / 9;object-fit:contain;image-rendering:auto}
+.law-story-question{width:400px;max-width:100%;justify-self:center}
+.law-story-question figcaption{margin:10px 0 0!important;text-align:center;font-weight:400!important}
+.law-story-map{width:100%;max-width:751px}
+/* Step 03: editorial camera presentation aligned to the 02/04 explanatory list. */
+.law-story-step--methods{grid-template-columns:minmax(0,320px) minmax(0,1fr);column-gap:20px;align-items:start}
+.law-story-step--methods .law-story-copy{max-width:320px;padding-top:16px}
+.law-story-step--methods .law-story-copy h3{margin-bottom:13px}
+.law-story-step--methods .law-methods-list{margin-top:0}
+.law-story-step--methods .law-story-copy p.law-methods-summary{margin-top:17px;padding-left:12px;border-left:2px solid var(--law-accent);font-size:13px;line-height:1.75}
+.law-story-step--methods .law-methods-summary strong{font-weight:730;color:var(--text)}
+.law-story-step--methods .law-story-map{width:100%;max-width:560px;justify-self:end;overflow-anchor:none}
+.law-story-step--methods .law-story-map img{width:100%;height:auto;aspect-ratio:24/19;object-fit:contain}
+@media(min-width:736px) and (max-width:940px){
+ .law-story-step--methods{grid-template-columns:minmax(0,230px) minmax(0,1fr);column-gap:20px}
+ .law-story-step--methods .law-story-copy{max-width:230px}
+}
+@media(max-width:735px){
+ .law-story-step--methods{display:block}
+ .law-story-step--methods .law-story-copy{max-width:none;padding-top:0;margin-bottom:20px}
+ .law-story-step--methods .law-story-map{max-width:540px;margin:0 auto}
+}
+.law-story-map figcaption{margin:10px 0 0!important;text-align:center;font-weight:400!important}
+.law-story-step--finish{display:block}
+.law-story-step--finish .law-story-copy{display:grid;grid-template-columns:190px minmax(0,1fr);column-gap:34px;align-items:start;margin-bottom:22px}
+.law-story-step--finish .law-story-index{grid-row:1 / span 2;margin:7px 0 0}
+.law-story-step--finish .law-story-copy h3{margin-bottom:7px}
+.law-story-step--finish .law-story-copy p{max-width:590px}
+.law-story-flow{max-width:813px;margin:0 auto 20px!important}
+.law-story-outcomes{display:grid;grid-template-columns:repeat(2,minmax(0,354px));gap:24px;justify-content:center}
+.law-story-outcomes figure{min-width:0}
+@media(max-width:680px){
+ .law-story{margin-top:22px}
+ .law-story-step{display:block;padding:22px 0}
+ .law-story-copy{padding:0;margin-bottom:17px}
+ .law-story-index{margin-bottom:6px}
+ .law-story-copy h3{font-size:19px;margin-bottom:6px}
+ .law-story-copy p{font-size:14px}
+ .law-story-step--finish .law-story-copy{display:block;margin-bottom:17px}
+ .law-story-step--finish .law-story-index{margin:0 0 6px}
+ .law-story-entry{max-width:500px;margin:0 auto;gap:13px}
+ .law-story-outcomes{grid-template-columns:minmax(0,354px);gap:18px}
+ .law-story-flow{margin-bottom:19px!important}
+}
+
+/* 03 method comparison: same concise explanatory rhythm as step 02. */
+.law-story-step--methods .law-story-copy p.law-intake-summary-lead{
+  max-width:none;
+  margin:0 0 18px;
+  font-size:14px;
+  line-height:1.75;
+}
+.law-story-step--methods .law-story-copy p strong{
+  color:var(--text);
+  font-weight:730;
+}
+@media(max-width:680px){
+  .law-story-step--methods .law-story-copy p.law-intake-summary-lead{margin-bottom:14px}
+}
+/* 03 service section: 10% more spacing, no divider before the last step. */
+.law-service-section .law-story-step{padding-top:26.4px;padding-bottom:26.4px}
+.law-service-section .law-story-step--intake{padding-top:13.2px;padding-bottom:26.4px}
+.law-service-section .law-story-step--methods{border-top:0}
+@media(max-width:680px){
+  .law-service-section .law-story-step{padding-top:24.2px;padding-bottom:24.2px}
+  .law-service-section .law-story-step--intake{padding-top:15.4px;padding-bottom:20.9px}
+}
+
+/* Branch comparison belongs to service planning; preserve the original section spacing. */
+.law-service-branch{margin-top:64px}
+.law-service-branch .law-path-intro{margin-top:0}
+.law-order-section{margin-top:-45px}
+.law-order-section .law-order-intro{margin-top:0}
+@media(max-width:650px){.law-service-branch{margin-top:48px}.law-order-section{margin-top:-34px}}
+/* Static, crisp map cards; only the connecting arrows move. */
+.law-branch-figure{width:100%;max-width:860px;margin:28px auto 22px}
+.law-branch-viewport{width:100%;background:#f6f7fa;border:1px solid #e9ebf0;border-radius:12px;overflow:hidden}
+.law-branch-stage{width:760px;height:620px;position:relative;margin:0 auto;isolation:isolate}
+.law-branch-arrows{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:visible}
+.law-branch-base{stroke:#aeb8c6;stroke-width:1.45;stroke-linecap:round;stroke-linejoin:round}
+.law-branch-current{stroke:#c8102e;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:9 91;opacity:.78;animation:law-branch-travel 3s linear infinite}
+.law-branch-current--two{animation-delay:-1s}
+.law-branch-current--three{animation-delay:-2s}
+@keyframes law-branch-travel{from{stroke-dashoffset:0}to{stroke-dashoffset:-100}}
+.law-branch-node{box-sizing:border-box;position:absolute;z-index:1;width:270px;height:182px;padding:15px 16px 14px;border-radius:11px;background:#fff;color:#242831;border:1px solid #ebeef2;box-shadow:0 5px 16px rgba(35,44,62,.052)}
+.law-branch-node--source{top:218px;left:28px;border-color:#cbd0d7;box-shadow:0 3px 9px rgba(24,32,45,.038)}
+.law-branch-node--order{top:10px;left:450px}
+.law-branch-node--mediation{top:218px;left:450px}
+.law-branch-node--lawsuit{top:428px;left:450px}
+.law-branch-label{display:inline-flex;align-items:center;min-height:23px;max-width:100%;padding:3px 8px;margin-bottom:10px;border-radius:5px;background:#fff1ee;border:1px solid #f9e2dc;color:#d5463b;font-size:10px;font-weight:650;letter-spacing:-.025em;line-height:1.3;white-space:nowrap}
+.law-branch-label--source{background:#f1f2f4;border-color:transparent;color:#626c7a}
+.law-branch-node h3{margin:0 0 9px;color:#252a32;font-size:13px;font-weight:750;letter-spacing:-.045em;line-height:1.5;word-break:keep-all}
+.law-branch-node p{margin:0;color:#4b5361;font-size:11.8px;font-weight:430;letter-spacing:-.025em;line-height:1.7;word-break:keep-all;overflow-wrap:break-word}
+.law-branch-footer{position:absolute;bottom:13px;left:16px;right:16px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.law-branch-duration{display:inline-flex;align-items:center;gap:5px;color:#323944;font-size:10.2px;font-weight:700;letter-spacing:-.035em;white-space:nowrap}
+.law-branch-duration svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:1.25;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.law-branch-detail{display:inline-flex;align-items:center;gap:4px;color:#4a648c;font-size:9.6px;font-weight:550;letter-spacing:-.035em;line-height:1.4;white-space:nowrap;cursor:default;user-select:none}
+.law-branch-detail span{font-size:15px;line-height:10px}
+.law-branch-node--source>.law-branch-detail{position:absolute;bottom:14px;right:16px}
+.law-branch-figure figcaption{margin:12px 0 0;color:var(--muted);font-size:12px;line-height:1.7;text-align:center;word-break:keep-all}
+.law-order-section .body-copy.law-branch-summary{max-width:850px;margin:19px auto 0;font-size:15px;line-height:1.83}
+@media(min-width:661px){.law-order-card--outcome .law-order-outcomes{gap:6px;margin-top:9px}.law-order-card--outcome .law-order-outcome{padding:6px 9px}}
+@media(max-width:850px) and (min-width:661px){
+ .law-branch-viewport{overflow-x:auto;overscroll-behavior-x:contain}
+}
+@media(max-width:660px){
+ .law-branch-figure{margin:23px auto 19px}
+ .law-branch-stage{width:100%;height:auto;display:grid;grid-template-columns:minmax(0,1fr);gap:14px;padding:22px 18px 24px}
+ .law-branch-arrows{display:none}
+ .law-branch-node{position:relative;top:auto;left:auto;width:100%;height:auto;min-height:171px;padding:16px 17px 48px}
+ .law-branch-node--source{margin-bottom:23px;min-height:155px}
+ .law-branch-node--source::after{content:"";position:absolute;top:100%;left:calc(50% - .5px);height:25px;width:1px;background:#aeb8c6}
+ .law-branch-node--choice::before{content:"→";position:absolute;top:-13px;left:18px;color:#aeb8c6;font-size:14px;line-height:1;animation:law-branch-mobile-arrow 3.6s ease-in-out infinite}
+ .law-branch-node--mediation::before{animation-delay:-1.2s}
+ .law-branch-node--lawsuit::before{animation-delay:-2.4s}
+ .law-branch-node h3{font-size:14px}
+ .law-branch-node p{font-size:12.5px}
+ .law-branch-label{font-size:10.5px}
+ .law-branch-footer{bottom:15px;left:17px;right:17px}
+ .law-branch-duration{font-size:11px}
+ .law-branch-detail{font-size:10px}
+ .law-branch-figure figcaption{font-size:11px}
+ .law-order-section .body-copy.law-branch-summary{font-size:14px}
+}
+@keyframes law-branch-mobile-arrow{0%,100%{opacity:.35;transform:translateX(-3px)}45%{opacity:.9;transform:translateX(3px)}}
+@media(prefers-reduced-motion:reduce){.law-branch-current,.law-branch-node--choice::before{animation:none}.law-branch-current{opacity:0}}
+
+/* 04 screen design: payment order depth 1–2, then a separate depth-3 split. */
+.law-order-intro{max-width:850px;margin:45px auto 0}
+.law-order-eyebrow{margin:0 0 8px!important;color:var(--law-accent);font-size:11px!important;font-weight:700;line-height:1.6!important;letter-spacing:.065em}
+.law-order-intro h3{margin:0 0 11px;color:var(--text);font-size:21px;font-weight:700;line-height:1.5;letter-spacing:-.04em;word-break:keep-all}
+.law-order-intro>p:last-child{margin:0;color:var(--law-body);font-size:15px;line-height:1.84;letter-spacing:-.014em;word-break:keep-all}
+.law-order-intro strong{font-weight:720;color:var(--text)}
+.law-order-figure{margin-top:21px;margin-bottom:25px}
+.law-order-viewport{background:#f6f7fa}
+.law-order-stage{position:relative;box-sizing:border-box;width:744px;height:467px;margin:0 auto;isolation:isolate}
+.law-order-connector{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.law-order-group-line{fill:none;stroke:#bdc7d5;stroke-width:1.6;stroke-dasharray:2 6;stroke-linecap:round;stroke-linejoin:round}
+.law-order-link{fill:none;stroke:#aeb8c6;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.law-order-pulse{fill:none;stroke:#bc3041;stroke-width:2.05;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:24 76;opacity:.88;animation:law-order-arrow 2.35s linear infinite}
+.law-order-pulse--two{animation-delay:-0.78s}
+.law-order-pulse--three{animation-delay:-1.56s}
+@keyframes law-order-arrow{from{stroke-dashoffset:0}to{stroke-dashoffset:-100}}
+.law-order-group-caption{position:absolute;z-index:2;left:248px;top:98px;transform:translateX(-50%);display:inline-flex;align-items:center;gap:9px;white-space:nowrap;background:#fff;border:1px solid #e4e8ef;border-radius:999px;padding:8px 13px;box-shadow:0 2px 8px rgba(24,31,42,.05);font-size:11.3px;line-height:1.3;color:#344256;letter-spacing:-.023em}
+.law-order-group-caption strong{font-weight:750;color:#252d38}
+.law-order-group-caption span{border-left:1px solid #e7e9ee;padding-left:9px;color:#596982;font-weight:620}
+.law-order-track{position:absolute;left:28px;top:159px;display:grid;grid-template-columns:repeat(2,191px);column-gap:59px;z-index:1}
+.law-order-card,.law-order-branch-card{box-sizing:border-box;min-width:0;border-radius:12px;border:1px solid #e5eaf1;background:#fff;box-shadow:0 6px 17px rgba(35,44,62,.052);color:#252a32}
+.law-order-card{position:relative;width:191px;height:222px;padding:18px 15px 16px}
+.law-order-tag{display:inline-flex;align-items:center;justify-content:center;min-height:23px;padding:3px 8px;margin-bottom:12px;border-radius:5px;background:#f1f2f5;border:1px solid transparent;color:#627083;font-size:10.1px;font-weight:700;line-height:1.25;white-space:nowrap}
+.law-order-tag--accent{border-color:#f9e2dc;background:#fff1ee;color:#d5463b}
+.law-order-card h4,.law-order-branch-card h4{margin:0 0 11px;color:#252a32;font-size:13.7px;font-weight:760;line-height:1.46;letter-spacing:-.04em;word-break:keep-all;overflow-wrap:break-word}
+.law-order-card p,.law-order-branch-card p{margin:0;color:#485160;font-size:11.9px;line-height:1.68;font-weight:450;letter-spacing:-.024em;word-break:keep-all;overflow-wrap:break-word}
+.law-order-card-footer{position:absolute;left:15px;right:13px;bottom:16px;display:flex;align-items:center}
+.law-order-period{display:inline-flex;align-items:center;gap:5px;font-size:10.7px;font-weight:700;color:#27374e;white-space:normal;letter-spacing:-.03em;line-height:1.4}
+.law-order-period svg{width:12px;height:12px;flex:none;fill:none;stroke:currentColor;stroke-width:1.25;stroke-linecap:round;stroke-linejoin:round}
+.law-order-period--muted{color:#59677a}
+.law-order-branches{position:absolute;inset:0;z-index:1;pointer-events:none}
+.law-order-branch-card{position:absolute;left:540px;width:184px;height:160px;padding:14px 14px 13px}
+.law-order-branch-card--confirmed{top:92px;border-color:#dfe7f1}
+.law-order-branch-card--disputed{top:285px;border-color:#eee1df}
+.law-order-branch-card .law-order-tag{margin-bottom:9px}
+.law-order-tag--confirmed{background:#f0f4fa;border-color:#e1eaf5;color:#496482}
+.law-order-tag--disputed{background:#fff2f0;border-color:#f8e1dd;color:#b94a40}
+.law-order-branch-card h4{font-size:13.5px;margin-bottom:8px}
+.law-order-branch-card p{font-size:11.5px;line-height:1.59}
+.law-order-branch-card strong{color:#293c52;font-weight:740}
+.law-order-branch-card--disputed strong{color:#a64e46}
+@media(max-width:850px) and (min-width:661px){.law-order-viewport{overflow-x:auto;overscroll-behavior-x:contain}}
+@media(max-width:660px){
+ .law-order-intro{margin-top:34px}
+ .law-order-intro h3{font-size:19px}
+ .law-order-intro>p:last-child{font-size:14px}
+ .law-order-figure{margin-top:17px;margin-bottom:19px}
+ .law-order-stage{width:100%;height:auto;min-width:0;padding:22px 17px 25px;display:flex;flex-direction:column;gap:13px}
+ .law-order-connector{display:none}
+ .law-order-group-caption{position:relative;left:auto;top:auto;transform:none;align-self:center;font-size:10.6px;padding:8px 11px;gap:7px;margin-bottom:8px}
+ .law-order-group-caption span{padding-left:8px}
+ .law-order-track{position:relative;left:auto;top:auto;display:grid;grid-template-columns:minmax(0,1fr);gap:21px}
+ .law-order-card{width:100%;height:auto;min-height:167px;padding:16px 17px 47px}
+ .law-order-card h4,.law-order-branch-card h4{font-size:14px}
+ .law-order-card p,.law-order-branch-card p{font-size:12.3px}
+ .law-order-tag{font-size:10.5px;margin-bottom:9px}
+ .law-order-card-footer{left:17px;right:17px;bottom:15px}
+ .law-order-period{font-size:10.9px}
+ .law-order-card+.law-order-card::before{content:"↓";position:absolute;top:-20px;left:calc(50% - 7px);font-size:17px;color:#aeb8c6;line-height:1;animation:law-order-small-arrow 3.6s ease-in-out infinite}
+ .law-order-branches{position:relative;inset:auto;display:grid;grid-template-columns:minmax(0,1fr);gap:13px;margin-left:16px;padding-left:19px;border-left:1px solid #bbc5d1}
+ .law-order-branch-card{position:relative;top:auto;left:auto;width:100%;height:auto;min-height:138px;padding:15px 16px;pointer-events:auto}
+ .law-order-branch-card::before{content:"";position:absolute;top:50%;left:-20px;width:19px;height:1px;background:#bbc5d1}
+ .law-order-branch-card h4{margin-bottom:7px}
+}
+@keyframes law-order-small-arrow{0%,100%{opacity:.4;transform:translateY(-2px)}50%{opacity:.95;transform:translateY(2px)}}
+@media(prefers-reduced-motion:reduce){.law-order-pulse,.law-order-card+.law-order-card::before{animation:none}.law-order-pulse{opacity:0}}
+/* 07 project value: compact, static editorial presentation. */
+.law-value-section h2{font-size:clamp(23px,2.35vw,27px);margin-bottom:14px}
+.law-value-section .body-copy.law-value-lead{max-width:none;margin:0 0 22px;font-size:14px;line-height:1.7}
+.law-value-questions{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.law-value-question{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);column-gap:26px;align-items:center;padding:19px 8px}
+.law-value-question+.law-value-question{border-top:1px solid var(--line)}
+.law-value-question__heading{display:flex;align-items:baseline;gap:12px;min-width:0}
+.law-value-question__num{flex:none;color:var(--law-accent);font-size:11px;font-weight:680;line-height:1.5;font-variant-numeric:tabular-nums}
+.law-value-question h3{margin:0;color:var(--text);font-size:14px;font-weight:670;line-height:1.55;letter-spacing:-.025em;word-break:keep-all}
+.law-value-question__answer{display:flex;flex-direction:column;gap:4px;min-width:0}
+.law-value-question__answer p{margin:0;letter-spacing:-.018em;word-break:keep-all}
+.law-value-question__point{color:var(--text);font-size:14px;font-weight:500;line-height:1.55}
+.law-value-question__detail{color:var(--muted);font-size:12.5px;font-weight:400;line-height:1.65}
+.law-value-compare{display:grid;grid-template-columns:minmax(0,1fr) 24px minmax(0,1fr);gap:9px;align-items:stretch;margin-top:27px}
+.law-value-compare__side{min-width:0;padding:16px 17px;border:1px solid var(--line);border-radius:5px;background:transparent}
+.law-value-compare__side--after{border-color:var(--line);border-left:2px solid var(--law-accent);background:transparent}
+.law-value-compare__label{margin:0 0 10px;color:var(--muted);font-size:10.5px;font-weight:650;letter-spacing:.02em}
+.law-value-compare__side--after .law-value-compare__label{color:var(--law-accent)}
+.law-value-compare__steps{display:flex;align-items:center;flex-wrap:wrap;gap:5px;margin:0;color:var(--text);font-size:12.5px;font-weight:500;line-height:1.6;letter-spacing:-.025em}
+.law-value-compare__steps span{white-space:nowrap}
+.law-value-compare__steps b{color:var(--muted);font-size:11px;font-weight:450}
+.law-value-compare__side--after .law-value-compare__steps b{color:var(--muted)}
+.law-value-compare__note{margin:9px 0 0;color:var(--muted);font-size:11.5px;line-height:1.6;word-break:keep-all}
+.law-value-compare__transition{display:flex;align-items:center;justify-content:center;color:var(--muted)}
+.law-value-compare__transition svg{width:20px;height:20px;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5}
+.law-value-results{margin-top:27px}
+/* Outcomes bridge the flow design (04) and the iteration story (05). */
+.law-benefits-results{margin-top:42px}
+.law-benefits-results .law-value-results__label{font-size:14px;line-height:1.5;margin-bottom:13px}
+.law-value-results__label{margin:0 0 10px;font-size:11.5px;font-weight:650;color:var(--text)}
+.law-value-results ul{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;padding:0;margin:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);list-style:none}
+.law-value-results li{min-width:0;padding:17px 16px 18px 4px}
+.law-value-results li+li{border-left:1px solid var(--line);padding-left:20px}
+.law-value-results__num{display:block;margin-bottom:6px;color:var(--muted);font-size:10px;font-weight:650;font-variant-numeric:tabular-nums}
+.law-value-results li strong{display:block;margin-bottom:6px;font-size:14px;font-weight:650;line-height:1.45;letter-spacing:-.025em}
+.law-value-results li p{margin:0;color:var(--law-body);font-size:12.5px;line-height:1.6;word-break:keep-all}
+.law-value-conclusion{margin:20px 0 0;padding-left:12px;border-left:1px solid var(--line);color:var(--law-body);font-size:13.2px;line-height:1.7;letter-spacing:-.012em;word-break:keep-all}
+.law-value-conclusion strong{color:var(--text);font-weight:680}
+@media(min-width:1050px){
+ .law-value-section .body-copy.law-value-lead,.law-value-question h3,.law-value-results li p{white-space:nowrap}
+ .law-value-compare__steps{flex-wrap:nowrap}
+}
+@media(max-width:760px){
+ .law-value-question{grid-template-columns:minmax(0,1fr);gap:9px;padding:18px 8px}
+ .law-value-question__answer{padding-left:25px}
+ .law-value-compare{grid-template-columns:minmax(0,1fr);gap:6px;margin-top:23px}
+ .law-value-compare__transition{height:20px}
+ .law-value-compare__transition svg{transform:rotate(90deg)}
+ .law-value-results{margin-top:24px}
+}
+@media(max-width:650px){
+ .law-value-section h2{font-size:23px}
+ .law-value-section .body-copy.law-value-lead{margin-bottom:19px;font-size:13.5px}
+ .law-value-question{padding:16px 5px}
+ .law-value-question__heading{gap:10px}
+ .law-value-question h3{font-size:14px}
+ .law-value-question__answer{padding-left:25px}
+ .law-value-question__point{font-size:13.5px}
+ .law-value-question__detail{font-size:12.5px}
+ .law-value-compare__side{padding:15px}
+ .law-value-compare__steps{font-size:12px}
+ .law-value-results ul{grid-template-columns:minmax(0,1fr)}
+ .law-value-results li{padding:14px 4px;display:grid;grid-template-columns:20px minmax(0,1fr);align-items:baseline;column-gap:12px}
+ .law-value-results li+li{border-left:0;border-top:1px solid var(--line);padding-left:4px}
+ .law-value-results__num{grid-row:1 / span 2;margin:0}
+ .law-value-results li strong{margin-bottom:2px;font-size:13.5px}
+ .law-value-results li p{grid-column:2;font-size:12.5px}
+ .law-value-conclusion{margin-top:18px;font-size:12.6px}
+}
+
+/* 05 Reflection: a real screenshot, its branching insight, and the design principle. */
+.law-reflection-section .body-copy.law-reflection-lead{margin-bottom:0}
+.law-reflection-figure{width:100%;margin:30px 0 0}
+.law-reflection-frame{overflow:hidden;border:1px solid var(--line);border-radius:7px;background:#f6f8fb}
+.law-reflection-frame img{display:block;width:100%;height:auto;pointer-events:none;user-select:none;-webkit-user-drag:none}
+.law-reflection-figure figcaption{margin:12px 0 0;color:var(--muted);font-size:12px;line-height:1.7;text-align:center;word-break:keep-all}
+.law-reflection-takeaway{max-width:850px;margin:30px auto 0;text-align:left}
+.law-reflection-takeaway__label{margin:0 0 8px!important;color:var(--muted)!important;font-size:11px!important;font-weight:650;line-height:1.5;letter-spacing:.02em}
+.law-reflection-takeaway h3{margin:0 0 10px;color:var(--text);font-size:20px;font-weight:670;line-height:1.5;letter-spacing:-.035em;word-break:keep-all}
+.law-reflection-takeaway>p:last-child{margin:0;color:var(--law-body);font-size:15px;line-height:1.85;letter-spacing:-.012em;word-break:keep-all}
+@media(max-width:650px){
+  .law-reflection-figure{margin-top:24px}
+  .law-reflection-frame{border-radius:5px}
+  .law-reflection-figure figcaption{font-size:11px}
+  .law-reflection-takeaway{margin-top:26px}
+  .law-reflection-takeaway h3{font-size:18px}
+  .law-reflection-takeaway>p:last-child{font-size:15px;line-height:1.8}
+}
+/* Law service planning steps 01/02 and 02/02: non-heading text +1px only. */
+.law-service-section .law-story-step--intake .law-story-index,
+.law-service-section .law-story-step--methods .law-story-index{font-size:12px}
+.law-service-section .law-story-step--intake .law-story-copy p.law-intake-summary-lead,
+.law-service-section .law-story-step--methods .law-story-copy p.law-intake-summary-lead{font-size:15px}
+.law-service-section .law-story-step--intake .law-intake-summary-number,
+.law-service-section .law-story-step--methods .law-intake-summary-number{font-size:12px}
+.law-service-section .law-story-step--intake .law-intake-summary-list li strong,
+.law-service-section .law-story-step--methods .law-intake-summary-list li strong{font-size:14px}
+.law-service-section .law-story-step--intake .law-intake-summary-list li div span,
+.law-service-section .law-story-step--methods .law-intake-summary-list li div span{font-size:13px}
+.law-service-section .law-story-step--intake .law-story-copy p.law-intake-summary-result{font-size:14px}
+.law-service-section .law-story-step--methods .law-story-map figcaption{font-size:13px}

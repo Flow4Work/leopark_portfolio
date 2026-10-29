@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="ko" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090909">
+  <meta name="description" content="인플루언서 시딩을 직접 운영하며 후보 발굴과 협업 제안을 자동화하고, 일본에서 대만 공동구매로 확장한 기획·개발 기록.">
+  <title>KOL Scout | 박동호 포트폴리오</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  <script>try{if(localStorage.getItem('portfolio-theme')==='light')document.documentElement.dataset.theme='light'}catch(e){}</script>
+  <style>
+    :root {
+      color-scheme:dark;
+      --bg:#090909;--text:#f4f4f5;--muted:#919397;--soft:#b2b3b7;
+      --line:#292a2c;--surface:#17181a;--surface-border:#2b2d31;
+      --control:#1d1e20;--control-hover:#303136;--editorial-body:#d4d4d8;
+      --project-link:#77aaff;--case-accent:#bac7da;
+    }
+    :root[data-theme="light"] {
+      color-scheme:light;
+      --bg:#fafafa;--text:#1c1c1f;--muted:#74777d;--soft:#585b63;
+      --line:#dfe0e4;--surface:#f0f0f2;--surface-border:#d8d9de;
+      --control:#ebebef;--control-hover:#dedee3;--editorial-body:#313131;
+      --project-link:#145bc5;--case-accent:#526a8a;
+    }
+    *,*::before,*::after {box-sizing:border-box;}
+    html {background:var(--bg);scroll-behavior:smooth;scroll-padding-top:106px;}
+    body {
+      margin:0;min-width:320px;min-height:100vh;background:var(--bg);color:var(--text);
+      font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+      -webkit-font-smoothing:antialiased;transition:background .2s ease,color .2s ease;
+    }
+    a {color:inherit;} button {font:inherit;}
+    a:focus-visible,button:focus-visible {outline:2px solid var(--text);outline-offset:5px;}
+    .sticky-site-nav {position:sticky;top:0;z-index:100;background:var(--bg);transition:box-shadow .18s ease,background .18s ease;}
+    .sticky-site-nav.is-scrolled {box-shadow:inset 0 -1px 0 var(--line);}
+    .site-header {max-width:1088px;height:80px;padding:0 32px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:24px;}
+    .header-brand {font-size:14px;font-weight:750;text-decoration:none;letter-spacing:-.3px;}
+    .header-right {display:flex;align-items:center;gap:25px;}
+    .detail-nav {display:flex;align-items:center;gap:22px;}
+    .back-link {text-decoration:none;font-size:13px;color:var(--muted);font-weight:600;}
+    .back-link:hover {color:var(--text);}
+    .theme-switch {height:34px;min-width:88px;padding:0 13px;border:1px solid var(--line);border-radius:100px;background:var(--control);color:var(--text);display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:12px;font-weight:600;cursor:pointer;}
+    .theme-switch:hover {background:var(--control-hover);}
+    .theme-switch svg {width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;}
+    .moon-icon {display:none;}
+    :root[data-theme="light"] .sun-icon {display:none;}
+    :root[data-theme="light"] .moon-icon {display:block;}
+    main {max-width:1088px;margin:0 auto;padding:58px 32px 85px;}
+    .eyebrow {font-size:12px;color:var(--muted);font-weight:650;letter-spacing:.055em;margin:0 0 22px;}
+    h1 {margin:0;font-size:clamp(39px,5vw,58px);line-height:1.12;font-weight:740;letter-spacing:-.057em;}
+    .subtitle {font-size:clamp(18px,2.2vw,22px);font-weight:500;line-height:1.48;margin:19px 0 0;letter-spacing:-.045em;word-break:keep-all;text-wrap:pretty;}
+        /* Project overview: isolated from legacy .meta overrides. */
+    .case-study .project-facts {
+      display:grid;
+      grid-template-columns:155px 230px minmax(0,1fr) auto;
+      align-items:center;
+      column-gap:24px;
+      margin:30px 0 31px;
+      padding:20px 0;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+    .case-study .project-fact {min-width:0;display:flex;flex-direction:column;gap:7px;}
+    .case-study .project-fact dt {
+      margin:0;color:var(--muted);font-size:11px;font-weight:600;
+      line-height:1.4;letter-spacing:.005em;
+    }
+    .case-study .project-fact dd {
+      margin:0;color:var(--text);font-size:13.5px;font-weight:640;
+      line-height:1.5;letter-spacing:-.018em;word-break:keep-all;
+    }
+    .case-study .project-facts__action {
+      display:flex;justify-content:flex-end;align-items:center;
+      min-height:39px;padding-left:23px;border-left:1px solid var(--line);
+    }
+    .case-study .project-facts__link {
+      display:inline-flex;align-items:center;justify-content:center;gap:9px;
+      min-height:37px;padding:8px 12px;border:1px solid var(--line);
+      border-radius:5px;background:transparent;color:var(--text);
+      font-size:12.5px;font-weight:640;line-height:1.4;
+      text-decoration:none;white-space:nowrap;
+      transition:border-color .18s ease,background .18s ease;
+    }
+    .case-study .project-facts__link svg {
+      display:block;flex:none;width:15px;height:15px;color:var(--project-link);
+    }
+    .case-study .project-facts__link:hover {
+      border-color:var(--soft);background:var(--surface);
+    }
+    @media(max-width:800px) {
+      .case-study .project-facts {
+        grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);
+        gap:22px 24px;padding:19px 0;
+      }
+      .case-study .project-facts__action {
+        min-height:0;padding-left:0;border-left:0;justify-content:flex-start;
+      }
+    }
+    @media(max-width:560px) {
+      .case-study .project-facts {
+        grid-template-columns:minmax(0,1fr);gap:0;
+        margin:24px 0 27px;padding:11px 0 15px;
+      }
+      .case-study .project-fact {
+        display:grid;grid-template-columns:85px minmax(0,1fr);
+        align-items:baseline;gap:12px;padding:9px 0;
+      }
+      .case-study .project-fact dd {font-size:13px;}
+      .case-study .project-facts__action {
+        margin-top:9px;padding-top:15px;border-top:1px solid var(--line);
+      }
+    }
+    @media(prefers-reduced-motion:reduce) {
+      .case-study .project-facts__link {transition:none;}
+    }
+
+    .case-study .project-facts {grid-template-columns:260px 252px minmax(0,1fr) auto;}
+    figure {margin:0;}
+    .demo-shell {aspect-ratio:32/15;background:#080807;border-radius:9px;overflow:hidden;position:relative;contain:layout paint;}
+    .demo-shell iframe {display:block;width:100%;height:100%;border:0;pointer-events:none;}
+    figcaption {margin-top:11px;text-align:center;color:var(--muted);font-size:12px;line-height:1.65;letter-spacing:-.01em;}
+    .article-section {margin-top:60px;}
+    .section-no,h2,.section-copy,.work-list,.lesson-journal,.closing-copy {display:block;width:100%;max-width:860px;margin-left:auto;margin-right:auto;}
+    .section-no {margin-bottom:12px;color:var(--muted);font-size:12px;font-weight:600;letter-spacing:.015em;}
+    h2 {margin-top:0;margin-bottom:18px;font-size:clamp(27px,2.8vw,32px);font-weight:700;line-height:1.4;letter-spacing:-.044em;word-break:keep-all;text-wrap:pretty;}
+    .body-copy {margin:0 0 15px;color:var(--editorial-body);font-size:16px;line-height:1.8;letter-spacing:-.017em;word-break:keep-all;overflow-wrap:break-word;text-wrap:pretty;}
+    .body-copy:last-child {margin-bottom:0;}
+    .body-copy strong {color:var(--text);font-weight:650;}
+    .body-copy a,.project-link {color:var(--project-link);text-decoration:none;}
+    .body-copy a:hover,.project-link:hover {text-decoration:underline;text-underline-offset:4px;}
+    /* Shared mark style is defined in /portfolio-fonts.css. */
+    .work-list {list-style:none;padding:0;margin-top:26px;margin-bottom:24px;border-top:1px solid var(--line);}
+    .work-list li {display:grid;grid-template-columns:30px minmax(0,1fr);gap:16px;padding:23px 0;border-bottom:1px solid var(--line);}
+    .work-number {padding-top:4px;color:var(--muted);font-size:11px;font-variant-numeric:tabular-nums;}
+    .work-list h3 {margin:0 0 8px;font-size:18px;line-height:1.6;font-weight:650;letter-spacing:-.025em;word-break:keep-all;}
+    .work-list p {margin:0;color:var(--editorial-body);font-size:15px;line-height:1.85;letter-spacing:-.014em;word-break:keep-all;text-wrap:pretty;}
+    .product-media {max-width:860px;margin:29px auto 0;}
+    .product-media img {display:block;width:100%;height:auto;border:1px solid var(--surface-border);border-radius:9px;}
+    .v3-media {max-width:100%;}
+    .v3-media figcaption {display:flex;justify-content:center;align-items:center;gap:14px;}
+    .screen-try-link {color:var(--project-link);font-weight:600;text-decoration:none;}
+    .screen-try-link:hover {text-decoration:underline;text-underline-offset:4px;}
+    .taiwan-media {max-width:100%;}
+    .taiwan-media .screenshot-crop {aspect-ratio:1440/675;overflow:hidden;border:1px solid var(--surface-border);border-radius:9px;background:#fafafa;}
+    .taiwan-media .screenshot-crop img {border:0;border-radius:0;}
+    .lesson-journal {list-style:none;padding:0;margin-top:27px;margin-bottom:0;}
+    .lesson-entry {display:grid;grid-template-columns:135px minmax(0,1fr);gap:24px;padding:26px 0;border-top:1px solid var(--line);}
+    .lesson-entry:last-child {border-bottom:1px solid var(--line);}
+    .lesson-label {color:var(--muted);font-size:13px;font-weight:600;line-height:1.8;padding-top:3px;}
+    .lesson-entry h3 {margin:0 0 10px;font-size:20px;font-weight:660;line-height:1.5;letter-spacing:-.035em;word-break:keep-all;text-wrap:pretty;}
+    .lesson-entry p {margin:0;color:var(--editorial-body);font-size:15px;line-height:1.85;letter-spacing:-.014em;word-break:keep-all;overflow-wrap:break-word;text-wrap:pretty;}
+    .closing-copy {margin-top:32px;}
+    .closing-copy .body-copy {font-size:16px;}
+    /* Closing-copy highlights also use the shared mark style. */
+    .closing-copy .body-copy strong {font-size:inherit;}
+    @media(max-width:1050px) and (min-width:801px) {.case-study .project-facts{grid-template-columns:1.4fr 1.3fr .9fr auto;gap:18px;}.case-study .project-fact dd{font-size:13px;}}
+    @media(max-width:900px) {.site-header{padding-inline:24px;}main{padding:50px 25px 70px;}.article-section{margin-top:45px;}}
+    @media(max-width:800px) {.case-study .project-facts{grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);}}
+    @media(max-width:640px) {
+      .site-header{height:68px;padding:0 19px;}.header-right{gap:14px;}.detail-nav{gap:13px;}.back-link{font-size:12px;}
+      main{padding:40px 19px 65px;}.eyebrow{margin-bottom:16px;}h1{font-size:39px;}.subtitle{margin-top:15px;font-size:19px;}
+      .article-section{margin-top:42px;}h2{font-size:25px;line-height:1.4;margin-bottom:18px;}.body-copy{font-size:14px;line-height:1.82;}
+      .demo-shell{border-radius:8px;}figcaption{font-size:11px;}.product-media{margin-top:24px;}
+      .work-list{margin-top:22px;}.work-list li{grid-template-columns:23px minmax(0,1fr);gap:4px 11px;padding:20px 0;}.work-list h3{font-size:17px;}.work-list p{font-size:14px;}
+    }
+    @media(max-width:560px) {
+      .case-study .project-facts{grid-template-columns:minmax(0,1fr);}
+      .lesson-journal{margin-top:23px;}.lesson-entry{grid-template-columns:1fr;gap:10px;padding:23px 0;}.lesson-label{padding:0;font-size:12px;}.lesson-entry h3{font-size:18px;}.lesson-entry p{font-size:14px;}
+      .closing-copy{margin-top:26px;}
+    }
+    @media(max-width:380px) {.detail-nav .back-link:first-child{display:none;}.detail-nav{white-space:nowrap;}}
+    @media(prefers-reduced-motion:reduce) {html{scroll-behavior:auto;}body,.sticky-site-nav{transition:none;}}
+  </style>
+  <link rel="stylesheet" href="/portfolio-fonts.css">
+</head>
+<body>
+  <div class="sticky-site-nav">
+  <header class="site-header">
+    <a href="/" class="header-brand" aria-label="포트폴리오 메인으로 이동">PORTFOLIO</a>
+    <div class="header-right">
+      <nav class="detail-nav" aria-label="상단 메뉴">
+        <a class="back-link" href="/">← 프로젝트 목록</a>
+        <a class="back-link" href="/profile">Profile</a>
+      </nav>
+      <button id="theme-switch" class="theme-switch" aria-label="화이트 모드로 전환" aria-pressed="false" type="button">
+        <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/></svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.9 13.2A9 9 0 0 1 10.8 3.1 9 9 0 1 0 20.9 13.2Z"/></svg>
+        <span id="theme-label">LIGHT</span>
+      </button>
+    </div>
+  </header>
+  </div>
+  <main class="case-study">
+    <article>
+      <header class="project-heading">
+        <p class="eyebrow">02 WEB PROJECT · AI AUTOMATION</p>
+        <h1>KOL Scout</h1>
+        <p class="subtitle">인플루언서 발굴부터 협업 제안까지 연결한 업무 자동화 도구</p>
+        <dl class="project-facts" aria-label="프로젝트 정보">
+          <div class="project-fact"><dt>프로젝트</dt><dd>업무 자동화(AX) &amp; 인플루언서 시딩</dd></div>
+          <div class="project-fact"><dt>담당 역할</dt><dd>서비스 기획 · 바이브코딩 · 시딩 운영</dd></div>
+          <div class="project-fact"><dt>제작 기간</dt><dd>2026.06 ~ 2026.09</dd></div>
+          <div class="project-facts__action">
+            <a class="project-facts__link" href="https://influencer-scout-ten.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="KOL Scout 서비스 새 창에서 열기">서비스 보기
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </a>
+          </div>
+        </dl>
+      </header>
+      <figure class="hero-media">
+        <div class="demo-shell"><iframe id="scout-motion" src="./assets/scout-demo.html" title="V3 인플루언서 시딩 에이전트 화면" loading="eager" tabindex="-1"></iframe></div>
+        <figcaption>V3 인플루언서 시딩 에이전트 화면</figcaption>
+      </figure>
+
+      <section class="article-section" aria-labelledby="background">
+        <span class="section-no">01 BACKGROUND</span>
+        <h2 id="background">수익화를 위한 인플루언서 시딩</h2>
+        <div class="section-copy">
+          <p class="body-copy">2026년 6월경에는 <a href="/instagram-card-agent">인스타그램 카드뉴스 자동화</a> 프로젝트를 마친 뒤, 여러 작은 에이전트를 만들어 보며 바이브코딩에 익숙해지고 있었다. 수익을 낼 방법을 찾으며 작은 실험을 이어 가던 중, GPT의 제안으로 인플루언서 시딩을 시작했다. 방한 일본인 인플루언서와 한국 음식점·시술 업체를 연결하는 재택 프리랜서 일이었다.</p>
+          <p class="body-copy">처음 이틀은 자동화 도구 없이 GPT 채팅으로 후보를 찾고 직접 연락했다. 이 과정에서 중복 후보를 걸러 내고, 연락한 사람을 관리하며, 메시지를 일일이 복사해 보내는 일이 번거로워 <mark>이 과정을 자동화하기로 했다.</mark></p>
+        </div>
+      </section>
+
+      <section class="article-section" aria-labelledby="design">
+        <span class="section-no">02 DESIGN</span>
+        <h2 id="design">시딩 업무의 자동화</h2>
+        <div class="section-copy">
+          <p class="body-copy">먼저 내가 실제로 일하는 순서에 맞춰 필요한 기능을 정리했다. 크게 후보 탐색·메시지 작성·발송의 세 가지로 나누고,<br>이전 <a href="/instagram-card-agent">Instagram Card Agent ↗</a> 프로젝트에서 경험한 모듈화 방식을 적용했다.</p>
+        </div>
+        <ol class="work-list" aria-label="시딩 업무를 나눈 세 가지 기능">
+          <li><span class="work-number">01</span><div><h3>후보 탐색 자동화</h3><p>도구 개발에는 Codex를 쓰고, 반복적인 후보 탐색에는 Exa·Tavily와 무료 AI를 활용했다. 개발과 검색에 필요한 도구를 나눠 연결하면서, 기능이 작동하는지뿐 아니라 매일 반복해서 사용할 때의 비용과 운영 방식도 함께 고려하게 됐다.</p></div></li>
+          <li><span class="work-number">02</span><div><h3>제안 메시지 개인화</h3><p>후보별 정보를 바탕으로 협업 제안 메시지를 작성하는 에이전트를 별도로 만들었다. 연락할 사람마다 제안 문구를 직접 작성하던 과정을 줄였다.</p></div></li>
+          <li><span class="work-number">03</span><div><h3>계정별 발송 자동화</h3><p>한 계정에서 DM을 많이 보내면 이용 제한을 겪었다. 하루 연락량을 유지하기 위해 여러 Instagram 계정을 나눠 운영했다. Chrome 프로필로 계정별 로그인 상태를 구분하고, Playwright와 OpenCode로 발송을 자동화했다.</p></div></li>
+        </ol>
+        <div class="section-copy">
+          <p class="body-copy">처리한 후보와 연락 내역은 데이터베이스(Supabase)에 저장했다. 세 기능을 나눠 개발하고 각각 별도로 QA를 진행하니, 완성도를 빠르게 높일 수 있었다. 이 작업은 하루 만에 마쳤고, 곧바로 실제 업무에 사용하기 시작했다.</p>
+        </div>
+      </section>
+
+      <section class="article-section" aria-labelledby="japan">
+        <span class="section-no">03 V1 · JAPAN</span>
+        <h2 id="japan">첫 수익</h2>
+        <div class="section-copy">
+          <p class="body-copy">처음에는 나 혼자 쓰는 도구라 탭이 많았다. 후보 탐색, 메시지 작성, 발송이 전부 별도 탭으로 나뉘어 있었다. 필요한 기능을 붙여 가며 썼고, 실제로 일하는 시간은 오전 10분, 오후 1시간, 저녁 30분 정도였다.</p>
+          <p class="body-copy">그렇게 첫 달에 약 50~60만 원을 벌었다. 많지는 않았지만, 반년 동안 AI와 작업하며 수익화를 노린 끝에 얻은 첫 수익이었다. 작게나마 수익이 생겼다는 게 반가웠고 감격스러웠다. 내가 해 보고 싶었던 건 AI를 활용해서 나 혼자서는 불가능하던 시장에 도전하고, 수익까지 내 보는 것이었다. 그걸 처음으로 성공해 본 시점이었다. 지금도 AI의 도움 없이는 혼자 수익을 낼 수 없는 영역이다.</p>
+          <p class="body-copy">또한 개발 → 시딩 → 번역 → 자동화 툴까지. 이 모든 것을 매끄럽게 연결할 수 있었던 건 그동안 만들어 본 것들이 있었기 때문이다.<br>그 뒤에는 포트폴리오에 올리지 않은 수많은 아류작들이 있었다.</p>
+        </div>
+        <figure class="product-media">
+          <img src="./assets/kol-japan-workspace-clean.png" width="1280" height="800" loading="lazy" alt="V1 일본 시딩 에이전트 화면. 계정별 상태와 팔로워, 한국 관련 확인 근거를 표로 정리했다.">
+          <figcaption>V1 일본 시딩 에이전트 화면</figcaption>
+        </figure>
+      </section>
+
+      <section class="article-section" aria-labelledby="taiwan">
+        <span class="section-no">04 V2 · TAIWAN</span>
+        <h2 id="taiwan">새로운 시장 - 대만 공동구매</h2>
+        <div class="section-copy">
+          <p class="body-copy">일본 시딩은 방한·한국 거주자만 대상이라 새 후보가 줄었고, 낮은 광고 단가로 수익도 감소했다. 그때 자체 제작한 기능성 신발을 대만에서 공동구매로 판매하자는 제안을 받았다. 이번에는 한국 방문자가 아닌 제품을 함께 판매할 인플루언서를 찾아야 했기에, 후보 선정 기준과 제안 방식도 달라졌다.</p>
+          <p class="body-copy">첫날에는 모든 과정을 수동으로 진행하며 불편한 점과 자동화할 일을 기록했다. 다음 날 이를 바탕으로 새 도구를 세 부분으로 나눠 만들고, 각각 검증한 뒤 연결했다. <mark>셋째 날부터 실제 업무에 적용했다.</mark></p>
+          <p class="body-copy">밤에는 오래된 노트북에서 OpenCode로 후보를 탐색하고, 낮에는 아침 20명·점심 20명·저녁 40명씩 하루 80명에게 연락했다. 그 결과 대만에서 <mark>첫 달 공동구매 9건을 성사시키며 수익을 냈다.</mark> 다만 팔로워 3만 명 이상이면서 공동구매 의사가 있는 후보는 한정적이어서, 지속적으로 연락할 수 있는 대상 규모도 함께 살펴야 했다.</p>
+        </div>
+        <figure class="product-media taiwan-media">
+          <div class="screenshot-crop"><img src="./assets/kol-scout-v2-taiwan.png" width="1440" height="900" loading="lazy" alt="V2 대만 공동구매 시딩 에이전트 화면의 상단. 후보 현황과 발송 도구, 후보별 팔로워와 최근 공동구매 근거를 확인한다."></div>
+          <figcaption>V2 대만 공동구매 시딩 에이전트 화면</figcaption>
+        </figure>
+      </section>
+
+      <section class="article-section" aria-labelledby="iteration">
+        <span class="section-no">05 V3 · USABILITY</span>
+        <h2 id="iteration">최종 개선</h2>
+        <div class="section-copy">
+          <p class="body-copy"><a href="https://influencer-scout-ten.vercel.app" target="_blank" rel="noopener noreferrer">V3</a>에서는 다른 사람도 처음 들어와 사용할 수 있도록 편의성을 고려했다. 내가 알고 쓰던 작업 순서를 화면에 드러내고, 후보 검토부터 메시지 준비까지 자연스럽게 이어지도록 정리했다. 업데이트 이후에는 나 역시 이전보다 훨씬 편하게 쓰고 있다.</p>
+        </div>
+        <ol class="work-list" aria-label="V3 사용성을 개선한 네 가지 기능">
+          <li><span class="work-number">01</span><div><h3>일본·대만 후보 통합</h3><p>따로 관리하던 일본과 대만 후보를 한 화면에 모으고, 국가 탭으로 전환할 수 있게 했다. 왼쪽에는 현황과 저장 내역, 가운데에는 후보 목록, 오른쪽에는 대화창을 배치해 화면을 오가는 일을 줄였다.</p></div></li>
+          <li><span class="work-number">02</span><div><h3>후보 정보 정리와 검색·정렬</h3><p>일본은 방한 관련 이력, 대만은 공동구매 이력을 보여 주고, 외국어로 된 근거는 한국어로 요약했다. 팔로워와 추천도로 정렬하거나 이름·계정·이메일로 검색할 수 있도록 해, 필요한 후보를 찾아 검토하기 쉽게 만들었다.</p></div></li>
+          <li><span class="work-number">03</span><div><h3>후보 선택과 연결된 메시지 작성</h3><p>후보를 선택하면 해당 정보를 바탕으로 대화창에서 협업 메시지를 준비하도록 연결했다. 후보 정보를 다른 채팅창에 다시 옮겨 적는 일을 줄이고, 일본어·번체 중국어 원문과 한국어 번역을 함께 받을 수 있게 했다. 예시 요청 버튼도 넣어 처음 쓰는 사람도 어떤 작업을 요청할 수 있는지 알 수 있도록 했다.</p></div></li>
+          <li><span class="work-number">04</span><div><h3>신규 후보 알림과 게이미피케이션</h3><p>새 후보가 들어오면 숫자가 늘어나면서 독수리가 날아오는 효과를 넣었다. 저장된 후보와 시간도 활동 내역에 표시해, 무엇이 새로 추가됐는지 확인할 수 있게 했다. 매시간 들어와 후보가 몇 명이나 늘었는지 보는 재미도 더하고 싶었다.</p></div></li>
+        </ol>
+        <div class="section-copy">
+          <p class="body-copy">이 프로젝트는 <mark><strong>국가와 시딩 목적에 맞춰 확장할 수 있는 구조</strong></mark>다. 특정 국가의 공동구매 계정이나 다른 나라를 방문할 시그널이 있는 KOL을 찾는 데 기존 모듈을 활용할 수 있다. 예를 들어 한국을 방문할 예정인 몽골 KOL이나, 한국에서 식품 공동구매를 제안할 계정을 찾는 식이다. 새로운 업무가 생기면 필요한 탐색 모듈을 추가하거나 수정하고, <strong>기존 메시지 작성·발송 기능과 연결</strong>해 활용할 수 있다.</p>
+        </div>
+        <figure id="v3-screen" class="product-media v3-media">
+          <img src="./assets/kol-scout-v3-screen.png" width="1920" height="930" loading="lazy" alt="V3 시딩 에이전트 화면. 왼쪽의 후보 현황과 저장 내역, 가운데의 일본·대만 후보 목록, 오른쪽의 Scout 대화창을 한 화면에 배치했다.">
+          <figcaption><span>V3 화면</span><a class="screen-try-link" href="https://influencer-scout-ten.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="V3 시딩 에이전트 사용해보기, 새 창에서 열기">사용해보기 ↗</a></figcaption>
+        </figure>
+      </section>
+
+      <section class="article-section" aria-labelledby="lessons">
+        <span class="section-no">06 LESSONS</span>
+        <h2 id="lessons">PM으로 해 오던 일을 개발과 운영까지</h2>
+        <ul class="lesson-journal" aria-label="기획과 운영에서 얻은 배움">
+          <li class="lesson-entry"><span class="lesson-label">문제 정의</span><div><h3>불편했던 일을 필요한 기능으로</h3><p>PM으로서 요구사항을 정리하고 사용자가 일하는 순서를 그리는 일은 익숙했다. 이번에는 내가 사용자였기에, 실제로 막히는 지점을 바로 기능으로 옮길 수 있었다. 같은 계정이 반복되면 기존 목록을 확인하게 하고, 계정이 여러 개면 로그인 상태를 나누는 식이었다. 문제를 쪼개고 모아가는 과정에는 해결할 수 있을 거란 기대감으로 약간의 즐거움도 있었다.</p></div></li>
+          <li class="lesson-entry"><span class="lesson-label">AI Governance</span><div><h3>무엇을 맡기고, 무엇을 확인할 것인가</h3><p>AI가 후보를 찾고 협업 메시지를 작성하더라도, 그 결과를 그대로 사용할 수 있는 것은 아니었다. 후보의 근거가 부족하거나 메시지에 확인되지 않은 내용이 포함되는 경우도 있었다. AI에 맡길 업무와 직접 확인할 부분을 구분하고, 오류가 생기면 해당 단계에서 바로잡을 수 있도록 작업 흐름을 나눴다. AI를 더 많이 활용할수록 업무 범위와 검수 기준, 예외 처리 방식을 명확히 정하는 일이 중요했다.</p></div></li>
+        </ul>
+        <div class="closing-copy">
+          <p class="body-copy">AI로 도구를 만들고 일을 맡기는 데는 전보다 익숙해졌다. 그래도 AI가 점점 더 많은 일을 해내는 것을 보면 무섭기도 하다. 내가 이렇게 만드는 일이 앞으로도 무슨 의미가 있을지 불안한 마음도 있다.</p>
+          <p class="body-copy">그래서 오히려 변화가 조금 늦게 찾아올 것에도 관심이 생겼다. 내가 생각한 것은 사람 사이의 <mark>관계</mark>다. 인맥을 무작정 많이 쌓겠다는 뜻은 아니다. 언어의 장벽이 낮아지는 만큼 다른 나라의 사람들과도 함께 일하고, 그런 관계를 오래 이어 가고 싶다.</p>
+        </div>
+      </section>
+      <nav data-project-navigation="kol-scout" aria-label="다른 프로젝트"></nav>
+    </article>
+  </main>
+  <script src="./portfolio-data.js"></script>
+  <script>
+    (()=>{
+      const root=document.documentElement,button=document.getElementById('theme-switch'),label=document.getElementById('theme-label');
+      function syncTheme(){const light=root.dataset.theme==='light';label.textContent=light?'DARK':'LIGHT';button.setAttribute('aria-label',light?'블랙 모드로 전환':'화이트 모드로 전환');button.setAttribute('aria-pressed',String(light));document.querySelector('meta[name="theme-color"]').content=light?'#fafafa':'#090909';}
+      syncTheme();button.addEventListener('click',()=>{root.dataset.theme=root.dataset.theme==='light'?'dark':'light';try{localStorage.setItem('portfolio-theme',root.dataset.theme)}catch(e){}syncTheme();});
+      const nav=document.querySelector('.sticky-site-nav');
+      const preview=document.getElementById('scout-motion');
+      const motion=matchMedia('(prefers-reduced-motion: reduce)');
+      let inView=false,scrolling=false,scrollTimer=0,lastPlayback=null,lastScrolled=null;
+      function syncPlayback(){
+        const playing=inView&&!scrolling&&!document.hidden&&!motion.matches;
+        if(playing===lastPlayback)return;
+        lastPlayback=playing;
+        preview.dataset.playback=playing?'playing':'paused';
+        preview.contentWindow?.postMessage(playing?'scout:play':'scout:pause',location.origin);
+      }
+      function syncNav(){
+        const scrolled=window.scrollY>8;
+        if(scrolled!==lastScrolled){nav.classList.toggle('is-scrolled',scrolled);lastScrolled=scrolled;}
+      }
+      // Pause replay while scrolling; resume once scrolling settles.
+      window.addEventListener('scroll',()=>{
+        syncNav();
+        if(!scrolling){scrolling=true;syncPlayback();}
+        clearTimeout(scrollTimer);
+        scrollTimer=setTimeout(()=>{scrolling=false;syncPlayback();},180);
+      },{passive:true});
+      if('IntersectionObserver' in window){
+        new IntersectionObserver(entries=>{
+          inView=entries[0].isIntersecting;syncPlayback();
+        },{threshold:0}).observe(preview);
+      }else{inView=true;}
+      preview.addEventListener('load',()=>{lastPlayback=null;syncPlayback();});
+      window.addEventListener('message',event=>{
+        if(event.origin!==location.origin||event.source!==preview.contentWindow)return;
+        if(event.data?.type==='scout:playback')preview.dataset.replayState=event.data.state;
+        if(event.data?.type==='scout:phase')preview.dataset.replayPhase=event.data.phase;
+      });
+      document.addEventListener('visibilitychange',syncPlayback);
+      motion.addEventListener('change',syncPlayback);
+      window.addEventListener('pagehide',()=>{inView=false;clearTimeout(scrollTimer);syncPlayback();});
+      window.addEventListener('pageshow',()=>{
+        const rect=preview.getBoundingClientRect();
+        inView=rect.bottom>0&&rect.top<innerHeight;scrolling=false;syncNav();syncPlayback();
+      });
+      syncNav();syncPlayback();
+    })();
+  </script>
+</body>
+</html>

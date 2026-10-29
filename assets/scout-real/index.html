@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark"><meta name="description" content="Influencer Scout">
+<title>Influencer Scout</title>
+<link rel="icon" type="image/png" href="./scout-eagle.png">
+<link rel="preload" as="image" href="./scout-eagle.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="./styles.css"><meta http-equiv="Content-Security-Policy" content="connect-src 'none'; img-src 'self' data:; object-src 'none'; base-uri 'self'">
+<style>.live-notice{display:none!important}html,body{scrollbar-width:none}html::-webkit-scrollbar,body::-webkit-scrollbar{display:none}</style></head>
+<body>
+<header class="site-header"><div class="header-inner">
+ <div class="brand-group"><a class="wordmark" href="#" aria-label="Influencer Scout 홈"><img class="brand-eagle" src="./scout-eagle.png" alt="" width="38" height="38">Influencer Scout</a><button id="scout-preview" class="scout-preview" type="button" aria-label="새 비행 효과 미리보기, 일본 후보 10명 증가" title="일본 후보 +10 효과 미리보기">효과 보기 <span aria-hidden="true">↗</span></button></div>
+ <span class="header-status" aria-live="polite"><i class="status-dot"></i><span id="feed-text">데이터 연결 확인 중</span></span>
+</div></header>
+<main class="main" id="home">
+ <div class="three-column-layout">
+  <aside class="agent-panel" aria-label="현황 및 완료 내역">
+   <div class="agent-panel-heading">
+    <h2>현황 및 완료 내역</h2>
+    <span class="agent-sync"><i class="status-dot"></i><span id="agent-connection">확인 중</span></span>
+    <span id="agent-last-check" class="agent-last-check">신규 후보 연결 확인 중</span>
+   </div>
+   <div class="agent-metrics">
+    <div class="agent-metric"><div class="metric-label">대만 후보</div><div class="metric-count"><strong id="taiwan-total">100</strong></div></div>
+    <div class="agent-metric japan-metric"><div class="metric-label">일본 후보</div><div class="metric-count"><strong id="japan-agent-count">100</strong></div></div>
+   </div>
+   <section class="saved-activity" aria-label="후보 저장 활동">
+    <div class="saved-activity-heading"><h3>저장 활동</h3><span id="saved-activity-count">0명</span></div>
+    <p id="saved-activity-source" class="saved-activity-source">한국 시간 기준</p>
+    <div id="saved-timeline" class="saved-timeline"></div>
+   </section>
+  </aside>
+  <section class="workspace" aria-label="국가별 후보 목록">
+   <div class="workspace-top">
+    <div class="workspace-heading">
+     <h1 class="sr-only" id="result-title">대만 후보</h1>
+     <span id="result-count" class="sr-only">100</span>
+     <nav class="country-tabs" aria-label="국가별 후보 선택">
+      <button class="country-button active" type="button" data-region="core" aria-label="대만 후보" aria-pressed="true"><svg viewBox="0 0 36 24" aria-hidden="true" class="flag-svg" xmlns="http://www.w3.org/2000/svg"><rect x=".5" y=".5" width="35" height="23" rx="2" fill="#e32233"/><path d="M.5 2.5a2 2 0 0 1 2-2H18v12H.5z" fill="#002f6c"/><circle cx="9.3" cy="6.4" r="3.1" fill="#fff"/><circle cx="9.3" cy="6.4" r="2.15" fill="#002f6c"/><circle cx="9.3" cy="6.4" r="1.65" fill="#fff"/></svg><span>대만</span><strong id="core-total">100</strong></button>
+      <button class="country-button" type="button" data-region="fixup" aria-label="일본 후보" aria-pressed="false"><svg viewBox="0 0 36 24" aria-hidden="true" class="flag-svg" xmlns="http://www.w3.org/2000/svg"><rect x=".5" y=".5" width="35" height="23" rx="2" fill="#fafafa" stroke="#d7dce2"/><circle cx="18" cy="12" r="6" fill="#bc3141"/></svg><span>일본</span><strong id="fixup-total">100</strong></button>
+     </nav>
+    </div>
+    <div class="workspace-tools">
+     <label class="search"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg><input type="search" id="search" autocomplete="off" aria-label="이름, Instagram ID 또는 이메일로 후보 검색" placeholder="이름, Instagram ID 또는 이메일"></label>
+    </div>
+   </div>
+   <div id="live-notice" class="live-notice" hidden aria-live="polite"></div>
+   <div class="table-container" id="table-container" tabindex="0" aria-label="후보 표, 내부 스크롤">
+    <table><thead><tr><th class="check-column"><input type="checkbox" id="select-visible" aria-label="현재 목록 전체 선택" title="현재 목록 전체 선택"></th><th>크리에이터</th><th data-sort-col="followers" aria-sort="none"><button type="button" class="sort-trigger" data-sort-col="followers" aria-label="팔로워 정렬, 클릭하여 많은순 또는 적은순 전환">팔로워 <span class="sort-indicator" aria-hidden="true">↕</span></button></th><th data-sort-col="recommendation" aria-sort="descending"><button type="button" class="sort-trigger active" data-sort-col="recommendation" aria-label="추천도 정렬, 클릭하여 높은순 또는 낮은순 전환">추천도 <span class="sort-indicator" aria-hidden="true">↓</span></button></th><th class="groupbuy-heading" id="evidence-heading">공동구매 이력</th><th>카테고리</th><th class="email-heading">이메일</th></tr></thead><tbody id="rows"></tbody></table>
+    <div id="empty" class="empty" hidden>조건에 맞는 후보가 없습니다.</div>
+   </div>
+   <div class="table-footer"><span id="table-footnote">기준 데이터 2026.10.23</span><span id="table-count">표시 100명</span></div>
+  </section>
+  <section class="assistant-panel" aria-label="Scout 대화창">
+   <div class="assistant-heading"><h2>Scout 대화창</h2><span>후보 분석 및 메시지 작성</span></div>
+   <div class="suggestions" aria-label="예시 요청">
+    <button type="button" data-example="일본 인플루언서는 팔로워 20K 이상만 찾아줘">일본 20K 이상</button>
+    <button type="button" data-example="대만 KOL에게 보낼 첫 협업 제안 DM 양식을 번체 중국어와 한국어 번역으로 작성해줘">협업 DM 작성</button>
+    <button type="button" data-example="대만 KOL 팔로워 상위 20명에게 맞춘 DM 초안을 작성해줘">대만 KOL 맞춤 DM</button>
+   </div>
+   <div class="chat-messages" id="chat-messages" role="log" aria-live="polite"></div>
+   <div id="selection-actions" class="selection-actions" hidden aria-live="polite">
+     <div class="selection-head"><span id="selected-count" class="selection-count">1명 선택</span><button id="selection-clear" class="selection-clear" type="button">해제</button></div>
+     <div id="selected-summary" class="selected-summary"></div>
+     <div class="selection-buttons">
+       <button id="selected-custom-dm" class="selection-primary" type="button">맞춤 메시지 작성 <span aria-hidden="true">↗</span></button>
+       <button id="selected-distribute" class="selection-primary" type="button" title="실제 DM 발송 계정 연결이 없어 대상별 메시지 초안과 분배안만 작성합니다" hidden>계정별 나눠 보내기 <span aria-hidden="true">↗</span></button>
+     </div>
+   </div>
+   <p class="activity-note">서비스 테스트 확인을 위해 요청·답변 일부와 접속 도시·시간을 30일간 기록합니다.</p>
+   <p id="activity-warning" class="activity-warning" role="status" hidden>이용 내역을 저장하지 못했습니다. 답변은 계속 이용할 수 있습니다.</p>
+   <form id="chat-form" class="chat-compose">
+    <div class="chat-composer-bar">
+     <div class="model-picker" id="model-picker">
+      <button id="chat-model-trigger" class="model-picker-trigger" type="button" aria-label="AI 모델 선택" aria-haspopup="listbox" aria-expanded="false" aria-controls="chat-model-menu"><span id="chat-model-label">Auto</span><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></button>
+      <div class="model-picker-menu" id="chat-model-menu" role="listbox" aria-label="AI 모델 선택" hidden></div>
+     </div>
+     <span class="composer-divider" aria-hidden="true"></span>
+     <label for="chat-input" class="sr-only">Scout에게 요청하기</label>
+     <input id="chat-input" type="text" maxlength="1000" autocomplete="off" placeholder="메시지를 입력하세요" required>
+     <button id="chat-send" type="submit" aria-label="메시지 전송" title="메시지 전송"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6"/></svg></button>
+    </div>
+   </form>
+  </section>
+ </div>
+</main>
+<dialog id="detail"><div class="drawer"><div class="drawer-heading"><span>크리에이터 상세</span><button type="button" id="close-detail" aria-label="닫기">×</button></div><div id="detail-content"></div></div></dialog>
+<script src="./snapshot.js" defer></script><script src="./app.js" defer></script><script src="./replay.js" defer></script>
+</body></html>

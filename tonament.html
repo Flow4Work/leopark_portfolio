@@ -1,0 +1,926 @@
+<!doctype html>
+<html lang="ko" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090909">
+  <meta name="description" content="경쟁과 보상을 더한 텔레그램 투표 서비스. 서비스 기획부터 디자인·개발 총괄, GA 분석과 A/B 테스트, 79개 미니앱 협업까지 맡은 PO·PM·BD 경험.">
+  <title>Tonament | 박동호 포트폴리오</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  <script>try{if(localStorage.getItem('portfolio-theme')==='light')document.documentElement.dataset.theme='light'}catch(e){}</script>
+  <link rel="stylesheet" href="/mobile-project.css">
+
+
+  <style>
+    .project-hero{margin-bottom:58px}
+    .project-hero .project-facts{grid-template-columns:1fr 1.5fr 1fr;gap:24px}
+    .project-sections{grid-template-columns:minmax(0,1fr);gap:60px}
+    .project-section{min-width:0;border:0;padding:0}
+    .section-no{margin:0 0 12px;color:var(--muted);font-size:12px;font-weight:600;letter-spacing:.015em}
+    .project-section h2{margin:0 0 18px;font-size:clamp(27px,2.8vw,32px);font-weight:700;line-height:1.4;letter-spacing:-.044em;word-break:keep-all;text-wrap:pretty}
+    .body-copy{margin:0 0 15px;color:#d4d4d8;font-size:16px;line-height:1.8;letter-spacing:-.017em;word-break:keep-all;overflow-wrap:break-word;text-wrap:pretty}
+    :root[data-theme="light"] .body-copy{color:#313131}
+    .body-copy:last-child{margin-bottom:0}
+    .body-copy strong{color:var(--text);font-weight:650}
+    .body-copy a{color:#77aaff;text-decoration:none}
+    :root[data-theme="light"] .body-copy a{color:#145bc5}
+    .body-copy a:hover{text-decoration:underline;text-underline-offset:4px}
+    /* Shared mark style is defined in /portfolio-fonts.css. */
+    figure{margin:0}
+    figcaption{margin:12px 0 0;text-align:center;color:var(--muted);font-size:12px;line-height:1.75;letter-spacing:-.01em;word-break:keep-all}
+    .original-media{margin-top:27px}
+    .original-media a{display:block;border-radius:9px;overflow:hidden}
+    .original-media img{display:block;width:100%;height:auto}
+    .feature-story{display:grid;grid-template-columns:minmax(0,1fr) 286px;gap:48px;align-items:center;padding:34px 0;margin-top:28px}
+    .feature-story + .feature-story{margin-top:0}
+    .feature-copy{min-width:0}
+    .feature-label{margin:0 0 12px;font-size:12px;font-weight:600;color:var(--muted)}
+    .feature-copy h3{margin:0 0 19px;font-size:24px;line-height:1.5;font-weight:650;letter-spacing:-.04em;word-break:keep-all;text-wrap:pretty}
+    .phone-screen{width:100%;max-width:286px;margin:0 auto}
+    .phone-screen a{display:block;border:1px solid var(--line);border-radius:17px;overflow:hidden;line-height:0;background:#fff}
+    .phone-screen img{display:block;width:100%;height:auto}
+    .phone-screen--dark a{background:#000}
+    .decision-note{margin:24px 0 0;padding:2px 0 2px 20px;border-left:2px solid var(--line)}
+    .decision-note .body-copy{color:var(--soft);font-size:15px}
+    .service-flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin:27px 0;padding:22px 0;list-style:none;border-block:1px solid var(--line)}
+    .service-flow li{position:relative;min-width:0;padding:0 18px}
+    .service-flow li:first-child{padding-left:0}
+    .service-flow li+li{border-left:1px solid var(--line)}
+    .service-flow span{display:block;margin-bottom:9px;color:var(--muted);font-size:11px}
+    .service-flow strong{display:block;margin-bottom:7px;font-size:16px;line-height:1.5;font-weight:650;letter-spacing:-.025em}
+    .service-flow p{margin:0;color:var(--soft);font-size:13px;line-height:1.75;word-break:keep-all}
+    .design-story{margin-top:30px}
+    .design-story+.design-story{margin-top:38px}
+    .design-story h3{margin:0 0 13px;font-size:21px;line-height:1.5;font-weight:650;letter-spacing:-.035em}
+    .case-metrics{display:grid;grid-template-columns:repeat(var(--metric-count,2),minmax(0,1fr));margin:26px 0;padding:23px 0;border-block:1px solid var(--line)}
+    .case-metric{margin:0;padding:0 24px;min-width:0}
+    .case-metric:first-child{padding-left:0}
+    .case-metric+.case-metric{border-left:1px solid var(--line)}
+    .case-metric dt{margin:0 0 8px;color:var(--muted);font-size:12px;line-height:1.6}
+    .case-metric dd{margin:0;color:var(--text);font-size:clamp(25px,3.4vw,36px);line-height:1.2;letter-spacing:-.04em;font-weight:700;white-space:nowrap}
+    .case-metric dd small{font-size:14px;font-weight:500;letter-spacing:-.015em}
+    .operation-list,.lesson-journal{margin:25px 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}
+    .operation-list li,.lesson-journal li{display:grid;grid-template-columns:118px minmax(0,1fr);gap:24px;padding:23px 0;border-bottom:1px solid var(--line)}
+    .lesson-label{color:var(--muted);font-size:13px;line-height:1.8;padding-top:3px}
+    .operation-list h3,.lesson-journal h3{margin:0 0 9px;font-size:19px;line-height:1.5;letter-spacing:-.03em;word-break:keep-all;font-weight:650}
+    .operation-list .body-copy,.lesson-journal .body-copy{font-size:15px}
+    @media(max-width:800px){.project-hero .project-facts{grid-template-columns:1fr 1.35fr;gap:20px 24px}}
+    @media(max-width:760px){.feature-story{grid-template-columns:minmax(0,1fr) 240px;gap:28px}.feature-copy h3{font-size:22px}}
+    @media(max-width:640px){.project-hero{margin-bottom:42px}.project-sections{gap:42px}.project-section h2{font-size:25px}.body-copy{font-size:14px;line-height:1.82}.feature-story{grid-template-columns:minmax(0,1fr);gap:25px;padding:24px 0;margin-top:22px}.feature-story+.feature-story{padding-top:30px}.feature-copy h3{font-size:21px;margin-bottom:15px}.phone-screen{max-width:280px}.original-media{margin-top:22px}figcaption{font-size:11px}.service-flow{grid-template-columns:1fr 1fr;gap:22px 0;padding:20px 0}.service-flow li{padding-inline:16px}.service-flow li:nth-child(3){padding-left:0;border-left:0}.service-flow strong{font-size:15px}.service-flow p{font-size:12px}.case-metrics{padding:20px 0}.case-metric{padding-inline:16px}.case-metric dt{font-size:11px}.case-metric dd{font-size:27px}.case-metric dd small{font-size:12px}.case-metrics--three .case-metric{padding-inline:10px}.case-metrics--three .case-metric:first-child{padding-left:0}.case-metrics--three .case-metric dd{font-size:25px}.design-story h3{font-size:20px}.operation-list li,.lesson-journal li{grid-template-columns:minmax(0,1fr);gap:8px;padding:21px 0}.lesson-label{font-size:12px;padding:0}.operation-list h3,.lesson-journal h3{font-size:18px}.operation-list .body-copy,.lesson-journal .body-copy,.decision-note .body-copy{font-size:14px}.decision-note{padding-left:15px}}
+    @media(max-width:560px){.project-hero .project-facts{grid-template-columns:minmax(0,1fr);gap:0}}
+    @media(max-width:360px){.case-metric dd{font-size:23px}.case-metrics--three{grid-template-columns:1fr 1.3fr 1fr}.case-metrics--three .case-metric dd{font-size:21px}}
+
+    /* Tonament: historical market context. */
+    .market-board{--market-accent:#F16464;--market-strong:#F16464;--market-track:#303033;margin:28px 0 26px;padding:28px;border:1px solid var(--line);border-radius:14px;background:#141414;color:var(--text)}
+    :root[data-theme="light"] .market-board{--market-accent:#F16464;--market-strong:#F16464;--market-track:#ececef;background:#fff}
+    .market-behavior__header{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:20px}
+    .market-behavior__header h4{margin:0;font-size:14px;font-weight:650;line-height:1.6;letter-spacing:-.025em}
+    .market-behavior__header p{margin:0;color:var(--muted);font-size:10px;line-height:1.7}
+    .market-survey{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:0;padding:0;list-style:none}
+    .market-survey li{display:flex;flex-direction:column;align-items:center;text-align:center;min-width:0}
+    .market-ring{position:relative;display:grid;place-items:center;width:94px;height:94px;margin-bottom:12px}
+    .market-ring svg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg);overflow:visible}
+    .market-ring circle{fill:none;stroke-width:7}
+    .market-ring__track{stroke:var(--market-track)}
+    .market-ring__value{stroke:var(--market-accent);stroke-linecap:butt;stroke-dasharray:var(--value) 100;animation:market-ring-enter 1.4s ease both}
+    .market-survey li:nth-child(2) .market-ring__value{animation-delay:.15s}
+    .market-survey li:nth-child(3) .market-ring__value{animation-delay:.3s}
+    .market-ring strong{font-size:22px;font-weight:700;letter-spacing:-.045em;font-variant-numeric:tabular-nums}
+    .market-survey__label{font-size:12px;font-weight:600;line-height:1.6;word-break:keep-all}
+    .market-sources{margin:22px 0 0;padding:0;border:0;text-align:right;font-size:10px;line-height:1.6;color:var(--muted);white-space:nowrap}
+    .market-sources a{color:inherit;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
+    .partnership-count{display:flex;gap:17px;align-items:center;margin:25px 0;padding:20px 23px;border:1px solid var(--line);border-radius:10px}
+    .partnership-count strong{font-size:36px;font-weight:700;letter-spacing:-.05em;line-height:1.2;white-space:nowrap}
+    .partnership-count strong small{font-size:15px;font-weight:500}
+    .partnership-count p{margin:0;font-size:14px;line-height:1.7;word-break:keep-all}
+    .partnership-count p span{display:block;font-size:12px;color:var(--soft)}
+    @keyframes market-ring-enter{from{stroke-dasharray:0 100}to{stroke-dasharray:var(--value) 100}}
+    @media(max-width:800px){.market-board{padding:23px}}
+    @media(max-width:640px){.market-board{padding:22px 18px;margin-top:23px}.market-behavior__header{display:block}.market-behavior__header p{margin-top:4px}.market-survey{gap:10px}.market-ring{width:78px;height:78px;margin-bottom:10px}.market-ring strong{font-size:19px}.market-survey__label{font-size:11px}.partnership-count{padding:18px;gap:15px}.partnership-count strong{font-size:32px}.partnership-count p{font-size:13px}}
+    @media(max-width:360px){.market-board{padding-inline:15px}.market-ring{width:66px;height:66px}.market-ring strong{font-size:17px}.market-survey__label{font-size:10px}.market-survey{gap:8px}}
+    @media(prefers-reduced-motion:reduce){.market-ring__value{animation:none}}
+
+
+    .market-reach{display:grid;grid-template-columns:minmax(0,1fr) 300px;align-items:center;gap:38px;padding:8px 0 30px;margin-bottom:26px;border-bottom:1px solid var(--line)}
+    .market-reach__eyebrow{margin:0 0 13px;color:var(--muted);font-size:10px;font-weight:600;letter-spacing:.055em}
+    .market-reach__copy h3{margin:0 0 15px;font-size:25px;line-height:1.48;font-weight:650;letter-spacing:-.045em;word-break:keep-all}
+    .market-reach__copy>p:last-child{margin:0;color:var(--soft);font-size:13px;line-height:1.9;word-break:keep-all}
+    .market-comparison{width:100%;min-width:0}
+    .market-comparison__row+.market-comparison__row{margin-top:25px}
+    .market-comparison__label{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:11px}
+    .market-comparison__label>span{color:var(--soft);font-size:12px;line-height:1.7;word-break:keep-all}
+    .market-comparison__label strong{font-size:27px;line-height:1.2;font-weight:700;letter-spacing:-.045em;white-space:nowrap}
+    .market-comparison__label small{font-size:12px;font-weight:500;letter-spacing:0}
+    .market-comparison__track{height:7px;border-radius:6px;overflow:hidden;background:var(--market-track)}
+    .market-comparison__fill{display:block;width:var(--reach);height:100%;border-radius:inherit;background:#929298;transform-origin:left;animation:market-comparison-enter 1s ease both}
+    .market-comparison__fill--mini{background:#F16464;animation-delay:.15s}
+    @keyframes market-comparison-enter{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+    @media(max-width:760px){.market-reach{grid-template-columns:minmax(0,1fr) 260px;gap:25px}.market-reach__copy h3{font-size:23px}.market-reach__copy>p:last-child{font-size:12px}.market-reach__copy>p:last-child br{display:none}}
+    @media(max-width:640px){.market-reach{grid-template-columns:minmax(0,1fr);gap:26px;padding:0 0 26px;margin-bottom:23px}.market-reach__copy h3{font-size:22px;line-height:1.5}.market-reach__copy>p:last-child br{display:block}.market-comparison__label strong{font-size:25px}.market-comparison__row+.market-comparison__row{margin-top:22px}}
+    @media(max-width:360px){.market-reach__copy>p:last-child br{display:none}.market-comparison__label>span{font-size:11px}.market-comparison__label strong{font-size:24px}}
+    @media(prefers-reduced-motion:reduce){.market-comparison__fill{animation:none}}
+
+    /* Tonament: regional acquisition strategy. */
+    .growth-market-board{--growth-accent:#F16464;--growth-track:#303033;margin:28px 0 30px;padding:23px;border:1px solid var(--line);border-radius:14px;background:#141414;color:var(--text)}
+    :root[data-theme="light"] .growth-market-board{--growth-track:#ececef;background:#fff}
+    .growth-market-board__top{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.86fr);gap:38px;align-items:center;padding:3px 0 25px;border-bottom:1px solid var(--line)}
+    .growth-market-board__eyebrow{margin:0 0 12px;color:var(--muted);font-size:10px;font-weight:600;letter-spacing:.06em}
+    .growth-market-board__intro h3{margin:0 0 12px;font-size:24px;line-height:1.5;font-weight:650;letter-spacing:-.04em;word-break:keep-all}
+    .growth-market-board__intro p:last-child{margin:0;color:var(--soft);font-size:13px;line-height:1.8;word-break:keep-all}
+    .growth-market-share{min-width:0}
+    .growth-market-share__heading{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:0 0 18px}
+    .growth-market-share__heading h4{margin:0;font-size:14px;font-weight:650;line-height:1.5}
+    .growth-market-share__heading span{color:var(--muted);font-size:10px;white-space:nowrap}
+    .growth-market-share__row+.growth-market-share__row{margin-top:13px}
+    .growth-market-share__label{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:6px;color:var(--soft);font-size:11px;line-height:1.5}
+    .growth-market-share__label strong{color:var(--text);font-size:12px;font-variant-numeric:tabular-nums}
+    .growth-market-share__track{height:5px;border-radius:5px;overflow:hidden;background:var(--growth-track)}
+    .growth-market-share__fill{display:block;width:var(--share);height:100%;border-radius:inherit;background:#77777d}
+    .growth-market-share__row:nth-child(2) .growth-market-share__fill{background:var(--growth-accent)}
+    .growth-market-tactics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;padding:19px 0 17px}
+    .growth-market-tactic{min-width:0;padding:15px 16px 16px;border:1px solid var(--line);border-radius:9px;background:var(--surface)}
+    .growth-market-tactic__label{margin:0 0 6px;color:var(--muted);font-size:10px;font-weight:650;letter-spacing:.055em}
+    .growth-market-tactic h4{margin:0 0 6px;font-size:15px;line-height:1.5;font-weight:650;letter-spacing:-.025em}
+    .growth-market-tactic p{margin:0;color:var(--soft);font-size:14px;line-height:1.75;word-break:keep-all}
+    .growth-market-budget{margin:0;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+    .growth-market-budget p{margin:0;color:var(--soft);font-size:13px;line-height:1.75;word-break:keep-all}
+    .growth-market-budget strong{color:var(--text);font-weight:650}
+    @media(max-width:760px){.growth-market-board__top{grid-template-columns:minmax(0,1fr) minmax(250px,.9fr);gap:24px}.growth-market-board__intro h3{font-size:22px}}
+    @media(max-width:640px){.growth-market-board{padding:20px 17px;margin-top:23px}.growth-market-board__top{grid-template-columns:minmax(0,1fr);gap:21px;padding-bottom:20px}.growth-market-board__intro h3{font-size:21px}.growth-market-tactics{gap:11px;padding:17px 0 13px}.growth-market-tactic{padding:14px}.growth-market-tactic h4{font-size:14px}.growth-market-tactic p{font-size:13px}.growth-market-budget{padding:11px 12px}.growth-market-budget p{font-size:12px}}
+    @media(max-width:390px){.growth-market-tactics{grid-template-columns:minmax(0,1fr);gap:10px}.growth-market-share__label{font-size:10px}}
+
+    /* Tonament overview: role, period, and a concise scope of work. */
+    .project-hero.tonament-hero{max-width:860px;margin:0 auto 50px;padding-bottom:0;border-bottom:1px solid var(--line)}
+    .tonament-hero .eyebrow{margin:0 0 12px;font-size:11px;line-height:1.5;letter-spacing:.055em}
+    .tonament-hero h1{font-size:clamp(40px,4.6vw,54px);line-height:1.12;letter-spacing:-.05em}
+    .tonament-hero .subtitle{margin:12px 0 0;font-size:19px;line-height:1.5;font-weight:500;letter-spacing:-.035em}
+    .tonament-overview{display:grid;grid-template-columns:166px minmax(0,1fr);gap:44px;margin-top:32px;padding:26px 0 28px;border-top:1px solid var(--line)}
+    .tonament-role{margin:0}
+    .tonament-role dt{margin:0 0 8px;color:var(--soft);font-size:12px;line-height:1.6}
+    .tonament-role dd{margin:0}
+    .tonament-role__title{color:var(--text);font-size:21px;line-height:1.4;font-weight:600;letter-spacing:-.025em}
+    .tonament-role .tonament-role__period{margin-top:12px;color:var(--soft);font-size:12px;line-height:1.6;font-variant-numeric:tabular-nums;white-space:nowrap}
+    .tonament-responsibilities{display:grid;gap:12px;align-content:center;margin:0;padding:0;list-style:none;min-width:0}
+    .tonament-responsibilities li{display:grid;grid-template-columns:76px minmax(0,1fr);align-items:baseline;gap:16px;min-width:0}
+    .tonament-responsibilities strong{color:var(--text);font-size:13px;line-height:1.75;font-weight:600;letter-spacing:-.02em;white-space:nowrap}
+    .tonament-responsibilities p{min-width:0;margin:0;color:var(--soft);font-size:14px;line-height:1.75;letter-spacing:-.015em;word-break:keep-all;overflow-wrap:break-word}
+    @media(max-width:800px){.tonament-overview{grid-template-columns:136px minmax(0,1fr);gap:30px}}
+    @media(max-width:640px){
+      .project-hero.tonament-hero{margin-bottom:36px}
+      .tonament-hero .eyebrow{margin-bottom:11px}
+      .tonament-hero h1{font-size:40px}
+      .tonament-hero .subtitle{margin-top:11px;font-size:17px;line-height:1.55}
+      .tonament-overview{grid-template-columns:minmax(0,1fr);gap:21px;margin-top:25px;padding:21px 0 24px}
+      .tonament-role{display:flex;align-items:baseline;gap:12px}
+      .tonament-role dt{margin:0;font-size:11px}
+      .tonament-role__title{font-size:16px}
+      .tonament-role .tonament-role__period{margin:0 0 0 auto;font-size:11px}
+      .tonament-responsibilities{gap:12px}
+      .tonament-responsibilities li{grid-template-columns:65px minmax(0,1fr);gap:12px}
+      .tonament-responsibilities strong{font-size:12px;line-height:1.8}
+      .tonament-responsibilities p{font-size:13px;line-height:1.8}
+    }
+    /* Tonament article: source-backed figures and looping explanatory flows. */
+    .context-kicker{display:block;color:var(--muted);font-size:11px;font-weight:550;line-height:1.6;letter-spacing:.025em}
+    .source-note{margin:14px 0 22px;color:var(--muted);font-size:11px;line-height:1.8;word-break:keep-all;overflow-wrap:break-word}
+    .source-note a{color:inherit;text-underline-offset:3px}
+    .source-note--right{text-align:right}
+    .hamster-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:26px 0 0}
+    .context-image{display:flex;width:100%;height:310px;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:9px;background:#111;overflow:hidden}
+    .context-image img{display:block;width:100%;height:100%;object-fit:contain}
+    .context-image--illustration img{object-fit:cover;object-position:center}
+    .hamster-gallery figcaption{font-size:11px}
+    .tonament-screen-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:30px;align-items:start}
+    .tonament-screen-gallery a{display:block;overflow:hidden;border:1px solid var(--line);border-radius:14px;background:#000;line-height:0}
+    .tonament-screen-gallery img{display:block;width:100%;height:auto}
+    .tonament-screen-gallery figcaption span{margin-right:7px;color:var(--text);font-variant-numeric:tabular-nums}
+    
+    
+    
+    .design-archive{margin:25px 0 0;border-block:1px solid var(--line);padding:16px 0}
+    .design-archive summary{display:flex;align-items:center;justify-content:space-between;gap:20px;cursor:pointer;font-size:13px;font-weight:550;color:var(--soft);list-style:none}
+    .design-archive summary::-webkit-details-marker{display:none}
+    .design-archive summary>span{font-size:16px;transition:transform .2s}
+    .design-archive[open] summary>span{transform:rotate(45deg)}
+    .design-archive .original-media{margin-top:20px}
+    .screen-design-archive{margin-top:32px}
+    .screen-design-archive h3{margin:0;font-size:18px;font-weight:600;line-height:1.6;letter-spacing:-.025em}
+    .screen-design-archive .original-media{margin-top:18px}
+    .article-subsection{margin-top:35px}
+    .article-subsection>h3{margin:0 0 18px;font-size:23px;line-height:1.5;font-weight:650;letter-spacing:-.035em;word-break:keep-all}
+    .figure-header{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}
+    .figure-header h3{margin:0;font-size:16px;font-weight:600;line-height:1.6;letter-spacing:-.025em;word-break:keep-all}
+    .figure-header>span{font-size:11px;color:var(--muted);line-height:1.6;white-space:nowrap}
+    .growth-figure{margin:30px 0;padding:25px 0 19px;border:0}
+    .growth-chart{display:grid;grid-template-columns:46px minmax(0,1fr);gap:12px;margin:42px 15px 51px 0;min-width:0}
+    .growth-y-axis{height:260px;position:relative;color:var(--muted);font-size:11px;font-variant-numeric:tabular-nums}
+    .growth-y-axis span{position:absolute;right:0;transform:translateY(-50%)}
+    .growth-y-axis span:nth-child(1){top:0}.growth-y-axis span:nth-child(2){top:25%}.growth-y-axis span:nth-child(3){top:50%}.growth-y-axis span:nth-child(4){top:75%}.growth-y-axis span:nth-child(5){top:100%}
+    .growth-plot{height:260px;position:relative;min-width:0}
+    .growth-grid{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;pointer-events:none}
+    .growth-grid i{display:block;width:100%;border-top:1px solid var(--line)}
+    .growth-columns{position:absolute;inset:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;padding:0 25px}
+    .growth-column{position:relative;min-width:0}
+    .growth-bar{position:absolute;left:18%;right:18%;bottom:0;height:var(--height);min-width:20px;border-radius:5px 5px 0 0;transform-origin:bottom;background:#668fe5}
+    .growth-bar--week{background:#38bdf8}
+    .growth-bar--month{background:#3b82f6}
+    .growth-bar--second{background:#2563eb}
+    .growth-value{position:absolute;bottom:calc(var(--height) + 12px);left:50%;transform:translateX(-50%);white-space:nowrap;font-size:27px;line-height:1.2;font-weight:650;letter-spacing:-.035em;font-variant-numeric:tabular-nums}
+    .growth-value small{font-size:12px;font-weight:500;margin-left:4px;letter-spacing:-.02em}
+    .growth-category{position:absolute;top:calc(100% + 17px);left:50%;transform:translateX(-50%);white-space:nowrap;color:var(--soft);font-size:12px;font-weight:500}
+    .motion-ready .growth-figure:not(.is-visible) .growth-bar{transform:scaleY(0)}
+    .motion-ready .growth-figure.is-visible .growth-bar{animation:tonament-bar-enter 1.1s cubic-bezier(.2,.7,.2,1) var(--delay) both}
+    @keyframes tonament-bar-enter{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+    .repeat-figure{margin:27px 0 24px;padding:27px 26px 19px;border:1px solid var(--line);border-radius:11px}
+    .repeat-comparison{display:grid;grid-template-columns:minmax(0,1fr) 92px minmax(0,1fr);gap:20px;align-items:center}
+    .repeat-card h4{margin:6px 0 14px;font-size:14px;font-weight:500;line-height:1.6;letter-spacing:-.02em}
+    .repeat-card>strong{display:block;font-size:42px;line-height:1.2;letter-spacing:-.05em;font-weight:650;font-variant-numeric:tabular-nums;white-space:nowrap}
+    .repeat-card strong small{margin-left:5px;font-size:16px;font-weight:500}
+    .repeat-card p{margin:12px 0 0;font-size:12px;color:var(--soft);line-height:1.75;word-break:keep-all}
+    .repeat-card p b{font-weight:600;color:var(--text)}
+    .repeat-card--next>strong{color:#78a5ff}
+    :root[data-theme="light"] .repeat-card--next>strong{color:#3b63b0}
+    .repeat-arrow{text-align:center;color:var(--muted)}
+    .repeat-arrow span{font-size:12px;font-weight:550}
+    .repeat-arrow svg{display:block;width:80px;height:24px;margin:10px auto 0;fill:none;stroke:currentColor;stroke-width:1.5}
+    .repeat-figure figcaption{margin-top:23px;font-size:11px}
+    .industry-note{margin:22px 0 0;padding:4px 0 4px 17px;border-left:2px solid var(--line)}
+    .industry-note>p{margin:0;color:var(--muted);font-size:12px;line-height:1.85;word-break:keep-all}
+    .industry-note .source-note{margin-top:8px;font-size:11px}
+    .flow-figure,.token-figure{margin:30px 0 26px;padding:25px 26px 21px;border:1px solid var(--line);border-radius:12px}
+    .ad-flow{display:grid;grid-template-columns:minmax(0,1.2fr) 58px minmax(0,1fr) 45px minmax(0,1fr);align-items:center;margin-top:26px}
+    .ad-inputs{display:grid;gap:15px}
+    .flow-node{position:relative;min-width:0;padding:18px 14px;border:1px solid var(--line);border-radius:8px;background:var(--surface);text-align:center}
+    .flow-node strong{display:block;font-size:14px;font-weight:600;line-height:1.65;letter-spacing:-.025em;word-break:keep-all}
+    .flow-node p{margin:7px 0 0;font-size:11px;color:var(--soft);line-height:1.7;word-break:keep-all}
+    .node-icon{display:block;margin:0 0 5px;font-size:18px;line-height:1;color:var(--muted)}
+    .node-step{display:block;margin:0 0 8px;color:var(--muted);font-size:10px;font-weight:600;line-height:1.5}
+    .ad-merge{height:auto;align-self:stretch;color:var(--muted)}
+    .ad-merge svg{display:block;width:100%;height:100%;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+    .flow-track,.flow-arrowhead{stroke:var(--muted)}
+    .flow-link{position:relative;text-align:center;color:var(--muted);font-size:24px;line-height:1}
+    .ad-flow .flow-points{border-color:#536a98}
+    .motion-ready .flow-figure.is-visible .flow-points{animation:flow-emphasis 1s ease .4s both}
+    .motion-ready .flow-figure.is-visible .flow-vote{animation:flow-emphasis 1s ease 1.3s both}
+    @keyframes flow-emphasis{0%,100%{box-shadow:0 0 0 0 #7ba5ff00}50%{box-shadow:0 0 0 4px #7ba5ff25}}
+    .flow-figure figcaption,.token-figure figcaption{font-size:11px;margin-top:22px}
+    .token-candidates{display:grid;grid-template-columns:minmax(0,1fr) 42px minmax(0,1fr);align-items:center;margin-top:26px}
+    .token-candidate{padding:20px;border:1px solid var(--line);border-radius:9px;background:var(--surface);min-width:0;transition:opacity .3s,border-color .3s}
+    .candidate-heading{display:flex;gap:11px;align-items:center;min-height:38px}
+    .candidate-symbol,.token-coin{display:grid;place-items:center;flex:none;width:35px;height:35px;border:1px solid #8ca8de;border-radius:50%;color:#a6c5ff;font-size:14px;font-weight:600}
+    .token-candidate--loser .candidate-symbol{border-color:var(--muted);color:var(--soft)}
+    .candidate-heading strong{display:block;font-size:14px;font-weight:600;line-height:1.6}
+    .candidate-heading>div>span{display:block;font-size:11px;color:var(--muted);line-height:1.6}
+    .candidate-result{margin-left:auto;opacity:1;padding:3px 7px;border-radius:4px;background:#6084c92a;color:#9dbcf9;font-size:10px;font-weight:550;white-space:nowrap}
+    :root[data-theme="light"] .candidate-symbol,:root[data-theme="light"] .token-coin{color:#3b63b0}
+    :root[data-theme="light"] .candidate-result{color:#3b63b0}
+    .candidate-result--defeat{background:rgba(206,79,91,.14);color:#d5747c}
+    :root[data-theme="light"] .candidate-result--defeat{background:rgba(196,73,84,.12);color:#b44b56}
+    .candidate-tally{margin:20px 0 12px;font-size:31px;line-height:1.2;font-weight:650;letter-spacing:-.035em;font-variant-numeric:tabular-nums}
+    .candidate-tally small{margin-left:5px;font-size:12px;font-weight:500;color:var(--soft)}
+    .candidate-meter{height:5px;overflow:hidden;border-radius:4px;background:var(--line)}
+    .candidate-meter i{display:block;width:var(--final-width);height:100%;background:#7a9bdb;border-radius:4px;transform-origin:left}
+    .token-candidate--loser .candidate-meter i{background:#8b909a}
+    .candidate-vs{font-size:11px;color:var(--muted);text-align:center}
+    .token-winner-link{margin:14px 0;color:var(--muted);font-size:24px;line-height:1;text-align:center}
+    .token-path{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin:0;padding:0;list-style:none}
+    .token-step{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0;gap:9px;min-height:113px;padding:16px 13px;border:1px solid var(--line);border-radius:8px}
+    .token-step+.token-step::before{content:'→';position:absolute;left:-20px;top:50%;transform:translateY(-50%);font-size:17px;color:var(--muted)}
+    .token-step strong{font-size:12px;font-weight:550;line-height:1.7;text-align:center;word-break:keep-all}
+    .token-step .node-step{margin:0}
+    .token-coin{width:30px;height:30px;font-size:12px}
+    .token-figure .token-candidates{margin-top:23px}
+    .token-winner-link span:last-child{display:block;margin-top:3px;color:var(--soft);font-size:12px;line-height:1.7}
+    .token-path{gap:18px}
+    .token-path .token-step{min-height:184px;gap:12px;padding:23px 16px 21px;background:var(--surface)}
+    .token-path .token-step .node-step{display:grid;place-items:center;width:36px;height:36px;margin:0 0 2px;border:1px solid #7ba5ff70;border-radius:50%;color:#7ba5ff;font-size:13px;font-weight:650;line-height:1}
+    .token-path .token-step strong{font-size:16px;font-weight:650;line-height:1.5}
+    .token-path .token-step p{margin:0;color:var(--soft);font-size:13px;line-height:1.65;text-align:center;word-break:keep-all}
+    @media(max-width:640px){
+      .token-path .token-step{display:grid;grid-template-columns:42px minmax(0,1fr);grid-template-rows:auto auto;align-content:center;justify-content:initial;column-gap:14px;row-gap:5px;min-height:112px;padding:18px 16px}
+      .token-path .token-step .node-step{grid-column:1;grid-row:1/3;justify-self:center;margin:0}
+      .token-path .token-step strong{grid-column:2;grid-row:1;text-align:left;font-size:16px}
+      .token-path .token-step p{grid-column:2;grid-row:2;text-align:left;font-size:12px}
+    }
+    .token-candidate--winner{border-color:#6888c4}
+    .token-candidate--loser{opacity:.55}
+    .motion-ready .token-figure:not(.is-complete) .token-candidate--loser{opacity:1}
+    .motion-ready .token-figure:not(.is-complete) .token-candidate--winner{border-color:var(--line)}
+    .motion-ready .token-figure:not(.is-complete) .candidate-result{opacity:0}
+    .motion-ready .token-figure:not(.is-complete) .token-step{opacity:.45}
+    .motion-ready .token-figure:not(.is-visible) .candidate-meter i{transform:scaleX(0)}
+    .motion-ready .token-figure.is-visible .candidate-meter i{animation:candidate-fill 2.9s ease-out both}
+    .motion-ready .token-figure.is-visible .token-step--mint{animation:token-stage-enter .4s 3s both}
+    .motion-ready .token-figure.is-visible .token-step--distribute{animation:token-stage-enter .4s 3.55s both}
+    .motion-ready .token-figure.is-visible .token-step--trade{animation:token-stage-enter .4s 4.1s both}
+    .motion-ready .token-figure.is-visible .token-coin{animation:token-mint .6s 3s both}
+    @keyframes candidate-fill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+    @keyframes token-stage-enter{from{opacity:.45;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes token-mint{from{transform:scale(.7);opacity:0}to{transform:scale(1);opacity:1}}
+    .outcome-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:30px 0 0}
+    .outcome-metrics>div{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:12px;min-width:0;min-height:123px;padding:23px 23px 21px;border:1px solid var(--line);border-radius:9px}
+    .outcome-metrics dd{order:0;display:flex;align-items:baseline;gap:4px;margin:0;font-size:40px;line-height:1.2;letter-spacing:-.045em;font-weight:650;font-variant-numeric:tabular-nums;white-space:nowrap}
+    .outcome-metrics dd small{font-size:17px;font-weight:500;letter-spacing:-.025em}
+    .outcome-metrics dd>span+small{margin-left:2px}
+    .outcome-metrics dd>small:first-child{margin-right:0}
+    .outcome-metrics dt{order:1;margin:0;font-size:12px;line-height:1.55;color:var(--soft)}
+    .outcome-metrics+.body-copy{margin-top:32px}
+    @media(max-width:760px){.growth-columns{padding-inline:12px}.growth-value{font-size:25px}.repeat-comparison{gap:15px;grid-template-columns:minmax(0,1fr) 70px minmax(0,1fr)}.repeat-arrow svg{width:65px}.repeat-card>strong{font-size:36px}.repeat-figure{padding-inline:22px}.flow-figure,.token-figure{padding-inline:20px}.ad-flow{grid-template-columns:minmax(0,1.1fr) 36px minmax(0,1fr) 28px minmax(0,1fr)}.flow-node{padding-inline:10px}.flow-node strong{font-size:13px}.candidate-heading{gap:8px}.token-candidate{padding:17px}.outcome-metrics{gap:12px}.outcome-metrics>div{padding-inline:16px}.outcome-metrics dd{font-size:35px}.outcome-metrics dd small{font-size:15px}}
+    @media(max-width:640px){
+      .hamster-gallery{gap:11px}.context-image{height:215px;border-radius:6px}.hamster-gallery figcaption{font-size:10px;line-height:1.65}.source-note{font-size:10px}.source-note--right{text-align:left}
+      .tonament-screen-gallery{gap:12px;margin-top:24px}.tonament-screen-gallery a{border-radius:8px}.tonament-screen-gallery figcaption{font-size:10px;line-height:1.65}.tonament-screen-gallery figcaption span{display:block;margin:0 0 3px;font-size:9px}
+      .design-archive{margin-top:20px}.design-archive summary{font-size:12px}.article-subsection{margin-top:28px}.article-subsection>h3{font-size:21px;line-height:1.55}.figure-header{gap:14px}.figure-header h3{font-size:14px}.figure-header>span{font-size:10px}.growth-figure{margin-top:25px;padding-top:21px}.growth-chart{grid-template-columns:35px minmax(0,1fr);gap:9px;margin:36px 0 48px}.growth-y-axis,.growth-plot{height:210px}.growth-y-axis{font-size:10px}.growth-columns{gap:10px;padding:0 5px}.growth-bar{left:13%;right:13%;border-radius:3px 3px 0 0}.growth-value{font-size:22px;bottom:calc(var(--height) + 10px)}.growth-value small{font-size:10px;margin-left:2px}.growth-category{font-size:11px}.growth-figure figcaption{font-size:10px}
+      .repeat-figure{padding:21px 20px 17px}.repeat-comparison{grid-template-columns:minmax(0,1fr);gap:18px}.repeat-card{display:grid;grid-template-columns:1fr 1fr;align-items:center;column-gap:13px}.repeat-card .context-kicker{grid-column:1}.repeat-card h4{grid-column:1;grid-row:2;margin:4px 0 0;font-size:13px}.repeat-card>strong{grid-column:2;grid-row:1/3;font-size:37px;text-align:right}.repeat-card p{grid-column:1/-1;margin-top:10px;font-size:11px}.repeat-card strong small{font-size:14px}.repeat-arrow{display:flex;align-items:center;justify-content:center;gap:10px}.repeat-arrow span{font-size:11px}.repeat-arrow svg{width:36px;height:24px;margin:0;transform:rotate(90deg)}.repeat-figure figcaption{font-size:10px;margin-top:18px}.industry-note>p{font-size:11px}.industry-note .source-note{font-size:10px}
+      .flow-figure,.token-figure{padding:21px 18px 18px;margin-top:25px}.flow-figure .figure-header,.token-figure .figure-header{align-items:flex-start}.ad-flow{grid-template-columns:1fr;margin-top:22px}.ad-inputs{grid-template-columns:1fr 1fr;gap:12px}.flow-node{padding:16px 12px}.flow-node strong{font-size:13px}.flow-node p{font-size:11px}.ad-merge{height:44px;position:relative;transform:none}.ad-merge svg{display:none}.ad-merge::before{content:'';display:block;position:absolute;top:0;left:25%;right:25%;height:17px;border-inline:1px solid var(--muted);border-bottom:1px solid var(--muted)}.ad-merge::after{content:'↓';position:absolute;top:18px;left:50%;transform:translateX(-50%);font-size:21px;line-height:1;color:var(--muted)}.flow-link{height:38px;display:grid;place-items:center}.flow-link span{transform:rotate(90deg);font-size:23px}.flow-link i{display:none}.flow-figure figcaption,.token-figure figcaption{font-size:10px;line-height:1.75;margin-top:18px}
+      .token-candidates{grid-template-columns:minmax(0,1fr) 26px minmax(0,1fr);margin-top:22px}.token-candidate{padding:14px 12px}.candidate-heading{gap:7px;flex-wrap:wrap}.candidate-symbol{width:28px;height:28px;font-size:12px}.candidate-heading strong{font-size:12px}.candidate-heading>div>span{font-size:10px}.candidate-result{position:absolute;top:8px;right:7px;font-size:9px;padding:2px 4px}.token-candidate{position:relative}.candidate-tally{font-size:26px;margin-top:17px}.candidate-tally small{font-size:10px}.candidate-vs{font-size:10px}.token-winner-link{margin-block:13px}.token-path{grid-template-columns:minmax(0,1fr);gap:24px}.token-step{min-height:72px;flex-direction:row;gap:14px}.token-step strong{font-size:12px}.token-step+.token-step::before{content:'↓';left:50%;top:-20px;transform:translateX(-50%);font-size:17px}.token-step .node-step{min-width:30px;text-align:center}.token-coin{width:30px;height:30px}
+      .outcome-metrics{grid-template-columns:minmax(0,1fr);gap:11px;margin-top:24px}.outcome-metrics>div{padding:19px 20px;flex-direction:row;justify-content:space-between;align-items:center;gap:16px}.outcome-metrics dd{font-size:34px}.outcome-metrics dd small{font-size:15px}.outcome-metrics dt{margin:0;font-size:12px;text-align:right}
+    }
+    @media(max-width:380px){.context-image{height:180px}.hamster-gallery{gap:8px}.tonament-screen-gallery{gap:8px}.growth-value{font-size:18px}.growth-value small{font-size:9px}.repeat-card>strong{font-size:32px}.repeat-card h4{font-size:12px}.token-candidate{padding:13px 10px}.candidate-heading{display:block}.candidate-symbol{margin-bottom:8px}.candidate-tally{font-size:24px}}
+    @media(max-width:640px){
+      .outcome-metrics>div{min-height:auto;align-items:center;justify-content:space-between;padding:20px 18px}
+      .outcome-metrics dd{font-size:32px}
+      .outcome-metrics dt{margin:0;font-size:12px}
+      .outcome-metrics+.body-copy{margin-top:26px}
+    }
+    @media(prefers-reduced-motion:reduce){.motion-ready [data-motion] *,[data-motion] *{animation:none!important;transition:none!important}.motion-ready .growth-figure:not(.is-visible) .growth-bar,.motion-ready .token-figure:not(.is-visible) .candidate-meter i{transform:none}.motion-ready .token-figure:not(.is-complete) .token-step,.motion-ready .token-figure:not(.is-complete) .candidate-result{opacity:1}.motion-ready .token-figure:not(.is-complete) .token-candidate--loser{opacity:.55}.motion-ready .token-figure:not(.is-complete) .token-candidate--winner{border-color:#6888c4}.ad-merge svg{animation:none}}
+
+    @media(max-width:640px){.motion-ready .flow-figure.is-visible .ad-merge::after{animation:flow-mobile-merge 1.3s ease .3s both}.motion-ready .flow-figure.is-visible .flow-link span{animation:flow-mobile-next 1.3s ease 1.7s both}}
+    @keyframes flow-mobile-merge{0%,100%{transform:translate(-50%,0);color:var(--muted)}45%{transform:translate(-50%,3px);color:#7ba5ff}}
+    @keyframes flow-mobile-next{0%,100%{transform:translateY(0) rotate(90deg);color:var(--muted)}45%{transform:translateY(3px) rotate(90deg);color:#7ba5ff}}
+
+
+    .hamster-example{margin:27px 0 22px;padding:18px 0 20px;border-block:1px solid var(--line)}
+    .hamster-example__heading{display:flex;align-items:baseline;justify-content:space-between;gap:16px}
+    .hamster-example h3{margin:0;font-size:18px;font-weight:650;line-height:1.6;letter-spacing:-.025em}
+    .hamster-example__heading a{font-size:10px;line-height:1.7;font-weight:400;color:var(--muted);text-decoration:none;white-space:nowrap}
+    .hamster-example__heading a:hover{text-decoration:underline;text-underline-offset:3px}
+    .hamster-example>p{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 7px;margin:10px 0 0;color:var(--soft);font-size:14px;line-height:1.8;letter-spacing:-.015em;word-break:keep-all}
+    .hamster-example>p strong{font-weight:600;color:var(--text)}
+    .hamster-example .example-separator{margin:0 7px;color:var(--muted)}
+    .hamster-example+.hamster-gallery{margin-top:0}
+    @media(max-width:640px){.hamster-example{margin:23px 0 20px;padding:16px 0 18px}.hamster-example h3{font-size:16px}.hamster-example__heading a{font-size:9px}.hamster-example>p{font-size:12px;gap:3px 6px}.hamster-example .example-separator{display:none}.hamster-example>p>span:last-child{flex-basis:100%}}
+    .vote-flow{margin-top:26px;row-gap:12px}
+    .vote-flow>figure{display:grid;grid-template-rows:subgrid;grid-row:span 2;gap:12px;min-width:0}
+    .vote-flow figcaption{margin:0;text-align:center}
+    .vote-flow h3{display:flex;align-items:baseline;justify-content:center;gap:9px;margin:0 0 8px;color:var(--text);font-size:15px;font-weight:650;line-height:1.6;letter-spacing:-.02em}
+    .vote-flow h3 span{display:inline;margin:0;color:var(--muted);font-size:11px;font-weight:500}
+    .vote-flow figcaption p{margin:0;color:var(--soft);font-size:13px;line-height:1.8;letter-spacing:-.015em;word-break:keep-all}
+    .vote-result-note{margin-top:32px}
+    .vote-result-note+.result-screen-gallery{margin-top:20px}
+    .tap-demo{position:relative;isolation:isolate;container-type:inline-size;width:100%;overflow:hidden;border:1px solid var(--line);border-radius:14px;background:#000}
+    .tap-votes{position:absolute;z-index:2;left:26.4%;top:24.25%;width:47.2%;height:3.8%;display:flex;align-items:center;justify-content:center;gap:.4cqw;background:#000;border-radius:.7cqw;color:#fff;font-size:5.6cqw;line-height:1;pointer-events:none;font-variant-numeric:tabular-nums}
+    .tap-votes .vote-digit{display:grid;place-items:center;flex:1;min-width:0;height:100%;background:#ff3f86;border-radius:1.1cqw}
+    .tap-votes .vote-comma{align-self:flex-end;font-size:5cqw;line-height:.8}
+    .tap-gain{position:absolute;z-index:2;top:29%;left:33%;width:34%;margin:0;text-align:center;background:#000;color:#ff3f86;font-size:6.4cqw;line-height:1.15;pointer-events:none}
+    .tap-gain[hidden]{display:none}
+    .tap-votes.is-updated{animation:vote-score-bump .22s ease-out}
+    .tap-gain.is-updated{animation:vote-gain-rise .32s ease-out}
+    @keyframes vote-score-bump{0%{transform:scale(1)}45%{transform:scale(1.07)}100%{transform:scale(1)}}
+    @keyframes vote-gain-rise{from{transform:translateY(25%);opacity:.35}to{transform:translateY(0);opacity:1}}
+    .tap-demo-base{display:block;width:100%;height:auto}
+    .tap-hit-area{position:absolute;z-index:1;left:0;right:0;top:14.3%;bottom:13.1%;width:100%;padding:0;margin:0;border:0;background:transparent;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+    .tap-hit-area:focus-visible{outline:2px solid #8cbbff;outline-offset:-3px}
+    .tap-points-panel{position:absolute;z-index:2;left:18.9%;top:77.7%;width:60.5%;height:6.1%;display:flex;align-items:center;justify-content:space-between;gap:4%;padding:0 6.6%;border-radius:1.6cqw;background:#171c20;color:#d4d4d8;pointer-events:none}
+    .tap-points-panel>span{font-size:3.2cqw;line-height:1;font-weight:650;white-space:nowrap;letter-spacing:-.03em}
+    .tap-points{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:3.9cqw;line-height:1;font-style:italic;font-weight:500;letter-spacing:-.04em;white-space:nowrap}
+    .tap-effects,.tap-bursts{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+    .tap-effects{z-index:3}
+    .tap-hand{position:absolute;left:calc(var(--tap-x,50%) - 11.3%);top:calc(var(--tap-y,48%) - 1.9%);width:29%;height:auto;overflow:visible;fill:#080808;stroke:#fff;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 2px 3px #0008);transform-origin:39% 8%;opacity:0;transition:left .3s ease,top .3s ease,opacity .15s;animation:none}
+    .tap-demo.is-playing:not(.is-manual) .tap-hand{opacity:1}
+    .tap-hand.is-tapping{animation:region-finger-tap .32s ease both}
+    .tap-ring{position:absolute;width:15%;aspect-ratio:1;border:2px solid #fff;border-radius:50%;animation:region-tap-ring .55s ease-out both}
+    .tap-heart{position:absolute;width:11%;height:auto;fill:#ff4b90;stroke:#ff9dc4;stroke-width:.65;filter:drop-shadow(0 1px 2px #0005);animation:region-heart-rise 1.05s ease-out both}
+    .tap-status{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+    @keyframes region-finger-tap{0%,100%{transform:translate(5%,5%) scale(1)}40%{transform:translate(0,0) scale(.92)}}
+    @keyframes region-tap-ring{from{opacity:.75;transform:translate(-50%,-50%) scale(.3)}to{opacity:0;transform:translate(-50%,-50%) scale(1.35)}}
+    @keyframes region-heart-rise{0%{opacity:0;transform:translate(-50%,-15%) scale(.5)}12%{opacity:1}75%{opacity:.8}100%{opacity:0;transform:translate(calc(-50% + var(--drift)),var(--rise)) scale(1.1)}}
+    @media(max-width:640px){.vote-flow{grid-template-columns:minmax(0,1fr);gap:28px;margin-top:24px}.vote-flow>figure{grid-template-rows:auto auto;grid-row:auto;gap:12px}.vote-flow h3{font-size:15px}.vote-flow h3 span{display:inline;margin:0;font-size:11px}.vote-flow figcaption p{font-size:13px}.vote-flow>figure>a,.vote-flow .tap-demo{width:100%;max-width:300px;margin-inline:auto}.tap-demo{border-radius:8px}}
+    @media(prefers-reduced-motion:reduce){.tap-effects{display:none}.tap-demo *{animation:none!important;transition:none!important}}
+
+  
+    .result-screen-gallery{margin-top:32px}
+    .result-screen-gallery a{aspect-ratio:1712/3704}
+    .result-screen-gallery img{width:100%;height:100%;object-fit:contain;background:#000}
+    @media(max-width:640px){.result-screen-gallery{margin-top:25px}}
+    /* Growth chapter: uninterrupted copy, readable labels, and a balanced comparison. */
+    section[aria-labelledby="early-growth"]{--visit-blue:#246bfd}
+    :root:not([data-theme="light"]) section[aria-labelledby="early-growth"]{--visit-blue:#69a4ff}
+    .growth-figure{border-top:0;padding-top:0;margin-top:25px}
+    .growth-value{z-index:1;background:var(--bg);padding:3px 8px;border-radius:3px;bottom:calc(var(--height) + 8px)}
+    .experiment-cadence{margin-top:22px}
+    .experiment-results{margin:19px 0 0;padding:23px 25px;border-radius:9px;background:var(--surface)}
+    .experiment-results h4{margin:0 0 17px;font-size:16px;font-weight:600;line-height:1.6;letter-spacing:-.025em}
+    .experiment-result+.experiment-result{margin-top:17px;padding-top:17px;border-top:1px solid var(--line)}
+    .experiment-result>strong{display:block;margin-bottom:6px;font-size:14px;font-weight:600;line-height:1.65;color:var(--text)}
+    .experiment-result>p{margin:0;color:var(--soft);font-size:14px;line-height:1.85;letter-spacing:-.014em;word-break:keep-all}
+    .experiment-result b{font-weight:600;color:var(--text)}
+    @media(max-width:640px){.experiment-results{padding:20px 18px}.experiment-results h4{font-size:15px}.experiment-result>strong,.experiment-result>p{font-size:13px}}
+    .repeat-figure{padding:28px 26px 21px}
+    .repeat-comparison{display:grid;grid-template-columns:minmax(0,1fr) 104px minmax(0,1fr);gap:0;align-items:center}
+    .repeat-card{display:flex;flex-direction:column;align-items:center;text-align:center;min-width:0;padding:0 15px}
+    .repeat-card .context-kicker{font-size:12px;font-weight:550}
+    .repeat-card h4{margin:6px 0 18px;font-size:16px;font-weight:550;line-height:1.6}
+    .repeat-card>strong{font-size:44px;line-height:1.2;color:var(--visit-blue);font-weight:650;text-align:center}
+    :root[data-theme="light"] .repeat-card--next>strong{color:var(--visit-blue)}
+    .repeat-card strong small{font-size:17px;margin-left:5px}
+    .repeat-card p{margin:15px 0 0;font-size:13px;line-height:1.8;text-align:center}
+    .repeat-card p>span{display:block}
+    .repeat-card p b{display:block;margin-top:3px;font-size:17px;font-weight:600;color:var(--text)}
+    .repeat-arrow{display:block;text-align:center;align-self:center;color:var(--muted)}
+    .repeat-arrow span{font-size:12px;font-weight:450;line-height:1.8}
+    .repeat-arrow span b{font-weight:600;color:var(--text)}
+    .repeat-arrow svg{display:block;width:72px;height:24px;margin:9px auto 0;transform:none}
+    .repeat-figure figcaption{margin-top:25px;font-size:12px;line-height:1.8}
+    .industry-note{margin-top:27px;padding:22px 24px;border-left:0;border-radius:9px;background:var(--surface)}
+    .industry-note h4{margin:0 0 12px;font-size:16px;font-weight:600;line-height:1.6;letter-spacing:-.025em}
+    .industry-note>p{margin:0;color:#d4d4d8;font-size:15px;line-height:1.85;letter-spacing:-.017em;word-break:keep-all;text-wrap:pretty}
+    :root[data-theme="light"] .industry-note>p{color:#313131}
+    .industry-note>p+p{margin-top:12px}
+    .industry-note strong{color:var(--text);font-weight:600}
+    .industry-source{display:inline-block;margin-top:15px;color:var(--soft);font-size:13px;line-height:1.75;text-decoration:underline;text-underline-offset:3px}
+    @media(max-width:760px){.repeat-card>strong{font-size:40px}.repeat-card{padding-inline:10px}}
+    @media(max-width:640px){
+      .growth-figure{padding-top:0}
+      .growth-value{padding:2px 5px;bottom:calc(var(--height) + 6px)}
+      .screen-design-archive{margin-top:25px}
+      .screen-design-archive h3{font-size:16px}
+      .repeat-figure{padding:21px 14px 17px}
+      .repeat-comparison{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 0;align-items:start}
+      .repeat-card{display:flex;grid-row:2;padding-inline:6px}
+      .repeat-card:first-child{grid-column:1}
+      .repeat-card--next{grid-column:2}
+      .repeat-card .context-kicker{font-size:11px;grid-column:auto}
+      .repeat-card h4{margin:5px 0 14px;font-size:13px;grid-column:auto;grid-row:auto}
+      .repeat-card>strong{font-size:33px;text-align:center;grid-column:auto;grid-row:auto}
+      .repeat-card strong small{font-size:13px;margin-left:3px}
+      .repeat-card p{margin-top:12px;font-size:11px;grid-column:auto;line-height:1.8}
+      .repeat-card p b{font-size:16px}
+      .repeat-arrow{grid-column:1/-1;grid-row:1;display:flex;align-items:center;justify-content:center;gap:10px}
+      .repeat-arrow span{font-size:12px}
+      .repeat-arrow svg{width:43px;height:20px;margin:0;transform:none}
+      .repeat-figure figcaption{font-size:11px;margin-top:21px;line-height:1.8}
+      .industry-note{padding:20px 18px;margin-top:23px}
+      .industry-note h4{font-size:15px;line-height:1.6}
+      .industry-note>p{font-size:14px;line-height:1.85}
+      .industry-source{font-size:12px;margin-top:13px}
+    }
+    @media(max-width:380px){.repeat-card>strong{font-size:28px}.repeat-card h4{font-size:12px}.repeat-card p{font-size:10.5px}.repeat-card strong small{font-size:12px}}
+
+    .strategy-review-figure{margin:35px 0 0;padding:22px 24px 20px;border:1px solid var(--line);border-radius:12px}
+  .strategy-review-figure h3{margin:0 0 18px;font-size:17px;font-weight:650;line-height:1.5;letter-spacing:-.025em;color:var(--text)}
+  .strategy-review-figure__canvas{overflow-x:auto;overflow-y:hidden;border:1px solid #e7e8ed;border-radius:10px;background:#fff;scrollbar-width:thin}
+  .strategy-review-figure__canvas img{display:block;width:100%;height:auto;min-width:0;user-select:none;pointer-events:none}
+  .strategy-review-figure figcaption{margin-top:12px;text-align:center;font-size:12px;line-height:1.7}
+  @media(max-width:680px){.strategy-review-figure{padding:17px 14px}.strategy-review-figure h3{font-size:15px}.strategy-review-figure__canvas img{width:760px;max-width:none}.strategy-review-figure figcaption{font-size:11px}}
+</style>
+  <link rel="stylesheet" href="/portfolio-fonts.css">
+</head>
+<body>
+  <div class="sticky-site-nav">
+  <header class="topbar">
+    <div class="brand">
+      <a class="brand-name" href="/">PORTFOLIO</a>
+    </div>
+    <div class="header-actions">
+      <nav class="header-nav" aria-label="상단 메뉴">
+        <a class="header-link" href="/">프로젝트</a>
+        <a class="header-link" href="/profile">Profile</a>
+      </nav>
+      <a class="header-link header-github" href="https://github.com/Flow4Work" target="_blank" rel="noopener noreferrer">GITHUB ↗</a>
+      <button class="theme-switch" type="button" id="theme-switch" aria-label="화이트 모드로 전환" aria-pressed="false">
+        <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" /><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42" /></svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.9 13.2A9 9 0 0 1 10.8 3.1 9 9 0 1 0 20.9 13.2Z" /></svg>
+        <span id="theme-label">LIGHT</span>
+      </button>
+    </div>
+  </header>
+  </div>
+  <main>
+    <header class="project-hero tonament-hero">
+      <p class="eyebrow">MOBILE PROJECT · 02</p>
+      <h1>Tonament</h1>
+      <p class="subtitle">투표와 보상 기반의 텔레그램 미니앱</p>
+      <div class="tonament-overview">
+        <dl class="tonament-role">
+          <dt>담당 역할</dt>
+          <dd class="tonament-role__title">PO</dd>
+          <dd class="tonament-role__period"><time datetime="2024-09">2024.09</time> — <time datetime="2025-05">2025.05</time></dd>
+        </dl>
+        <ul class="tonament-responsibilities" aria-label="담당 업무">
+          <li><strong>기획·출시</strong><p>기능 우선순위 결정, 디자인·개발 총괄</p></li>
+          <li><strong>분석·개선</strong><p>GA4 분석과 A/B 테스트로 투표·보상 동선 개선</p></li>
+          <li><strong>제휴·운영</strong><p>미니앱 공동 이벤트 기획, 광고주 발굴·광고 운영</p></li>
+        </ul>
+      </div>
+    </header>
+    <div class="project-sections">
+      <section class="project-section" aria-labelledby="background">
+ <p class="section-no">01 배경</p><h2 id="background">미니앱이 쏟아지던 시장, 빠른 출시의 중요성</h2>
+<p class="body-copy">2024년에는 텔레그램 안에서 게임을 하고 보상을 받는 미니앱이 빠르게 늘고 있었다. 별도 앱을 설치할 필요가 없었고, 링크를 공유하면 메신저에서 바로 시작할 수 있었다. 짧게 참여하고 보상을 받는 방식으로 많은 이용자가 모이던 시기였다.</p><figure class="market-board" aria-labelledby="market-board-title">
+ <div class="market-reach">
+  <div class="market-reach__copy"><p class="market-reach__eyebrow">2024 · TELEGRAM MINI APPS</p><h3 id="market-board-title">메신저의<br>서비스 플랫폼 확장</h3><p>게임·쇼핑·결제가 텔레그램 안으로 들어오며,<br>미니앱을 이용하는 시장도 함께 커지고 있었다.</p></div>
+  <div class="market-comparison" role="img" aria-label="텔레그램 월간 이용자 9억 5천만 명, 미니앱 월간 이용자 5억 명 이상">
+   <div class="market-comparison__row"><div class="market-comparison__label"><span>텔레그램 월간 이용자</span><strong>9.5억 <small>명</small></strong></div><div class="market-comparison__track"><span class="market-comparison__fill" style="--reach:100%"></span></div></div>
+   <div class="market-comparison__row"><div class="market-comparison__label"><span>미니앱 월간 이용자</span><strong>5억+ <small>명</small></strong></div><div class="market-comparison__track"><span class="market-comparison__fill market-comparison__fill--mini" style="--reach:52.6316%"></span></div></div>
+  </div>
+ </div>
+ <div class="market-behavior"><div class="market-behavior__header"><h4>텔레그램 미니앱 이용 형태</h4></div><ul class="market-survey"><li><div class="market-ring" style="--value:74.1"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="market-ring__track" cx="50" cy="50" r="43" pathLength="100"/><circle class="market-ring__value" cx="50" cy="50" r="43" pathLength="100"/></svg><strong>74.1%</strong></div><span class="market-survey__label">추가 기능·보상을 위해<br>지출할 의향</span></li><li><div class="market-ring" style="--value:53"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="market-ring__track" cx="50" cy="50" r="43" pathLength="100"/><circle class="market-ring__value" cx="50" cy="50" r="43" pathLength="100"/></svg><strong>53%</strong></div><span class="market-survey__label">한 번 이용할 때<br>15분 미만</span></li><li><div class="market-ring" style="--value:15"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="market-ring__track" cx="50" cy="50" r="43" pathLength="100"/><circle class="market-ring__value" cx="50" cy="50" r="43" pathLength="100"/></svg><strong>15%</strong></div><span class="market-survey__label">매일 게임을<br>이용</span></li></ul></div>
+ <figcaption class="market-sources">출처: <a href="https://t.me/durov/337" target="_blank" rel="noopener noreferrer">Durov</a> · <a href="https://core.telegram.org/bots/features#mini-app-store" target="_blank" rel="noopener noreferrer">Telegram</a> · <a href="https://chainplay.gg/blog/telegram-tap-to-earn-game-report/" target="_blank" rel="noopener noreferrer">Chainplay</a></figcaption>
+</figure>
+      </section>
+
+      <section class="project-section" aria-labelledby="tap-to-earn">
+        <p class="section-no">02 시장 사례</p>
+        <h2 id="tap-to-earn">단순한 클릭으로 수억 명을 모은 게임들</h2>
+        <p class="body-copy">당시 인기를 끌던 방식은 <mark>탭투언(Tap-to-Earn)</mark>이었다. 화면을 반복해서 누르면 포인트가 쌓이고, 친구를 초대하거나 미션을 수행하면 더 많은 보상을 받는 구조였다. 게임 자체는 단순했지만 전 세계에서 이용자가 모였고, 당시 텔레그램 미니앱은 <a href="https://core.telegram.org/bots/features#mini-app-store" target="_blank" rel="noopener noreferrer" aria-label="텔레그램 공식 발표의 미니앱 월간 이용자 수 확인">월간 5억 명 이상</a>이 이용하고 있었다. 일부 서비스는 게임 포인트를 실제 거래 가능한 토큰으로 전환했고, 이용자는 지급받은 토큰을 거래할 수 있었다. 이용자를 빠르게 모으고 토큰 보상으로 참여를 유도하는 방식은 효과적이었다.</p>
+        <aside class="hamster-example" aria-label="햄스터 컴뱃 사례">
+          <div class="hamster-example__heading"><h3>햄스터 컴뱃</h3><a href="https://t.me/hamster_kombat/320" target="_blank" rel="noopener noreferrer">2024.09 공식 발표 ↗</a></div>
+          <p>누적 가입 <strong>3억 명 이상</strong><span class="example-separator" aria-hidden="true">·</span><span>토큰 보상 대상 <strong>약 1.31억 계정</strong></span></p>
+        </aside>
+        <div class="hamster-gallery" aria-label="햄스터 컴뱃 참고 이미지 3장">
+          <figure><a class="context-image context-image--illustration" href="/assets/tonament-context-hamster-brand.jpg" target="_blank" rel="noopener noreferrer"><img src="/assets/tonament-context-hamster-brand.jpg" width="1244" height="700" alt="스마트폰의 햄스터 캐릭터를 탭하는 동작을 묘사한 참고 이미지" loading="lazy"></a><figcaption>화면을 탭해 포인트를 쌓는 방식</figcaption></figure>
+          <figure><a class="context-image" href="/assets/tonament-context-hamster-ui.jpg" target="_blank" rel="noopener noreferrer"><img src="/assets/tonament-context-hamster-ui.jpg" width="1080" height="1920" alt="탭하면 포인트가 증가하는 방식을 설명하는 햄스터 컴뱃 온보딩 화면" loading="lazy"></a><figcaption>탭과 포인트 획득 안내</figcaption></figure>
+          <figure><a class="context-image" href="/assets/tonament-context-hamster-main.jpg" target="_blank" rel="noopener noreferrer"><img src="/assets/tonament-context-hamster-main.jpg" width="541" height="942" alt="햄스터 캐릭터, 포인트 잔액, 에너지와 하단 메뉴가 있는 기본 게임 화면" loading="lazy"></a><figcaption>포인트·에너지·보상 메뉴</figcaption></figure>
+        </div>
+      </section>
+
+      <section class="project-section" aria-labelledby="service-design">
+        <p class="section-no">03 서비스 기획</p>
+        <h2 id="service-design">경쟁과 보상을 더한 투표 설계</h2>
+        <p class="body-copy">Tonament는 <mark>응원하는 대상에게 투표하고, 이기면 보상을 받는 게임</mark>이다. 클릭 횟수를 쌓는 것에 경쟁의 재미를 더했다.</p>
+        <div class="tonament-screen-gallery vote-flow" aria-label="대결 선택부터 투표까지의 이용 흐름">
+          <figure><figcaption><h3><span>01</span> 대결 고르기</h3><p>진행 중인 대결 중 참여할 주제를 고른다.</p></figcaption><a href="/assets/tonament-cast-vote.png" target="_blank" rel="noopener noreferrer"><img src="/assets/tonament-cast-vote.png" width="430" height="932" alt="보유 투표권과 진행 중인 대결을 보여 주는 Tonament 첫 화면" loading="lazy"></a></figure>
+          <figure><figcaption><h3><span>02</span> 응원할 대상 선택하기</h3><p>두 후보 중 응원하는 대상을 선택한다.</p></figcaption><a href="/assets/tonament-candidate-selection.png" target="_blank" rel="noopener noreferrer"><img src="/assets/tonament-candidate-selection.png" width="430" height="932" alt="메시와 호날두 중 투표할 대상을 선택하는 화면" loading="lazy"></a></figure>
+          <figure class="tap-demo-figure"><figcaption><h3><span>03</span> 탭으로 투표하기</h3><p>탭할 때마다 포인트로 투표한다.</p></figcaption><div class="tap-demo">
+            <img class="tap-demo-base" src="/assets/tonament-messi-vote.png" width="1712" height="3704" alt="메시 사진과 주변 격자 영역을 탭해 투표하는 화면" loading="lazy">
+            <output class="tap-votes" aria-label="Messi 투표 수" aria-live="off">53,453,667</output>
+            <output class="tap-gain" aria-label="추가 투표 수" aria-live="off" hidden>+0</output>
+            <button class="tap-hit-area" type="button" aria-label="사진이나 격자 영역을 탭해 투표하기"></button>
+            <div class="tap-points-panel"><span>Points Left</span><output class="tap-points" aria-label="남은 포인트" aria-live="off">24,000</output></div>
+            <div class="tap-effects" aria-hidden="true"><div class="tap-bursts"></div><svg class="tap-hand" viewBox="0 0 90 105"><path d="M28 53V13a7 7 0 0 1 14 0v29a6 6 0 0 1 12 0v4a6 6 0 0 1 12 0v7a6 6 0 0 1 12 0v18c0 12-7 17-10 26H37L12 69a8 8 0 0 1 11-11l5 6Z"/><path d="M42 43v18m12-15v18m12-11v14"/></svg></div>
+            <span class="tap-status" role="status" aria-live="polite"></span>
+          </div></figure>
+        </div>
+        <p class="body-copy vote-result-note">대결이 끝나면 승패가 결정되고, 이긴 대상에 투표한 이용자가 보상을 받는다.</p>
+        <div class="tonament-screen-gallery result-screen-gallery" aria-label="친구 초대와 투표 결과 화면">
+          <figure><a href="/assets/tonament-friend-invite.png" target="_blank" rel="noopener noreferrer"><img src="/assets/tonament-friend-invite.png" width="1712" height="3704" alt="초대한 친구 수와 친구별 보상, 초대 버튼을 보여 주는 화면" loading="lazy"></a><figcaption>친구 초대</figcaption></figure>
+          <figure><a href="/assets/tonament-result-loss.png" target="_blank" rel="noopener noreferrer"><img src="/assets/tonament-result-loss.png" width="856" height="1852" alt="투표에서 선택한 대상의 패배와 다시 참여하기를 안내하는 화면" loading="lazy"></a><figcaption>패배 결과</figcaption></figure>
+          <figure><a href="/assets/tonament-result-win.png" target="_blank" rel="noopener noreferrer"><img src="/assets/tonament-result-win.png" width="1712" height="3704" alt="투표 승리 결과와 보상 내역, 보상 수령 버튼을 보여 주는 화면" loading="lazy"></a><figcaption>승리와 보상 수령</figcaption></figure>
+        </div>
+        <div class="screen-design-archive" aria-labelledby="screen-design-title"><h3 id="screen-design-title">전체 화면 설계</h3><figure class="original-media"><a href="/assets/tonament-design-board.png" target="_blank" rel="noopener noreferrer"><img src="/assets/tonament-design-board.png" width="1161" height="877" alt="투표, 미션, 보상, 친구 초대를 포함한 전체 화면 설계 보드" loading="lazy"></a><figcaption>투표·미션·보상·친구 초대의 화면 설계</figcaption></figure></div>
+      </section>
+
+      <section class="project-section" aria-labelledby="early-growth">
+        <p class="section-no">04 초기 성장과 운영</p>
+        <h2 id="early-growth">출시 첫 주 10만 명의 초기 유입</h2>
+        <p class="body-copy">텔레그램 미니앱은 출시 초기에 이용자를 빠르게 모으는 것이 중요했다.<br>블록체인 업계의 네트워크로 협업사와 동시 마케팅을 준비하고, 파트너십 협상과 공동 이벤트를 맡았다.<br>그 결과 <mark>첫 주에 10만 명, 첫 달에 40만 명, 둘째 달에는 약 60만 명</mark>이 방문했다.</p>
+        <figure class="growth-figure" data-motion="growth" aria-labelledby="growth-title">
+          <div class="figure-header"><h3 id="growth-title">출시 초기 방문자 수</h3><span>단위: 만 명</span></div>
+          <div class="growth-chart" role="img" aria-label="첫 주 방문자 10만 명, 첫 달 방문자 40만 명, 둘째 달 방문자 약 60만 명. 세로축은 0에서 80만 명까지입니다.">
+            <div class="growth-y-axis" aria-hidden="true"><span>80만</span><span>60만</span><span>40만</span><span>20만</span><span>0만</span></div>
+            <div class="growth-plot"><div class="growth-grid" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><div class="growth-columns">
+              <div class="growth-column" style="--height:12.5%;--delay:0ms"><strong class="growth-value"><span data-count="10">10</span><small>만 명</small></strong><div class="growth-bar growth-bar--week"></div><span class="growth-category">첫 주</span></div>
+              <div class="growth-column" style="--height:50%;--delay:120ms"><strong class="growth-value"><span data-count="40">40</span><small>만 명</small></strong><div class="growth-bar growth-bar--month"></div><span class="growth-category">첫 달</span></div>
+              <div class="growth-column" style="--height:75%;--delay:240ms"><strong class="growth-value"><span data-count="60">60</span><small>만 명</small></strong><div class="growth-bar growth-bar--second"></div><span class="growth-category">둘째 달</span></div>
+            </div></div>
+          </div>
+        </figure>
+        <figure class="growth-market-board" aria-labelledby="growth-market-title">
+          <div class="growth-market-board__top">
+            <div class="growth-market-board__intro">
+              <p class="growth-market-board__eyebrow">ACQUISITION · REGIONAL MIX</p>
+              <h3 id="growth-market-title">유입의 약 70%가<br>나이지리아·러시아·CIS에 집중</h3>
+              <p>사전 시장 조사에서 다른 미니앱의 이용자 분포를 살펴 나이지리아·러시아·CIS를 주요 타깃 국가로 정하고 시장에 진입했다. 이들 국가 이용자의 관심사를 반영한 투표 콘텐츠를 운영해 좋은 반응을 얻었다.</p>
+            </div>
+            <div class="growth-market-share" role="img" aria-label="초기 이용자 유입 비중: 나이지리아·러시아·CIS 약 70%, 미국 약 20%, 한국·일본 약 5%, 기타 약 5%">
+              <div class="growth-market-share__heading"><h4>초기 이용자 유입 국가</h4></div>
+              <div class="growth-market-share__row"><div class="growth-market-share__label"><span>나이지리아 · 러시아 · CIS</span><strong>약 70%</strong></div><div class="growth-market-share__track"><span class="growth-market-share__fill" style="--share:70%"></span></div></div>
+              <div class="growth-market-share__row"><div class="growth-market-share__label"><span>미국</span><strong>약 20%</strong></div><div class="growth-market-share__track"><span class="growth-market-share__fill" style="--share:20%"></span></div></div>
+              <div class="growth-market-share__row"><div class="growth-market-share__label"><span>한국 · 일본</span><strong>약 5%</strong></div><div class="growth-market-share__track"><span class="growth-market-share__fill" style="--share:5%"></span></div></div>
+              <div class="growth-market-share__row"><div class="growth-market-share__label"><span>기타</span><strong>약 5%</strong></div><div class="growth-market-share__track"><span class="growth-market-share__fill" style="--share:5%"></span></div></div>
+            </div>
+          </div>
+          <div class="growth-market-tactics" aria-label="지역별 이용자 획득 전략">
+            <div class="growth-market-tactic"><p class="growth-market-tactic__label">NIGERIA</p><h4>KOL · 미니앱 공동 이벤트</h4><p>현지 KOL과 협업하고 다른 미니앱과 공동 이벤트를 진행했다.</p></div>
+            <div class="growth-market-tactic"><p class="growth-market-tactic__label">RUSSIA · CIS</p><h4>AI 활용 채널 마케팅</h4><p>AI를 활용해 커뮤니티·크립토 매체·KOL 대상 마케팅을 전개했다.</p></div>
+          </div>
+          <aside class="growth-market-budget" aria-label="마케팅 예산과 출장 배경"><p>회사에서 마케팅 예산으로 $10,000을 편성했다. 당시 글로벌 크립토 행사가 홍콩과 싱가포르에 집중돼 있어 추석 연휴에도 현장을 찾았다.<br>나이지리아·러시아·CIS 시장을 잘 아는 에이전시, KOL, 프로젝트 팀을 만나 파트너를 물색하고 현지 마케팅과 협업 방안을 논의했다.</p></aside>
+        </figure>
+        <div class="article-subsection">
+          <h3>재방문 유도와 A/B 테스트</h3>
+          <p class="body-copy">출시 이후에는 GA4로 화면별 진입과 이탈을 확인하며, 접속한 이용자가 실제 투표와 보상 확인까지 이어지는지 살폈다.</p>
+          <p class="body-copy experiment-cadence">초기 운영 한 달에는 <mark>주 2회씩 총 8회의 테스트</mark>를 진행했다.<br>버튼 문구와 보상 노출 방식, 화면 순서를 바꿔 이용자의 참여 반응을 비교했다.<br>테스트 결과를 바탕으로 투표 과정에서 먼저 고칠 부분과 다음 테스트 항목을 정했다.</p>
+          <aside class="experiment-results" aria-label="주요 A/B 테스트 개선 사례">
+            <h4>대표적으로 성과가 좋았던 A/B 테스트</h4>
+            <div class="experiment-result">
+              <strong>01. 재방문 유도</strong>
+              <p>월별 <b>3회 이상 방문자 비중</b>을 비교하면서 재방문 알림과 이벤트를 개선했다. 운영 3개월 차에는 리텐션이 전월 약 <b>5%에서 12%로 상승</b>했다.</p>
+            </div>
+            <div class="experiment-result">
+              <strong>02. 보상 수령 동선 개선</strong>
+              <p>투표에서 승리하고도 보상을 수령하지 않는 이용자에 주목했다. 기존 화면(A)과 Claim 버튼의 위치와 문구를 개선한 화면(B)을 비교한 결과,<br><b>B안의 보상 수령 버튼 클릭이 A안보다 3배 이상</b> 높았다. 이 개선도 재방문에 긍정적인 영향을 줬다고 판단했다.</p>
+            </div>
+          </aside>
+          <figure class="repeat-figure" data-motion="counts" aria-label="월 3회 이상 방문자 비교: 첫 달 9천 명, 월 방문자 40만 명의 2.25%. 둘째 달 5만 명, 월 방문자 60만 명의 8.33%.">
+            <div class="repeat-comparison">
+              <div class="repeat-card"><span class="context-kicker">첫 달</span><h4>3회 이상 방문자</h4><strong><span data-count="9000">9,000</span><small>명</small></strong><p><span>월 방문자 40만 명 중</span><b>2.25%</b></p></div>
+              <div class="repeat-arrow"><span>약 <b>5.6배</b> 증가</span><svg viewBox="0 0 80 24" aria-hidden="true"><path d="M1 12h74m-10-9 10 9-10 9"/></svg></div>
+              <div class="repeat-card repeat-card--next"><span class="context-kicker">둘째 달</span><h4>3회 이상 방문자</h4><strong><span data-count="50000">50,000</span><small>명</small></strong><p><span>월 방문자 60만 명 중</span><b>8.33%</b></p></div>
+            </div>
+            <figcaption>Tonament 내부 운영 수치 · 각 월의 방문자 중 해당 월에 3회 이상 방문한 이용자</figcaption>
+          </figure>
+          <p class="body-copy">3회 이상 방문자는 첫 달 9천 명에서 둘째 달 5만 명으로 약 5.6배 증가했고, 반복 방문자의 비중도 높아졌다. 당시 보상 중심의 텔레그램 미니앱은 토큰에 대한 기대감으로 이용자가 빠르게 모였지만, 보상 이후 관심이 식어 이용이 급감하는 경우가 많았다.</p>
+          <aside class="industry-note">
+            <h4>반복 이용의 판단 기준</h4>
+            <p>텔레그램 미니앱은 서로 오퍼월 광고를 교환하는 협업이 많았다. 직접 여러 앱을 테스트하면서 광고를 따라 이동하다 같은 앱을 월 2회 이상 방문하는 경우를 자주 경험했다. 그래서 반복 이용을 판단하는 기준으로 <strong>월 3회 이상 방문자</strong>를 주요 리텐션 지표로 삼았다.</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="project-section" aria-labelledby="ad-revenue">
+        <p class="section-no">05 광고 수익화</p>
+        <h2 id="ad-revenue">오퍼월 광고의 도입</h2>
+        <p class="body-copy">초기에는 접속이나 참여에 따라 포인트를 지급했지만, 보상을 계속 운영하려면 수익이 필요했다. 두 번째 달부터 기존 지급 방식에 <strong>오퍼월형 보상 광고</strong>를 더했다. 앱에 모아 둔 광고를 보거나 외부 서비스 미션을 완료하면 추가 포인트를 줬다. 이용자는 이 포인트로 더 많은 투표에 참여하고, 서비스는 광고 수익을 얻는 방식으로 <strong>보상과 수익을 연결했다</strong>. 기존 네트워크로 매월 4~5차례 광고주를 확보했으며, 영업과 광고 집행도 직접 맡았다.</p>
+        <figure class="flow-figure" data-motion="ad-flow" aria-labelledby="ad-flow-title">
+          <div class="figure-header"><h3 id="ad-flow-title">광고 참여부터 투표까지의 사용자 흐름</h3></div>
+          <div class="ad-flow"><div class="ad-inputs"><div class="flow-node flow-source"><span class="node-icon" aria-hidden="true">▷</span><strong>광고 시청</strong></div><div class="flow-node flow-source"><span class="node-icon" aria-hidden="true">↗</span><strong>외부 링크 미션</strong></div></div><div class="ad-merge" aria-hidden="true"><svg viewBox="0 0 58 100" preserveAspectRatio="none"><path class="flow-track" d="M0 24 H24 V50 H57 M0 76 H24 V50"/><path class="flow-arrowhead" d="M50 45 L57 50 L50 55"/></svg></div><div class="flow-node flow-points"><span class="node-step">01</span><strong>추가 포인트 획득</strong><p>기존 지급 방식에<br>추가 보상 연결</p></div><div class="flow-link" aria-hidden="true"><span>→</span></div><div class="flow-node flow-vote"><span class="node-step">02</span><strong>투표 참여</strong><p>포인트 사용과 재참여</p></div></div>
+          <figcaption>광고 시청·외부 링크 미션 → 추가 포인트 → 투표 참여</figcaption>
+        </figure>
+        <p class="body-copy">광고를 도입하면 이용자가 이탈하거나 체류 시간이 줄어들 수 있다는 걱정이 컸다. 내부에서 여러 가설을 세우고 다양한 방식으로 테스트한 끝에, 접속 시 지급하던 투표 포인트를 10,000개에서 1,000개로 줄였다. 대신 매시 정각부터 5분 사이에 접속하면 1,000개를 추가로 받을 수 있도록 바꿨다. 광고와 미션으로 포인트를 더 얻는 구조에 더해, 정해진 시간에 다시 방문할 이유를 만들고자 했다.</p>
+      </section>
+
+      <section class="project-section" aria-labelledby="second-version">
+        <p class="section-no">06 두 번째 버전 기획</p>
+        <h2 id="second-version">투표 결과와 토큰 발행의 연계 구상</h2>
+        <p class="body-copy">당시 많은 Tap to Earn 프로젝트는 토큰 보상으로 이용자를 빠르게 모았지만, 에어드롭이 끝나면 참여도 함께 줄어들었다. 이 문제를 보며 <strong>보상을 받은 뒤에도 다시 참여할 이유</strong>가 필요하다고 생각했다.<br>두 번째 버전에서는 투표에서 승리한 콘텐츠를 토큰으로 발행하고, 그 콘텐츠에 투표한 이용자에게 <strong>참여도에 따라 보상을 배분</strong>하는 구조를 구상했다. 보상이 다음 투표에 대한 관심으로 이어지도록 하려는 시도였다.</p>
+        <figure class="token-figure" data-motion="token" aria-labelledby="token-flow-title">
+          <div class="figure-header"><h3 id="token-flow-title">투표 결과가 토큰 보상으로 이어지는 과정</h3></div>
+          <div class="token-candidates">
+            <div class="token-candidate token-candidate--winner">
+              <div class="candidate-heading"><span class="candidate-symbol" aria-hidden="true">🐶</span><div><strong>강아지</strong><span>콘텐츠 투표</span></div><b class="candidate-result">승리</b></div>
+              <div class="candidate-tally"><span data-vote-count="1200">1,200</span><small>표</small></div><div class="candidate-meter"><i style="--final-width:85.7143%"></i></div>
+            </div>
+            <span class="candidate-vs" aria-hidden="true">VS</span>
+            <div class="token-candidate token-candidate--loser">
+              <div class="candidate-heading"><span class="candidate-symbol" aria-hidden="true">🐱</span><div><strong>고양이</strong><span>콘텐츠 투표</span></div><b class="candidate-result candidate-result--defeat">패배</b></div>
+              <div class="candidate-tally"><span data-vote-count="940">940</span><small>표</small></div><div class="candidate-meter"><i style="--final-width:67.1429%"></i></div>
+            </div>
+          </div>
+          <div class="token-winner-link"><span aria-hidden="true">↓</span><span>승리한 콘텐츠만 토큰화</span></div>
+          <ol class="token-path">
+            <li class="token-step token-step--mint"><span class="node-step">01</span><strong>승리 콘텐츠 토큰화</strong><p>강아지 콘텐츠를 토큰으로 발행</p></li>
+            <li class="token-step token-step--distribute"><span class="node-step">02</span><strong>승리팀 투표자에게 배분</strong><p>투표 참여도에 따라 차등 지급</p></li>
+            <li class="token-step token-step--trade"><span class="node-step">03</span><strong>다음 투표 참여 유도</strong><p>보상 후에도 다음 투표에 참여</p></li>
+          </ol>
+        </figure>
+        <p class="body-copy">이 기획의 핵심 질문은 단순했다. 이용자가 직접 선택한 결과에 따라 보상을 받으면, 정해진 보상을 받는 방식보다 참여할 이유가 더 커질까? 이 가설을 바탕으로 투표부터 결과 확인, 보상 수령까지 하나의 사용자 경험으로 설계했다.</p>
+        <figure class="strategy-review-figure" aria-label="Tonament 제품 및 토큰 전략 원본 자료">
+          <div class="strategy-review-figure__canvas"><img src="/assets/tonament-strategy-original.png" width="7372" height="3484" alt="Tonament 제품 및 토큰 전략 검토 원본 자료" loading="lazy" decoding="async"></div>
+          <figcaption>당시 제품과 토큰을 함께 검토하며 정리한 전략 자료</figcaption>
+        </figure>
+      </section>
+
+      <section class="project-section" aria-labelledby="business-results">
+        <p class="section-no">07 사업개발과 성과</p>
+        <h2 id="business-results">사업개발</h2>
+        <p class="body-copy">초기 텔레그램 이용자들에게 좋은 반응을 얻으며 이용자 기반을 확보했다. 79개 미니앱과 공동 이벤트를 진행하고, 직접 광고주를 발굴해 광고 집행까지 맡았다. 그 결과 광고와 토큰 등 여러 수익을 합쳐 <strong>월 최고 매출 $35,000</strong>을 기록했다.</p>
+        <dl class="outcome-metrics" data-motion="counts" aria-label="Tonament 운영 성과"><div><dt>누적 이용자</dt><dd><span data-count="100">100</span><small>만 명</small></dd></div><div><dt>미니앱 협업</dt><dd><span data-count="79">79</span><small>개</small></dd></div><div><dt>월 최고 매출</dt><dd><small>$</small><span data-count="35000">35,000</span></dd></div></dl>
+        <p class="body-copy">미니앱은 이용자가 빠르게 모이는 만큼 관심이 식는 속도도 빨랐다. 그래서 <strong>신규 이용자 확보와 수익화를 운영 내내 동시에 추진했다.</strong> 공동 이벤트 이후 이용자가 실제 투표와 보상 수령까지 이어지는지 GA4로 확인하고, 이탈이 발생하는 단계와 참여 반응을 다음 이벤트 기획과 제품 개선에 반영했다. 동시에 새로운 협업처와 광고주를 꾸준히 발굴하고 집행까지 맡아, 일시적인 유입을 참여와 매출로 연결하는 데 집중했다.</p>
+      </section>
+
+      <section class="project-section" aria-labelledby="reflection">
+        <p class="section-no">08 회고</p>
+        <h2 id="reflection">보상과 수익 사이의 운영 판단</h2>
+        <p class="body-copy">첫 게임을 운영하며 가장 많이 고민한 것은 포인트를 얼마나, 어떤 행동에 지급할지였다. 포인트는 투표에 필요한 자원이면서 이용자의 참여를 유도하는 보상이었고, 광고 수익과도 연결돼 있었다. 지급 방식을 바꾸는 결정이 게임 참여와 재방문, 매출에 동시에 영향을 줄 수 있었다.</p>
+        <p class="body-copy">광고 도입 당시에도 이용자의 이탈이 걱정됐다. 여러 방식으로 테스트한 뒤 기본 지급 포인트를 줄이고, 정해진 시간에 접속하면 추가 포인트를 받을 수 있도록 구성했다. 광고와 미션으로 포인트를 얻는 흐름에 다시 방문할 계기도 더하려는 판단이었다.</p>
+        <p class="body-copy">PO로서 <strong>서비스 기획부터 기능 우선순위, 보상 정책과 수익 모델까지 직접 결정하고 제품 전반을 총괄했다</strong>. 디자인·개발팀의 작업과 출시 후 운영을 이끌며, 이용자 참여와 매출을 함께 고려해 방향을 조정했다. 직접 내린 결정이 실제 이용과 매출에 어떤 영향을 주는지 확인하고, 그 결과에 책임지며 다음 개선의 우선순위를 정했다.</p>
+      </section>
+    </div>
+
+    <nav data-project-navigation="tonament" aria-label="다른 프로젝트"></nav>
+  </main>
+  <script src="/portfolio-data.js"></script>
+  <script src="/mobile-project.js"></script>
+  <script>
+(() => {
+  const root = document.documentElement;
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const figures = [...document.querySelectorAll('[data-motion]')];
+  const states = new WeakMap();
+  const numberFormat = new Intl.NumberFormat('ko-KR');
+  let observer;
+
+  const finishCounters = figure => {
+    figure.querySelectorAll('[data-count], [data-vote-count]').forEach(el => {
+      el.textContent = numberFormat.format(Number(el.dataset.count ?? el.dataset.voteCount));
+    });
+  };
+  const clear = figure => {
+    const state = states.get(figure);
+    if (!state) return;
+    state.cancelled = true;
+    state.frames.forEach(cancelAnimationFrame);
+    state.timers.forEach(clearTimeout);
+  };
+  const animateCount = (element, target, duration, state, rough = false) => {
+    if (reduced.matches) { element.textContent = numberFormat.format(target); return; }
+    const start = performance.now();
+    const tick = now => {
+      if (state.cancelled) return;
+      const progress = Math.min(1, (now - start) / duration);
+      const eased = rough ? progress : 1 - Math.pow(1 - progress, 3);
+      const increment = rough ? Math.floor(progress * 14) / 14 : eased;
+      element.textContent = numberFormat.format(Math.round(target * increment));
+      if (progress < 1) state.frames.push(requestAnimationFrame(tick));
+      else element.textContent = numberFormat.format(target);
+    };
+    element.textContent = '0';
+    state.frames.push(requestAnimationFrame(tick));
+  };
+  const play = figure => {
+    clear(figure);
+    const state = { frames: [], timers: [], cancelled: false };
+    states.set(figure, state);
+    figure.classList.remove('is-visible', 'is-complete');
+    if (reduced.matches) {
+      figure.classList.add('is-visible', 'is-complete');
+      finishCounters(figure);
+      return;
+    }
+    // Restart the explanatory sequence at each automatic loop without requiring a button.
+    void figure.offsetWidth;
+    figure.classList.add('is-visible');
+    figure.querySelectorAll('[data-count]').forEach(el => animateCount(el, Number(el.dataset.count), 1100, state));
+    if (figure.dataset.motion === 'token') {
+      figure.querySelectorAll('[data-vote-count]').forEach(el => animateCount(el, Number(el.dataset.voteCount), 2900, state, true));
+      state.timers.push(setTimeout(() => {
+        if (!state.cancelled) figure.classList.add('is-complete');
+      }, 3000));
+    } else {
+      state.timers.push(setTimeout(() => {
+        if (!state.cancelled) figure.classList.add('is-complete');
+      }, 3600));
+    }
+    // Only the ad-revenue flow loops; the token explanation plays once and settles.
+    if (figure.matches('.flow-figure')) {
+      state.timers.push(setTimeout(() => {
+        if (!state.cancelled) play(figure);
+      }, 4400));
+    }
+  };
+
+  if (!reduced.matches && 'IntersectionObserver' in window) {
+    root.classList.add('motion-ready');
+    observer = new IntersectionObserver(entries => {
+      for (const entry of entries) {
+        const looping = entry.target.matches('.flow-figure');
+        if (!entry.isIntersecting) {
+          if (looping) {
+            clear(entry.target);
+            entry.target.classList.add('is-visible', 'is-complete');
+            finishCounters(entry.target);
+          }
+          continue;
+        }
+        play(entry.target);
+        if (!looping) observer.unobserve(entry.target);
+      }
+    }, { threshold: 0.2 });
+    figures.forEach(figure => observer.observe(figure));
+  } else {
+    figures.forEach(figure => {
+      figure.classList.add('is-visible', 'is-complete');
+      finishCounters(figure);
+    });
+  }
+  reduced.addEventListener('change', () => {
+    if (!reduced.matches) return;
+    observer?.disconnect();
+    root.classList.remove('motion-ready');
+    figures.forEach(figure => {
+      clear(figure);
+      figure.classList.add('is-visible', 'is-complete');
+      finishCounters(figure);
+    });
+  });
+})();
+
+  </script>
+  <script>
+(() => {
+  const demo=document.querySelector('.tap-demo');
+  if(!demo)return;
+  const hit=demo.querySelector('.tap-hit-area');
+  const output=demo.querySelector('.tap-points');
+  const score=demo.querySelector('.tap-votes');
+  const gain=demo.querySelector('.tap-gain');
+  const initialVotes=53453667;
+  let taps=0;
+  const digits=[];
+  score.replaceChildren();
+  for(const character of '53,453,667'){
+    const digit=document.createElement('span');
+    digit.className=character===','?'vote-comma':'vote-digit';
+    digit.textContent=character;digit.setAttribute('aria-hidden','true');
+    score.append(digit);digits.push(digit);
+  }
+  const status=demo.querySelector('.tap-status');
+  const hand=demo.querySelector('.tap-hand');
+  const bursts=demo.querySelector('.tap-bursts');
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+  const format=new Intl.NumberFormat('en-US');
+  const positions=[[.5,.48],[.22,.37],[.77,.52],[.5,.6],[.14,.65],[.84,.32]];
+  let points=24000;
+  let inView=false;
+  let timer=0;
+  let tapTimer=0;
+  let manualUntil=0;
+  let positionIndex=0;
+  const canPlay=()=>inView&&!document.hidden&&!reduced.matches&&points>0;
+  const stop=()=>{clearTimeout(timer);clearTimeout(tapTimer)};
+  const paint=()=>{
+    output.textContent=format.format(points);
+    demo.dataset.points=String(points);
+    const votes=initialVotes+taps;
+    demo.dataset.votes=String(votes);demo.dataset.taps=String(taps);
+    [...format.format(votes)].forEach((character,index)=>{digits[index].textContent=character});
+    score.setAttribute('aria-label',`Messi 투표 수 ${format.format(votes)}`);
+    gain.hidden=taps===0;gain.textContent=`+${format.format(taps)}`;
+    hit.setAttribute('aria-label',`사진이나 격자 영역을 탭해 투표하기. 남은 포인트 ${format.format(points)}`);
+    hit.disabled=points===0;
+  };
+  const addBurst=(x,y)=>{
+    if(reduced.matches)return;
+    while(bursts.children.length>28)bursts.firstElementChild.remove();
+    const ring=document.createElement('span');
+    ring.className='tap-ring';
+    ring.style.left=`${x*100}%`;ring.style.top=`${y*100}%`;
+    bursts.append(ring);
+    ring.addEventListener('animationend',()=>ring.remove(),{once:true});
+    const paths=[['-160%','-590%'],['35%','-760%'],['200%','-610%']];
+    for(const [drift,rise] of paths){
+      const heart=document.createElementNS('http://www.w3.org/2000/svg','svg');
+      heart.setAttribute('class','tap-heart');heart.setAttribute('viewBox','0 0 24 24');
+      heart.style.left=`${x*100}%`;heart.style.top=`${y*100}%`;
+      heart.style.setProperty('--drift',drift);heart.style.setProperty('--rise',rise);
+      const shape=document.createElementNS('http://www.w3.org/2000/svg','path');
+      shape.setAttribute('d','M12 21 3.1 12.4C-2 7.4 5.5.1 12 6.5 18.5.1 26 7.4 20.9 12.4Z');
+      heart.append(shape);bursts.append(heart);
+      heart.addEventListener('animationend',()=>heart.remove(),{once:true});
+    }
+  };
+  const tap=(x,y,manual=false)=>{
+    if(points===0)return;
+    points-=1;taps+=1;paint();addBurst(x,y);
+    if(!reduced.matches){
+      for(const element of [score,gain]){
+        element.classList.remove('is-updated');void element.getBoundingClientRect();element.classList.add('is-updated');
+      }
+    }
+    demo.dataset.lastTapX=x.toFixed(4);demo.dataset.lastTapY=y.toFixed(4);
+    if(manual)status.textContent=`남은 포인트 ${format.format(points)}`;
+  };
+  const tick=()=>{
+    if(!canPlay())return;
+    if(Date.now()<manualUntil){timer=setTimeout(tick,manualUntil-Date.now());return}
+    demo.classList.remove('is-manual');
+    const [x,y]=positions[positionIndex++%positions.length];
+    demo.style.setProperty('--tap-x',`${x*100}%`);demo.style.setProperty('--tap-y',`${y*100}%`);
+    tapTimer=setTimeout(()=>{
+      if(!canPlay())return;
+      hand.classList.remove('is-tapping');void hand.getBoundingClientRect();hand.classList.add('is-tapping');
+      tap(x,y);
+      if(canPlay())timer=setTimeout(tick,950);
+      else sync();
+    },320);
+  };
+  const sync=()=>{
+    stop();
+    const playing=canPlay();
+    demo.classList.toggle('is-playing',playing);
+    if(playing)timer=setTimeout(tick,Math.max(350,manualUntil-Date.now()));
+  };
+  hit.addEventListener('click',event=>{
+    const bounds=demo.getBoundingClientRect();
+    // Keyboard activation taps the portrait; pointer activation preserves the exact location.
+    const x=event.detail===0?.5:(event.clientX-bounds.left)/bounds.width;
+    const y=event.detail===0?.48:(event.clientY-bounds.top)/bounds.height;
+    // The two controls and point balance are UI panels, rather than the surrounding tap surface.
+    if((y>=.69&&y<=.77&&x>=.34&&x<=.67)||(y>=.775&&y<=.845&&x>=.185&&x<=.8))return;
+    manualUntil=Date.now()+4000;
+    demo.classList.add('is-manual');
+    tap(x,y,true);sync();
+  });
+  reduced.addEventListener('change',()=>{bursts.replaceChildren();sync()});
+  document.addEventListener('visibilitychange',sync);
+  paint();
+  if('IntersectionObserver' in window){
+    const observer=new IntersectionObserver(entries=>{inView=entries[0].isIntersecting;sync()},{threshold:.15});
+    observer.observe(demo);
+  }else{inView=true;sync()}
+})();
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Excel" viewBox="0 0 64 64">
+<title>Microsoft Excel</title>
+<circle cx="32" cy="32" r="32" fill="#087A43"/>
+<rect x="29" y="15" width="26" height="35" rx="1.5" fill="#F1F8F1"/>
+<path d="M29 25h26M29 35h26M29 44h26M42 15v35" stroke="#93C5A7" stroke-width="1.5"/>
+<rect x="14" y="18" width="25" height="30" rx="1.5" fill="#116E3C"/>
+<text x="19" y="39" fill="#fff" font-family="Arial,sans-serif" font-weight="700" font-size="20">X</text>
+</svg>

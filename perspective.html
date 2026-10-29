@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="ko" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090909">
+  <meta name="description" content="박동호(Leo Park)의 프로필, 경력 및 업무 도구">
+  <title>Profile | Portfolio</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  <script>
+    try { if (localStorage.getItem("portfolio-theme") === "light") document.documentElement.dataset.theme = "light"; } catch (_) {}
+  </script>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #090909; --text: #f4f4f5; --muted: #919397;
+      --line: #292a2c; --control: #1d1e20; --control-hover: #303136; --header-muted: #a0a3a8;
+    }
+    :root[data-theme="light"] {
+      color-scheme: light;
+      --bg: #fafafa; --text: #1c1c1f; --muted: #74777d;
+      --line: #dfe0e4; --control: #ebebef; --control-hover: #dedee3; --header-muted: #656970;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { background: var(--bg); }
+    body {
+      margin: 0; min-width: 320px; min-height: 100vh;
+      display: flex; flex-direction: column; background: var(--bg); color: var(--text);
+      font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    button { font: inherit; }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--text); outline-offset: 4px; }
+    .sticky-site-nav {
+      position: sticky; top: 0; z-index: 100; width: 100%; background: var(--bg);
+      transition: box-shadow .18s ease;
+    }
+    .sticky-site-nav.is-scrolled { box-shadow: inset 0 -1px 0 var(--line); }
+    /* Home과 동일한 헤더 컨테이너 및 네비게이션 기준 */
+    .topbar {
+      width: 100%; max-width: 1552px; height: 79px; margin-inline: auto; padding-inline: 40px;
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    }
+    .brand { display: flex; align-items: baseline; gap: 17px; min-width: 0; text-decoration: none; }
+    .brand-name { color: var(--text); font-size: 14px; font-weight: 750; letter-spacing: -.3px; }
+    .header-actions { display: flex; align-items: center; gap: 27px; }
+    .header-nav { display: flex; align-items: center; gap: 24px; }
+    .header-link {
+      font-size: 12px; font-weight: 600; color: var(--header-muted); text-decoration: none;
+    }
+    .header-link:hover { color: var(--text); }
+    .header-link[aria-current="page"] { color: var(--text); text-decoration: underline; text-underline-offset: 7px; }
+    .theme-switch {
+      height: 34px; min-width: 88px; padding: 0 13px; border: 1px solid var(--line);
+      border-radius: 100px; background: var(--control); color: var(--text);
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      font-size: 12px; font-weight: 600; cursor: pointer;
+    }
+    .theme-switch:hover { background: var(--control-hover); }
+    .theme-switch svg {
+      width: 15px; height: 15px; fill: none; stroke: currentColor;
+      stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round;
+    }
+    .moon-icon { display: none; }
+    :root[data-theme="light"] .sun-icon { display: none; }
+    :root[data-theme="light"] .moon-icon { display: block; }
+    main { width: 100%; max-width: 1088px; margin: 0 auto; padding: 78px 32px 90px; flex: 1; }
+    .profile-content { width: 100%; max-width: 860px; margin: 0 auto; }
+    .profile-section { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 30px; align-items: start; }
+    .profile-section + .profile-section { margin-top: 64px; }
+    .section-title { margin: 0; font-size: 22px; line-height: 1.45; font-weight: 700; letter-spacing: -.04em; }
+    .profile-name { margin: 0; font-size: 29px; font-weight: 700; line-height: 1.35; letter-spacing: -.05em; }
+    .profile-english { margin: 3px 0 9px; color: var(--muted); font-size: 19px; font-weight: 450; line-height: 1.5; letter-spacing: -.025em; }
+    .contact-line { margin: 0 0 5px; font-size: 16px; line-height: 1.65; letter-spacing: -.019em; font-weight: 450; }
+    .contact-line:last-child { margin-bottom: 0; }
+    .contact-line a { text-decoration: none; }
+    .contact-line a:hover { text-decoration: underline; text-underline-offset: 4px; }
+    .career-list { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+    .career-list li { display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 21px; align-items: baseline; }
+    .career-period { font-size: 15px; line-height: 1.65; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .career-role { font-size: 16px; line-height: 1.65; font-weight: 450; letter-spacing: -.022em; word-break: keep-all; }
+    .tool-list { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin: 0; padding: 0; list-style: none; }
+    .tool-icon { display: flex; align-items: center; justify-content: center; width: 38px; height: 38px; }
+    .tool-icon img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .tool-icon--figma { background: #1e2023; border-radius: 50%; padding: 8px; }
+    .tool-icon--figma img { width: 22px; height: 22px; }
+    :root:not([data-theme="light"]) .tool-icon--mono img { filter: invert(1); }
+    .tool-icon--powerpoint img { width: 38px; height: 38px; }
+    footer {
+      width: calc(100% - 64px); max-width: 1024px; margin: 0 auto; padding: 22px 0 40px;
+      border-top: 1px solid var(--line); display: flex; justify-content: space-between;
+      gap: 16px; font-size: 12px; color: var(--muted);
+    }
+    footer a { color: var(--text); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    @media (max-width: 1130px) {
+      .topbar { padding-inline: 32px; }
+    }
+    @media (max-width: 640px) {
+      .topbar { height: 65px; padding-inline: 20px; }
+      .header-actions { gap: 12px; }
+      .header-nav { gap: 13px; }
+      .header-nav .header-link { font-size: 11px; }
+      .header-actions > .header-link { display: none; }
+      main { padding: 48px 20px 66px; }
+      .profile-section { grid-template-columns: minmax(0, 1fr); gap: 19px; }
+      .profile-section + .profile-section { margin-top: 52px; }
+      .section-title { font-size: 20px; }
+      .profile-name { font-size: 26px; }
+      .profile-english { font-size: 18px; }
+      .contact-line { font-size: 15px; }
+      .career-list { gap: 12px; }
+      .career-list li { grid-template-columns: 104px minmax(0, 1fr); gap: 12px; }
+      .career-period { font-size: 13px; }
+      .career-role { font-size: 14px; }
+      .tool-list { gap: 16px; }
+      .tool-icon { width: 36px; height: 36px; }
+      footer { width: calc(100% - 40px); padding: 20px 0 34px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .sticky-site-nav { transition: none; } }
+  </style>
+  <link rel="stylesheet" href="/portfolio-fonts.css">
+</head>
+<body>
+  <div class="sticky-site-nav">
+    <header class="topbar">
+      <a class="brand" href="/"><span class="brand-name">PORTFOLIO</span></a>
+      <div class="header-actions">
+        <nav class="header-nav" aria-label="상단 메뉴">
+          <a class="header-link" href="/">프로젝트</a>
+          <a class="header-link" href="/profile" aria-current="page">Profile</a>
+        </nav>
+        <a class="header-link" href="https://github.com/Flow4Work" target="_blank" rel="noopener noreferrer">GITHUB ↗</a>
+        <button class="theme-switch" type="button" id="theme-switch" aria-label="화이트 모드로 전환" aria-pressed="false">
+          <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/></svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.9 13.2A9 9 0 0 1 10.8 3.1 9 9 0 1 0 20.9 13.2Z"/></svg>
+          <span id="theme-label">LIGHT</span>
+        </button>
+      </div>
+    </header>
+  </div>
+  <main>
+    <div class="profile-content">
+      <section class="profile-section" aria-labelledby="profile-title">
+        <h1 class="section-title" id="profile-title">Profile</h1>
+        <div class="profile-details">
+          <h2 class="profile-name">박동호</h2>
+          <p class="profile-english" lang="en">Leo Park</p>
+          <p class="contact-line">1991. 08. 19</p>
+          <p class="contact-line"><a href="mailto:ehdgh19@gmail.com">ehdgh19@gmail.com</a></p>
+          <p class="contact-line"><a href="tel:01033398944">010-3339-8944</a></p>
+        </div>
+      </section>
+      <section class="profile-section" aria-labelledby="career-title">
+        <h2 class="section-title" id="career-title">Career</h2>
+        <ol class="career-list">
+          <li><span class="career-period">2023 - 2025</span><span class="career-role">에이아이제로엑스(FANC) 부사장</span></li>
+          <li><span class="career-period">2021 - 2023</span><span class="career-role">비츠비(OwnerBe) 대표</span></li>
+          <li><span class="career-period">2021</span><span class="career-role">데일리비트 PM</span></li>
+          <li><span class="career-period">2019 - 2020</span><span class="career-role">테스시스템 주니어 PM</span></li>
+          <li><span class="career-period">2018 - 2019</span><span class="career-role">코인빗 운영 팀장</span></li>
+          <li><span class="career-period">2018</span><span class="career-role">코네(Upbit) FAQ Team 매니저</span></li>
+        </ol>
+      </section>
+      <section class="profile-section" aria-labelledby="tools-title">
+        <h2 class="section-title" id="tools-title">Tools</h2>
+        <ul class="tool-list" aria-label="사용 도구">
+          <li class="tool-icon tool-icon--figma" title="Figma"><img src="./assets/tool-figma.svg" alt="Figma" width="22" height="22"></li>
+          <li class="tool-icon tool-icon--powerpoint" title="PowerPoint"><img src="./assets/tool-powerpoint.svg" alt="PowerPoint" width="38" height="38"></li>
+          <li class="tool-icon tool-icon--mono" title="OpenAI"><img src="./assets/tool-openai.svg" alt="OpenAI" width="38" height="38"></li>
+          <li class="tool-icon" title="Google Analytics"><img src="./assets/tool-analytics.svg" alt="Google Analytics" width="38" height="38"></li>
+          <li class="tool-icon" title="Excel"><img src="./assets/tool-excel.svg" alt="Excel" width="38" height="38"></li>
+          <li class="tool-icon tool-icon--mono" title="CapCut"><img src="./assets/tool-capcut.svg" alt="CapCut" width="38" height="38"></li>
+          <li class="tool-icon tool-icon--mono" title="Notion"><img src="./assets/tool-notion.svg" alt="Notion" width="38" height="38"></li>
+        </ul>
+      </section>
+    </div>
+  </main>
+  <footer><span>Profile</span><a href="/">← 프로젝트로 돌아가기</a></footer>
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const button = document.getElementById("theme-switch");
+      const label = document.getElementById("theme-label");
+      const meta = document.querySelector('meta[name="theme-color"]');
+      function sync() {
+        const light = root.dataset.theme === "light";
+        label.textContent = light ? "DARK" : "LIGHT";
+        button.setAttribute("aria-label", light ? "블랙 모드로 전환" : "화이트 모드로 전환");
+        button.setAttribute("aria-pressed", String(light));
+        meta.setAttribute("content", light ? "#fafafa" : "#090909");
+      }
+      sync();
+      button.addEventListener("click", () => {
+        root.dataset.theme = root.dataset.theme === "light" ? "dark" : "light";
+        try { localStorage.setItem("portfolio-theme", root.dataset.theme); } catch (_) {}
+        sync();
+      });
+      const nav = document.querySelector(".sticky-site-nav");
+      const update = () => nav.classList.toggle("is-scrolled", window.scrollY > 1);
+      window.addEventListener("scroll", update, { passive: true });
+      update();
+    })();
+  </script>
+</body>
+</html>

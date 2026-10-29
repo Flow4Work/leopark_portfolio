@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="ko" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090909">
+  <meta name="description" content="콘텐츠 광고 수익권 거래 커뮤니티 OwnerBe. 서비스 기획·UI/UX 디자인부터 투자 유치, 외주 개발 조율, 출시와 지표 개선까지의 경험.">
+  <title>OwnerBe | 박동호 포트폴리오</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  <script>try{if(localStorage.getItem('portfolio-theme')==='light')document.documentElement.dataset.theme='light'}catch(e){}</script>
+  <link rel="stylesheet" href="/mobile-project.css">
+
+
+  <style>
+    /* Same header layout, type scale, and responsive behavior as ChikLink. */
+    .project-hero.ownerbe-hero{max-width:860px;margin:0 auto 50px;padding-bottom:0;border-bottom:1px solid var(--line)}
+    .ownerbe-hero .eyebrow{margin:0 0 12px;font-size:11px;line-height:1.5;letter-spacing:.055em}
+    .ownerbe-hero h1{font-size:clamp(40px,4.6vw,54px);line-height:1.12;letter-spacing:-.05em}
+    .ownerbe-hero .subtitle{margin:12px 0 0;font-size:19px;line-height:1.5;font-weight:500;letter-spacing:-.035em}
+    .ownerbe-overview{display:grid;grid-template-columns:166px minmax(0,1fr);gap:44px;margin-top:32px;padding:26px 0 28px;border-top:1px solid var(--line)}
+    .ownerbe-role{margin:0}
+    .ownerbe-role dt{margin:0 0 8px;color:var(--soft);font-size:12px;line-height:1.6}
+    .ownerbe-role dd{margin:0}
+    .ownerbe-role__title{color:var(--text);font-size:21px;line-height:1.4;font-weight:600;letter-spacing:-.025em}
+    .ownerbe-role .ownerbe-role__period{margin-top:12px;color:var(--soft);font-size:12px;line-height:1.6;font-variant-numeric:tabular-nums;white-space:nowrap}
+    .ownerbe-responsibilities{display:grid;gap:12px;align-content:center;margin:0;padding:0;list-style:none;min-width:0}
+    .ownerbe-responsibilities li{display:grid;grid-template-columns:76px minmax(0,1fr);align-items:baseline;gap:16px;min-width:0}
+    .ownerbe-responsibilities strong{color:var(--text);font-size:13px;line-height:1.75;font-weight:600;letter-spacing:-.02em;white-space:nowrap}
+    .ownerbe-responsibilities p{min-width:0;margin:0;color:var(--soft);font-size:14px;line-height:1.75;letter-spacing:-.015em;word-break:keep-all;overflow-wrap:break-word}
+    .project-sections{grid-template-columns:minmax(0,1fr);gap:60px}
+    .project-section{min-width:0;border:0;padding:0}
+    .section-no{margin:0 0 12px;color:var(--muted);font-size:12px;font-weight:600;letter-spacing:.015em}
+    .project-section h2{margin:0 0 18px;font-size:clamp(27px,2.8vw,32px);font-weight:700;line-height:1.4;letter-spacing:-.044em;word-break:keep-all;text-wrap:pretty}
+    .body-copy{margin:0 0 15px;color:#d4d4d8;font-size:16px;line-height:1.8;letter-spacing:-.017em;word-break:keep-all;overflow-wrap:break-word;text-wrap:pretty}
+    :root[data-theme="light"] .body-copy{color:#313131}
+    .body-copy:last-child{margin-bottom:0}
+    .body-copy strong{color:var(--text);font-weight:650}
+    .body-copy a{color:#77aaff;text-decoration:none}
+    :root[data-theme="light"] .body-copy a{color:#145bc5}
+    .body-copy a:hover{text-decoration:underline;text-underline-offset:4px}
+    /* Shared mark style is defined in /portfolio-fonts.css. */
+    figure{margin:0}
+    figcaption{margin:12px 0 0;text-align:center;color:var(--muted);font-size:12px;line-height:1.75;letter-spacing:-.01em;word-break:keep-all}
+    .original-media{margin-top:27px}
+    .original-media a{display:block;border-radius:9px;overflow:hidden}
+    .original-media img{display:block;width:100%;height:auto}
+    .feature-story{display:grid;grid-template-columns:minmax(0,1fr) 286px;gap:48px;align-items:center;padding:34px 0;margin-top:28px}
+    .feature-story + .feature-story{margin-top:0}
+    .feature-copy{min-width:0}
+    .feature-label{margin:0 0 12px;font-size:12px;font-weight:600;color:var(--muted)}
+    .feature-copy h3{margin:0 0 19px;font-size:24px;line-height:1.5;font-weight:650;letter-spacing:-.04em;word-break:keep-all;text-wrap:pretty}
+    .phone-screen{width:100%;max-width:286px;margin:0 auto}
+    .phone-screen a{display:block;border:1px solid var(--line);border-radius:17px;overflow:hidden;line-height:0;background:#fff}
+    .phone-screen img{display:block;width:100%;height:auto}
+    .phone-screen--dark a{background:#000}
+    .decision-note{margin:24px 0 0;padding:2px 0 2px 20px;border-left:2px solid var(--line)}
+    .decision-note .body-copy{color:var(--soft);font-size:15px}
+    .service-flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin:27px 0;padding:22px 0;list-style:none;border-block:1px solid var(--line)}
+    .service-flow li{position:relative;min-width:0;padding:0 18px}
+    .service-flow li:first-child{padding-left:0}
+    .service-flow li+li{border-left:1px solid var(--line)}
+    .service-flow span{display:block;margin-bottom:9px;color:var(--muted);font-size:11px}
+    .service-flow strong{display:block;margin-bottom:7px;font-size:16px;line-height:1.5;font-weight:650;letter-spacing:-.025em}
+    .service-flow p{margin:0;color:var(--soft);font-size:13px;line-height:1.75;word-break:keep-all}
+    .design-story{margin-top:30px}
+    .design-story+.design-story{margin-top:38px}
+    .design-story h3{margin:0 0 13px;font-size:21px;line-height:1.5;font-weight:650;letter-spacing:-.035em}
+    .case-metrics{display:grid;grid-template-columns:repeat(var(--metric-count,2),minmax(0,1fr));margin:26px 0;padding:23px 0;border-block:1px solid var(--line)}
+    .case-metric{margin:0;padding:0 24px;min-width:0}
+    .case-metric:first-child{padding-left:0}
+    .case-metric+.case-metric{border-left:1px solid var(--line)}
+    .case-metric dt{margin:0 0 8px;color:var(--muted);font-size:12px;line-height:1.6}
+    .case-metric dd{margin:0;color:var(--text);font-size:clamp(25px,3.4vw,36px);line-height:1.2;letter-spacing:-.04em;font-weight:700;white-space:nowrap}
+    .case-metric dd small{font-size:14px;font-weight:500;letter-spacing:-.015em}
+    .operation-list,.lesson-journal{margin:25px 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}
+    .operation-list li,.lesson-journal li{display:grid;grid-template-columns:118px minmax(0,1fr);gap:24px;padding:23px 0;border-bottom:1px solid var(--line)}
+    .lesson-label{color:var(--muted);font-size:13px;line-height:1.8;padding-top:3px}
+    .operation-list h3,.lesson-journal h3{margin:0 0 9px;font-size:19px;line-height:1.5;letter-spacing:-.03em;word-break:keep-all;font-weight:650}
+    .operation-list .body-copy,.lesson-journal .body-copy{font-size:15px}
+    /* 01 background: editorial image and compact ownership comparison. */
+    .origin-lead{margin-bottom:21px}
+    .origin-picture{display:block;margin:24px 0 29px}
+    .origin-picture__art{display:block;width:100%;height:auto;aspect-ratio:1.78;object-fit:cover;object-position:center center;border-radius:9px;background:#111}
+    .origin-picture__source{margin-top:9px;text-align:right;color:var(--muted);font-size:11px;line-height:1.5}
+    .origin-picture__source a{color:inherit;text-decoration:none}
+    .origin-picture__source a:hover{color:var(--text);text-decoration:underline;text-underline-offset:3px}
+    .origin-comparison{margin:28px 0 32px}
+    .origin-comparison__label{display:block;margin-bottom:12px;color:var(--muted);font-size:12px;font-weight:550;line-height:1.5;text-align:left}
+    .origin-comparison__grid{position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px}
+    .origin-comparison__cell{min-width:0;padding:19px 20px 21px;border:1px solid var(--line);border-radius:9px}
+    .origin-comparison__title{margin:0 0 14px;color:var(--text);font-size:19px;line-height:1.45;font-weight:650;letter-spacing:-.03em;text-align:center;word-break:keep-all}
+    .origin-comparison__media{display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:16/10;background:#fff;border:1px solid var(--line);border-radius:7px;overflow:hidden}
+    .origin-comparison__media--dark{background:#18191c}
+    .origin-comparison__media img{display:block;width:100%;height:100%;object-fit:contain}
+    .origin-comparison__source{margin:8px 0 0;text-align:right;font-size:11px;line-height:1.5}
+    .origin-comparison__source a{color:var(--muted);text-decoration:none}
+    .origin-comparison__source a:hover{color:var(--text);text-decoration:underline;text-underline-offset:3px}
+    .origin-comparison__description{margin:15px 0 0;color:var(--soft);font-size:13px;line-height:1.75;word-break:keep-all;text-align:center}
+    .origin-comparison__description span{display:block}
+    .origin-comparison__vs{position:absolute;left:50%;top:47%;transform:translate(-50%,-50%);z-index:1;display:flex;align-items:center;justify-content:center;width:54px;height:54px;border:1px solid var(--line);border-radius:50%;background:var(--bg,#fff);color:var(--text);font-size:16px;font-weight:750;letter-spacing:.015em}
+    .origin-profile-story{display:grid;grid-template-columns:minmax(0,1fr) 232px;gap:32px;align-items:center;margin:27px 0 31px}
+    .origin-profile-story__copy{min-width:0}
+    .origin-profile-story__copy .body-copy{margin:0;font-size:15px;line-height:1.84}
+    .origin-profile-story__copy .body-copy+.body-copy{margin-top:16px}
+    .origin-profile-story__figure{margin:0;min-width:0}
+    .origin-profile-story__figure img{display:block;width:100%;aspect-ratio:1/1;height:auto;border-radius:9px;object-fit:cover}
+    .origin-profile-story__figure figcaption{margin:8px 0 0;text-align:right;font-size:11px;line-height:1.5}
+    .origin-profile-story__figure a{color:var(--muted);text-decoration:none}
+    .origin-profile-story__figure a:hover{color:var(--text);text-decoration:underline;text-underline-offset:3px}
+    .origin-thought{margin:27px 0 25px;padding:0 0 0 18px;border-left:2px solid #618efc}
+    .origin-thought strong{display:block;color:var(--text);font-size:21px;line-height:1.55;font-weight:650;letter-spacing:-.035em;word-break:keep-all}
+    .origin-conclusion{margin-bottom:0}
+    @media(max-width:640px){
+      .origin-picture{margin:20px 0 26px}
+      .origin-picture__art{aspect-ratio:1.5;border-radius:7px}
+      .origin-picture__source{font-size:10px;margin-top:8px}
+      .origin-comparison{margin:21px 0 26px}
+      .origin-comparison__grid{grid-template-columns:minmax(0,1fr);gap:0}
+      .origin-comparison__cell{padding:17px 18px 19px}
+      .origin-comparison__title{font-size:17px;margin-bottom:12px}
+      .origin-comparison__media{aspect-ratio:16/9}
+      .origin-comparison__description{font-size:13px;line-height:1.7}
+      .origin-comparison__vs{position:relative;left:auto;top:auto;transform:none;margin:-2px auto;width:46px;height:46px;font-size:14px}
+      .origin-profile-story{grid-template-columns:minmax(0,1fr);gap:19px;margin:23px 0 29px}
+      .origin-profile-story__copy .body-copy{font-size:14px;line-height:1.82}
+      .origin-profile-story__copy .body-copy+.body-copy{margin-top:13px}
+      .origin-profile-story__figure{width:min(60%,220px);justify-self:end}
+      .origin-profile-story__figure img{border-radius:7px}
+      .origin-profile-story__figure figcaption{font-size:10px}
+      .origin-thought{margin:23px 0;padding-left:14px}
+      .origin-thought strong{font-size:18px}
+    }
+    @media(max-width:800px){.ownerbe-overview{grid-template-columns:136px minmax(0,1fr);gap:30px}}
+    @media(max-width:760px){.feature-story{grid-template-columns:minmax(0,1fr) 240px;gap:28px}.feature-copy h3{font-size:22px}}
+    @media(max-width:640px){.project-hero{margin-bottom:42px}.project-sections{gap:42px}.project-section h2{font-size:25px}.body-copy{font-size:14px;line-height:1.82}.feature-story{grid-template-columns:minmax(0,1fr);gap:25px;padding:24px 0;margin-top:22px}.feature-story+.feature-story{padding-top:30px}.feature-copy h3{font-size:21px;margin-bottom:15px}.phone-screen{max-width:280px}.original-media{margin-top:22px}figcaption{font-size:11px}.service-flow{grid-template-columns:1fr 1fr;gap:22px 0;padding:20px 0}.service-flow li{padding-inline:16px}.service-flow li:nth-child(3){padding-left:0;border-left:0}.service-flow strong{font-size:15px}.service-flow p{font-size:12px}.case-metrics{padding:20px 0}.case-metric{padding-inline:16px}.case-metric dt{font-size:11px}.case-metric dd{font-size:27px}.case-metric dd small{font-size:12px}.case-metrics--three .case-metric{padding-inline:10px}.case-metrics--three .case-metric:first-child{padding-left:0}.case-metrics--three .case-metric dd{font-size:25px}.design-story h3{font-size:20px}.operation-list li,.lesson-journal li{grid-template-columns:minmax(0,1fr);gap:8px;padding:21px 0}.lesson-label{font-size:12px;padding:0}.operation-list h3,.lesson-journal h3{font-size:18px}.operation-list .body-copy,.lesson-journal .body-copy,.decision-note .body-copy{font-size:14px}.decision-note{padding-left:15px}}
+    @media(max-width:640px){
+      .project-hero.ownerbe-hero{margin-bottom:36px}
+      .ownerbe-hero .eyebrow{margin-bottom:11px}
+      .ownerbe-hero h1{font-size:40px}
+      .ownerbe-hero .subtitle{margin-top:11px;font-size:17px;line-height:1.55}
+      .ownerbe-overview{grid-template-columns:minmax(0,1fr);gap:21px;margin-top:25px;padding:21px 0 24px}
+      .ownerbe-role{display:flex;align-items:baseline;gap:12px}
+      .ownerbe-role dt{margin:0;font-size:11px}
+      .ownerbe-role__title{font-size:16px}
+      .ownerbe-role .ownerbe-role__period{margin:0 0 0 auto;font-size:11px}
+      .ownerbe-responsibilities{gap:12px}
+      .ownerbe-responsibilities li{grid-template-columns:65px minmax(0,1fr);gap:12px}
+      .ownerbe-responsibilities strong{font-size:12px;line-height:1.8}
+      .ownerbe-responsibilities p{font-size:13px;line-height:1.8}
+    }
+    @media(max-width:360px){.case-metric dd{font-size:23px}.case-metrics--three{grid-template-columns:1fr 1.3fr 1fr}.case-metrics--three .case-metric dd{font-size:21px}}
+    /* 03: reuse the page's editorial rules, type, and restrained highlights. */
+    .ownerbe-structure h2{scroll-margin-top:28px}
+    .ownerbe-structure .ownerbe-intro{margin-bottom:25px}
+    .ownerbe-answers{margin:0 0 32px;padding:0;list-style:none;border-top:1px solid var(--line)}
+    .ownerbe-answers li{display:grid;grid-template-columns:148px minmax(0,1fr);gap:24px;padding:19px 0;border-bottom:1px solid var(--line)}
+    .ownerbe-answers h3{margin:0;color:var(--text);font-size:15px;font-weight:650;line-height:1.8;letter-spacing:-.025em;word-break:keep-all}
+    .ownerbe-answers h3 span{margin-right:7px;color:var(--muted);font-weight:500}
+    .ownerbe-answers .body-copy{margin:0;font-size:15px;line-height:1.8}
+    .ownerbe-flow-heading{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:20px}
+    .ownerbe-flow-heading h3{margin:0;font-size:20px;font-weight:650;line-height:1.5;letter-spacing:-.035em;word-break:keep-all}
+    .ownerbe-flow-heading p{margin:0;color:var(--muted);font-size:11px;line-height:1.6;word-break:keep-all}
+    .ownerbe-screen-flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin:0;padding:0;list-style:none}
+    .ownerbe-screen-flow li{position:relative;min-width:0}
+    .ownerbe-step-heading{display:flex;align-items:baseline;gap:8px;margin:0 0 13px}
+    .ownerbe-step-heading span{color:var(--muted);font-size:11px;font-variant-numeric:tabular-nums}
+    .ownerbe-step-heading h4{margin:0;font-size:15px;font-weight:650;line-height:1.6;letter-spacing:-.025em;word-break:keep-all}
+    .ownerbe-screen-open{display:block;position:relative;width:100%;margin:0;padding:0;border:0;background:transparent;color:inherit;text-align:left;cursor:zoom-in}
+    .ownerbe-flow-screen{display:block;position:relative;isolation:isolate;width:100%;aspect-ratio:330/419;overflow:hidden;border:1px solid var(--line);border-radius:8px;background:#fff;transition:border-color .18s ease}
+    .ownerbe-flow-screen img{position:absolute;display:block;max-width:none;width:484.848485%;height:auto;left:calc(var(--screen-x) * -.303030303%);top:-67.064439%;pointer-events:none}
+    .ownerbe-screen-open:hover .ownerbe-flow-screen{border-color:var(--soft)}
+    .ownerbe-screen-flow .ownerbe-step-copy{margin:13px 0 0;color:var(--soft);font-size:13px;line-height:1.8;letter-spacing:-.015em;word-break:keep-all;overflow-wrap:break-word}
+    .ownerbe-screen-flow .ownerbe-step-copy strong{color:var(--text);font-weight:600}
+    .ownerbe-community{margin-top:28px;scroll-margin-top:28px}
+    .ownerbe-step-arrow{position:absolute;left:calc(100% + 4px);top:50%;transform:translateY(-50%);color:var(--muted);font-size:15px;line-height:1;pointer-events:none}
+    .ownerbe-viewer{width:min(480px,calc(100vw - 32px));max-height:calc(100dvh - 40px);margin:auto;padding:22px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--text);overflow:auto}
+    .ownerbe-viewer::backdrop{background:rgba(0,0,0,.72)}
+    .ownerbe-viewer-header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:16px}
+    .ownerbe-viewer h3{margin:0;font-size:19px;line-height:1.5;letter-spacing:-.03em}
+    .ownerbe-viewer-close{display:flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;border:1px solid var(--line);border-radius:6px;background:transparent;color:var(--text);font-size:13px;cursor:pointer}
+    .ownerbe-viewer .ownerbe-step-copy{margin:16px 0 0;color:var(--soft);font-size:14px;line-height:1.8;word-break:keep-all}
+    @media(max-width:760px){
+      .ownerbe-screen-flow{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 24px}
+      .ownerbe-step-arrow{display:none}
+    }
+    @media(max-width:640px){
+      .ownerbe-structure .ownerbe-intro{margin-bottom:22px}
+      .ownerbe-answers{margin-bottom:28px}
+      .ownerbe-answers li{grid-template-columns:minmax(0,1fr);gap:7px;padding:16px 0}
+      .ownerbe-answers h3{font-size:14px}
+      .ownerbe-answers .body-copy{font-size:14px;line-height:1.82}
+      .ownerbe-flow-heading{display:block;margin-bottom:18px}
+      .ownerbe-flow-heading h3{font-size:19px}
+      .ownerbe-flow-heading p{margin-top:6px}
+      .ownerbe-screen-flow{gap:25px 18px}
+      .ownerbe-step-heading{gap:6px;margin-bottom:11px}
+      .ownerbe-step-heading h4{font-size:14px}
+      .ownerbe-screen-flow .ownerbe-step-copy{font-size:13px;margin-top:11px;line-height:1.75}
+      .ownerbe-flow-screen{border-radius:6px}
+      .ownerbe-viewer{padding:16px}
+    }
+    @media(prefers-reduced-motion:reduce){.ownerbe-flow-screen{transition:none}}
+    /* 05: a short narrative for each responsibility, with static source images. */
+    .ownerbe-operation h2,.ownerbe-reflection h2{scroll-margin-top:28px}
+    .ownerbe-reflection{--reflection-accent:#0047FF;--reflection-body:#d4d4d8}
+    :root[data-theme="light"] .ownerbe-reflection{--reflection-body:#313131}
+    .ownerbe-reflection>.section-no{color:var(--reflection-accent);font-size:11px;font-weight:650;letter-spacing:.09em}
+    .ownerbe-reflection .lesson-journal{list-style:none;margin:28px 0 0;padding:0}
+    .ownerbe-reflection .lesson-entry{display:grid;grid-template-columns:135px minmax(0,1fr);gap:24px;padding:26px 0;border-top:1px solid var(--line);border-bottom:0}
+    .ownerbe-reflection .lesson-label{display:flex;align-items:baseline;gap:11px;padding-top:3px}
+    .ownerbe-reflection .lesson-label span{color:var(--reflection-accent);font-size:11px;font-variant-numeric:tabular-nums}
+    .ownerbe-reflection .lesson-label strong{color:var(--soft);font-size:13px;font-weight:600;white-space:nowrap}
+    .ownerbe-reflection .lesson-entry h3{margin:0 0 10px;font-size:20px;font-weight:660;line-height:1.5;letter-spacing:-.035em;word-break:keep-all;text-wrap:pretty}
+    .ownerbe-reflection .lesson-entry p{margin:0;color:var(--reflection-body);font-size:15px;line-height:1.85;letter-spacing:-.014em;word-break:keep-all;text-wrap:pretty;overflow-wrap:break-word}
+    @media(max-width:560px){
+      .ownerbe-reflection .lesson-journal{margin-top:23px}
+      .ownerbe-reflection .lesson-entry{grid-template-columns:1fr;gap:12px;padding:23px 0}
+      .ownerbe-reflection .lesson-label{padding-top:0}
+      .ownerbe-reflection .lesson-entry h3{font-size:18px}
+      .ownerbe-reflection .lesson-entry p{font-size:14px}
+    }
+    .ownerbe-work-block{margin-top:38px}
+    .ownerbe-work-block h3{margin:0 0 14px;font-size:21px;font-weight:650;line-height:1.5;letter-spacing:-.035em;word-break:keep-all}
+    .ownerbe-work-media{width:100%;max-width:860px;margin:23px auto 0}
+    .ownerbe-work-media--screens{max-width:740px}
+    .ownerbe-work-media img{display:block;width:100%;height:auto;border-radius:7px;cursor:default}
+    .ownerbe-work-media figcaption{margin-top:10px}
+    .ownerbe-qa-example{margin:23px 0;scroll-margin-top:28px}
+    .ownerbe-qa-example .feature-label{margin-bottom:10px}
+    .ownerbe-qa-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 30px;margin:0;padding-left:18px;color:var(--soft);font-size:15px;line-height:1.8;letter-spacing:-.015em}
+    .ownerbe-qa-list li{min-width:0;word-break:keep-all;overflow-wrap:break-word}
+    .ownerbe-qa-list li::marker{color:var(--muted)}
+    .ownerbe-qa-list strong{color:var(--text);font-weight:600}
+    .ownerbe-outcomes{--outcome-rule:#344654;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin:25px 0 0;padding:24px 0;border:1px solid #344654;border-radius:4px;background:transparent;scroll-margin-top:28px}
+    :root[data-theme="light"] .ownerbe-outcomes{--outcome-rule:#d5e0e8;border-color:#cbdbe5}
+    .ownerbe-outcome{position:relative;min-width:0;padding:0 22px;text-align:center}
+    .ownerbe-outcome+.ownerbe-outcome::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:1px;background:var(--outcome-rule)}
+    .ownerbe-outcome dt{margin:0 0 13px;color:var(--soft);font-size:12px;line-height:1.6;letter-spacing:-.015em;word-break:keep-all;overflow-wrap:anywhere}
+    .ownerbe-outcome dd{margin:0;color:#0047FF;font-size:clamp(26px,3vw,34px);font-weight:650;line-height:1.25;letter-spacing:-.04em;font-variant-numeric:tabular-nums;white-space:nowrap}
+    .ownerbe-outcome dd small{color:var(--soft);font-size:14px;font-weight:500;letter-spacing:-.015em}
+    .ownerbe-outcome p{margin:10px 0 0;color:var(--muted);font-size:11px;line-height:1.6}
+    @media(max-width:640px){
+      .ownerbe-work-block{margin-top:30px}
+      .ownerbe-work-block h3{font-size:20px;margin-bottom:12px}
+      .ownerbe-work-media{margin-top:20px}
+      .ownerbe-work-media img{border-radius:5px}
+      .ownerbe-qa-example{margin:20px 0}
+      .ownerbe-qa-list{grid-template-columns:minmax(0,1fr);gap:9px;font-size:14px}
+      .ownerbe-outcomes{margin-top:20px;padding:18px 0;border-radius:3px}
+      .ownerbe-outcome{padding:0 7px}
+      .ownerbe-outcome dt{min-height:31.5px;margin-bottom:8px;font-size:10.5px;line-height:1.5}
+      .ownerbe-outcome dd{font-size:clamp(19px,5.2vw,23px)}
+      .ownerbe-outcome dd small{font-size:10.5px}
+    }
+    @media(min-width:641px) and (max-width:800px){.ownerbe-outcome{padding-inline:12px}.ownerbe-outcome dt{min-height:38.4px}}
+    @media(max-width:360px){.ownerbe-outcome{padding-inline:5px}.ownerbe-outcome dt{min-height:47.25px;font-size:10px}}
+  </style>
+  <link rel="stylesheet" href="/portfolio-fonts.css">
+</head>
+<body>
+  <div class="sticky-site-nav">
+  <header class="topbar">
+    <div class="brand">
+      <a class="brand-name" href="/">PORTFOLIO</a>
+    </div>
+    <div class="header-actions">
+      <nav class="header-nav" aria-label="상단 메뉴">
+        <a class="header-link" href="/">프로젝트</a>
+        <a class="header-link" href="/profile">Profile</a>
+      </nav>
+      <a class="header-link header-github" href="https://github.com/Flow4Work" target="_blank" rel="noopener noreferrer">GITHUB ↗</a>
+      <button class="theme-switch" type="button" id="theme-switch" aria-label="화이트 모드로 전환" aria-pressed="false">
+        <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" /><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42" /></svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.9 13.2A9 9 0 0 1 10.8 3.1 9 9 0 1 0 20.9 13.2Z" /></svg>
+        <span id="theme-label">LIGHT</span>
+      </button>
+    </div>
+  </header>
+  </div>
+  <main>
+    <header class="project-hero ownerbe-hero">
+      <p class="eyebrow">MOBILE PROJECT · 04</p>
+      <h1>OwnerBe</h1>
+      <p class="subtitle">콘텐츠 광고 수익권 거래 커뮤니티</p>
+      <div class="ownerbe-overview">
+        <dl class="ownerbe-role">
+          <dt>담당 역할</dt>
+          <dd class="ownerbe-role__title">대표 · PO</dd>
+          <dd class="ownerbe-role__period"><time datetime="2022">2022</time> — <time datetime="2023">2023</time></dd>
+        </dl>
+        <ul class="ownerbe-responsibilities" aria-label="담당 업무">
+          <li><strong>기획·디자인</strong><p>콘텐츠 수익권 거래 구조와 UI/UX 직접 설계</p></li>
+          <li><strong>출시·개선</strong><p>외주 개발 조율 및 출시, GA 분석과 A/B 테스트</p></li>
+          <li><strong>투자·제휴</strong><p>프리시드 1억 원 유치, 파트너십과 광고 수익화</p></li>
+        </ul>
+      </div>
+    </header>
+    <div class="project-sections">
+      <section class="project-section ownerbe-origin" aria-labelledby="origin">
+        <p class="section-no">01 배경</p>
+        <h2 id="origin">원숭이 그림 한 장이 수억 원?</h2>
+        <p class="body-copy origin-lead">2021년부터 원숭이 그림 같은 디지털 이미지가 수억 원에 거래되며 화제가 됐다. 바로 NFT 열풍이었다. 많은 사람에게는 투기나 사기로 비쳤다. 그런데 인터넷에서 누구나 저장할 수 있는 그림에 왜 그렇게 큰돈을 지불했을까?</p>
+
+        <figure class="origin-picture">
+          <img class="origin-picture__art" src="/assets/ownerbe-times-square.jpg" width="2048" height="1365" alt="2022년 뉴욕 타임스스퀘어 대형 전광판에 등장한 원숭이 NFT 광고" loading="lazy">
+          <figcaption class="origin-picture__source"><a href="https://www.ey.com/de_de/insights/tax-law-magazine/nfts-der-neue-hype" target="_blank" rel="noopener noreferrer">출처: EY (2022) ↗</a></figcaption>
+        </figure>
+
+        <p class="body-copy">온라인 게임의 희귀 아이템은 내가 가지고 있어도 소유 기록은 <mark>게임 회사</mark>가 관리한다. 게임이 종료되면 아이템을 사용하거나 거래하기도 어려워진다. NFT는 이 기록을 <mark>블록체인</mark>에 남겨, 게임 밖에서도 소유자를 확인하고 다른 서비스에서 거래에 활용할 수 있게 한 기술이다.</p>
+
+        <figure class="origin-comparison" aria-label="일반 게임 아이템과 NFT로 만든 게임 아이템 비교">
+          <div class="origin-comparison__label">비교표</div>
+          <div class="origin-comparison__grid">
+            <div class="origin-comparison__cell">
+              <h3 class="origin-comparison__title">일반 게임 아이템</h3>
+              <div class="origin-comparison__media">
+                <img src="/assets/ownerbe-lineage-execution-sword.jpg" alt="리니지의 진명황의 집행검 이미지" width="650" height="500" loading="lazy">
+              </div>
+              <p class="origin-comparison__source"><a href="https://weekly.donga.com/economy/article/all/11/3102835/1" target="_blank" rel="noopener noreferrer">출처: 주간동아 ↗</a></p>
+              <p class="origin-comparison__description"><span>게임 회사가 소유 기록을 관리한다.</span><span>게임이 종료되면 사용하거나 거래하기도 어렵다.</span></p>
+            </div>
+            <span class="origin-comparison__vs" aria-hidden="true">VS</span>
+            <div class="origin-comparison__cell origin-comparison__cell--chain">
+              <h3 class="origin-comparison__title">NFT로 만든 게임 아이템</h3>
+              <div class="origin-comparison__media origin-comparison__media--dark">
+                <img src="/assets/ownerbe-nft-game-item-reference.jpg" alt="STEPN과 ASICS의 운동화 NFT 이미지" width="400" height="400" loading="lazy">
+              </div>
+              <p class="origin-comparison__source"><a href="https://m.stepn.com/" target="_blank" rel="noopener noreferrer">STEPN 운동화 거래 ↗</a></p>
+              <p class="origin-comparison__description"><span>블록체인에 소유 기록을 남긴다.</span><span>게임이 종료돼도 기록은 남고, 다른 지원 서비스에서 확인할 수 있다.</span></p>
+            </div>
+          </div>
+        </figure>
+
+        <p class="body-copy">왼쪽은 리니지의 희귀 무기 진명황의 집행검이다. 강화된 집행검은 한때 <a href="https://m.inven.co.kr/webzine/wznews.php?idx=30738&iskin=pad&sclass=19" target="_blank" rel="noopener noreferrer">1억 2천만 원까지 호가</a>됐지만, 보유 정보는 리니지 게임 안에서 관리됐다. 반면 오른쪽의 <a href="https://m.stepn.com/" target="_blank" rel="noopener noreferrer">STEPN 운동화</a>는 보유 정보가 블록체인에 기록돼, 블록체인 기록을 통해 현재 보유자를 확인할 수 있었다. 두 아이템은 가치보다 보유 정보를 확인하는 방법에서 차이가 났다.</p>
+        <p class="body-copy">그렇다면 이 방식은 또 <strong>어디에 활용</strong>할 수 있을까?</p>
+      </section>
+      <section class="project-section" aria-labelledby="background"><p class="section-no">02 문제 정의</p><h2 id="background">콘텐츠의 성장에서 빠진 이용자의 몫</h2>
+      <p class="body-copy">주목한 것은 사람들이 매일 보고 공유하는 콘텐츠였다.</p>
+      <p class="body-copy">콘텐츠는 만드는 사람만의 힘으로 알려지지 않는다. 먼저 발견해서 친구에게 보내고, 다른 곳에 공유하는 이용자도 콘텐츠가 인기를 얻는 데 도움을 준다. 하지만 콘텐츠가 잘돼 수익이 생겨도, 이를 알리고 응원한 이용자에게 돌아오는 몫은 없었다. <strong>① 함께 인기를 만들었지만, 수익까지 함께 나누지는 못했다.</strong></p>
+      <p class="body-copy">좋아하는 콘텐츠를 소장하고 창작자를 응원하려고 NFT를 구매하는 사람들도 있었다. 잭 도시의 트윗 NFT 역시 이런 거래의 한 사례였지만, 판매된 것은 트윗 자체를 사용하거나 수익을 낼 권리가 아닌 <a href="https://www.wired.com/story/nft-art-market-tweets/" target="_blank" rel="noopener noreferrer">서명된 디지털 증명서</a>였다. 콘텐츠에 돈을 지불하는 거래와 그 콘텐츠의 권리를 갖는 일 사이에는 차이가 있었다. <strong>② 콘텐츠를 사고팔 수는 있었지만, 구매자가 실제로 얻는 몫까지 연결되지는 않았다.</strong></p>
+      </section>
+      <section class="project-section ownerbe-structure" aria-labelledby="structure">
+        <p class="section-no">03 서비스 구조</p>
+        <h2 id="structure">콘텐츠와 수익의 연결</h2>
+        <p class="body-copy ownerbe-intro">이에 오너비는 콘텐츠를 구매한 이용자가 해당 콘텐츠의 <mark>광고 수익도 받을 수 있도록</mark> 설계했다. 좋아하는 콘텐츠를 소장하고 응원하는 일이 수익으로도 이어지는 구조다. NFT는 광고 수익을 받을 권리가 누구에게 있는지 기록하고, 그 권리를 사고파는 데 활용했다.</p>
+
+        <ul class="ownerbe-answers" aria-label="앞선 두 문제에 대한 해결 방향">
+          <li>
+            <h3><span>①</span> 이용자의 수익 참여</h3>
+            <p class="body-copy">글이나 이미지, 아이디어 등 다양한 콘텐츠에 광고를 연결했다.<br>이용자도 수익권을 구매하면, <strong>그 콘텐츠에서 생기는 광고 수익을 나눠 받을 수 있는 구조다.</strong></p>
+          </li>
+          <li>
+            <h3><span>②</span> 구매자의 권리</h3>
+            <p class="body-copy">구매자가 얻는 몫은 <strong>해당 콘텐츠의 광고 수익을 받을 권리</strong>다.<br>NFT로 이 권리의 주인을 기록하고, 판매하면 다음 구매자에게 권리가 넘어가도록 했다.</p>
+          </li>
+        </ul>
+
+        <div class="ownerbe-flow-heading">
+          <h3 id="ownerbe-flow-title">콘텐츠 거래와 수익 흐름</h3>
+          <p>화면을 누르면 크게 볼 수 있습니다.</p>
+        </div>
+        <ol class="ownerbe-screen-flow" aria-labelledby="ownerbe-flow-title">
+          <li>
+            <div class="ownerbe-step-heading"><span>01</span><h4>콘텐츠 등록</h4></div>
+            <button class="ownerbe-screen-open" type="button" aria-label="콘텐츠 등록 화면 크게 보기" aria-haspopup="dialog" aria-controls="ownerbe-screen-viewer">
+              <span class="ownerbe-flow-screen" style="--screen-x:61"><img src="/assets/ownerbe-service-flow-reference.png" width="1600" height="900" alt="이미지와 제목을 입력하고 Create 버튼으로 콘텐츠를 등록하는 화면" loading="lazy"></span>
+              <span class="ownerbe-step-arrow" aria-hidden="true">→</span>
+            </button>
+            <p class="ownerbe-step-copy">창작자가 글이나 이미지 등 <strong>자신의 콘텐츠를 올린다.</strong></p>
+          </li>
+          <li>
+            <div class="ownerbe-step-heading"><span>02</span><h4>수익권 연결</h4></div>
+            <button class="ownerbe-screen-open" type="button" aria-label="수익권 연결 화면 크게 보기" aria-haspopup="dialog" aria-controls="ownerbe-screen-viewer">
+              <span class="ownerbe-flow-screen" style="--screen-x:446"><img src="/assets/ownerbe-service-flow-reference.png" width="1600" height="900" alt="NFT Post에서 콘텐츠와 현재 권리 보유자를 함께 확인하는 화면" loading="lazy"></span>
+              <span class="ownerbe-step-arrow" aria-hidden="true">→</span>
+            </button>
+            <p class="ownerbe-step-copy">콘텐츠의 <strong>광고 수익을 받을 권리</strong>를 NFT에 연결한다.</p>
+          </li>
+          <li>
+            <div class="ownerbe-step-heading"><span>03</span><h4>수익권 거래</h4></div>
+            <button class="ownerbe-screen-open" type="button" aria-label="수익권 거래 화면 크게 보기" aria-haspopup="dialog" aria-controls="ownerbe-screen-viewer">
+              <span class="ownerbe-flow-screen" style="--screen-x:830"><img src="/assets/ownerbe-service-flow-reference.png" width="1600" height="900" alt="Make an Offer에서 거래 금액을 확인하고 구매를 제안하는 화면" loading="lazy"></span>
+              <span class="ownerbe-step-arrow" aria-hidden="true">→</span>
+            </button>
+            <p class="ownerbe-step-copy">이용자가 수익권을 구매한다. 거래가 이뤄지면 <strong>권리의 주인도 바뀐다.</strong></p>
+          </li>
+          <li>
+            <div class="ownerbe-step-heading"><span>04</span><h4>광고 수익 확인</h4></div>
+            <button class="ownerbe-screen-open" type="button" aria-label="광고 수익 확인 화면 크게 보기" aria-haspopup="dialog" aria-controls="ownerbe-screen-viewer">
+              <span class="ownerbe-flow-screen" style="--screen-x:1227"><img src="/assets/ownerbe-service-flow-reference.png" width="1600" height="900" alt="Ad Revenue에서 광고 수익 내역과 출금 버튼을 확인하는 화면" loading="lazy"></span>
+            </button>
+            <p class="ownerbe-step-copy">광고 수익이 생기면 <strong>현재 권리를 가진 이용자</strong>에게 지급하고, 내역을 보여준다.</p>
+          </li>
+        </ol>
+        <p class="body-copy ownerbe-community" id="ownerbe-community">오너비에서는 누구나 콘텐츠를 올리고, 다른 사람의 콘텐츠를 보거나 공유할 수 있었다. 마음에 드는 콘텐츠가 있다면 광고 수익권을 구매할 수도 있었다. 콘텐츠를 함께 즐기면서, 그 콘텐츠에서 생기는 수익도 나눌 수 있는 커뮤니티였다.</p>
+        <dialog class="ownerbe-viewer" id="ownerbe-screen-viewer" aria-labelledby="ownerbe-viewer-title">
+          <div class="ownerbe-viewer-header"><h3 id="ownerbe-viewer-title"></h3><button class="ownerbe-viewer-close" type="button" autofocus>닫기</button></div>
+          <div class="ownerbe-viewer-content"></div>
+          <p class="ownerbe-step-copy" id="ownerbe-viewer-description"></p>
+        </dialog>
+      </section>
+      <section class="project-section" aria-labelledby="publication"><p class="section-no">04 공개와 투자</p><h2 id="publication">서비스 공개와 초기 투자</h2>
+      <p class="body-copy">2021년 말 콘텐츠 수익 구조의 문제와 핵심 가설을 정리하고, Webflow로 랜딩 페이지를 만들었다. 오너비의 서비스 구조를 <a href="https://www.producthunt.com/products/ownerbe" target="_blank" rel="noopener noreferrer">Product Hunt</a>와 디스콰이엇(디스콰이엇 내부 업데이트 이후 이전 기록 삭제)에 공개했다.</p>
+      <p class="body-copy">이후 디스콰이엇 게시물을 본 국내 VC 두 곳에서 먼저 미팅을 제안했다. 여러 차례 만나 서비스를 설명했지만, 투자 유치까지 이어지지는 않았다. 그 뒤 소개를 통해 새로운 투자 기회를 얻었고, 2022년 1월 <strong>프리시드 투자 1억 원</strong>을 확보했다.</p>
+      </section>
+      <section class="project-section ownerbe-operation" aria-labelledby="operation">
+        <p class="section-no">05 출시와 운영</p>
+        <h2 id="operation">서비스 기획과 출시·운영</h2>
+        <p class="body-copy">서비스 기획과 디자인부터 개발사와의 협업, 출시 후 개선과 광고 파트너십까지 직접 맡았다.</p>
+
+        <div class="ownerbe-work-block">
+          <h3>기능·정책과 화면 설계</h3>
+          <p class="body-copy">기능 정의와 정책 문서를 작성하고, 콘텐츠 등록부터 구매까지 필요한 화면을 설계했다. 필수 항목을 입력하지 않았을 때의 안내, 판매 설정에 따른 거래 버튼 노출, 지갑 연결과 거래 성공·실패에 따른 다음 화면을 정리했다. <strong>어떤 조건에서 무엇이 동작해야 하는지</strong>를 화면별로 정해 개발 기준으로 남겼다.</p>
+          <figure class="ownerbe-work-media">
+            <img src="/assets/ownerbe-planning-flow.png" width="1600" height="900" alt="필수 입력 안내와 판매 설정, 지갑 연결 여부, 거래 성공과 실패에 따른 화면 흐름을 정리한 설계 예시" loading="lazy">
+            <figcaption>콘텐츠 등록·구매 과정의 화면 설계와 동작 조건</figcaption>
+          </figure>
+        </div>
+
+        <div class="ownerbe-work-block">
+          <h3>직접 디자인과 개발 검수</h3>
+          <p class="body-copy">여러 서비스에서 보기 좋다고 느낀 화면 구성을 참고하며, Figma로 직접 디자인했다. 지갑 연결, 프로필, 피드, 탐색 등 서비스에 필요한 화면을 완성했다.</p>
+          <figure class="ownerbe-work-media ownerbe-work-media--screens">
+            <img src="/assets/ownerbe-designed-screens.png" width="1511" height="748" alt="Figma로 직접 작업한 지갑 연결, 프로필 설정, 콘텐츠 피드와 탐색 화면" loading="lazy">
+            <figcaption>직접 작업한 지갑 연결·프로필·피드·탐색 화면</figcaption>
+          </figure>
+          <p class="body-copy" style="margin-top:24px">2022년 5월부터 외주 개발사 선정과 개발 일정 조율을 진행했다. 이후에는 <strong>직접 서비스를 사용해 보며 기능 누락과 화면 오류를 점검하고</strong>, 수정이 필요한 위치와 동작을 구체적으로 정리해 개발사와 출시를 준비했다.</p>
+          <div class="ownerbe-qa-example" id="ownerbe-review">
+            <p class="feature-label">검수 사례</p>
+            <ul class="ownerbe-qa-list">
+              <li><strong>작성자 표시</strong> — 피드와 게시물 상세의 프로필 정보·표기 방식 점검</li>
+              <li><strong>댓글 입력창</strong> — 글자가 겹치는 현상과 입력 영역의 크기·여백 조정</li>
+              <li><strong>이미지 안내</strong> — 프로필·커버 이미지의 권장 크기와 파일 용량 안내 정리</li>
+              <li><strong>PC·모바일 화면</strong> — 폰트, 아이콘, 버튼의 정렬과 간격 점검</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="ownerbe-work-block">
+          <h3>이용 흐름과 재방문 개선</h3>
+          <p class="body-copy">개발사와 구현 범위를 조율해 2022년 8월 서비스를 정식 출시했다. 출시 뒤에는 GA 이벤트와 퍼널로 이용자가 어떤 경로로 들어오고, 어느 화면에서 떠나는지 살폈다. 2~3개월 동안 화면 노출과 동선을 바꾸는 A/B 테스트를 반복하고, <mark>배포 후 지표를 다시 확인하며 개선</mark>을 이어 갔다.</p>
+          <p class="body-copy">사용자 요청과 이탈 구간을 개발에 필요한 공수와 비교해 다음에 바꿀 항목을 정했다.</p>
+          <dl class="ownerbe-outcomes" id="ownerbe-outcomes" aria-label="운영 성과">
+            <div class="ownerbe-outcome"><dt>누적 사용자</dt><dd>5만 <small>명</small></dd></div>
+            <div class="ownerbe-outcome"><dt>평균 MAU</dt><dd>4~5천 <small>명</small></dd><p>최고 8,900명</p></div>
+            <div class="ownerbe-outcome"><dt>리텐션 개선</dt><dd>+9<small>%p</small></dd></div>
+            <div class="ownerbe-outcome"><dt>프리시드 투자</dt><dd>1억 <small>원</small></dd></div>
+          </dl>
+        </div>
+
+        <div class="ownerbe-work-block">
+          <h3>사용자 확보와 운영 성과</h3>
+          <p class="body-copy">프리시드 투자 1억 원은 오너비를 실제 서비스로 만들고 팀을 운영하는 기반이었다. 대표로서 개발과 출시를 진행하며 팀원 급여와 운영비도 함께 관리했다. 서비스를 개선하는 동안 외주 프로젝트와 NFT 판매로 팀의 운영 수입을 만들었고, <strong>광고 파트너십도 실제 서비스 수익으로 연결했다.</strong></p>
+          <p class="body-copy">그 과정에서 누적 사용자 5만 명을 확보했다. 월간 활성 사용자(MAU)는 평균 4~5천 명, 최고 8,900명이었으며, 리텐션을 9%p 개선했다. 첫 사업에서 직접 만든 서비스를 이만큼의 사람이 이용했다는 데 보람이 컸다. <strong>이용자의 유입과 재방문을 늘리는 일과, 팀 운영에 필요한 수익을 만드는 일을 함께 이어갔다.</strong></p>
+        </div>
+      </section>
+      <section class="project-section ownerbe-reflection" aria-labelledby="reflection">
+        <p class="section-no">06 회고</p>
+        <h2 id="reflection">대표의 책임과 성장</h2>
+        <p class="body-copy">오너비에서는 투자 유치부터 서비스 기획과 디자인, 출시와 운영까지 맡았다. 제품을 만드는 일과 팀·사업을 유지하는 일을 함께 경험하며, 대표와 PM의 책임을 배운 시간이었다.</p>
+
+        <ol class="lesson-journal" aria-label="대표와 PM으로서의 세 가지 회고">
+        <li class="lesson-entry">
+          <div class="lesson-label"><span aria-hidden="true">01</span><strong>팀 운영</strong></div>
+          <div>
+          <h3>팀 운영과 런웨이</h3>
+          <p class="body-copy">IR과 투자 유치를 진행하며 팀원 급여와 운영 자금을 챙기는 일의 무게를 배웠다. 예산이 한정돼 필요한 만큼 사람을 뽑기 어려웠고, 적은 인원으로 개발과 운영, 마케팅을 함께 감당해야 했다. <strong>남은 자금으로 얼마나 더 운영할 수 있는지</strong>, 런웨이를 계획하는 일이 제품을 만드는 것만큼 중요했다.</p>
+          </div>
+        </li>
+
+        <li class="lesson-entry">
+          <div class="lesson-label"><span aria-hidden="true">02</span><strong>수익화</strong></div>
+          <div>
+          <h3>수익 구조의 중요성</h3>
+          <p class="body-copy">이용자를 모으고 다시 찾게 만드는 일도 어려웠지만, 이를 안정적인 매출로 연결하는 일은 더 어려웠다. 사용자 확보만으로는 사업을 이어 가기 어려웠고, 결국 2023년 서비스를 종료했다. 가장 크게 남은 교훈은 <mark>아이디어에 앞서, 돈을 벌 방법부터 확인해야 한다</mark>는 것이었다.</p>
+          </div>
+        </li>
+
+        <li class="lesson-entry">
+          <div class="lesson-label"><span aria-hidden="true">03</span><strong>제품 전반</strong></div>
+          <div>
+          <h3>제품 전반의 경험과 성장</h3>
+          <p class="body-copy">그만큼 직접 부딪히며 배운 것도 많았다. Figma로 화면을 만들고 기능·정책을 정리하는 일부터 개발사 조율과 출시, 이용자 유입·마케팅, 파트너 협업, 팀 관리까지 직접 챙겼다. <strong>제품의 기획부터 사업 운영까지 전체 과정을 경험</strong>하면서, 사용자 반응과 개발에 드는 시간·비용, 사업의 수익을 함께 생각하게 됐다.</p>
+          </div>
+        </li>
+        </ol>
+
+      </section>
+    </div>
+    <nav data-project-navigation="ownerbe" aria-label="다른 프로젝트"></nav>
+  </main>
+  <script src="/portfolio-data.js"></script>
+  <script src="/mobile-project.js"></script>
+  <script>
+    (() => {
+      const section = document.querySelector('.ownerbe-structure');
+      const viewer = section.querySelector('.ownerbe-viewer');
+      const title = section.querySelector('#ownerbe-viewer-title');
+      const description = section.querySelector('#ownerbe-viewer-description');
+      const content = section.querySelector('.ownerbe-viewer-content');
+      const closeButton = section.querySelector('.ownerbe-viewer-close');
+      let previousOverflow = '';
+      section.querySelectorAll('.ownerbe-screen-open').forEach(button => {
+        button.addEventListener('click', () => {
+          const step = button.closest('li');
+          title.textContent = step.querySelector('h4').textContent;
+          description.textContent = step.querySelector('.ownerbe-step-copy').textContent;
+          content.replaceChildren(button.querySelector('.ownerbe-flow-screen').cloneNode(true));
+          previousOverflow = document.documentElement.style.overflow;
+          document.documentElement.style.overflow = 'hidden';
+          viewer.showModal();
+        });
+      });
+      closeButton.addEventListener('click', () => viewer.close());
+      viewer.addEventListener('click', event => {
+        if (event.target !== viewer) return;
+        const bounds = viewer.getBoundingClientRect();
+        if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) viewer.close();
+      });
+      viewer.addEventListener('close', () => {
+        document.documentElement.style.overflow = previousOverflow;
+        content.replaceChildren();
+      });
+    })();
+  </script>
+</body>
+</html>

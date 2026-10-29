@@ -1,0 +1,14 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Influencer Scout 실제 UI 재생</title><style>
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#080807}#real-frame{position:absolute;width:1920px;height:900px;left:0;top:0;border:0;transform-origin:0 0;pointer-events:none;transition:transform 1.1s cubic-bezier(.2,.7,.2,1)}html[data-playback="paused"] #real-frame{transition:none}@media(prefers-reduced-motion:reduce){#real-frame{transition:none}}
+</style></head><body><iframe id="real-frame" src="./scout-real/index.html?replay=1" title="실제 Influencer Scout UI와 저장된 후보를 사용한 재생 화면" tabindex="-1"></iframe><script>
+(()=>{const frame=document.getElementById('real-frame');let phase='overview';function fit(){const scale=Math.min(innerWidth/1920,innerHeight/900),zoom=phase==='chat'?1.1:1;const width=1920*scale,height=900*scale;const x=phase==='chat'?innerWidth-width*zoom:(innerWidth-width)/2;const y=phase==='chat'?innerHeight-height*zoom:(innerHeight-height)/2;frame.style.transform=`translate(${x}px,${y}px) scale(${scale*zoom})`}
+new ResizeObserver(fit).observe(document.body);addEventListener('resize',fit);fit();
+let command=parent===window?'scout:play':'scout:pause';
+function syncPlayback(){
+ document.documentElement.dataset.playback=command==='scout:pause'?'paused':'playing';
+ frame.contentWindow?.postMessage(command,location.origin);
+}
+frame.addEventListener('load',syncPlayback);
+addEventListener('message',event=>{if(event.origin!==location.origin)return;if(event.source===parent&&['scout:pause','scout:play','scout:replay'].includes(event.data)){command=event.data;syncPlayback()}if(event.source===frame.contentWindow){if(['scout:playback','scout:phase'].includes(event.data?.type))parent.postMessage(event.data,location.origin);if(event.data?.type==='scout:phase'){const next=event.data.phase==='chat'||event.data.phase==='answered'?'chat':'overview';if(next!==phase){phase=next;fit()}}}});
+})();
+</script></body></html>
