@@ -10,7 +10,7 @@ function syncPlayback(){
 }
 function reportReady(){
  const doc=frame.contentDocument;
- if(document.documentElement.dataset.scoutReady!=='true' && doc?.documentElement.dataset.scoutReady==='true' && doc.querySelector('#rows tr') && [...doc.styleSheets].some(sheet=>sheet.href?.includes('/scout-real/styles.css'))){
+ if(document.documentElement.dataset.scoutReady!=='true' && doc?.documentElement.dataset.scoutReady==='true' && doc.querySelector('#rows tr') && [...doc.styleSheets].some(sheet=>{try{return sheet.href?.includes('/scout-real/styles.css')&&sheet.cssRules.length>0}catch{return false}}) && doc.defaultView.getComputedStyle(doc.querySelector('.three-column-layout')).display==='grid'){
   document.documentElement.dataset.scoutReady='true';
   parent.postMessage({type:'scout:ready'},location.origin);
  }
