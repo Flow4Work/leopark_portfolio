@@ -42,7 +42,7 @@ const scout=(()=>{
   const delta=to-from;
   count.setAttribute('aria-label','일본 후보 '+number(from)+'명');
   layer=document.createElement('div');layer.className='scout-fx';layer.setAttribute('aria-hidden','true');
-  layer.innerHTML='<div class="scout-flight"><div class="scout-speed"><i></i><i></i><i></i></div><img class="scout-flying-bird" src="./scout-eagle.png" alt=""></div>'
+  layer.innerHTML='<div class="scout-flight"><div class="scout-speed"><i></i><i></i><i></i></div><img class="scout-flying-bird" src="/assets/scout-real/scout-eagle.png" alt=""></div>'
    +'<div class="scout-target"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="31"/><circle cx="50" cy="50" r="19"/><path d="M50 7v19m0 48v19M7 50h19m48 0h19"/><path class="scout-target-corners" d="M18 31V18h13m38 0h13v13m0 38v13H69m-38 0H18V69"/><circle class="scout-target-dot" cx="50" cy="50" r="3"/></svg></div>'
    +'<div class="scout-impact"><i class="scout-flash"></i><i class="scout-ring"></i><i class="scout-ring second"></i><b class="scout-impact-star">✦</b></div>'
    +'<div class="scout-delta"></div>';
@@ -457,7 +457,7 @@ function addMessage(role,text){
  if(role==='user')label.textContent='나';
  else{
   const portrait=document.createElement('span');portrait.className='scout-chat-avatar';
-  const image=document.createElement('img');image.src='./scout-standing.png?v=20261023-profile';image.alt='Scout';image.width=42;image.height=42;
+  const image=document.createElement('img');image.src='/assets/scout-real/scout-standing.png?v=20261023-profile';image.alt='Scout';image.width=42;image.height=42;
   portrait.append(image);label.append(portrait);
  }
  const body=document.createElement('div');body.className='message-body';body.textContent=text;

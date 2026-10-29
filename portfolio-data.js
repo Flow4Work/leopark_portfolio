@@ -11,7 +11,7 @@ window.PORTFOLIO_WEB_SERVICES = [
     type: "AI 법률 로드맵",
     description: "법률 상담과 대응 절차 흐름도",
     previewLabel: "상담에서 후속 절차까지",
-    webImage: "./assets/law-showcase-full-20261029.png",
+    webImage: "./assets/law-showcase-clean-20261029.png",
     icon: ""
   },
   {
@@ -22,7 +22,7 @@ window.PORTFOLIO_WEB_SERVICES = [
     type: "AI KOL 스카우터",
     description: "일본·대만 KOL 발굴과 협업 운영",
     previewLabel: "KOL 발굴부터 협업 운영까지",
-    webImage: "./assets/kol-scout-taiwan.png",
+    webImage: "./assets/kol-scout-v3-screen.png",
     previewDemo: "./assets/scout-demo.html",
     icon: "./assets/home-kol-icon.webp"
   },

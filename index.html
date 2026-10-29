@@ -1465,15 +1465,18 @@ html.is-paused .egg-scene{animation-play-state:paused}
             state.playing = null;
             syncDemo(state);
           };
-          if (state.kind === 'scout') {
-            try {
-              const child = state.frame.contentDocument?.getElementById('real-frame');
-              if (child && child.contentDocument?.readyState !== 'complete') child.addEventListener('load', ready, {once:true});
-              else ready();
-            } catch (_) { ready(); }
-          } else ready();
+          if (state.kind !== 'scout') ready();
         });
       }
+      // A loaded document can still be an error page or have failed assets.
+      window.addEventListener('message', event => {
+        if(event.origin !== location.origin || event.data?.type !== 'scout:ready') return;
+        const state = deferredDemos.find(item => item.kind === 'scout' && item.frame.contentWindow === event.source);
+        if(!state || state.frame.classList.contains('is-ready')) return;
+        state.frame.classList.add('is-ready');
+        state.playing = null;
+        syncDemo(state);
+      });
       function updateVisibility(entries) {
         for (const entry of entries) {
           entry.target.classList.toggle('is-in-view', entry.isIntersecting);

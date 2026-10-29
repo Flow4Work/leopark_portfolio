@@ -119,7 +119,10 @@
     .case-study .project-facts {grid-template-columns:260px 252px minmax(0,1fr) auto;}
     figure {margin:0;}
     .demo-shell {aspect-ratio:32/15;background:#080807;border-radius:9px;overflow:hidden;position:relative;contain:layout paint;}
-    .demo-shell iframe {display:block;width:100%;height:100%;border:0;pointer-events:none;}
+    .demo-shell > img {display:block;width:100%;height:100%;object-fit:contain;}
+    .demo-shell iframe {position:absolute;inset:0;display:block;width:100%;height:100%;border:0;pointer-events:none;opacity:0;}
+    .demo-shell iframe.is-ready {opacity:1;}
+    @media(prefers-reduced-motion:reduce){.demo-shell iframe{opacity:0!important;}}
     figcaption {margin-top:11px;text-align:center;color:var(--muted);font-size:12px;line-height:1.65;letter-spacing:-.01em;}
     .article-section {margin-top:60px;}
     .section-no,h2,.section-copy,.work-list,.lesson-journal,.closing-copy {display:block;width:100%;max-width:860px;margin-left:auto;margin-right:auto;}
@@ -210,7 +213,7 @@
         </dl>
       </header>
       <figure class="hero-media">
-        <div class="demo-shell"><iframe id="scout-motion" src="./assets/scout-demo.html" title="V3 인플루언서 시딩 에이전트 화면" loading="eager" tabindex="-1"></iframe></div>
+        <div class="demo-shell"><img src="/assets/kol-scout-v3-screen.png" width="1920" height="930" alt="KOL Scout의 후보 현황, 일본·대만 후보 목록과 Scout 대화창" fetchpriority="high"><iframe id="scout-motion" src="./assets/scout-demo.html" title="V3 인플루언서 시딩 에이전트 화면" loading="eager" tabindex="-1"></iframe></div>
         <figcaption>V3 인플루언서 시딩 에이전트 화면</figcaption>
       </figure>
 
@@ -339,6 +342,7 @@
       preview.addEventListener('load',()=>{lastPlayback=null;syncPlayback();});
       window.addEventListener('message',event=>{
         if(event.origin!==location.origin||event.source!==preview.contentWindow)return;
+        if(event.data?.type==='scout:ready')preview.classList.add('is-ready');
         if(event.data?.type==='scout:playback')preview.dataset.replayState=event.data.state;
         if(event.data?.type==='scout:phase')preview.dataset.replayPhase=event.data.phase;
       });
