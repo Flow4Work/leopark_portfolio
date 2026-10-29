@@ -40,7 +40,7 @@ a.project-facts__link:hover{border-color:var(--soft);background:var(--surface)}
 .section-heading span{font-size:11px;color:var(--muted);letter-spacing:.08em}
 .content-space{min-height:240px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
 @media(max-width:650px){.topbar{height:70px;padding:0 20px;gap:12px}.header-actions{gap:13px}.header-nav{gap:13px}.header-link{font-size:12px}.header-github{display:none}.theme-switch{min-width:76px;padding:0 10px}main{padding:38px 20px 45px}.project-hero{margin-bottom:36px}.subtitle{font-size:16px}.project-sections{gap:28px}.content-space{min-height:220px}}
-/* Match the Instagram Card Agent page's space below project navigation. */
-main{padding-bottom:85px}
-@media(max-width:900px){main{padding-bottom:70px}}
-@media(max-width:640px){main{padding-bottom:63px}}
+/* Compact breathing room below the aligned project navigation/copyright row. */
+main{padding-bottom:46px}
+@media(max-width:900px){main{padding-bottom:40px}}
+@media(max-width:640px){main{padding-bottom:30px}}

@@ -108,7 +108,7 @@ window.PORTFOLIO_MOBILE_SERVICES = [
   });
   const style = document.createElement('style');
   style.textContent = `
-    nav[data-project-navigation] {max-width:860px;margin:45px auto 0;border-top:1px solid var(--line);padding-top:23px;display:flex;justify-content:space-between;gap:20px;font-size:13px;font-weight:600;}
+    nav[data-project-navigation] {max-width:860px;margin:45px auto 0;border-top:1px solid var(--line);padding-top:23px;position:relative;display:flex;justify-content:space-between;gap:20px;font-size:13px;font-weight:600;}
     nav[data-project-navigation] a {color:#77aaff;text-decoration:none;line-height:1.6;}
     html[data-theme="light"] nav[data-project-navigation] a {color:#145bc5;}
     nav[data-project-navigation] a:hover {text-decoration:underline;text-underline-offset:4px;}
@@ -135,6 +135,10 @@ window.PORTFOLIO_MOBILE_SERVICES = [
     list.href = '/';
     list.textContent = '프로젝트 목록으로 ↗';
     nav.append(list);
+    const copyright = document.createElement('span');
+    copyright.className = 'portfolio-copyright';
+    copyright.textContent = '© Leo Park 2026';
+    nav.append(copyright);
   });
 })();
 
