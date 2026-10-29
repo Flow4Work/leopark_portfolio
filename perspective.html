@@ -66,30 +66,37 @@
     .moon-icon { display: none; }
     :root[data-theme="light"] .sun-icon { display: none; }
     :root[data-theme="light"] .moon-icon { display: block; }
-    main { width: 100%; max-width: 1088px; margin: 0 auto; padding: 78px 32px 90px; flex: 1; }
-    .profile-content { width: 100%; max-width: 860px; margin: 0 auto; }
-    .profile-section { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 30px; align-items: start; }
-    .profile-section + .profile-section { margin-top: 64px; }
-    .section-title { margin: 0; font-size: 22px; line-height: 1.45; font-weight: 700; letter-spacing: -.04em; }
-    .profile-name { margin: 0; font-size: 29px; font-weight: 700; line-height: 1.35; letter-spacing: -.05em; }
-    .profile-english { margin: 3px 0 9px; color: var(--muted); font-size: 19px; font-weight: 450; line-height: 1.5; letter-spacing: -.025em; }
-    .contact-line { margin: 0 0 5px; font-size: 16px; line-height: 1.65; letter-spacing: -.019em; font-weight: 450; }
-    .contact-line:last-child { margin-bottom: 0; }
-    .contact-line a { text-decoration: none; }
-    .contact-line a:hover { text-decoration: underline; text-underline-offset: 4px; }
-    .career-list { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
-    .career-list li { display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 21px; align-items: baseline; }
-    .career-period { font-size: 15px; line-height: 1.65; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
-    .career-role { font-size: 16px; line-height: 1.65; font-weight: 450; letter-spacing: -.022em; word-break: keep-all; }
-    .tool-list { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin: 0; padding: 0; list-style: none; }
-    .tool-icon { display: flex; align-items: center; justify-content: center; width: 38px; height: 38px; }
-    .tool-icon img { display: block; width: 100%; height: 100%; object-fit: contain; }
-    .tool-icon--figma { background: #1e2023; border-radius: 50%; padding: 8px; }
-    .tool-icon--figma img { width: 22px; height: 22px; }
+    main { width: 100%; max-width: 1024px; margin: 0 auto; padding: 82px 32px 80px; flex: 1; }
+    .profile-content { width: 100%; }
+    .profile-hero { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 48px; align-items: end; padding-bottom: 46px; border-bottom: 1px solid var(--line); }
+    .profile-kicker { margin: 0 0 17px; color: var(--muted); font-size: 11px; line-height: 1.5; font-weight: 600; letter-spacing: .16em; }
+    .profile-name { margin: 0; font-size: 46px; font-weight: 650; line-height: 1.2; letter-spacing: -.055em; }
+    .profile-english { margin: 9px 0 0; color: var(--muted); font-size: 20px; font-weight: 400; line-height: 1.5; letter-spacing: -.025em; }
+    .profile-details { margin: 0 0 3px; display: grid; gap: 12px; }
+    .profile-details > div { display: grid; grid-template-columns: 62px minmax(0, 1fr); gap: 18px; align-items: baseline; }
+    .profile-details dt { color: var(--muted); font-size: 12px; line-height: 1.6; }
+    .profile-details dd { margin: 0; font-size: 14px; line-height: 1.6; letter-spacing: -.015em; font-variant-numeric: tabular-nums; }
+    .profile-details a { text-decoration: none; text-underline-offset: 4px; }
+    .profile-details a:hover { text-decoration: underline; }
+    .profile-body { display: grid; grid-template-columns: minmax(0, 1.85fr) minmax(0, 1fr); gap: 76px; margin-top: 46px; }
+    .profile-section { min-width: 0; }
+    .section-title { display: flex; align-items: baseline; gap: 10px; margin: 0 0 24px; font-size: 17px; line-height: 1.5; font-weight: 600; letter-spacing: -.025em; }
+    .section-title span { color: var(--muted); font-size: 12px; font-weight: 400; letter-spacing: -.01em; }
+    .career-list { display: grid; gap: 16px; margin: 0; padding: 0; list-style: none; }
+    .career-list li { display: grid; grid-template-columns: 100px minmax(0, 1fr); gap: 20px; align-items: baseline; }
+    .career-period { color: var(--muted); font-size: 12px; line-height: 1.6; white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .career-entry { font-size: 14px; line-height: 1.7; font-weight: 400; letter-spacing: -.02em; word-break: keep-all; }
+    .tool-list { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 16px; row-gap: 24px; margin: 0; padding: 0; list-style: none; }
+    .tool-list li { display: flex; align-items: center; gap: 10px; min-width: 0; }
+    .tool-icon { display: flex; align-items: center; justify-content: center; flex: 0 0 25px; width: 25px; height: 28px; }
+    .tool-icon img { display: block; width: 25px; height: 25px; object-fit: contain; }
+    .tool-icon--figma { background: #1e2023; border-radius: 50%; height: 25px; }
+    .tool-icon--figma img { width: 14px; height: 18px; }
+    .tool-icon--mono img { width: 26px; height: 26px; }
     :root:not([data-theme="light"]) .tool-icon--mono img { filter: invert(1); }
-    .tool-icon--powerpoint img { width: 38px; height: 38px; }
+    .tool-name { font-size: 12px; line-height: 1.45; letter-spacing: -.015em; }
     footer {
-      width: calc(100% - 64px); max-width: 1024px; margin: 0 auto; padding: 22px 0 40px;
+      width: calc(100% - 64px); max-width: 960px; margin: 0 auto; padding: 22px 0 32px;
       border-top: 1px solid var(--line); display: flex; justify-content: space-between;
       gap: 16px; font-size: 12px; color: var(--muted);
     }
@@ -98,27 +105,34 @@
     @media (max-width: 1130px) {
       .topbar { padding-inline: 32px; }
     }
+    @media (max-width: 850px) {
+      .profile-body { gap: 42px; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); }
+      .tool-list { grid-template-columns: minmax(0, 1fr); row-gap: 18px; }
+    }
     @media (max-width: 640px) {
       .topbar { height: 65px; padding-inline: 20px; }
       .header-actions { gap: 12px; }
       .header-nav { gap: 13px; }
       .header-nav .header-link { font-size: 11px; }
       .header-actions > .header-link { display: none; }
-      main { padding: 48px 20px 66px; }
-      .profile-section { grid-template-columns: minmax(0, 1fr); gap: 19px; }
-      .profile-section + .profile-section { margin-top: 52px; }
-      .section-title { font-size: 20px; }
-      .profile-name { font-size: 26px; }
-      .profile-english { font-size: 18px; }
-      .contact-line { font-size: 15px; }
-      .career-list { gap: 12px; }
-      .career-list li { grid-template-columns: 104px minmax(0, 1fr); gap: 12px; }
-      .career-period { font-size: 13px; }
-      .career-role { font-size: 14px; }
-      .tool-list { gap: 16px; }
-      .tool-icon { width: 36px; height: 36px; }
-      footer { width: calc(100% - 40px); padding: 20px 0 34px; }
+      main { padding: 43px 24px 56px; }
+      .profile-hero { grid-template-columns: minmax(0, 1fr); gap: 28px; padding-bottom: 32px; }
+      .profile-kicker { margin-bottom: 13px; font-size: 10px; }
+      .profile-name { font-size: 38px; }
+      .profile-english { margin-top: 7px; font-size: 18px; }
+      .profile-details { gap: 9px; }
+      .profile-details > div { grid-template-columns: 56px minmax(0, 1fr); gap: 14px; }
+      .profile-body { grid-template-columns: minmax(0, 1fr); gap: 40px; margin-top: 32px; }
+      .section-title { margin-bottom: 22px; font-size: 16px; }
+      .career-list li { grid-template-columns: 87px minmax(0, 1fr); gap: 16px; }
+      .career-period { font-size: 11px; }
+      .career-entry { font-size: 13px; }
+      .tool-list { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 12px; row-gap: 22px; }
+      .tool-list li { gap: 8px; }
+      .tool-name { font-size: 11px; }
+      footer { width: calc(100% - 48px); padding: 20px 0 28px; }
     }
+    @media (max-width: 380px) { .tool-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (prefers-reduced-motion: reduce) { .sticky-site-nav { transition: none; } }
   </style>
   <link rel="stylesheet" href="/portfolio-fonts.css">
@@ -131,8 +145,7 @@
         <nav class="header-nav" aria-label="상단 메뉴">
           <a class="header-link" href="/">프로젝트</a>
           <a class="header-link" href="/profile" aria-current="page">Profile</a>
-        </nav>
-        <button class="theme-switch" type="button" id="theme-switch" aria-label="화이트 모드로 전환" aria-pressed="false">
+        </nav>        <button class="theme-switch" type="button" id="theme-switch" aria-label="화이트 모드로 전환" aria-pressed="false">
           <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/></svg>
           <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.9 13.2A9 9 0 0 1 10.8 3.1 9 9 0 1 0 20.9 13.2Z"/></svg>
           <span id="theme-label">LIGHT</span>
@@ -142,39 +155,43 @@
   </div>
   <main>
     <div class="profile-content">
-      <section class="profile-section" aria-labelledby="profile-title">
-        <h1 class="section-title" id="profile-title">Profile</h1>
-        <div class="profile-details">
-          <h2 class="profile-name">박동호</h2>
+      <section class="profile-hero" aria-labelledby="profile-title">
+        <div class="profile-identity">
+          <p class="profile-kicker">PROFILE</p>
+          <h1 class="profile-name" id="profile-title">박동호</h1>
           <p class="profile-english" lang="en">Leo Park</p>
-          <p class="contact-line">1991. 08. 19</p>
-          <p class="contact-line"><a href="mailto:ehdgh19@gmail.com">ehdgh19@gmail.com</a></p>
-          <p class="contact-line"><a href="tel:01033398944">010-3339-8944</a></p>
         </div>
+        <dl class="profile-details">
+          <div><dt>생년월일</dt><dd><time datetime="1991-08-19">1991. 08. 19</time></dd></div>
+          <div><dt>이메일</dt><dd><a href="mailto:ehdgh19@gmail.com">ehdgh19@gmail.com</a></dd></div>
+          <div><dt>연락처</dt><dd><a href="tel:01033398944">010-3339-8944</a></dd></div>
+        </dl>
       </section>
+      <div class="profile-body">
       <section class="profile-section" aria-labelledby="career-title">
-        <h2 class="section-title" id="career-title">Career</h2>
+        <h2 class="section-title" id="career-title">Career <span>경력</span></h2>
         <ol class="career-list">
-          <li><span class="career-period">2023 - 2025</span><span class="career-role">에이아이제로엑스(FANC) 부사장</span></li>
-          <li><span class="career-period">2021 - 2023</span><span class="career-role">비츠비(OwnerBe) 대표</span></li>
-          <li><span class="career-period">2021</span><span class="career-role">데일리비트 PM</span></li>
-          <li><span class="career-period">2019 - 2020</span><span class="career-role">테스시스템 주니어 PM</span></li>
-          <li><span class="career-period">2018 - 2019</span><span class="career-role">코인빗 운영 팀장</span></li>
-          <li><span class="career-period">2018</span><span class="career-role">코네(Upbit) FAQ Team 매니저</span></li>
+          <li><span class="career-period">2023 — 2025</span><span class="career-entry">에이아이제로엑스(FANC) 부사장</span></li>
+          <li><span class="career-period">2021 — 2023</span><span class="career-entry">비츠비(OwnerBe) 대표</span></li>
+          <li><span class="career-period">2021</span><span class="career-entry">데일리비트 PM</span></li>
+          <li><span class="career-period">2019 — 2020</span><span class="career-entry">베이스트레이드 주니어 PM</span></li>
+          <li><span class="career-period">2018 — 2019</span><span class="career-entry">코인빗 운영 팀장</span></li>
+          <li><span class="career-period">2018</span><span class="career-entry">코네(Upbit) FAQ Team 매니저</span></li>
         </ol>
       </section>
       <section class="profile-section" aria-labelledby="tools-title">
-        <h2 class="section-title" id="tools-title">Tools</h2>
+        <h2 class="section-title" id="tools-title">Tools <span>사용 도구</span></h2>
         <ul class="tool-list" aria-label="사용 도구">
-          <li class="tool-icon tool-icon--figma" title="Figma"><img src="./assets/tool-figma.svg" alt="Figma" width="22" height="22"></li>
-          <li class="tool-icon tool-icon--powerpoint" title="PowerPoint"><img src="./assets/tool-powerpoint.svg" alt="PowerPoint" width="38" height="38"></li>
-          <li class="tool-icon tool-icon--mono" title="OpenAI"><img src="./assets/tool-openai.svg" alt="OpenAI" width="38" height="38"></li>
-          <li class="tool-icon" title="Google Analytics"><img src="./assets/tool-analytics.svg" alt="Google Analytics" width="38" height="38"></li>
-          <li class="tool-icon" title="Excel"><img src="./assets/tool-excel.svg" alt="Excel" width="38" height="38"></li>
-          <li class="tool-icon tool-icon--mono" title="CapCut"><img src="./assets/tool-capcut.svg" alt="CapCut" width="38" height="38"></li>
-          <li class="tool-icon tool-icon--mono" title="Notion"><img src="./assets/tool-notion.svg" alt="Notion" width="38" height="38"></li>
+          <li><span class="tool-icon tool-icon--figma"><img src="./assets/tool-figma.svg" alt="" width="14" height="18"></span><span class="tool-name">Figma</span></li>
+          <li><span class="tool-icon"><img src="./assets/tool-powerpoint.svg" alt="" width="25" height="25"></span><span class="tool-name">PowerPoint</span></li>
+          <li><span class="tool-icon tool-icon--mono"><img src="./assets/tool-openai.svg" alt="" width="26" height="26"></span><span class="tool-name">OpenAI</span></li>
+          <li><span class="tool-icon"><img src="./assets/tool-analytics.svg" alt="" width="25" height="25"></span><span class="tool-name">Google Analytics</span></li>
+          <li><span class="tool-icon"><img src="./assets/tool-excel.svg" alt="" width="25" height="25"></span><span class="tool-name">Excel</span></li>
+          <li><span class="tool-icon tool-icon--mono"><img src="./assets/tool-capcut.svg" alt="" width="26" height="26"></span><span class="tool-name">CapCut</span></li>
+          <li><span class="tool-icon tool-icon--mono"><img src="./assets/tool-notion.svg" alt="" width="26" height="26"></span><span class="tool-name">Notion</span></li>
         </ul>
       </section>
+      </div>
     </div>
   </main>
   <footer class="profile-page-footer"><span>Profile</span><span class="portfolio-copyright">© Leo Park 2026</span><a href="/">← 프로젝트로 돌아가기</a></footer>

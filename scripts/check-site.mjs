@@ -48,6 +48,19 @@ for (const absolute of walk(root).filter(file => /\.(html|css|js)$/.test(file)))
     for (const match of source.matchAll(/url\(\s*["']?([^\s"')]+)["']?\s*\)/gi)) checkReference(match[1], new URL('/' + file, origin), file);
   }
 }
+// Keep the approved content and profile layout from being lost in a stale-source deployment.
+const profile = fs.readFileSync(path.join(root, 'perspective.html'), 'utf8');
+const lawPage = fs.readFileSync(path.join(root, 'law-project.html'), 'utf8');
+const projectData = fs.readFileSync(path.join(root, 'portfolio-data.js'), 'utf8');
+if (!profile.includes('베이스트레이드') || profile.includes('테스시스템')) {
+  failures.push('Profile company regression: the 2019–2020 company must be 베이스트레이드.');
+}
+if (!profile.includes('class="profile-hero"') || !profile.includes('class="career-entry"')) {
+  failures.push('Profile layout regression: preserve the approved profile and simple career list.');
+}
+if (!lawPage.includes('<h1>Law Map</h1>') || /law\s+project/i.test(lawPage) || /law\s+project/i.test(projectData)) {
+  failures.push('Project naming regression: use Law Map in the detail page and project listing.');
+}
 if (failures.length) {
   console.error(failures.join('\n'));
   process.exitCode = 1;

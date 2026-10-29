@@ -5,12 +5,12 @@
 window.PORTFOLIO_WEB_SERVICES = [
   {
     id: "law-project",
-    name: "LAW PROJECT",
+    name: "Law Map",
     initials: "LAW",
     href: "/law-project",
-    type: "AI 법률 로드맵",
-    description: "법률 상담과 대응 절차 흐름도",
-    previewLabel: "상담에서 후속 절차까지",
+    type: "AI 법률 안내",
+    description: "법적 절차와 예상 기간을 한눈에",
+    previewLabel: "내 상황에 맞는 법적 절차와 예상 기간",
     webImage: "./assets/law-showcase-fit-20261029.jpg",
     icon: ""
   },
