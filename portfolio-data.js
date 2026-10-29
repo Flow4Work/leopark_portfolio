@@ -137,3 +137,13 @@ window.PORTFOLIO_MOBILE_SERVICES = [
     nav.append(list);
   });
 })();
+
+// 활동 기록 비컨: 페이지가 스크립트를 다시 쓰더라도 추적이 유지되도록 함께 불러옵니다.
+(() => {
+  if (window.__portfolioActivityRequested) return;
+  window.__portfolioActivityRequested = true;
+  const script = document.createElement('script');
+  script.src = '/portfolio-activity.js';
+  script.defer = true;
+  document.head.append(script);
+})();
