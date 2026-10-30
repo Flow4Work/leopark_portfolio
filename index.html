@@ -57,8 +57,8 @@
     :root[data-theme="light"] .sun-icon { display: none; }
     :root[data-theme="light"] .moon-icon { display: block; }
     .header-link:focus-visible, .theme-switch:focus-visible { outline: 2px solid var(--text); outline-offset: 4px; }
-    .portfolio { padding-top: 64px; padding-bottom: 90px; }
-    .intro { margin: 0 0 48px; }
+    .portfolio { padding-top: 40px; padding-bottom: 90px; }
+    .intro { margin: 0 0 34px; }
     .intro-title {
       margin: 0; max-width: 780px; font-size: 26px;
       line-height: 1.45; letter-spacing: -.025em; font-weight: 650; word-break: keep-all; text-wrap: balance;
@@ -69,7 +69,7 @@
       word-break: keep-all; overflow-wrap: break-word; text-wrap: balance;
     }
     .intro-summary + .intro-summary { margin-top: 22px; }
-    .portfolio-section + .portfolio-section { margin-top: 86px; }
+    .portfolio-section + .portfolio-section { margin-top: 38px; }
     .section-header {
       display: flex; align-items: end; justify-content: space-between; gap: 16px;
       border-top: 1px solid var(--line); padding: 23px 0 24px; margin-bottom: 3px;
@@ -182,7 +182,7 @@
       .work-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 38px 23px; }
       .work-grid--mobile .work-card:nth-child(odd) { justify-self: start; }
       .work-grid--mobile .work-card:nth-child(even) { justify-self: end; }
-      .portfolio { padding-top: 64px; }
+      .portfolio { padding-top: 40px; }
     }
     @media (max-width: 640px) {
       .topbar { height: 65px; padding-inline: 20px; }
@@ -190,8 +190,8 @@
       .header-nav { gap:13px; }
       .header-nav .header-link { font-size:11px; }
       .header-actions > .header-link { display:none; }
-      .portfolio { padding: 54px 20px 64px; }
-      .intro { margin-bottom: 44px; }
+      .portfolio { padding: 36px 20px 64px; }
+      .intro { margin-bottom: 30px; }
       .intro-title { font-size: 24px; line-height: 1.4; letter-spacing: -.7px; }
       .intro-summary { margin-top: 18px; font-size: 15px; line-height: 1.85; }
       .intro-summary + .intro-summary { margin-top: 20px; }
@@ -208,7 +208,7 @@
       .work-grid--mobile .service-detail { max-width: 100%; text-align: left; padding-top: 7px; }
       .work-grid--mobile .service-kind { font-size: 11px; }
       .work-grid--mobile .service-description { font-size: 11px; }
-      .portfolio-section + .portfolio-section { margin-top: 64px; }
+      .portfolio-section + .portfolio-section { margin-top: 36px; }
       .footer { padding: 20px 20px 36px; }
     }
     @media (prefers-reduced-motion: reduce) {

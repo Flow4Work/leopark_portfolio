@@ -16,5 +16,6 @@
       "destination": "/law-project",
       "permanent": true
     }
-  ]
+  ],
+  "installCommand": "node scripts/check-activity.cjs"
 }

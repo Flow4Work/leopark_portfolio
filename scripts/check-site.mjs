@@ -24,6 +24,8 @@ function checkReference(raw, base, file) {
   if (!raw || raw.startsWith('#') || /^(data:|mailto:|tel:|javascript:)/i.test(raw)) return;
   const url = new URL(raw.replaceAll('&amp;', '&'), base);
   if (url.origin !== origin) return;
+  // This embedded demo uses client-side page switches, not real portfolio routes.
+  if (file === 'assets/chiklink-demo.html' && ['/my-qr', '/frens', '/frens-2', '/tasks'].includes(url.pathname)) return;
   checked++;
   if (!existsRoute(url)) failures.push(`${file}: ${raw} resolves to missing ${url.pathname}`);
 }

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+*{box-sizing:border-box}html,body{margin:0;padding:0;width:483px;height:410px;overflow:hidden;background:#0d0f11;font-family:"Malgun Gothic","맑은 고딕",sans-serif;color:#1b2028;-webkit-font-smoothing:antialiased}
+.canvas{width:483px;height:410px;padding-left:16px;background:#0d0f11}
+.chat{width:467px;height:410px;background:#bbcee0;padding:7px 10px 5px 13px;overflow:hidden}
+.entry{display:flex;align-items:flex-start;gap:9px;margin:0 0 4px}
+.avatar{width:36px;height:36px;flex:none;border-radius:50%;object-fit:cover}
+.content{min-width:0;flex:1}
+.name{font-size:11.4px;line-height:14px;font-weight:400;color:#1e2835;letter-spacing:-.18px;margin:0 0 2px}
+.bottom{display:flex;gap:4px;align-items:flex-end}
+.bubble{display:inline-block;max-width:350px;width:max-content;background:#fff;border-radius:4px;padding:6px 8px;line-height:16.1px;font-size:12.1px;font-weight:400;letter-spacing:-.17px;word-break:keep-all;overflow-wrap:anywhere}
+.time{font-size:9px;line-height:12px;white-space:nowrap;color:#4d6479;flex:none;margin-bottom:1px}
+.entry.short .bubble{padding-top:5px;padding-bottom:5px}
+.entry.compact{margin-bottom:3px}
+.entry.last{margin-bottom:0}
+</style></head>
+<body><main class="canvas"><div class="chat">
+<div class="entry">
+  <img class="avatar" src="http://localhost:3200/assets/law-case03-avatar-user.png" alt="">
+  <div class="content"><div class="name">사기꾼</div><div class="bottom"><div class="bubble">안녕하세요 제가 사기친게 있었는데 결정(종결)내역 불송치라고 적혀있고 공소청 기록송부내용은 불송치-각하 써있는데 끝난건가요?</div><span class="time">오후 11:41</span></div></div>
+</div>
+<div class="entry short">
+  <img class="avatar" src="http://localhost:3200/assets/law-case03-avatar-other.png" alt="">
+  <div class="content"><div class="name">나른한 프렌즈</div><div class="bottom"><div class="bubble">상대가 이의제기안하면 끝이죠</div><span class="time">오후 11:42</span></div></div>
+</div>
+<div class="entry short compact">
+  <img class="avatar" src="http://localhost:3200/assets/law-case03-avatar-third.png" alt="">
+  <div class="content"><div class="name">티비 보는 라이언</div><div class="bottom"><div class="bubble">왜불송치인가요</div><span class="time">오후 11:42</span></div></div>
+</div>
+<div class="entry short">
+  <img class="avatar" src="http://localhost:3200/assets/law-case03-avatar-user.png" alt="">
+  <div class="content"><div class="name">사기꾼</div><div class="bottom"><div class="bubble">보상 해드렸습니다<br>사과 드리고</div><span class="time">오후 11:42</span></div></div>
+</div>
+<div class="entry short">
+  <img class="avatar" src="http://localhost:3200/assets/law-case03-avatar-other.png" alt="">
+  <div class="content"><div class="name">나른한 프렌즈</div><div class="bottom"><div class="bubble">그럼 끝났다고 보시면 되겠네요</div><span class="time">오후 11:42</span></div></div>
+</div>
+<div class="entry last">
+  <img class="avatar" src="http://localhost:3200/assets/law-case03-avatar-user.png" alt="">
+  <div class="content"><div class="name">사기꾼</div><div class="bottom"><div class="bubble">제가 18살이라서 혹시 재판 같은거 보는지 궁금해서 여쭤봤습니다</div><span class="time">오후 11:43</span></div></div>
+</div>
+</div></main></body></html>

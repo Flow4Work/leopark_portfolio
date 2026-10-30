@@ -221,6 +221,23 @@
       const update = () => nav.classList.toggle("is-scrolled", window.scrollY > 1);
       window.addEventListener("scroll", update, { passive: true });
       update();
+
+      // Return from Profile without adding a second Home visit or trapping Back on Profile.
+      document.querySelectorAll('a[href="/"]').forEach(link => {
+        link.addEventListener('click', event => {
+          if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey ||
+              event.shiftKey || event.altKey || link.hasAttribute('download') ||
+              (link.target && link.target !== '_self')) return;
+          event.preventDefault();
+          let cameFromHome = false;
+          try {
+            const previous = new URL(document.referrer);
+            cameFromHome = previous.origin === location.origin && previous.pathname === '/';
+          } catch (_) { /* Direct entry: no referrer. */ }
+          if (cameFromHome && history.length > 1) history.back();
+          else location.replace(link.href);
+        });
+      });
     })();
   </script>
   <script src="/portfolio-activity.js" defer></script>
