@@ -14,6 +14,8 @@
   var endpoint = PRODUCTION;
   try {
     var host = location.hostname;
+    // Preview screenshots and QA must not inflate the production visitor counts.
+    if (host.endsWith('.vercel.app') && host !== 'leopark-portfolio.vercel.app') return;
     if (location.protocol === 'file:' || host === 'localhost' || host === '127.0.0.1' || host === '[::1]' || host === '::1') endpoint = LOCAL;
   } catch (_) {}
 

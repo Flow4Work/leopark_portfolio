@@ -21,6 +21,8 @@ async function check(){
  let rejected=0;
  vm.runInNewContext(source,{...context,window:{},setTimeout:()=>0,clearTimeout:()=>{},console:{warn:()=>{}},fetch:async()=>{rejected++;return {ok:false,status:400}}});
  await new Promise(resolve=>setImmediate(resolve));assert.equal(rejected,1);
+ const preview=[];
+ vm.runInNewContext(source,{...context,window:{},location:{...context.location,hostname:'leopark-portfolio-preview.vercel.app'},fetch:async()=>{preview.push(1);return {ok:true}}});assert.equal(preview.length,0);
  const beforeFetch=global.fetch,beforeKey=process.env.LEGAL_PORTFOLIO_RELAY_SECRET;
  process.env.LEGAL_PORTFOLIO_RELAY_SECRET=key;const handler=require('../api/portfolio-events.js');let forwarded=0;
  global.fetch=async(url,options)=>{forwarded++;assert.equal(url,'https://law-lake-theta.vercel.app/api/portfolio-activity');const at=options.headers['x-law-relay-time'];assert.equal(options.headers['x-law-relay-signature'],crypto.createHmac('sha256',key).update(at+'\n'+options.body).digest('hex'));const data=JSON.parse(options.body);assert.equal(data.visitor['x-vercel-forwarded-for'],'203.0.113.8');assert.equal(data.visitor['x-visitor-ip'],undefined);return {status:204}};
