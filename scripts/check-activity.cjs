@@ -28,7 +28,11 @@ async function check(){
  for(const file of fs.readdirSync('.').filter(f=>f.endsWith('.html'))){const html=fs.readFileSync(file,'utf8');if(html.includes('portfolio-activity.js'))assert(html.indexOf('portfolio-activity.js')<html.indexOf('</head>'),file+' must start tracking in the head')}
  const lifecycle2={},inflight=[],beacons=[];
  vm.runInNewContext(source,{...context,window:{addEventListener:(name,fn)=>lifecycle2[name]=fn},setTimeout:()=>0,clearTimeout:()=>{},Blob,navigator:{sendBeacon:(url,body)=>{beacons.push(body);return true}},fetch:async(url,request)=>{inflight.push(request.body);return new Promise(()=>{})}});
- lifecycle2.pagehide();assert.equal(beacons.length,1);assert.equal(await beacons[0].text(),inflight[0]);
+ lifecycle2.pagehide();lifecycle2.pagehide();assert.equal(beacons.length,1);assert.equal(await beacons[0].text(),inflight[0]);
+ const limitedLifecycle={},retryTimers=[];let attempts=0;
+ vm.runInNewContext(source,{...context,window:{addEventListener:(name,fn)=>limitedLifecycle[name]=fn},setTimeout:(fn,ms)=>{if(ms<15000)retryTimers.push(fn);return fn},clearTimeout:()=>{},console:{warn:()=>{}},fetch:async()=>{attempts++;return {ok:false,status:503}}});
+ for(let i=0;i<3;i++){await new Promise(resolve=>setImmediate(resolve));retryTimers.shift()?.()}
+ for(let i=0;i<10;i++)limitedLifecycle.online();await new Promise(resolve=>setImmediate(resolve));assert.equal(attempts,3);
  const beforeFetch=global.fetch,beforeKey=process.env.LEGAL_PORTFOLIO_RELAY_SECRET;
  process.env.LEGAL_PORTFOLIO_RELAY_SECRET=key;const handler=require('../api/portfolio-events.js');let forwarded=0;
  global.fetch=async(url,options)=>{forwarded++;assert.equal(url,'https://law-lake-theta.vercel.app/api/portfolio-activity');const at=options.headers['x-law-relay-time'];assert.equal(options.headers['x-law-relay-signature'],crypto.createHmac('sha256',key).update(at+'\n'+options.body).digest('hex'));const data=JSON.parse(options.body);assert.equal(data.visitor['x-vercel-forwarded-for'],'203.0.113.8');assert.equal(data.visitor['x-visitor-ip'],undefined);return {status:204}};
@@ -37,9 +41,13 @@ async function check(){
   const response={headers:{},setHeader(k,v){this.headers[k]=v},end(){}};await handler(request,response);return response;
  };
  try{
-  assert.equal((await send()).statusCode,204);assert.equal((await send({parsed:true})).statusCode,204);assert.equal(forwarded,2);
+  const results=await Promise.all([send(),send({parsed:true})]);assert(results.every(r=>r.statusCode===204));assert.equal(forwarded,1);
+  assert.equal((await send()).statusCode,204);assert.equal(forwarded,1);
   assert.equal((await send({origin:'https://bad.example'})).statusCode,403);assert.equal((await send({method:'GET'})).statusCode,405);
-  assert.equal((await send({body:'{bad'})).statusCode,400);assert.equal((await send({body:'x'.repeat(2001)})).statusCode,413);assert.equal(forwarded,2);
+  assert.equal((await send({body:'{bad'})).statusCode,400);assert.equal((await send({body:'x'.repeat(2001)})).statusCode,413);assert.equal(forwarded,1);
+  const retryEvent=JSON.stringify({...first,id:crypto.randomUUID()});let upstreamAttempts=0;
+  global.fetch=async()=>({status:++upstreamAttempts===1?503:204});
+  assert.equal((await send({body:retryEvent})).statusCode,503);assert.equal((await send({body:retryEvent})).statusCode,204);assert.equal(upstreamAttempts,2);
  }finally{global.fetch=beforeFetch;if(beforeKey===undefined)delete process.env.LEGAL_PORTFOLIO_RELAY_SECRET;else process.env.LEGAL_PORTFOLIO_RELAY_SECRET=beforeKey}
  console.log('PASS: first-party visitor/click requests, duplicate script guard, event IDs, signed IP relay, streamed/parsed bodies and request rejection');
 }

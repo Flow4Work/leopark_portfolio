@@ -1,6 +1,9 @@
 const {createHmac}=require('node:crypto');
 const GEO_HEADERS=['x-vercel-forwarded-for','x-vercel-ip-country','x-vercel-ip-country-region','x-vercel-ip-city','x-vercel-ip-postal-code','x-vercel-ip-latitude','x-vercel-ip-longitude'];
 const recent=new Map();
+// Coalesce a navigation beacon with the fetch already delivering that same event.
+// This is a bounded optimization; the collector's unique ID remains authoritative.
+const deliveries=new Map();
 module.exports=async function handler(req,res){
  res.setHeader('Cache-Control','no-store');res.setHeader('X-Content-Type-Options','nosniff');
  if(req.method!=='POST'){res.setHeader('Allow','POST');res.statusCode=405;return res.end()}
@@ -32,10 +35,20 @@ module.exports=async function handler(req,res){
  const visitor={};for(const key of GEO_HEADERS){const value=req.headers[key];if(typeof value==='string'&&value.length<=200)visitor[key]=value}
  const body=JSON.stringify({event,visitor}),timestamp=String(now);
  const signature=createHmac('sha256',secret).update(timestamp+'\n'+body).digest('hex');
- try{
-  const upstream=await fetch('https://law-lake-theta.vercel.app/api/portfolio-activity',{
+ const deliveryKey=ip+'|'+event.id;
+ let delivery=deliveries.get(deliveryKey);
+ if(delivery&&now-delivery.at>=120000){deliveries.delete(deliveryKey);delivery=null}
+ if(!delivery){
+  delivery={at:now,promise:(async()=>{try{
+   const upstream=await fetch('https://law-lake-theta.vercel.app/api/portfolio-activity',{
    method:'POST',headers:{'content-type':'application/json',origin:'https://leopark-portfolio.vercel.app','x-law-relay-time':timestamp,'x-law-relay-signature':signature},body,signal:AbortSignal.timeout(12000),redirect:'error'
   });
-  res.statusCode=upstream.status;if(upstream.status===429)res.setHeader('Retry-After','60');return res.end();
- }catch{res.statusCode=503;return res.end()}
+   return upstream.status;
+  }catch{return 503}})()};
+  deliveries.set(deliveryKey,delivery);
+  while(deliveries.size>1000)deliveries.delete(deliveries.keys().next().value);
+ }
+ const status=await delivery.promise;
+ if(status!==204&&deliveries.get(deliveryKey)===delivery)deliveries.delete(deliveryKey);
+ res.statusCode=status;if(status===429)res.setHeader('Retry-After','60');return res.end();
 };

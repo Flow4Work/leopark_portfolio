@@ -34,13 +34,15 @@
     try { body = JSON.stringify({id:uuid(), visitorId:visitorId, page:location.pathname, action:action, detail:(detail || '').slice(0,200)}); } catch (_) { return; }
     // Acknowledge an ordinary first-party request. sendBeacon's true return only
     // means queued; some browsers discard that queued request without an error.
-    var active = false, startedAt = Date.now();
-    function attempt(number) {
+    var active = false, attempts = 0, startedAt = Date.now();
+    function attempt() {
+      if (attempts >= 3) return;
+      attempts++;
       active = true;
       var controller = new AbortController(), timeout = setTimeout(function () { controller.abort(); }, 15000);
       function failed() {
         clearTimeout(timeout);
-        if (number < 2) setTimeout(function () { attempt(number + 1); }, 1000 * (number + 1));
+        if (attempts < 3) setTimeout(attempt, 1000 * attempts);
         else { active = false; console.warn('[portfolio] 방문 기록 전송 실패'); }
       }
       try {
@@ -54,9 +56,9 @@
       } catch (_) { failed(); }
     }
     // Reuse this body and UUID on retries; the collector deduplicates uncertain responses.
-    pending.set(body, function () { if (Date.now() - startedAt > 120000) pending.delete(body); else if (!active) attempt(0); });
+    pending.set(body, function () { if (Date.now() - startedAt > 120000) pending.delete(body); else if (!active) attempt(); });
     while (pending.size > 50) pending.delete(pending.keys().next().value);
-    attempt(0);
+    attempt();
   }
 
   function labelOf(link) {
@@ -68,8 +70,9 @@
   send('visit', location.pathname);
   window.addEventListener('online', function () { pending.forEach(function (retry) { retry(); }); });
   window.addEventListener('pagehide', function () {
-    pending.forEach(function (_, body) {
-      try { if (navigator.sendBeacon) navigator.sendBeacon(endpoint, new Blob([body], {type:'text/plain;charset=UTF-8'})); } catch (_) {}
+    pending.forEach(function (retry, body) {
+      if (retry.beaconSent) return;
+      try { if (navigator.sendBeacon && navigator.sendBeacon(endpoint, new Blob([body], {type:'text/plain;charset=UTF-8'}))) retry.beaconSent = true; } catch (_) {}
     });
   });
   window.addEventListener('pageshow', function (event) {
