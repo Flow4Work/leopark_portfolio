@@ -1,14 +1,15 @@
 <!doctype html>
 <html lang="ko" data-theme="dark">
 <head>
+  <script>document.documentElement.lang="ko";try{localStorage.setItem("portfolio-language","ko")}catch(_e){}</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#090909">
   <meta name="description" content="인플루언서 시딩을 직접 운영하며 후보 발굴과 협업 제안을 자동화하고, 일본에서 대만 공동구매로 확장한 기획·개발 기록.">
-  <title>KOL Scout | 박동호 포트폴리오</title>
+  <title>포트폴리오</title>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
-  <script>try{if(localStorage.getItem('portfolio-theme')==='light')document.documentElement.dataset.theme='light'}catch(e){}</script>
+  <script>try{if(localStorage.getItem('portfolio-theme')==='light')document.documentElement.dataset.theme='light';if(localStorage.getItem('portfolio-language')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <style>
     :root {
       color-scheme:dark;
@@ -41,6 +42,13 @@
     .detail-nav {display:flex;align-items:center;gap:22px;}
     .back-link {text-decoration:none;font-size:13px;color:var(--muted);font-weight:600;}
     .back-link:hover {color:var(--text);}
+    .language-switch {height:34px;min-width:61px;padding:0 10px;border:1px solid var(--line);border-radius:100px;background:var(--control);color:var(--muted);display:inline-flex;align-items:center;justify-content:center;gap:5px;font-size:11px;cursor:pointer;}
+    .language-switch:hover {background:var(--control-hover);}
+    .language-switch .language-ko {color:var(--text);font-weight:650;}
+    .language-switch .language-en {font-weight:450;}
+    html[lang="en"] .language-switch .language-ko {color:var(--muted);font-weight:450;}
+    html[lang="en"] .language-switch .language-en {color:var(--text);font-weight:650;}
+    .language-divider {opacity:.45;}
     .theme-switch {height:34px;min-width:88px;padding:0 13px;border:1px solid var(--line);border-radius:100px;background:var(--control);color:var(--text);display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:12px;font-weight:600;cursor:pointer;}
     .theme-switch:hover {background:var(--control-hover);}
     .theme-switch svg {width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;}
@@ -50,11 +58,11 @@
     main {max-width:1088px;margin:0 auto;padding:58px 32px 46px;}
     .eyebrow {font-size:12px;color:var(--muted);font-weight:650;letter-spacing:.055em;margin:0 0 22px;}
     h1 {margin:0;font-size:clamp(39px,5vw,58px);line-height:1.12;font-weight:740;letter-spacing:-.057em;}
-    .subtitle {font-size:clamp(18px,2.2vw,22px);font-weight:500;line-height:1.48;margin:19px 0 0;letter-spacing:-.045em;word-break:keep-all;text-wrap:pretty;}
+    .subtitle {font-size:clamp(18px,2.2vw,22px);font-weight:500;line-height:1.48;margin:19px 0 0;letter-spacing:-.028em;word-break:keep-all;text-wrap:balance;}
         /* Project overview: isolated from legacy .meta overrides. */
     .case-study .project-facts {
       display:grid;
-      grid-template-columns:155px 230px minmax(0,1fr) auto;
+      grid-template-columns:260px 252px minmax(0,1fr) auto;
       align-items:center;
       column-gap:24px;
       margin:30px 0 31px;
@@ -68,8 +76,8 @@
       line-height:1.4;letter-spacing:.005em;
     }
     .case-study .project-fact dd {
-      margin:0;color:var(--text);font-size:13.5px;font-weight:640;
-      line-height:1.5;letter-spacing:-.018em;word-break:keep-all;
+      margin:0;color:var(--text);font-size:13.2px;font-weight:570;
+      line-height:1.5;letter-spacing:-.012em;word-break:normal;overflow-wrap:normal;
     }
     .case-study .project-facts__action {
       display:flex;justify-content:flex-end;align-items:center;
@@ -116,7 +124,6 @@
       .case-study .project-facts__link {transition:none;}
     }
 
-    .case-study .project-facts {grid-template-columns:260px 252px minmax(0,1fr) auto;}
     figure {margin:0;}
     .demo-shell {aspect-ratio:32/15;background:#080807;border-radius:9px;overflow:hidden;position:relative;contain:layout paint;}
     .demo-shell > img {display:block;width:100%;height:100%;object-fit:contain;}
@@ -162,7 +169,7 @@
     @media(max-width:900px) {.site-header{padding-inline:24px;}main{padding:50px 25px 40px;}.article-section{margin-top:45px;}}
     @media(max-width:800px) {.case-study .project-facts{grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);}}
     @media(max-width:640px) {
-      .site-header{height:68px;padding:0 19px;}.header-right{gap:14px;}.detail-nav{gap:13px;}.back-link{font-size:12px;}
+      .site-header{height:68px;padding:0 19px;}.header-right{gap:9px;}.detail-nav{gap:11px;}.back-link{font-size:12px;}.theme-switch{min-width:74px;padding:0 9px;}.language-switch{min-width:54px;padding:0 7px;}
       main{padding:40px 19px 30px;}.eyebrow{margin-bottom:16px;}h1{font-size:39px;}.subtitle{margin-top:15px;font-size:19px;}
       .article-section{margin-top:42px;}h2{font-size:25px;line-height:1.4;margin-bottom:18px;}.body-copy{font-size:14px;line-height:1.82;}
       .demo-shell{border-radius:8px;}figcaption{font-size:11px;}.product-media{margin-top:24px;}
@@ -177,6 +184,7 @@
     @media(prefers-reduced-motion:reduce) {html{scroll-behavior:auto;}body,.sticky-site-nav{transition:none;}}
   </style>
   <link rel="stylesheet" href="/portfolio-fonts.css">
+  <script src="/portfolio-activity.js?v=20261105" async></script>
 </head>
 <body>
   <div class="sticky-site-nav">
@@ -185,9 +193,8 @@
     <div class="header-right">
       <nav class="detail-nav" aria-label="상단 메뉴">
         <a class="back-link" href="/">← 프로젝트 목록</a>
-        <a class="back-link" href="/profile">Profile</a>
       </nav>
-      <button id="theme-switch" class="theme-switch" aria-label="화이트 모드로 전환" aria-pressed="false" type="button">
+            <button id="theme-switch" class="theme-switch" aria-label="화이트 모드로 전환" aria-pressed="false" type="button">
         <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/></svg>
         <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.9 13.2A9 9 0 0 1 10.8 3.1 9 9 0 1 0 20.9 13.2Z"/></svg>
         <span id="theme-label">LIGHT</span>
@@ -311,7 +318,7 @@
   <script>
     (()=>{
       const root=document.documentElement,button=document.getElementById('theme-switch'),label=document.getElementById('theme-label');
-      function syncTheme(){const light=root.dataset.theme==='light';label.textContent=light?'DARK':'LIGHT';button.setAttribute('aria-label',light?'블랙 모드로 전환':'화이트 모드로 전환');button.setAttribute('aria-pressed',String(light));document.querySelector('meta[name="theme-color"]').content=light?'#fafafa':'#090909';}
+      function syncTheme(){const light=root.dataset.theme==='light',english=root.lang==='en';label.textContent=light?'DARK':'LIGHT';button.setAttribute('aria-label',english?(light?'Switch to dark mode':'Switch to light mode'):(light?'블랙 모드로 전환':'화이트 모드로 전환'));button.setAttribute('aria-pressed',String(light));document.querySelector('meta[name="theme-color"]').content=light?'#fafafa':'#090909';}
       syncTheme();button.addEventListener('click',()=>{root.dataset.theme=root.dataset.theme==='light'?'dark':'light';try{localStorage.setItem('portfolio-theme',root.dataset.theme)}catch(e){}syncTheme();});
       const nav=document.querySelector('.sticky-site-nav');
       const preview=document.getElementById('scout-motion');
@@ -357,6 +364,7 @@
       syncNav();syncPlayback();
     })();
   </script>
-  <script src="/portfolio-activity.js" defer></script>
+  <script src="/kol-scout-i18n.js"></script>
+
 </body>
 </html>

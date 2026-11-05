@@ -1,17 +1,29 @@
 <!doctype html>
 <html lang="ko" data-theme="dark">
 <head>
+  <script>document.documentElement.lang="ko";try{localStorage.setItem("portfolio-language","ko")}catch(_e){}</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#090909">
   <meta name="description" content="외국인 여행자를 위한 로컬 지도 코코치즈와 예약 대행 daijobu를 기획하고 만든 기록.">
-  <title>코코치즈 | 박동호 포트폴리오</title>
+  <title>포트폴리오</title>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
-  <script>try{if(localStorage.getItem('portfolio-theme')==='light')document.documentElement.dataset.theme='light'}catch(e){}</script>
+  <script>try{if(localStorage.getItem('portfolio-theme')==='light')document.documentElement.dataset.theme='light';if(localStorage.getItem('portfolio-language')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <link rel="stylesheet" href="/mobile-project.css">
 
   <style>
+    .language-switch{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-width:76px;height:34px;padding:0 11px;border:1px solid var(--line);border-radius:999px;background:var(--control);color:var(--muted);font-size:11px;font-weight:450;cursor:pointer;white-space:nowrap}
+    .language-switch:hover{background:var(--control-hover)}
+    .language-switch .language-divider{opacity:.4}
+    .language-switch .language-ko{color:var(--text);font-weight:650}
+    html[lang="en"] .language-switch .language-ko{color:var(--muted);font-weight:450}
+    html[lang="en"] .language-switch .language-en{color:var(--text);font-weight:650}
+    html[lang="en"] .project-facts__action{flex-wrap:wrap;gap:8px}
+    html[lang="en"] .project-facts__link{white-space:normal;text-align:center}
+    @media(max-width:640px){.header-actions{gap:9px}.header-nav{gap:12px}.language-switch{min-width:55px;height:32px;padding:0 6px;gap:4px;font-size:10px}.theme-switch{min-width:70px;padding-inline:8px}}
+    @media(max-width:370px){.topbar{padding-inline:12px;gap:7px}.brand-name{font-size:12px}.header-actions{gap:6px}.header-nav{gap:8px}.header-link{font-size:11px}.theme-switch{min-width:63px;height:30px;padding-inline:5px;gap:5px;font-size:11px}.theme-switch svg{width:13px;height:13px}.language-switch{min-width:50px;height:30px;padding-inline:5px}}
+    @media(max-width:640px){html[lang="en"] .network-node--booking .network-node__title{white-space:normal;font-size:clamp(11px,3.4vw,14px);line-height:1.2}html[lang="en"] .network-node--booking .network-node__copy{gap:3px}}
     .project-hero{margin-bottom:58px}
     .project-sections{gap:60px}
     .project-section{border:0;padding:0}
@@ -137,6 +149,7 @@
     .mobile-demo.region-list-demo img{aspect-ratio:390/782}
   </style>
   <link rel="stylesheet" href="/portfolio-fonts.css">
+  <script src="/portfolio-activity.js?v=20261105" async></script>
 </head>
 <body>
   <div class="sticky-site-nav">
@@ -147,9 +160,8 @@
     <div class="header-actions">
       <nav class="header-nav" aria-label="상단 메뉴">
         <a class="header-link" href="/">프로젝트</a>
-        <a class="header-link" href="/profile">Profile</a>
       </nav>
-      <button class="theme-switch" type="button" id="theme-switch" aria-label="화이트 모드로 전환" aria-pressed="false">
+            <button class="theme-switch" type="button" id="theme-switch" aria-label="화이트 모드로 전환" aria-pressed="false">
         <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" /><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42" /></svg>
         <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.9 13.2A9 9 0 0 1 10.8 3.1 9 9 0 1 0 20.9 13.2Z" /></svg>
         <span id="theme-label">LIGHT</span>
@@ -553,6 +565,7 @@
 
   <script src="/portfolio-data.js"></script>
   <script src="/mobile-project.js"></script>
+  <script src="/kokochizu-i18n.js"></script>
 
   <script>
     (() => {
@@ -580,6 +593,6 @@
       reduceMotion.addEventListener('change', () => demos.forEach(demo => demo.sync()));
     })();
   </script>
-  <script src="/portfolio-activity.js" defer></script>
+
 </body>
 </html>

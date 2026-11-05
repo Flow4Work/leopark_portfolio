@@ -1,14 +1,17 @@
 <!doctype html>
 <html lang="ko" data-theme="dark">
 <head>
+  <script>document.documentElement.lang="ko";try{localStorage.setItem("portfolio-language","ko")}catch(_e){}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#090909" />
-  <title>기획하고 만드는 PM의 포트폴리오</title>
+  <title>포트폴리오</title>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
   <script>
     try { if (localStorage.getItem('portfolio-theme') === 'light') document.documentElement.dataset.theme = 'light'; }
+    catch (_) {}
+    try { if (localStorage.getItem('portfolio-language') === 'en') document.documentElement.lang = 'en'; }
     catch (_) {}
   </script>
   <style>
@@ -40,7 +43,18 @@
     }
     .brand { display: flex; align-items: baseline; gap: 17px; min-width: 0; }
     .brand-name { color: var(--text); font-size: 14px; font-weight: 750; letter-spacing: -.3px; }
-    .header-actions { display: flex; align-items: center; gap: 27px; }
+    .header-actions { display: flex; align-items: center; gap: 16px; }
+    .language-switch {
+      display:inline-flex;align-items:center;justify-content:center;gap:6px;
+      min-width:76px;height:34px;padding:0 11px;
+      border:1px solid var(--line);border-radius:999px;background:var(--control);
+      color:var(--muted);font-size:11px;font-weight:450;cursor:pointer;
+    }
+    .language-switch:hover { background:var(--control-hover); }
+    .language-switch .language-divider { opacity:.4; }
+    .language-switch .language-ko { color:var(--text);font-weight:650; }
+    html[lang="en"] .language-switch .language-ko { color:var(--muted);font-weight:450; }
+    html[lang="en"] .language-switch .language-en { color:var(--text);font-weight:650; }
     .header-nav { display:flex; align-items:center; gap:24px; }
     .header-link[aria-current="page"] { color:var(--text); text-decoration:underline; text-underline-offset:7px; }
     .header-link { color: var(--muted); font-size: 12px; font-weight: 600; text-decoration: none; }
@@ -56,9 +70,9 @@
     .moon-icon { display: none; }
     :root[data-theme="light"] .sun-icon { display: none; }
     :root[data-theme="light"] .moon-icon { display: block; }
-    .header-link:focus-visible, .theme-switch:focus-visible { outline: 2px solid var(--text); outline-offset: 4px; }
+    .header-link:focus-visible, .theme-switch:focus-visible, .language-switch:focus-visible { outline: 2px solid var(--text); outline-offset: 4px; }
     .portfolio { padding-top: 40px; padding-bottom: 90px; }
-    .intro { margin: 0 0 34px; }
+    .intro { margin: 0 0 90px; }
     .intro-title {
       margin: 0; max-width: 780px; font-size: 26px;
       line-height: 1.45; letter-spacing: -.025em; font-weight: 650; word-break: keep-all; text-wrap: balance;
@@ -191,7 +205,7 @@
       .header-nav .header-link { font-size:11px; }
       .header-actions > .header-link { display:none; }
       .portfolio { padding: 36px 20px 64px; }
-      .intro { margin-bottom: 30px; }
+      .intro { margin-bottom: 46px; }
       .intro-title { font-size: 24px; line-height: 1.4; letter-spacing: -.7px; }
       .intro-summary { margin-top: 18px; font-size: 15px; line-height: 1.85; }
       .intro-summary + .intro-summary { margin-top: 20px; }
@@ -211,6 +225,21 @@
       .portfolio-section + .portfolio-section { margin-top: 36px; }
       .footer { padding: 20px 20px 36px; }
     }
+    @media (max-width: 460px) {
+      .topbar { padding-inline: 12px; gap: 6px; }
+      .brand-name { font-size: 12px; }
+      .header-actions { gap: 7px; }
+      .header-nav { gap: 9px; }
+      .header-nav .header-link { font-size: 10.5px; }
+      .language-switch { min-width: 55px; height: 32px; padding-inline: 6px; gap: 4px; font-size: 10px; }
+      .theme-switch { min-width: 61px; height: 32px; padding-inline: 7px; gap: 4px; font-size: 10px; }
+      .theme-switch svg { width: 13px; height: 13px; }
+    }
+    @media (max-width: 360px) {
+      .brand-name { font-size: 11px; }
+      .language-switch { min-width: 52px; }
+      .theme-switch { min-width: 58px; }
+    }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       body { transition: none; }
@@ -227,6 +256,7 @@
 
   </style>
   <link rel="stylesheet" href="/portfolio-fonts.css">
+  <script src="/portfolio-activity.js?v=20261105" async></script>
 </head>
 <body>
   <div class="sticky-site-nav">
@@ -237,9 +267,8 @@
     <div class="header-actions">
       <nav class="header-nav" aria-label="상단 메뉴">
         <a class="header-link" href="/" aria-current="page">프로젝트</a>
-        <a class="header-link" href="/profile">Profile</a>
       </nav>
-      <button class="theme-switch" type="button" id="theme-switch" aria-label="화이트 모드로 전환" aria-pressed="false">
+            <button class="theme-switch" type="button" id="theme-switch" aria-label="화이트 모드로 전환" aria-pressed="false">
         <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" /><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42" /></svg>
         <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.9 13.2A9 9 0 0 1 10.8 3.1 9 9 0 1 0 20.9 13.2Z" /></svg>
         <span id="theme-label">LIGHT</span>
@@ -250,8 +279,7 @@
   <main class="portfolio">
     <section class="intro" aria-label="소개">
       <h1 class="intro-title">안녕하세요, 박동호입니다.</h1>
-      <p class="intro-summary">사람들이 서비스의 어디에 돈을 쓰고, 왜 기꺼이 결제하는지 늘 궁금해왔습니다. 수많은 서비스 중 하나를 선택하고, 계속 이용하며, 결국 돈을 지불하기까지의 이유를 이해하고 제품에 반영해 왔습니다. 최근에는 작은 사업을 혼자 운영하기 위해 콘텐츠 제작부터 고객을 모으고 서비스를 제공하는 데 필요한 도구까지 직접 만들고 있습니다. 제품뿐 아니라 고객과 사업을 함께 바라보며 필요한 일을 직접 해 나가고 있습니다.</p>
-      <p class="intro-summary">이 포트폴리오를 만드는 데 14일이 걸렸습니다. 프로젝트를 단순히 나열하기보다 처음 보는 사람도 쉽게 이해하고, 제가 어떤 고민과 선택을 해 왔는지 보여주고 싶었습니다. AI 덕분에 구현은 빨라졌지만, 무엇을 보여주고 어떻게 표현할지는 여전히 제 몫이었습니다. 글과 디자인을 여러 번 다듬는 동안 지난 경험도 새롭게 정리할 수 있었습니다. 덕분에 프로젝트의 결과뿐 아니라 그 과정에서 제가 중요하게 생각했던 것들까지 담아낼 수 있었습니다.</p>
+      <p class="intro-summary">사람들이 서비스의 어디에 돈을 쓰고, 왜 기꺼이 결제하는지 늘 궁금해왔습니다. 수많은 서비스 중 하나를 선택하고, 계속 이용하며, 결국 돈을 지불하기까지의 이유를 이해하고 제품에 반영해 왔습니다. 최근에는 작은 사업을 혼자 운영하기 위해 콘텐츠 제작부터 고객을 모으고 서비스를 제공하는 데 필요한 도구까지 직접 만들고 있습니다. 제품뿐 아니라 고객과 사업을 함께 바라보며 필요한 일을 직접 해 나가고 있습니다. 아래 프로젝트를 클릭하면 각 작업의 배경과 과정을 자세히 볼 수 있습니다.</p>
     </section>
     <section class="portfolio-section" aria-labelledby="web-title">
       <div class="section-header">
@@ -1284,10 +1312,14 @@ html.is-paused .egg-scene{animation-play-state:paused}
       const themeButton = document.getElementById('theme-switch');
       const themeLabel = document.getElementById('theme-label');
       const themeMeta = document.querySelector('meta[name="theme-color"]');
+      const languageButton = (document.getElementById('language-switch') || document.createElement('button'));
+      let language = root.lang === 'en' ? 'en' : 'ko';
       function syncTheme() {
         const isLight = root.dataset.theme === 'light';
         themeLabel.textContent = isLight ? 'DARK' : 'LIGHT';
-        themeButton.setAttribute('aria-label', isLight ? '블랙 모드로 전환' : '화이트 모드로 전환');
+        themeButton.setAttribute('aria-label', language === 'en'
+          ? (isLight ? 'Switch to dark mode' : 'Switch to light mode')
+          : (isLight ? '블랙 모드로 전환' : '화이트 모드로 전환'));
         themeButton.setAttribute('aria-pressed', String(isLight));
         themeMeta.setAttribute('content', isLight ? '#fafafa' : '#090909');
       }
@@ -1418,6 +1450,130 @@ html.is-paused .egg-scene{animation-play-state:paused}
         items.forEach((service, index) => grid.append(makeCard(service, index, mode)));
       });
 
+      // Localize Home text only; project detail pages and animated demos remain untouched.
+      const homeNodes = {
+        nav: document.querySelector('.header-nav .header-link[href="/"]'),
+        intro: document.querySelector('.intro'),
+        heading: document.querySelector('.intro-title'),
+        paragraphs: [...document.querySelectorAll('.intro-summary')],
+        webTitle: document.getElementById('web-title'),
+        mobileTitle: document.getElementById('mobile-title'),
+        footerName: document.querySelector('.footer-profile strong'),
+        footerEmail: document.querySelector('.footer-profile a')
+      };
+      const koreanCopy = {
+        title: document.title,
+        nav: homeNodes.nav.textContent,
+        introLabel: homeNodes.intro.getAttribute('aria-label'),
+        heading: homeNodes.heading.textContent,
+        paragraphs: homeNodes.paragraphs.map(node => node.textContent),
+        webTitle: homeNodes.webTitle.textContent,
+        mobileTitle: homeNodes.mobileTitle.textContent,
+        footerName: homeNodes.footerName.textContent,
+        emailLabel: homeNodes.footerEmail.getAttribute('aria-label')
+      };
+      const englishCopy = {
+        title: 'Dongho Park | Portfolio',
+        nav: 'Projects',
+        introLabel: 'Introduction',
+        heading: "Hello, I'm Dongho Park.",
+        paragraphs: [
+          "I have always been curious about what makes people choose a service, keep using it, and decide it is worth paying for. I have worked to understand those decisions and turn what I learn into better products. Recently, I have been building my own tools for creating content, reaching customers, and delivering services while running a small business. I approach the work with the customer, the product, and the business in mind. Click a project below to explore the thinking and work behind it."
+        ],
+        webTitle: 'Web Projects',
+        mobileTitle: 'Mobile Projects',
+        footerName: 'Dongho Park',
+        emailLabel: 'Email Dongho Park'
+      };
+      const englishServices = {
+        'law-project': {
+          type: 'AI Legal Guidance',
+          description: 'Legal steps and timelines at a glance',
+          previewLabel: 'Legal steps and timelines for your situation'
+        },
+        'kol-scout': {
+          type: 'AI KOL Discovery',
+          description: 'KOL discovery and partnerships in Japan and Taiwan',
+          previewLabel: 'From KOL discovery to partnership management'
+        },
+        'instagram-card-agent': {
+          type: 'AI Content Automation',
+          description: 'Japanese-language restaurant carousels',
+          previewLabel: 'Automated Instagram carousel creation'
+        },
+        'kokochizu': {
+          name: 'Kokochizu',
+          type: 'Travel Service',
+          description: 'Restaurant maps and booking assistance',
+          previewLabel: 'Restaurant maps and booking assistance'
+        },
+        'tonament': {
+          type: 'Telegram Mini App',
+          description: 'Vote and earn rewards',
+          previewLabel: 'Vote and earn rewards'
+        },
+        'chiklink': {
+          type: 'Telegram Mini App',
+          description: 'Friend referrals and link promotion',
+          previewLabel: 'Friend referrals and link promotion'
+        },
+        'ownerbe': {
+          type: 'Content Community',
+          description: 'Sharing advertising revenue',
+          previewLabel: 'Sharing advertising revenue'
+        }
+      };
+      function syncLanguage() {
+        const isEnglish = language === 'en';
+        const copy = isEnglish ? englishCopy : koreanCopy;
+        root.lang = language;
+        document.title = copy.title;
+        homeNodes.nav.textContent = copy.nav;
+        homeNodes.intro.setAttribute('aria-label', copy.introLabel);
+        homeNodes.heading.textContent = copy.heading;
+        homeNodes.paragraphs.forEach((node, index) => { node.textContent = copy.paragraphs[index]; });
+        homeNodes.webTitle.textContent = copy.webTitle;
+        homeNodes.mobileTitle.textContent = copy.mobileTitle;
+        homeNodes.footerName.textContent = copy.footerName;
+        homeNodes.footerEmail.setAttribute('aria-label', copy.emailLabel);
+        [...webServices, ...mobileServices].forEach(service => {
+          const card = document.getElementById('project-' + service.id);
+          if (!card) return;
+          const localized = isEnglish ? {...service, ...englishServices[service.id]} : service;
+          const update = (selector, value) => {
+            const node = card.querySelector(selector);
+            if (node) node.textContent = value;
+          };
+          update('.placeholder-name', localized.name);
+          update('.placeholder-detail', localized.previewLabel || localized.type);
+          update('.service-name', localized.name);
+          update('.service-kind', localized.type);
+          update('.service-description', localized.description);
+          const image = card.querySelector('.work-image');
+          if (image) image.alt = localized.name + (isEnglish
+            ? (card.closest('#mobile-grid') ? ' mobile screen' : ' web screen')
+            : (card.closest('#mobile-grid') ? ' 모바일 화면' : ' 웹 화면'));
+          const cardLink = card.querySelector('.work-card-link');
+          if (cardLink) cardLink.setAttribute('aria-label', localized.name
+            + (isEnglish ? ' project details' : ' 프로젝트 상세 페이지로 이동'));
+          if (service.id === 'instagram-card-agent') {
+            card.querySelector('.work-preview')?.setAttribute('aria-label', isEnglish
+              ? 'Instagram carousel preview: rotating through slides 1, 2, and 3'
+              : 'Instagram Card Agent: 카드뉴스 1P, 2P, 3P 자동 전환 미리보기');
+          }
+        });
+        languageButton.setAttribute('aria-pressed', String(isEnglish));
+        languageButton.setAttribute('aria-label', isEnglish ? '한국어로 전환' : 'Switch to English');
+        languageButton.title = isEnglish ? '한국어로 전환' : 'Switch to English';
+        syncTheme();
+        try { localStorage.setItem('portfolio-language', language); } catch (_) {}
+      }
+      languageButton.addEventListener('click', () => {
+        language = language === 'ko' ? 'en' : 'ko';
+        syncLanguage();
+      });
+      syncLanguage();
+
       // Keep heavy iframe demos dormant during scroll; static card images remain visible.
       const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
       let scrolling = false;
@@ -1524,6 +1680,6 @@ html.is-paused .egg-scene{animation-play-state:paused}
       update();
     })();
   </script>
-  <script src="/portfolio-activity.js" defer></script>
+
 </body>
 </html>

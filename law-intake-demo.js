@@ -10,6 +10,8 @@
     {title:'퇴사한 시기와 회사에 지급을 요청한 상황을 알려주세요.',hint:'날짜와 회사의 답변을 알면 다음 절차를 더 정확하게 정리할 수 있어요.',options:[]}
   ];
   var sampleDetail='2026년 8월에 퇴사했고, 밀린 월급은 약 320만 원입니다. 회사에 지급을 요청했지만 아직 구체적인 날짜를 안내받지 못했습니다.';
+  var sampleDetailEnglish='I left my job in August 2026, and my employer still owes me about KRW 3.2 million. I asked for payment, but the company has not given me a date.';
+  function typedExample(){return document.documentElement.lang==='en'?sampleDetailEnglish:sampleDetail;}
   var activity={
     intake:['사건의 현재 단계와 필요한 정보를 구분하고 있어요.','다음 절차를 판단할 핵심 조건을 살펴보고 있어요.','빠진 정보가 없는지 확인 질문을 정리하고 있어요.'],
     analyzing:['이미 진행한 절차와 앞으로의 절차를 구분하고 있어요.','선택할 수 있는 대응 방법을 비교하고 있어요.','결과에 따라 달라지는 경로를 살펴보고 있어요.','지도에 표시할 진행 순서를 정리하고 있어요.']
@@ -55,7 +57,7 @@
     var html=[];
     // Focus on the current question: keep only the latest completed answer.
     for(var i=Math.max(0,stage-1);i<Math.min(stage,3);i++){
-      var response=answers[i]||(i<2?questions[i].options[questions[i].answer]:sampleDetail);
+      var response=answers[i]||(i<2?questions[i].options[questions[i].answer]:typedExample());
       html.push('<div class="law-intake-history-question">'+esc(questions[i].title)+'</div><div class="law-intake-history-answer">'+esc(response)+'</div>');
     }
     return '<div class="law-intake-history">'+html.join('')+'</div>';
@@ -164,11 +166,11 @@
         var i=0;
         typingTimer=setInterval(function(){
           if(stage!==2||loading){clearInterval(typingTimer);typingTimer=null;return;}
-          i=Math.min(sampleDetail.length,i+4);
-          detail=sampleDetail.slice(0,i);
+          i=Math.min(typedExample().length,i+4);
+          detail=typedExample().slice(0,i);
           var area=root.querySelector('.law-intake-textarea');
           if(area){area.value=detail;var next=root.querySelector('[data-law-next]');if(next)next.disabled=false;}
-          if(i===sampleDetail.length){clearInterval(typingTimer);typingTimer=null;}
+          if(i===typedExample().length){clearInterval(typingTimer);typingTimer=null;}
         },65);
       });
       after(5200,advance);

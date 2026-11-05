@@ -4,13 +4,22 @@
   "buildCommand": "node scripts/check-site.mjs",
   "outputDirectory": ".",
   "cleanUrls": true,
-  "rewrites": [
+  "redirects": [
     {
       "source": "/profile",
-      "destination": "/perspective"
-    }
-  ],
-  "redirects": [
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/perspective",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/perspective.html",
+      "destination": "/",
+      "permanent": false
+    },
     {
       "source": "/planning-agent",
       "destination": "/law-project",

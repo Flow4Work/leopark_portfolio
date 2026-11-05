@@ -147,7 +147,7 @@ window.PORTFOLIO_MOBILE_SERVICES = [
   if (window.__portfolioActivityRequested) return;
   window.__portfolioActivityRequested = true;
   const script = document.createElement('script');
-  script.src = '/portfolio-activity.js';
+  script.src = '/portfolio-activity.js?v=20261105';
   script.defer = true;
   document.head.append(script);
 })();

@@ -27,29 +27,35 @@
   }
   var visitorId = uuid();
   try { var saved = localStorage.getItem('portfolio-visitor-v1'); if (saved && /^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$/i.test(saved)) visitorId = saved; localStorage.setItem('portfolio-visitor-v1', visitorId); } catch (_) {}
+  // Only unacknowledged events stay in memory; the same IDs are used on every transport.
+  var pending = new Map();
   function send(action, detail) {
     var body;
     try { body = JSON.stringify({id:uuid(), visitorId:visitorId, page:location.pathname, action:action, detail:(detail || '').slice(0,200)}); } catch (_) { return; }
     // Acknowledge an ordinary first-party request. sendBeacon's true return only
     // means queued; some browsers discard that queued request without an error.
+    var active = false, startedAt = Date.now();
     function attempt(number) {
+      active = true;
       var controller = new AbortController(), timeout = setTimeout(function () { controller.abort(); }, 15000);
       function failed() {
         clearTimeout(timeout);
         if (number < 2) setTimeout(function () { attempt(number + 1); }, 1000 * (number + 1));
-        else console.warn('[portfolio] 방문 기록 전송 실패');
+        else { active = false; console.warn('[portfolio] 방문 기록 전송 실패'); }
       }
       try {
         fetch(endpoint, {method:'POST', credentials:'omit', keepalive:true, signal:controller.signal, headers:{'Content-Type':'text/plain;charset=UTF-8'}, body:body})
           .then(function (response) {
             clearTimeout(timeout);
-            if (response.ok) return;
+            if (response.ok) { pending.delete(body); active = false; return; }
             if ([408,500,502,503,504].indexOf(response.status) !== -1) failed();
-            else console.warn('[portfolio] 방문 기록 전송 실패: '+response.status);
+            else { pending.delete(body); active = false; console.warn('[portfolio] 방문 기록 전송 실패: '+response.status); }
           }).catch(failed);
       } catch (_) { failed(); }
     }
     // Reuse this body and UUID on retries; the collector deduplicates uncertain responses.
+    pending.set(body, function () { if (Date.now() - startedAt > 120000) pending.delete(body); else if (!active) attempt(0); });
+    while (pending.size > 50) pending.delete(pending.keys().next().value);
     attempt(0);
   }
 
@@ -60,6 +66,16 @@
   }
 
   send('visit', location.pathname);
+  window.addEventListener('online', function () { pending.forEach(function (retry) { retry(); }); });
+  window.addEventListener('pagehide', function () {
+    pending.forEach(function (_, body) {
+      try { if (navigator.sendBeacon) navigator.sendBeacon(endpoint, new Blob([body], {type:'text/plain;charset=UTF-8'})); } catch (_) {}
+    });
+  });
+  window.addEventListener('pageshow', function (event) {
+    // A back/forward-cache restore does not execute this script again.
+    if (event.persisted) { pending.forEach(function (retry) { retry(); }); send('visit', location.pathname); }
+  });
 
   function clicked(event) {
     if (event.type === 'auxclick' && event.button !== 1) return;

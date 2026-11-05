@@ -479,3 +479,46 @@
 .law-service-section .law-story-step--methods .law-intake-summary-list li div span{font-size:13px}
 .law-service-section .law-story-step--intake .law-story-copy p.law-intake-summary-result{font-size:14px}
 .law-service-section .law-story-step--methods .law-story-map figcaption{font-size:13px}
+
+
+/* Law Map language switch. Restrained, in the existing header controls. */
+.law-project-page .header-right{gap:15px}
+.law-project-page .language-switch{
+ display:inline-flex;align-items:center;justify-content:center;gap:6px;
+ min-width:76px;height:34px;padding:0 11px;
+ border:1px solid var(--line);border-radius:999px;background:var(--control);
+ color:var(--muted);font-size:11px;font-weight:450;cursor:pointer;flex:none;
+}
+.law-project-page .language-switch:hover{background:var(--control-hover)}
+.law-project-page .language-switch .language-divider{opacity:.4}
+.law-project-page .language-switch .language-ko{color:var(--text);font-weight:650}
+html[lang="en"] .language-switch .language-ko{color:var(--muted);font-weight:450}
+html[lang="en"] .language-switch .language-en{color:var(--text);font-weight:650}
+html[lang="en"] .law-section .law-research-intro{white-space:normal}
+html[lang="en"] .law-section h2,
+html[lang="en"] .law-research-case__copy h4,
+html[lang="en"] .law-problem-card h3 {word-break:normal}
+html[lang="en"] .law-branch-node h3,
+html[lang="en"] .law-order-card h4,
+html[lang="en"] .law-order-branch-card h4{overflow-wrap:break-word}
+/* Keep the compact desktop branch card readable without clipping its final line. */
+@media(min-width:561px){html[lang="en"] .law-order-branch-card--confirmed p{line-height:1.42}}
+@media(max-width:650px){
+ .law-project-page .site-header{padding-inline:14px;gap:8px}
+ .law-project-page .header-right{gap:8px}
+ .law-project-page .detail-nav{gap:10px}
+ .law-project-page .detail-nav .back-link{font-size:11px}
+ .law-project-page .language-switch{height:32px;min-width:56px;padding-inline:6px;gap:4px;font-size:10px}
+ .law-project-page .site-header .theme-switch{height:32px;min-width:63px;padding-inline:7px;gap:5px;font-size:10px}
+ .law-project-page .site-header .theme-switch svg{width:13px;height:13px}
+ .law-project-page .header-brand{font-size:12px}
+}
+@media(max-width:365px){
+ .law-project-page .site-header{padding-inline:10px;gap:5px}
+ .law-project-page .header-right{gap:5px}
+ .law-project-page .detail-nav{gap:6px}
+ .law-project-page .detail-nav .back-link{font-size:10px}
+ .law-project-page .language-switch{min-width:51px}
+ .law-project-page .site-header .theme-switch{min-width:58px}
+ .law-project-page .header-brand{font-size:11px}
+}

@@ -2,7 +2,7 @@ const assert=require('node:assert/strict'),vm=require('node:vm'),fs=require('nod
 const key='isolated-portfolio-relay-test-key-at-least-32-characters';
 async function check(){
  const source=fs.readFileSync('portfolio-activity.js','utf8'),sent=[],clicks=[];
- const storage=new Map(),window={};
+ const storage=new Map(),lifecycle={},window={addEventListener:(name,fn)=>lifecycle[name]=fn};
  const context={window,crypto,Uint8Array,Array,console,AbortController,setTimeout,clearTimeout,location:{hostname:'leopark-portfolio.vercel.app',protocol:'https:',pathname:'/law-project'},localStorage:{getItem:k=>storage.get(k),setItem:(k,v)=>storage.set(k,v)},document:{addEventListener:(name,fn)=>clicks.push(fn)},navigator:{sendBeacon:()=>{throw Error('Must not use an unacknowledged beacon')}},fetch:async(url,options)=>{sent.push({url,options});return {ok:true}}};
  vm.runInNewContext(source,context);vm.runInNewContext(source,context);assert.equal(sent.length,1);assert.equal(clicks.length,2);
  const first=JSON.parse(sent[0].options.body);assert.equal(sent[0].url,'/api/portfolio-events');assert.equal(first.page,'/law-project');assert.equal(first.action,'visit');assert.equal(first.visitorId,storage.get('portfolio-visitor-v1'));
@@ -15,14 +15,20 @@ async function check(){
  clicks[1]({type:'auxclick',button:2,target:serviceTarget});assert.equal(sent.length,4);
  assert.match(fs.readFileSync('law-project.html','utf8'),/data-activity-service="Law Map"/);
  const retryBodies=[],timers=[];
- vm.runInNewContext(source,{...context,window:{},setTimeout:(fn,ms)=>{if(ms<15000)timers.push(fn);return fn},clearTimeout:()=>{},fetch:async(url,options)=>{retryBodies.push(options.body);return {ok:retryBodies.length===3,status:503}}});
+ vm.runInNewContext(source,{...context,window:{addEventListener:()=>{}},setTimeout:(fn,ms)=>{if(ms<15000)timers.push(fn);return fn},clearTimeout:()=>{},fetch:async(url,options)=>{retryBodies.push(options.body);return {ok:retryBodies.length===3,status:503}}});
  for(let i=0;i<3;i++){await new Promise(resolve=>setImmediate(resolve));timers.shift()?.()}
  assert.equal(retryBodies.length,3);assert.equal(new Set(retryBodies).size,1);
  let rejected=0;
- vm.runInNewContext(source,{...context,window:{},setTimeout:()=>0,clearTimeout:()=>{},console:{warn:()=>{}},fetch:async()=>{rejected++;return {ok:false,status:400}}});
+ vm.runInNewContext(source,{...context,window:{addEventListener:()=>{}},setTimeout:()=>0,clearTimeout:()=>{},console:{warn:()=>{}},fetch:async()=>{rejected++;return {ok:false,status:400}}});
  await new Promise(resolve=>setImmediate(resolve));assert.equal(rejected,1);
  const preview=[];
- vm.runInNewContext(source,{...context,window:{},location:{...context.location,hostname:'leopark-portfolio-preview.vercel.app'},fetch:async()=>{preview.push(1);return {ok:true}}});assert.equal(preview.length,0);
+ vm.runInNewContext(source,{...context,window:{addEventListener:()=>{}},location:{...context.location,hostname:'leopark-portfolio-preview.vercel.app'},fetch:async()=>{preview.push(1);return {ok:true}}});assert.equal(preview.length,0);
+ const beforeRestore=sent.length;lifecycle.pageshow({persisted:false});assert.equal(sent.length,beforeRestore);
+ lifecycle.pageshow({persisted:true});assert.equal(sent.length,beforeRestore+1);assert.equal(JSON.parse(sent.at(-1).options.body).action,'visit');
+ for(const file of fs.readdirSync('.').filter(f=>f.endsWith('.html'))){const html=fs.readFileSync(file,'utf8');if(html.includes('portfolio-activity.js'))assert(html.indexOf('portfolio-activity.js')<html.indexOf('</head>'),file+' must start tracking in the head')}
+ const lifecycle2={},inflight=[],beacons=[];
+ vm.runInNewContext(source,{...context,window:{addEventListener:(name,fn)=>lifecycle2[name]=fn},setTimeout:()=>0,clearTimeout:()=>{},Blob,navigator:{sendBeacon:(url,body)=>{beacons.push(body);return true}},fetch:async(url,request)=>{inflight.push(request.body);return new Promise(()=>{})}});
+ lifecycle2.pagehide();assert.equal(beacons.length,1);assert.equal(await beacons[0].text(),inflight[0]);
  const beforeFetch=global.fetch,beforeKey=process.env.LEGAL_PORTFOLIO_RELAY_SECRET;
  process.env.LEGAL_PORTFOLIO_RELAY_SECRET=key;const handler=require('../api/portfolio-events.js');let forwarded=0;
  global.fetch=async(url,options)=>{forwarded++;assert.equal(url,'https://law-lake-theta.vercel.app/api/portfolio-activity');const at=options.headers['x-law-relay-time'];assert.equal(options.headers['x-law-relay-signature'],crypto.createHmac('sha256',key).update(at+'\n'+options.body).digest('hex'));const data=JSON.parse(options.body);assert.equal(data.visitor['x-vercel-forwarded-for'],'203.0.113.8');assert.equal(data.visitor['x-visitor-ip'],undefined);return {status:204}};

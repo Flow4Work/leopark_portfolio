@@ -1,15 +1,18 @@
 <!doctype html>
 <html lang="ko" data-theme="dark">
 <head>
+  <script>document.documentElement.lang="ko";try{localStorage.setItem("portfolio-language","ko")}catch(_e){}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#090909" />
-  <title>instagram card agent | Portfolio</title>
+  <title>포트폴리오</title>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
   <script>
-    try { if (localStorage.getItem('portfolio-theme') === 'light') document.documentElement.dataset.theme='light'; }
-    catch (_) {}
+    try {
+      if (localStorage.getItem('portfolio-theme') === 'light') document.documentElement.dataset.theme='light';
+      if (localStorage.getItem('portfolio-language') === 'en') document.documentElement.lang='en';
+    } catch (_) {}
   </script>
   <style>
     :root {
@@ -51,6 +54,12 @@
       font-size:12px; font-weight:600; cursor:pointer;
     }
     .theme-switch:hover { background:var(--control-hover); }
+    .language-switch {height:34px;min-width:58px;padding:0 9px;border:1px solid var(--line);border-radius:100px;background:var(--control);color:var(--muted);display:inline-flex;align-items:center;justify-content:center;gap:4px;font-size:11px;font-weight:500;cursor:pointer;white-space:nowrap;}
+    .language-switch:hover {background:var(--control-hover);}
+    .language-switch .language-ko {color:var(--text);font-weight:700;}
+    html[lang="en"] .language-switch .language-ko {color:var(--muted);font-weight:500;}
+    html[lang="en"] .language-switch .language-en {color:var(--text);font-weight:700;}
+    .language-switch .language-divider {opacity:.5;}
     .theme-switch svg { width:15px; height:15px; fill:none; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
     .moon-icon { display:none; }
     :root[data-theme="light"] .sun-icon { display:none; }
@@ -441,6 +450,7 @@
       line-height:1.83;
       letter-spacing:-.016em;
       word-break:keep-all;
+      text-wrap:balance;
     }
     .case-study .stat-inline-source {
       display:inline;
@@ -722,9 +732,9 @@
     .case-study .user-flow__item {
       min-width:0;
       display:grid;
-      grid-template-columns:26px 118px minmax(0,1fr);
-      align-items:baseline;
-      gap:15px;
+      grid-template-columns:26px minmax(155px,185px) minmax(0,1fr);
+      align-items:start;
+      gap:14px;
       padding:16px 0;
       border-bottom:1px solid var(--line);
       background:transparent;
@@ -744,7 +754,9 @@
       font-weight:660;
       line-height:1.55;
       letter-spacing:-.015em;
-      word-break:keep-all;
+      word-break:normal;
+      overflow-wrap:break-word;
+      min-width:0;
     }
     .case-study .user-flow__description {
       color:var(--editorial-body,var(--soft));
@@ -780,7 +792,7 @@
     /* Project overview: isolated from legacy .meta overrides. */
     .case-study .project-facts {
       display:grid;
-      grid-template-columns:155px 230px minmax(0,1fr) auto;
+      grid-template-columns:105px 260px minmax(0,1fr) auto;
       align-items:center;
       column-gap:24px;
       margin:30px 0 31px;
@@ -815,7 +827,7 @@
     .case-study .project-facts__link:hover {
       border-color:var(--soft);background:var(--surface);
     }
-    @media(max-width:800px) {
+    @media(max-width:960px) {
       .case-study .project-facts {
         grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);
         gap:22px 24px;padding:19px 0;
@@ -837,6 +849,9 @@
       .case-study .project-facts__action {
         margin-top:9px;padding-top:15px;border-top:1px solid var(--line);
       }
+    }
+    @media(max-width:360px) {
+      .case-study .project-fact {display:flex;flex-direction:column;align-items:flex-start;gap:4px;}
     }
     @media(prefers-reduced-motion:reduce) {
       .case-study .project-facts__link {transition:none;}
@@ -1015,13 +1030,13 @@
     .case-study .lessons-section > .section-no {color:var(--case-accent);font-size:11px;font-weight:650;letter-spacing:.09em;}
     .case-study .lesson-journal {list-style:none;margin:28px 0 0;padding:0;}
     .case-study .lesson-entry {
-      display:grid;grid-template-columns:135px minmax(0,1fr);gap:24px;
+      display:grid;grid-template-columns:minmax(178px,200px) minmax(0,1fr);gap:22px;
       padding:26px 0;border-top:1px solid var(--line);
     }
     .case-study .lesson-entry:last-child {border-bottom:1px solid var(--line);}
-    .case-study .lesson-label {display:flex;align-items:baseline;gap:11px;padding-top:3px;}
-    .case-study .lesson-label span {color:var(--case-accent);font-size:11px;font-variant-numeric:tabular-nums;}
-    .case-study .lesson-label strong {color:var(--soft);font-size:13px;font-weight:600;white-space:nowrap;}
+    .case-study .lesson-label {display:flex;align-items:baseline;gap:9px;padding-top:3px;min-width:0;}
+    .case-study .lesson-label span {flex:none;color:var(--case-accent);font-size:11px;font-variant-numeric:tabular-nums;}
+    .case-study .lesson-label strong {min-width:0;color:var(--soft);font-size:13px;font-weight:600;white-space:normal;overflow-wrap:break-word;line-height:1.55;}
     .case-study .lesson-entry h3 {margin:0 0 10px;font-size:20px;font-weight:660;line-height:1.5;letter-spacing:-.035em;word-break:keep-all;text-wrap:pretty;}
     .case-study .lesson-entry p {margin:0;color:var(--editorial-body,var(--soft));font-size:15px;line-height:1.85;letter-spacing:-.014em;word-break:keep-all;text-wrap:pretty;overflow-wrap:break-word;}
     .case-study .lesson-entry .lesson-before {margin:0 0 5px;color:var(--muted);font-size:13px;}
@@ -1031,6 +1046,9 @@
     .case-study .pm-takeaway p {margin:0 0 15px;color:var(--editorial-body,var(--soft));font-size:15px;line-height:1.9;letter-spacing:-.015em;word-break:keep-all;text-wrap:pretty;overflow-wrap:break-word;}
     .case-study .pm-takeaway p:last-child {margin-bottom:0;}
     .case-study .pm-takeaway strong {color:var(--text);font-weight:650;}
+    @media(max-width:660px) {
+      .case-study .lesson-entry {grid-template-columns:minmax(0,1fr);gap:10px;}
+    }
     @media(max-width:560px) {
       .case-study .lessons-section {margin-top:42px;}
       .case-study .lesson-journal {margin-top:23px;}
@@ -1042,8 +1060,33 @@
       .case-study .pm-takeaway h3 {font-size:17px;}
       .case-study .pm-takeaway p {font-size:14px;line-height:1.85;}
     }
+    html[lang="en"] .case-study h2,
+    html[lang="en"] .case-study h3 {letter-spacing:-.025em;overflow-wrap:break-word;word-break:normal;}
+    html[lang="en"] .case-study .body-copy,
+    html[lang="en"] .case-study .lesson-entry p,
+    html[lang="en"] .case-study .pm-takeaway p {letter-spacing:-.006em;word-break:normal;}
+    html[lang="en"] .case-study .project-reflection p {letter-spacing:-.01em;}
+    @media(min-width:761px) {
+      html[lang="en"] .case-study .user-flow__title {white-space:nowrap;}
+    }
+    /* Make room for the language switch on mobile without squeezing navigation. */
+    @media(max-width:760px) {
+      .header-right {gap:12px;}
+      .detail-nav {gap:13px;}
+      .theme-switch {min-width:76px;padding-inline:9px;gap:5px;}
+    }
+    @media(max-width:560px) {
+      .site-header {display:grid;grid-template-columns:minmax(0,1fr) auto auto;grid-template-rows:34px 25px;height:auto;min-height:81px;gap:6px 9px;padding:11px 19px 10px;}
+      .header-brand {grid-column:1;grid-row:1;}
+      .header-right {display:contents;}
+      .detail-nav {grid-column:1 / -1;grid-row:2;justify-self:start;gap:16px;}
+      .language-switch {grid-column:2;grid-row:1;min-width:54px;height:32px;padding-inline:7px;}
+      .theme-switch {grid-column:3;grid-row:1;min-width:72px;height:32px;font-size:11px;}
+      .back-link {font-size:12px;}
+    }
   </style>
   <link rel="stylesheet" href="/portfolio-fonts.css">
+  <script src="/portfolio-activity.js?v=20261105" async></script>
 </head>
 <body>
   <div class="sticky-site-nav">
@@ -1052,9 +1095,8 @@
     <div class="header-right">
       <nav class="detail-nav" aria-label="상단 메뉴">
         <a class="back-link" href="/">← 프로젝트 목록</a>
-        <a class="back-link" href="/profile">Profile</a>
       </nav>
-      <button id="theme-switch" class="theme-switch" aria-label="화이트 모드로 전환" aria-pressed="false" type="button">
+            <button id="theme-switch" class="theme-switch" aria-label="화이트 모드로 전환" aria-pressed="false" type="button">
         <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/></svg>
         <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.9 13.2A9 9 0 0 1 10.8 3.1 9 9 0 1 0 20.9 13.2Z"/></svg>
         <span id="theme-label">LIGHT</span>
@@ -1084,7 +1126,7 @@
           </div>
           <div class="project-facts__action">
             <a class="project-facts__link" href="https://ai-instagram-agent.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="서비스 새 창에서 열기">
-              서비스 보기
+              <span class="project-facts__label">서비스 보기</span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
             </a>
           </div>
@@ -1322,6 +1364,214 @@
       });
     })();
   </script>
+  <script>
+/* Instagram Card Agent portfolio page: independent KO/EN content, preserving the original Korean DOM. */
+(() => {
+  'use strict';
+  const root = document.documentElement;
+  const toggle = (document.getElementById('language-switch') || document.createElement('button'));
+  const themeButton = document.getElementById('theme-switch');
+  if (!toggle) return;
+
+  // Keep rich-text emphasis, outbound citations and original Korean content intact.
+  const englishHTML = [
+    ['.detail-nav .back-link:first-child', '← Projects'],
+    ['.subtitle', 'An automated tool for creating Japanese-language Instagram carousels featuring Korean restaurants'],
+    ['.project-fact:nth-child(1) dt', 'Project'],
+    ['.project-fact:nth-child(1) dd', 'Personal project'],
+    ['.project-fact:nth-child(2) dt', 'My role'],
+    ['.project-fact:nth-child(2) dd', 'Planning & AI-assisted development'],
+    ['.project-fact:nth-child(3) dt', 'Timeline'],
+    ['.project-fact:nth-child(3) dd', 'Feb 2026 – Present (ongoing maintenance)'],
+    ['.project-facts__link .project-facts__label', 'View live service'],
+    ['.hero-media figcaption', 'Service interface'],
+
+    ['#chapter1', 'Why I came back to making Instagram carousels'],
+    ['#chapter1 + .section-copy .body-copy:nth-child(1)',
+      'Five years ago, I ran an Instagram account featuring restaurant carousels. I gained 500 followers in three weeks but stopped because making each post took too much time.<br class="editorial-break">Every time, I had to find restaurants, choose photos and write the copy from scratch.'],
+    ['#chapter1 + .section-copy .body-copy:nth-child(2)',
+      'Earlier this year, as AI tools improved, I wondered whether I could automate that repetitive work with an AI agent. I also wanted to learn about AI agents and vibe coding and see what I could build without a traditional development background.'],
+
+    ['#chapter2', 'Why I chose Japanese travelers'],
+    ['#chapter2 + .section-copy .body-copy',
+      'I have always been interested in small businesses and automation. With AI, exploring a new market on my own felt more achievable. As more international travelers visited Korea, I decided to introduce neighborhood restaurants to Japanese visitors. I wanted to give my old Instagram idea another try, this time spending less time producing posts and more time running the account and tracking its performance.'],
+    ['.evidence-list li:nth-child(1) strong', 'Market size <a class="stat-inline-source" href="https://www.heraldk.com/article/2026012104453209138" target="_blank" rel="noopener noreferrer" aria-label="Open the source for visitor statistics">Visitor statistics ↗</a>'],
+    ['.evidence-list li:nth-child(1) p',
+      '<span class="reason-arrow" aria-hidden="true">→</span>2025: <b>18.8 million international visitors to Korea, 3.65 million from Japan.</b>'],
+    ['.evidence-list li:nth-child(2) strong', 'Building the tool I needed'],
+    ['.evidence-list li:nth-child(2) p',
+      '<span class="reason-arrow" aria-hidden="true">→</span>I built <b>an automation tool</b> and refined it while learning vibe coding.'],
+    ['.evidence-list li:nth-child(3) strong', 'New possibilities with AI'],
+    ['.evidence-list li:nth-child(3) p',
+      '<span class="reason-arrow" aria-hidden="true">→</span>AI made it easier to <b>work across languages</b> and reach Japanese travelers.'],
+
+    ['#chapter3', 'From four selected restaurants to a finished carousel'],
+    ['#chapter3 + .section-copy .body-copy',
+      'I organized the process from restaurant discovery to Instagram publishing into four steps. AI handles the research and content creation, while I select the restaurants, review the results and approve each post.'],
+    ['.user-flow__item:nth-child(1) .user-flow__title', 'Find restaurants'],
+    ['.user-flow__item:nth-child(1) .user-flow__description',
+      'Uses Naver and Kakao Maps APIs to find restaurants and filter out closed businesses.'],
+    ['.user-flow__item:nth-child(2) .user-flow__title', 'Review candidates'],
+    ['.user-flow__item:nth-child(2) .user-flow__description',
+      'Displays four to six candidates at a time so I can choose which restaurants to feature.'],
+    ['.user-flow__item:nth-child(3) .user-flow__title', 'Create the carousel'],
+    ['.user-flow__item:nth-child(3) .user-flow__description',
+      'Generates Japanese-language carousel slides from the selected restaurants’ photos and details.'],
+    ['.user-flow__item:nth-child(4) .user-flow__title', 'Review and publish'],
+    ['.user-flow__item:nth-child(4) .user-flow__description',
+      'Once I review and approve the slides, Make.com and the Meta API publish them to Instagram.'],
+    ['.demo-status-title', 'Finding candidates → Reviewing places'],
+    ['.demo-status-line', 'Searching by area and food keywords...'],
+    ['.demo-ready', 'Review candidate list'],
+    ['.process-media figure:nth-child(1) figcaption', 'Restaurant search | Candidates by area and cuisine'],
+    ['.process-media figure:nth-child(2) figcaption', 'Created carousel | Cover featuring restaurants in Seomyeon, Busan'],
+    ['.automation-note .body-copy',
+      'For me, the value of automation lay in <mark class="copy-highlight">the time it actually saved</mark>, not the number of features. I wanted to focus on choosing restaurants and approving posts, while the tool handled research and production. But even when the workflow ran successfully, unsuitable photos and unnatural Japanese still required manual revisions. Working software did not automatically mean less work.'],
+
+    ['#chapter4', 'Why my first agent attempts kept failing'],
+    ['.problem-card:nth-child(1) h3', 'I had plenty of photos, but few were usable'],
+    ['.problem-card:nth-child(1) p',
+      'Even after collecting dozens of photos, unrelated images slipped in and I still lacked good options for the slides. AI-generated fixes often repeated the same mistakes, and fixing one issue sometimes broke something else.'],
+    ['.problem-card:nth-child(2) h3', 'The Japanese improved, but the content stayed generic'],
+    ['.problem-card:nth-child(2) p',
+      'Correcting grammar and phrasing was not enough. Even when the Japanese sounded natural, the descriptions could have applied to almost any restaurant. I needed to find out whether the problem was the writing instructions or the lack of source information.'],
+    ['.problem-card:nth-child(3) h3', 'More checks led to slower runs and more errors'],
+    ['.problem-card:nth-child(3) p',
+      'Adding more conditions and checks slowed production and sometimes broke features that had worked before. I realized that unless I understood the system, I could not clearly decide what to change, simplify or remove.'],
+
+    ['#chapter5', 'Breaking down problems to find better solutions'],
+    ['#chapter5 + .section-copy .body-copy',
+      'I found the problems by using the product myself, while AI wrote the code for the fixes. But repeatedly asking for changes did not resolve everything. I began isolating individual features, testing them myself and reintegrating only the changes that worked.'],
+    ['.solution-item:nth-child(1) .solution-text h3', 'I fixed failing features in isolation'],
+    ['.solution-item:nth-child(1) .solution-text p',
+      'Instead of repeatedly modifying the whole service, I separated the failing feature into its own module. I changed only that feature and <strong>ran it myself to check whether the output matched what I wanted.</strong> I then <mark class="copy-highlight">reintegrated fixes that had passed my tests</mark>, keeping each round of changes small.'],
+    ['.solution-item:nth-child(1) .decision-flow__step:nth-child(1)', 'Fix the failing feature separately'],
+    ['.solution-item:nth-child(1) .decision-flow__step:nth-child(2)', 'Reintegrate it after testing'],
+    ['.solution-item:nth-child(2) .solution-text h3', 'I investigated why the drafts lacked substance'],
+    ['.solution-item:nth-child(2) .solution-text p',
+      'When a draft lacked substance, I gathered restaurant information myself and asked AI to write from it. Comparing the results helped me see whether the issue came from the source material or the writing instructions. I <strong>turned the information and structures that worked consistently into <mark class="copy-highlight">reusable templates</mark></strong>, reducing what the AI had to figure out from scratch each time.'],
+    ['.solution-item:nth-child(2) .decision-flow__step:nth-child(1)', 'Draft from researched sources'],
+    ['.solution-item:nth-child(2) .decision-flow__step:nth-child(2)', 'Turn effective structures into templates'],
+    ['.solution-item:nth-child(3) .solution-text h3', 'I learned the system, then decided what to simplify'],
+    ['.solution-item:nth-child(3) .solution-text p',
+      'Taking features apart and putting them back together helped me understand what each step did and where time was being spent. I used that understanding to identify redundant tasks and excessive checks. <strong><mark class="copy-highlight">I chose which steps to keep and which to cut</mark></strong>, then directed changes to balance speed and quality.'],
+    ['.solution-item:nth-child(3) .decision-flow__step:nth-child(1)', 'Find the slow steps'],
+    ['.solution-item:nth-child(3) .decision-flow__step:nth-child(2)', 'Reduce duplicate work and checks'],
+
+    ['#chapter7', 'What I learned through trial and error'],
+    ['.lesson-entry:nth-child(1) .lesson-label strong', 'Tool choices'],
+    ['.lesson-entry:nth-child(1) h3', 'Working with free AI models'],
+    ['.lesson-entry:nth-child(1) p',
+      'Using OpenCode, OpenRouter and other providers, I learned to find and use free language models from different sources. I tested models, compared their quality and speed, and learned to manage costs based on the task.'],
+    ['.lesson-entry:nth-child(2) .lesson-label strong', 'Problem breakdown'],
+    ['.lesson-entry:nth-child(2) h3', 'When “just fix it” failed, I broke the problem down'],
+    ['.lesson-entry:nth-child(2) p',
+      'When I isolated and updated one problem area instead of changing everything at once, it became easier to see what caused the failure and whether the fix worked. I realized this way of breaking a difficult problem into smaller tests applies well beyond vibe coding.'],
+    ['.lesson-entry:nth-child(3) .lesson-label strong', 'Hands-on testing'],
+    ['.lesson-entry:nth-child(3) h3', 'Testing it myself made the difference'],
+    ['.lesson-entry:nth-child(3) p',
+      'I tested each updated feature and checked that previously working features still behaved as expected. Repeatedly investigating failures taught me where to look and what to retest. I continue to improve my QA skills with each iteration.'],
+    ['.pm-takeaway h3', 'Being a PM meant defining exactly what needed to change'],
+    ['.pm-takeaway p:nth-of-type(1)',
+      'My role was to turn the issues I found while using the product into actionable changes. Saying “the photos look wrong” was too vague. I had to specify which photos were needed, where the problem began and how to verify that the fix worked. <strong>Defining the problem, limiting the scope and validating the result</strong> shaped the development direction.'],
+    ['.pm-takeaway p:nth-of-type(2)',
+      'Choosing tools meant balancing quality, speed and cost. When something failed, I needed to start with the highest-impact issues. I learned that planning and testing belong together. I want to keep <strong>using the product, narrowing down problems and verifying fixes in short cycles</strong> as I build and improve products.'],
+    ['.project-reflection p:nth-child(1)',
+      '<em>For better or worse, AI still cannot do everything with a single “just do it” prompt.</em>'],
+    ['.project-reflection p:nth-child(2)',
+      '<em>More precisely, the clearer I am about what I want, the more likely I am to get a useful result.</em>'],
+    ['.project-reflection p:nth-child(3)',
+      '<em>Of course, the same prompt can produce different results, so some luck is involved. The best way to rely on it less is to know what I want, test the output myself and check what actually works.</em>'],
+    ['.gallery-caption', 'Examples of finished Instagram carousel slides'],
+    ['.result-gallery figure:nth-child(1) figcaption', '01 Cover'],
+    ['.result-gallery figure:nth-child(2) figcaption', '02 Restaurant feature'],
+    ['.result-gallery figure:nth-child(3) figcaption', '03 Restaurant feature'],
+    ['nav[data-project-navigation] > a:not(.project-list-link)', 'Kokochizu ↗'],
+    ['nav[data-project-navigation] .project-list-link', 'Back to projects ↗']
+  ];
+
+  const englishAttrs = [
+    ['.header-brand', 'aria-label', 'Go to portfolio home'],
+    ['.detail-nav', 'aria-label', 'Main navigation'],
+    ['.project-facts', 'aria-label', 'Project details'],
+    ['.project-facts__link', 'aria-label', 'Open the live service in a new tab'],
+    ['.hero-visual > img', 'alt', 'Screenshot of the Instagram Card Agent service'],
+    ['.user-flow', 'aria-label', 'Four steps for creating Instagram carousel posts'],
+    ['.candidate-demo', 'aria-label', 'Looping animation of restaurant candidate search results'],
+    ['.candidate-demo > img', 'alt', 'Screenshot of restaurant candidates returned by the search'],
+    ['.process-media figure:nth-child(2) img', 'alt', 'Cover slide for a carousel about restaurants in Seomyeon, Busan'],
+    ['.problem-card:nth-child(1) .problem-icon', 'aria-label', 'Photo mismatch'],
+    ['.problem-card:nth-child(2) .problem-icon', 'aria-label', 'Japanese copy quality issue'],
+    ['.problem-card:nth-child(3) .problem-icon', 'aria-label', 'Repeated validation failures'],
+    ['.solution-list', 'aria-label', 'Three changes to my development process'],
+    ['.solution-item:nth-child(1) .decision-visual', 'aria-label', 'Isolate and fix a failing feature, test it, then reintegrate it'],
+    ['.solution-item:nth-child(2) .decision-visual', 'aria-label', 'Write from researched sources and turn successful structures into templates'],
+    ['.solution-item:nth-child(3) .decision-visual', 'aria-label', 'Identify slow steps and reduce redundant work and checks'],
+    ['.lesson-journal', 'aria-label', 'Three lessons from building and using the product'],
+    ['.result-gallery', 'aria-label', 'Three generated Instagram carousel slides'],
+    ['.result-gallery figure:nth-child(1) img', 'alt', 'Cover slide about restaurants in Seomyeon, Busan'],
+    ['.result-gallery figure:nth-child(2) img', 'alt', 'First restaurant feature slide from Seomyeon, Busan'],
+    ['.result-gallery figure:nth-child(3) img', 'alt', 'Second restaurant feature slide from Seomyeon, Busan'],
+    ['nav[data-project-navigation]', 'aria-label', 'Other projects']
+  ];
+
+  const missing = [];
+  const htmlTargets = englishHTML.map(([selector, english]) => {
+    const el = document.querySelector(selector);
+    if (!el) missing.push(selector);
+    return el ? {el, ko: el.innerHTML, en: english} : null;
+  }).filter(Boolean);
+  const attributeTargets = englishAttrs.map(([selector, attribute, en]) => {
+    const el = document.querySelector(selector);
+    if (!el) missing.push(selector + '[' + attribute + ']');
+    return el ? {el, attribute, ko: el.getAttribute(attribute), en} : null;
+  }).filter(Boolean);
+  if (missing.length) console.warn('[Instagram Card Agent localization] Missing targets:', missing);
+
+  function applyLanguage(lang) {
+    const english = lang === 'en';
+    root.lang = english ? 'en' : 'ko';
+    htmlTargets.forEach(({el, ko, en}) => { el.innerHTML = english ? en : ko; });
+    attributeTargets.forEach(({el, attribute, ko, en}) => {
+      if (english) el.setAttribute(attribute, en);
+      else if (ko === null) el.removeAttribute(attribute);
+      else el.setAttribute(attribute, ko);
+    });
+    document.title = english ? 'Instagram Card Agent | Portfolio' : '포트폴리오';
+    toggle.setAttribute('aria-label', english ? 'Switch to Korean' : 'Switch to English');
+    toggle.setAttribute('title', english ? 'Switch to Korean' : 'Switch to English');
+    toggle.setAttribute('aria-pressed', String(english));
+    if (themeButton) {
+      const light = root.dataset.theme === 'light';
+      themeButton.setAttribute('aria-label',
+        english ? (light ? 'Switch to dark mode' : 'Switch to light mode')
+                : (light ? '블랙 모드로 전환' : '화이트 모드로 전환'));
+    }
+    try { localStorage.setItem('portfolio-language', root.lang); } catch (_) {}
+  }
+  let lang = root.lang === 'en' ? 'en' : 'ko';
+  applyLanguage(lang);
+  toggle.addEventListener('click', () => {
+    lang = lang === 'en' ? 'ko' : 'en';
+    applyLanguage(lang);
+  });
+  window.addEventListener('storage', event => {
+    if (event.key === 'portfolio-language') {
+      lang = event.newValue === 'en' ? 'en' : 'ko';
+      applyLanguage(lang);
+    }
+  });
+  if (themeButton) {
+    themeButton.addEventListener('click', () => {
+      // Existing theme handler runs first; sync the localized accessible label afterwards.
+      const light = root.dataset.theme === 'light';
+      themeButton.setAttribute('aria-label', lang === 'en'
+        ? (light ? 'Switch to dark mode' : 'Switch to light mode')
+        : (light ? '블랙 모드로 전환' : '화이트 모드로 전환'));
+    });
+  }
+})();
+</script>
 
   <script>
     (() => {
@@ -1349,6 +1599,6 @@
       });
     })();
   </script>
-  <script src="/portfolio-activity.js" defer></script>
+
 </body>
 </html>

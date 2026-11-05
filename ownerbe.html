@@ -1,14 +1,15 @@
 <!doctype html>
 <html lang="ko" data-theme="dark">
 <head>
+  <script>document.documentElement.lang="ko";try{localStorage.setItem("portfolio-language","ko")}catch(_e){}</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#090909">
   <meta name="description" content="콘텐츠 광고 수익권 거래 커뮤니티 OwnerBe. 서비스 기획·UI/UX 디자인부터 투자 유치, 외주 개발 조율, 출시와 지표 개선까지의 경험.">
-  <title>OwnerBe | 박동호 포트폴리오</title>
+  <title>포트폴리오</title>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
-  <script>try{if(localStorage.getItem('portfolio-theme')==='light')document.documentElement.dataset.theme='light'}catch(e){}</script>
+  <script>try{if(localStorage.getItem('portfolio-theme')==='light')document.documentElement.dataset.theme='light';if(localStorage.getItem('portfolio-language')==='en')document.documentElement.lang='en'}catch(e){}</script>
   <link rel="stylesheet" href="/mobile-project.css">
 
 
@@ -255,8 +256,49 @@
     }
     @media(min-width:641px) and (max-width:800px){.ownerbe-outcome{padding-inline:12px}.ownerbe-outcome dt{min-height:38.4px}}
     @media(max-width:360px){.ownerbe-outcome{padding-inline:5px}.ownerbe-outcome dt{min-height:47.25px;font-size:10px}}
+    /* Language control matches the portfolio home and stays compact on mobile. */
+    .language-switch{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-width:76px;height:34px;padding:0 11px;border:1px solid var(--line);border-radius:999px;background:var(--control);color:var(--muted);font-size:11px;font-weight:450;cursor:pointer}
+    .language-switch:hover{background:var(--control-hover)}
+    .language-switch .language-divider{opacity:.4}
+    .language-switch .language-ko{color:var(--text);font-weight:650}
+    html[lang="en"] .language-switch .language-ko{color:var(--muted);font-weight:450}
+    html[lang="en"] .language-switch .language-en{color:var(--text);font-weight:650}
+    html[lang="en"] .body-copy,html[lang="en"] .project-section h2,html[lang="en"] .ownerbe-hero .subtitle,html[lang="en"] .ownerbe-qa-list{word-break:normal;letter-spacing:-.005em}
+    html[lang="en"] .ownerbe-role__title{letter-spacing:-.015em}
+    html[lang="en"] .ownerbe-responsibilities li{grid-template-columns:70px minmax(0,1fr)}
+    @media(max-width:650px){.language-switch{min-width:58px;padding:0 7px;gap:4px;font-size:10px}}
+    @media(max-width:420px){.topbar{padding-inline:12px;gap:8px}.brand-name{font-size:11px}.header-actions{gap:7px}.header-nav{gap:9px}.header-link{font-size:11px}.language-switch{min-width:48px;padding-inline:5px}.theme-switch{min-width:61px;padding-inline:6px;gap:5px;font-size:10px}.theme-switch svg{width:13px;height:13px}}
+
+    /* OwnerBe English polish: concise role rows and figures that do not overflow. */
+    html[lang="en"] .ownerbe-responsibilities{gap:9px}
+    html[lang="en"] .ownerbe-responsibilities li{grid-template-columns:70px minmax(0,1fr);gap:17px}
+    html[lang="en"] .ownerbe-responsibilities p{line-height:1.65;word-break:normal}
+    html[lang="en"] .ownerbe-outcomes{grid-template-columns:1.03fr 1.03fr .93fr 1fr}
+    html[lang="en"] .ownerbe-outcome{padding-inline:13px}
+    html[lang="en"] .ownerbe-outcome dt{min-height:38px;margin-bottom:5px;overflow-wrap:normal;word-break:normal}
+    html[lang="en"] .ownerbe-outcome dd{font-size:clamp(24px,2.7vw,32px);letter-spacing:-.04em}
+    html[lang="en"] .ownerbe-outcome:nth-child(-n+2) dd small{display:none}
+    html[lang="en"] .ownerbe-outcome dd small{font-size:12px}
+    @media(max-width:640px){
+      .ownerbe-outcomes{grid-template-columns:repeat(2,minmax(0,1fr));padding:0}
+      .ownerbe-outcome{padding:17px 10px}
+      .ownerbe-outcome:nth-child(3),.ownerbe-outcome:nth-child(4){border-top:1px solid var(--outcome-rule)}
+      .ownerbe-outcome:nth-child(3)::before{display:none}
+      .ownerbe-outcome dt{min-height:0;margin-bottom:7px;line-height:1.4}
+      .ownerbe-outcome p{margin-top:5px}
+      html[lang="en"] .ownerbe-outcomes{grid-template-columns:repeat(2,minmax(0,1fr))}
+      html[lang="en"] .ownerbe-outcome{padding:17px 10px}
+      html[lang="en"] .ownerbe-outcome dt{min-height:0;margin-bottom:7px}
+      html[lang="en"] .ownerbe-outcome dd{font-size:clamp(23px,6.4vw,29px)}
+      html[lang="en"] .ownerbe-responsibilities li{grid-template-columns:69px minmax(0,1fr);gap:10px}
+    }
+    @media(min-width:641px) and (max-width:800px){
+      html[lang="en"] .ownerbe-outcome{padding-inline:9px}
+      html[lang="en"] .ownerbe-outcome dd{font-size:clamp(22px,3.1vw,26px)}
+    }
   </style>
   <link rel="stylesheet" href="/portfolio-fonts.css">
+  <script src="/portfolio-activity.js?v=20261105" async></script>
 </head>
 <body>
   <div class="sticky-site-nav">
@@ -267,9 +309,8 @@
     <div class="header-actions">
       <nav class="header-nav" aria-label="상단 메뉴">
         <a class="header-link" href="/">프로젝트</a>
-        <a class="header-link" href="/profile">Profile</a>
       </nav>
-      <button class="theme-switch" type="button" id="theme-switch" aria-label="화이트 모드로 전환" aria-pressed="false">
+            <button class="theme-switch" type="button" id="theme-switch" aria-label="화이트 모드로 전환" aria-pressed="false">
         <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" /><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42" /></svg>
         <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.9 13.2A9 9 0 0 1 10.8 3.1 9 9 0 1 0 20.9 13.2Z" /></svg>
         <span id="theme-label">LIGHT</span>
@@ -524,6 +565,83 @@
       });
     })();
   </script>
-  <script src="/portfolio-activity.js" defer></script>
+
+  <script>
+    (() => {
+      const english = new Map(Object.entries({"콘텐츠 광고 수익권 거래 커뮤니티 OwnerBe. 서비스 기획·UI/UX 디자인부터 투자 유치, 외주 개발 조율, 출시와 지표 개선까지의 경험.":"OwnerBe was a community for trading rights to advertising revenue from content. This case study covers product planning, UI/UX design, fundraising, outsourced development, launch, and performance improvements.","OwnerBe | 박동호 포트폴리오":"OwnerBe | Leo Park Portfolio","상단 메뉴":"Main navigation","프로젝트":"Projects","화이트 모드로 전환":"Switch to light mode","콘텐츠 광고 수익권 거래 커뮤니티":"A community for trading advertising revenue rights","담당 역할":"My role","대표 · PO":"CEO & PO","담당 업무":"Responsibilities","기획·디자인":"Design","콘텐츠 수익권 거래 구조와 UI/UX 직접 설계":"Designed the content revenue-rights model and UI/UX","출시·개선":"Launch","외주 개발 조율 및 출시, GA 분석과 A/B 테스트":"Managed outsourced development, launch, analytics, and A/B testing","투자·제휴":"Funding","프리시드 1억 원 유치, 파트너십과 광고 수익화":"Raised KRW 100M and secured advertising partnerships","01 배경":"01 Background","원숭이 그림 한 장이 수억 원?":"Why was a cartoon ape worth hundreds of millions of won?","2021년부터 원숭이 그림 같은 디지털 이미지가 수억 원에 거래되며 화제가 됐다. 바로 NFT 열풍이었다. 많은 사람에게는 투기나 사기로 비쳤다. 그런데 인터넷에서 누구나 저장할 수 있는 그림에 왜 그렇게 큰돈을 지불했을까?":"Starting in 2021, digital images such as cartoon apes made headlines by selling for hundreds of millions of won. It was the height of the NFT boom. Many saw it as speculation or even a scam. Why would anyone pay so much for an image that anyone could save from the internet?","2022년 뉴욕 타임스스퀘어 대형 전광판에 등장한 원숭이 NFT 광고":"An ape NFT advertisement displayed on a giant screen in New York's Times Square in 2022","출처: EY (2022) ↗":"Source: EY (2022) ↗","온라인 게임의 희귀 아이템은 내가 가지고 있어도 소유 기록은":"Even when you own a rare item in an online game, its ownership record is maintained by the ","게임 회사":"game operator","가 관리한다. 게임이 종료되면 아이템을 사용하거나 거래하기도 어려워진다. NFT는 이 기록을":". If the game shuts down, the item can become difficult to use or trade. NFTs instead record ownership on a ","블록체인":"blockchain","에 남겨, 게임 밖에서도 소유자를 확인하고 다른 서비스에서 거래에 활용할 수 있게 한 기술이다.":", allowing ownership to be verified outside the game and records to be used for transactions in other supported services.","일반 게임 아이템과 NFT로 만든 게임 아이템 비교":"Comparison of a conventional game item and an NFT-based game item","비교표":"Comparison","일반 게임 아이템":"Conventional game item","리니지의 진명황의 집행검 이미지":"The Execution Sword from the game Lineage","출처: 주간동아 ↗":"Source: Weekly Donga ↗","게임 회사가 소유 기록을 관리한다.":"The game operator maintains ownership records.","게임이 종료되면 사용하거나 거래하기도 어렵다.":"If the game shuts down, using or trading the item can become difficult.","NFT로 만든 게임 아이템":"NFT-based game item","STEPN과 ASICS의 운동화 NFT 이미지":"A sneaker NFT created by STEPN and ASICS","STEPN 운동화 거래 ↗":"STEPN sneaker marketplace ↗","블록체인에 소유 기록을 남긴다.":"Ownership records are stored on the blockchain.","게임이 종료돼도 기록은 남고, 다른 지원 서비스에서 확인할 수 있다.":"The records remain even if the game shuts down and can be checked by other supported services.","왼쪽은 리니지의 희귀 무기 진명황의 집행검이다. 강화된 집행검은 한때":"On the left is the Execution Sword, a rare weapon in Lineage. An enhanced version was once listed for as much as ","1억 2천만 원까지 호가":"KRW 120 million","됐지만, 보유 정보는 리니지 게임 안에서 관리됐다. 반면 오른쪽의":", but ownership was tracked within Lineage. By contrast, the ","STEPN 운동화":"STEPN sneaker","는 보유 정보가 블록체인에 기록돼, 블록체인 기록을 통해 현재 보유자를 확인할 수 있었다. 두 아이템은 가치보다 보유 정보를 확인하는 방법에서 차이가 났다.":" on the right had its ownership recorded on-chain, so its current holder could be verified through the blockchain. The distinction was not the price, but how ownership could be verified.","그렇다면 이 방식은 또":"So where else could this model ","어디에 활용":"be applied","할 수 있을까?":"?","02 문제 정의":"02 Problem","콘텐츠의 성장에서 빠진 이용자의 몫":"The missing share for people who helped content grow","주목한 것은 사람들이 매일 보고 공유하는 콘텐츠였다.":"I focused on the content people view and share every day.","콘텐츠는 만드는 사람만의 힘으로 알려지지 않는다. 먼저 발견해서 친구에게 보내고, 다른 곳에 공유하는 이용자도 콘텐츠가 인기를 얻는 데 도움을 준다. 하지만 콘텐츠가 잘돼 수익이 생겨도, 이를 알리고 응원한 이용자에게 돌아오는 몫은 없었다.":"Creators are not the only reason content becomes popular. People who discover it early, send it to friends, or share it elsewhere also help it grow. Yet even when that content becomes successful and generates revenue, those supporters receive none of the returns. ","① 함께 인기를 만들었지만, 수익까지 함께 나누지는 못했다.":"① They helped create the popularity, but did not share in the revenue.","좋아하는 콘텐츠를 소장하고 창작자를 응원하려고 NFT를 구매하는 사람들도 있었다. 잭 도시의 트윗 NFT 역시 이런 거래의 한 사례였지만, 판매된 것은 트윗 자체를 사용하거나 수익을 낼 권리가 아닌":"Some people bought NFTs to collect content they loved and support its creator. Jack Dorsey's tweet NFT was one such example, but the buyer did not acquire the right to use the tweet or earn money from it. What they bought was a ","서명된 디지털 증명서":"signed digital certificate","였다. 콘텐츠에 돈을 지불하는 거래와 그 콘텐츠의 권리를 갖는 일 사이에는 차이가 있었다.":". Paying for content and owning rights to it are not the same thing. ","② 콘텐츠를 사고팔 수는 있었지만, 구매자가 실제로 얻는 몫까지 연결되지는 않았다.":"② Content-related NFTs could be bought and sold without giving buyers a share of the revenue.","03 서비스 구조":"03 Service Model","콘텐츠와 수익의 연결":"Connecting content and revenue","이에 오너비는 콘텐츠를 구매한 이용자가 해당 콘텐츠의":"With OwnerBe, users could buy advertising revenue rights to content and ","광고 수익도 받을 수 있도록":"earn a share of its advertising revenue","설계했다. 좋아하는 콘텐츠를 소장하고 응원하는 일이 수익으로도 이어지는 구조다. NFT는 광고 수익을 받을 권리가 누구에게 있는지 기록하고, 그 권리를 사고파는 데 활용했다.":". Supporting content you liked could also bring financial returns. NFTs recorded who held those rights and enabled the rights to be traded.","앞선 두 문제에 대한 해결 방향":"How OwnerBe addressed the two problems above","이용자의 수익 참여":"Sharing ad revenue with users","글이나 이미지, 아이디어 등 다양한 콘텐츠에 광고를 연결했다.":"We connected advertising to different types of content, including posts, images, and ideas.","이용자도 수익권을 구매하면,":"When a user purchased revenue rights, ","그 콘텐츠에서 생기는 광고 수익을 나눠 받을 수 있는 구조다.":"they became entitled to a share of the advertising revenue generated by that content.","구매자의 권리":"Rights received by buyers","구매자가 얻는 몫은":"What the buyer received was ","해당 콘텐츠의 광고 수익을 받을 권리":"the right to advertising revenue from that content","다.":".","NFT로 이 권리의 주인을 기록하고, 판매하면 다음 구매자에게 권리가 넘어가도록 했다.":"The NFT recorded the rights holder, and selling it transferred those rights to the next buyer.","콘텐츠 거래와 수익 흐름":"How content and revenue rights move","화면을 누르면 크게 볼 수 있습니다.":"Select a screen to enlarge it.","콘텐츠 등록":"Publish content","콘텐츠 등록 화면 크게 보기":"Enlarge the content publishing screen","이미지와 제목을 입력하고 Create 버튼으로 콘텐츠를 등록하는 화면":"Screen for uploading an image, entering a title, and selecting Create to publish content","창작자가 글이나 이미지 등":"Creators publish ","자신의 콘텐츠를 올린다.":"their own posts, images, and other content.","수익권 연결":"Link revenue rights","수익권 연결 화면 크게 보기":"Enlarge the revenue-rights linking screen","NFT Post에서 콘텐츠와 현재 권리 보유자를 함께 확인하는 화면":"NFT Post screen showing the content and its current rights holder","콘텐츠의":"The NFT is linked to the content's ","광고 수익을 받을 권리":"advertising revenue rights","를 NFT에 연결한다.":".","수익권 거래":"Trade revenue rights","수익권 거래 화면 크게 보기":"Enlarge the revenue-rights trading screen","Make an Offer에서 거래 금액을 확인하고 구매를 제안하는 화면":"Make an Offer screen showing the price and an offer to purchase","이용자가 수익권을 구매한다. 거래가 이뤄지면":"A user purchases the revenue rights. Once the transaction is completed, ","권리의 주인도 바뀐다.":"the rights holder changes.","광고 수익 확인":"View ad revenue","광고 수익 확인 화면 크게 보기":"Enlarge the advertising revenue screen","Ad Revenue에서 광고 수익 내역과 출금 버튼을 확인하는 화면":"Ad Revenue screen showing advertising earnings and the withdrawal button","광고 수익이 생기면":"When advertising generates revenue, it is paid to ","현재 권리를 가진 이용자":"the current rights holder","에게 지급하고, 내역을 보여준다.":", and the payment history is displayed.","오너비에서는 누구나 콘텐츠를 올리고, 다른 사람의 콘텐츠를 보거나 공유할 수 있었다. 마음에 드는 콘텐츠가 있다면 광고 수익권을 구매할 수도 있었다. 콘텐츠를 함께 즐기면서, 그 콘텐츠에서 생기는 수익도 나눌 수 있는 커뮤니티였다.":"On OwnerBe, anyone could publish content and browse or share other people's posts. Users could also purchase advertising revenue rights for content they liked. The result was a community where people could enjoy content together and participate in the revenue it generated.","닫기":"Close","04 공개와 투자":"04 Launch & Investment","서비스 공개와 초기 투자":"Going public and securing early funding","2021년 말 콘텐츠 수익 구조의 문제와 핵심 가설을 정리하고, Webflow로 랜딩 페이지를 만들었다. 오너비의 서비스 구조를":"In late 2021, I defined the problems in content revenue sharing and my core hypothesis, then built a landing page with Webflow. I introduced OwnerBe's model on ","와 디스콰이엇(디스콰이엇 내부 업데이트 이후 이전 기록 삭제)에 공개했다.":" and Disquiet (the original post was removed after Disquiet updated its platform).","이후 디스콰이엇 게시물을 본 국내 VC 두 곳에서 먼저 미팅을 제안했다. 여러 차례 만나 서비스를 설명했지만, 투자 유치까지 이어지지는 않았다. 그 뒤 소개를 통해 새로운 투자 기회를 얻었고, 2022년 1월":"Two Korean venture capital firms saw the Disquiet post and reached out to arrange meetings. I pitched the service several times, but neither conversation resulted in funding. A later introduction created another opportunity, and in January 2022 I secured ","프리시드 투자 1억 원":"KRW 100 million in pre-seed funding","을 확보했다.":".","05 출시와 운영":"05 Launch & Operations","서비스 기획과 출시·운영":"Planning, launching, and operating the service","서비스 기획과 디자인부터 개발사와의 협업, 출시 후 개선과 광고 파트너십까지 직접 맡았다.":"I handled product planning and design, worked with external developers, improved the live service, and built advertising partnerships.","기능·정책과 화면 설계":"Features, policies, and screen flows","기능 정의와 정책 문서를 작성하고, 콘텐츠 등록부터 구매까지 필요한 화면을 설계했다. 필수 항목을 입력하지 않았을 때의 안내, 판매 설정에 따른 거래 버튼 노출, 지갑 연결과 거래 성공·실패에 따른 다음 화면을 정리했다.":"I wrote functional specifications and policy documents, then designed the screens required from content publishing through purchase. I specified validation prompts for missing fields, when trade buttons should appear, wallet connection states, and the screens shown after successful or failed transactions. ","어떤 조건에서 무엇이 동작해야 하는지":"I defined exactly which action should occur under each condition","를 화면별로 정해 개발 기준으로 남겼다.":" and documented it screen by screen as development requirements.","필수 입력 안내와 판매 설정, 지갑 연결 여부, 거래 성공과 실패에 따른 화면 흐름을 정리한 설계 예시":"A screen-flow specification covering required inputs, sale settings, wallet connection, and successful or failed transactions","콘텐츠 등록·구매 과정의 화면 설계와 동작 조건":"Screen flows and behavior rules for publishing and purchasing content","직접 디자인과 개발 검수":"Hands-on design and development QA","여러 서비스에서 보기 좋다고 느낀 화면 구성을 참고하며, Figma로 직접 디자인했다. 지갑 연결, 프로필, 피드, 탐색 등 서비스에 필요한 화면을 완성했다.":"I drew on effective interface patterns from other services and designed OwnerBe's screens in Figma, including wallet connection, profiles, the content feed, and discovery.","Figma로 직접 작업한 지갑 연결, 프로필 설정, 콘텐츠 피드와 탐색 화면":"Figma designs for wallet connection, profile setup, the content feed, and discovery","직접 작업한 지갑 연결·프로필·피드·탐색 화면":"Wallet, profile, feed, and discovery screens I designed","2022년 5월부터 외주 개발사 선정과 개발 일정 조율을 진행했다. 이후에는":"From May 2022, I selected an outsourced development partner and coordinated the schedule. After development began, I ","직접 서비스를 사용해 보며 기능 누락과 화면 오류를 점검하고":"used the service myself to find missing features and interface issues",", 수정이 필요한 위치와 동작을 구체적으로 정리해 개발사와 출시를 준비했다.":", then documented where and how each issue should be fixed as we prepared for launch.","검수 사례":"QA examples","작성자 표시":"Author details","— 피드와 게시물 상세의 프로필 정보·표기 방식 점검":" — checked profile information and how it appeared in feeds and post details","댓글 입력창":"Comment field","— 글자가 겹치는 현상과 입력 영역의 크기·여백 조정":" — fixed overlapping text and adjusted the input area's size and spacing","이미지 안내":"Image guidance","— 프로필·커버 이미지의 권장 크기와 파일 용량 안내 정리":" — clarified recommended dimensions and file-size limits for profile and cover images","PC·모바일 화면":"Desktop & mobile","— 폰트, 아이콘, 버튼의 정렬과 간격 점검":" — checked font, icon, and button alignment and spacing","이용 흐름과 재방문 개선":"Improving the user journey and retention","개발사와 구현 범위를 조율해 2022년 8월 서비스를 정식 출시했다. 출시 뒤에는 GA 이벤트와 퍼널로 이용자가 어떤 경로로 들어오고, 어느 화면에서 떠나는지 살폈다. 2~3개월 동안 화면 노출과 동선을 바꾸는 A/B 테스트를 반복하고,":"After aligning the development scope with our partner, we launched the service in August 2022. I used Google Analytics events and funnels to track acquisition paths and drop-off points. Over the next two to three months, I tested changes to screen visibility and navigation, ","배포 후 지표를 다시 확인하며 개선":"reviewing the results after each release","을 이어 갔다.":" and continuing to refine the experience.","사용자 요청과 이탈 구간을 개발에 필요한 공수와 비교해 다음에 바꿀 항목을 정했다.":"I prioritized improvements by weighing user requests and drop-off points against the development effort required.","운영 성과":"Operating results","누적 사용자":"Total users","5만":"50,000","명":"users","평균 MAU":"Average MAU","4~5천":"4K–5K","최고 8,900명":"Peak: 8,900 users","리텐션 개선":"Retention improvement","프리시드 투자":"Pre-seed funding","1억":"100M","원":"KRW","사용자 확보와 운영 성과":"User growth and operating results","프리시드 투자 1억 원은 오너비를 실제 서비스로 만들고 팀을 운영하는 기반이었다. 대표로서 개발과 출시를 진행하며 팀원 급여와 운영비도 함께 관리했다. 서비스를 개선하는 동안 외주 프로젝트와 NFT 판매로 팀의 운영 수입을 만들었고,":"The KRW 100 million pre-seed investment allowed us to build OwnerBe as a working product and operate the team. As CEO, I managed development, launch, salaries, and operating expenses. While improving the product, we also earned operating income through client projects and NFT sales, and ","광고 파트너십도 실제 서비스 수익으로 연결했다.":"turned advertising partnerships into actual revenue for the service.","그 과정에서 누적 사용자 5만 명을 확보했다. 월간 활성 사용자(MAU)는 평균 4~5천 명, 최고 8,900명이었으며, 리텐션을 9%p 개선했다. 첫 사업에서 직접 만든 서비스를 이만큼의 사람이 이용했다는 데 보람이 컸다.":"OwnerBe reached 50,000 total users, with 4,000–5,000 monthly active users on average and a peak of 8,900. Retention improved by 9 percentage points. It was rewarding to see a product I had built for my first company reach so many people. ","이용자의 유입과 재방문을 늘리는 일과, 팀 운영에 필요한 수익을 만드는 일을 함께 이어갔다.":"I worked on user acquisition, retention, and the revenue needed to keep the team operating.","06 회고":"06 Reflection","대표의 책임과 성장":"Responsibility and growth as a founder","오너비에서는 투자 유치부터 서비스 기획과 디자인, 출시와 운영까지 맡았다. 제품을 만드는 일과 팀·사업을 유지하는 일을 함께 경험하며, 대표와 PM의 책임을 배운 시간이었다.":"I led OwnerBe from fundraising and product design through launch and operations. Building a product while keeping the team and business running taught me how closely product decisions and business responsibilities are connected.","대표와 PM으로서의 세 가지 회고":"Three lessons from leading OwnerBe as CEO and PM","팀 운영":"Team","팀 운영과 런웨이":"Managing the team and runway","IR과 투자 유치를 진행하며 팀원 급여와 운영 자금을 챙기는 일의 무게를 배웠다. 예산이 한정돼 필요한 만큼 사람을 뽑기 어려웠고, 적은 인원으로 개발과 운영, 마케팅을 함께 감당해야 했다.":"Through investor relations and fundraising, I learned what it means to be responsible for payroll and operating costs. With a limited budget, we could not hire as many people as we needed. A small team had to cover development, operations, and marketing. ","남은 자금으로 얼마나 더 운영할 수 있는지":"Knowing how much longer our remaining funds could sustain the business",", 런웨이를 계획하는 일이 제품을 만드는 것만큼 중요했다.":" and planning our runway became just as important as building the product.","수익화":"Revenue","수익 구조의 중요성":"Why the revenue model matters","이용자를 모으고 다시 찾게 만드는 일도 어려웠지만, 이를 안정적인 매출로 연결하는 일은 더 어려웠다. 사용자 확보만으로는 사업을 이어 가기 어려웠고, 결국 2023년 서비스를 종료했다. 가장 크게 남은 교훈은":"Acquiring users and bringing them back was difficult; turning that activity into sustainable revenue was harder. Growth alone could not sustain the business, and we shut down the service in 2023. I learned to ","아이디어에 앞서, 돈을 벌 방법부터 확인해야 한다":"validate the revenue model before committing to an idea","는 것이었다.":".","제품 전반":"Product","제품 전반의 경험과 성장":"Growing through end-to-end ownership","그만큼 직접 부딪히며 배운 것도 많았다. Figma로 화면을 만들고 기능·정책을 정리하는 일부터 개발사 조율과 출시, 이용자 유입·마케팅, 파트너 협업, 팀 관리까지 직접 챙겼다.":"I learned just as much by doing the work myself. I took care of everything from designing screens in Figma and defining features and policies to coordinating developers, launching, acquiring users, marketing, managing partners, and running the team. ","제품의 기획부터 사업 운영까지 전체 과정을 경험":"By experiencing the full journey from product planning to business operations","하면서, 사용자 반응과 개발에 드는 시간·비용, 사업의 수익을 함께 생각하게 됐다.":", I learned to consider user feedback, development time and cost, and business revenue together.","다른 프로젝트":"More projects"}));
+      const root = document.documentElement;
+      const languageButton = (document.getElementById('language-switch') || document.createElement('button'));
+      const themeButton = document.getElementById('theme-switch');
+      const description = document.querySelector('meta[name="description"]');
+      const pageTitle = document.title;
+      const textOriginals = new Map();
+      const attributeOriginals = [];
+      const tidy = value => value.trim().replace(/\s+/g, ' ');
+      const translate = value => {
+        const translated = english.get(tidy(value));
+        if (!translated) return value;
+        const originalBefore = (value.match(/^\s*/) || [''])[0];
+        const originalAfter = (value.match(/\s*$/) || [''])[0];
+        const before = /^[.,!?;:]/.test(translated.trimStart()) ? '' : (originalBefore || (/^\s/.test(translated) ? ' ' : ''));
+        const after = originalAfter || (/\s$/.test(translated) ? ' ' : '');
+        return before + translated.trim() + after;
+      };
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+      let node;
+      while ((node = walker.nextNode())) {
+        if (node.parentElement?.closest('script,style,template')) continue;
+        if (english.has(tidy(node.nodeValue))) textOriginals.set(node, node.nodeValue);
+      }
+      document.querySelectorAll('[alt],[aria-label],[title],[placeholder],[content]').forEach(element => {
+        for (const name of ['alt','aria-label','title','placeholder','content']) {
+          const value = element.getAttribute(name);
+          if (value !== null && english.has(tidy(value))) attributeOriginals.push([element,name,value]);
+        }
+      });
+      const footerNav = document.querySelector('nav[data-project-navigation]');
+      const projectList = footerNav?.querySelector('.project-list-link');
+      const originalListText = projectList?.textContent || '';
+      const originalNavLabel = footerNav?.getAttribute('aria-label') || '';
+      const syncThemeLabel = () => {
+        const light = root.dataset.theme === 'light';
+        themeButton.setAttribute('aria-label',
+          root.lang === 'en'
+            ? (light ? 'Switch to dark mode' : 'Switch to light mode')
+            : (light ? '블랙 모드로 전환' : '화이트 모드로 전환'));
+      };
+      function setLanguage(language) {
+        const isEnglish = language === 'en';
+        root.lang = isEnglish ? 'en' : 'ko';
+        document.title = isEnglish ? translate(pageTitle) : pageTitle;
+        for (const [textNode,original] of textOriginals) {
+          textNode.nodeValue = isEnglish ? translate(original) : original;
+        }
+        for (const [element,name,original] of attributeOriginals) {
+          element.setAttribute(name,isEnglish ? translate(original) : original);
+        }
+        if (description) {
+          const original = english.has(tidy(description.getAttribute('content') || ''))
+            ? description.getAttribute('content') : description.dataset.koContent;
+          if (original) {
+            description.dataset.koContent = original;
+            description.setAttribute('content', isEnglish ? translate(original) : original);
+          }
+        }
+        if (footerNav) footerNav.setAttribute('aria-label',isEnglish ? 'More projects' : originalNavLabel);
+        if (projectList) projectList.textContent = isEnglish ? 'All projects ↗' : originalListText;
+        const retentionUnit = document.querySelector('.ownerbe-outcome:nth-child(3) dd small');
+        if (retentionUnit) retentionUnit.textContent = isEnglish ? ' pp' : '%p';
+        languageButton.setAttribute('aria-pressed',String(isEnglish));
+        languageButton.setAttribute('aria-label',isEnglish ? '한국어로 전환' : 'Switch to English');
+        languageButton.title = isEnglish ? '한국어로 전환' : 'Switch to English';
+        syncThemeLabel();
+        try { localStorage.setItem('portfolio-language',root.lang); } catch (_) {}
+      }
+      languageButton.addEventListener('click',() => setLanguage(root.lang === 'en' ? 'ko' : 'en'));
+      themeButton.addEventListener('click',syncThemeLabel);
+      setLanguage(root.lang === 'en' ? 'en' : 'ko');
+    })();
+  </script>
+
 </body>
 </html>
