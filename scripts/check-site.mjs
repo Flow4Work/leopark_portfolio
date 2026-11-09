@@ -63,6 +63,30 @@ if (!profile.includes('class="profile-hero"') || !profile.includes('class="caree
 if (!lawPage.includes('<h1>Law Map</h1>') || /law\s+project/i.test(lawPage) || /law\s+project/i.test(projectData)) {
   failures.push('Project naming regression: use Law Map in the detail page and project listing.');
 }
+// Prevent future deployment regressions in the English-only route.
+const englishHome = fs.readFileSync(path.join(root, 'eng', 'index.html'), 'utf8');
+const config = JSON.parse(fs.readFileSync(path.join(root, 'vercel.json'), 'utf8'));
+const englishRoutes = ['law-project', 'kol-scout', 'instagram-card-agent', 'kokochizu', 'tonament', 'chiklink', 'ownerbe'];
+if (!englishHome.includes('<html lang="en"') || !englishHome.includes("const language = 'en';")) {
+  failures.push('English home must have a fixed English locale.');
+}
+if (/languageButton|language-switch|portfolio-language/.test(englishHome)) {
+  failures.push('English home must not contain the legacy language switch.');
+}
+if (!englishHome.includes('/eng/portfolio-data.js') || !englishHome.includes("'/eng' + service.href")) {
+  failures.push('English home must keep its own project data and English detail routes.');
+}
+for (const name of englishRoutes) {
+  const detail = fs.readFileSync(path.join(root, 'eng', name + '.html'), 'utf8');
+  if (!detail.includes('<html lang="en"') || !detail.includes('href="/eng"')) {
+    failures.push('English detail must be localized and navigate home under /eng: ' + name);
+  }
+  if (!config.rewrites.some(route => route.source === '/eng/' + name)) {
+    failures.push('Missing English route rewrite: ' + name);
+  }
+}
+if (!config.rewrites.some(route => route.source === '/eng')) failures.push('Missing /eng home rewrite.');
+
 if (failures.length) {
   console.error(failures.join('\n'));
   process.exitCode = 1;
