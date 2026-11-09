@@ -23,6 +23,8 @@ http.createServer((req, res) => {
   catch (_) { res.writeHead(400); res.end('Bad Request'); return; }
 
   if (urlPath === '/') urlPath = '/index.html';
+  if (urlPath === '/eng' || urlPath === '/eng/') urlPath = '/eng/index.html';
+  else if (/^\/eng\/(?:law-project|kol-scout|instagram-card-agent|kokochizu|tonament|chiklink|ownerbe)$/.test(urlPath)) urlPath += '.html';
   if (urlPath === '/instagram-card-agent') urlPath = '/instagram-card-agent.html';
   if (urlPath === '/kol-scout') urlPath = '/kol-scout.html';
   if (['/profile', '/perspective', '/perspective.html'].includes(urlPath)) {
@@ -40,7 +42,8 @@ http.createServer((req, res) => {
   const allowed = /^\/assets\/scout-real\/(?:index\.html|styles\.css|app\.js|snapshot\.js|replay\.js)$/.test(urlPath) || urlPath === '/assets/scout-legacy.html' || urlPath === '/assets/scout-demo.html' || urlPath === '/assets/law-desktop-demo.html' || urlPath === '/assets/law-desktop-ui.css' || urlPath === '/index.html' || urlPath === '/instagram-card-agent.html' || urlPath === '/kol-scout.html' || urlPath === '/perspective.html' || urlPath === '/portfolio-data.js' || urlPath === '/kol-scout-i18n.js' || urlPath === '/chiklink-i18n.js' || urlPath === '/kokochizu-i18n.js' || urlPath === '/portfolio-activity.js' || urlPath === '/portfolio-fonts.css' || urlPath === '/law-project.css' || urlPath === '/law-intake-demo.css' || urlPath === '/law-intake-demo.js' ||
     /^\/assets\/(?:[a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_-]+\.(?:png|jpe?g|webp|gif|svg|avif)$/i.test(urlPath);
   const mobilePage = /^\/(?:law-project|kokochizu|tonament|chiklink|ownerbe)\.html$/.test(urlPath) || /^\/mobile-project\.(?:css|js)$/.test(urlPath);
-  if (!allowed && !mobilePage) { res.writeHead(404); res.end('Not Found'); return; }
+  const englishRoute = /^\/eng\/(?:index|law-project|kol-scout|instagram-card-agent|kokochizu|tonament|chiklink|ownerbe)\.html$/.test(urlPath) || /^\/eng\/(?:portfolio-data|chiklink-i18n)\.js$/.test(urlPath);
+  if (!allowed && !mobilePage && !englishRoute) { res.writeHead(404); res.end('Not Found'); return; }
 
   const file = path.join(root, urlPath.slice(1));
   fs.readFile(file, (err, content) => {

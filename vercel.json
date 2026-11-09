@@ -26,5 +26,39 @@
       "permanent": true
     }
   ],
-  "installCommand": "node scripts/check-activity.cjs"
+  "installCommand": "node scripts/check-activity.cjs",
+  "rewrites": [
+    {
+      "source": "/eng",
+      "destination": "/eng/index.html"
+    },
+    {
+      "source": "/eng/law-project",
+      "destination": "/eng/law-project.html"
+    },
+    {
+      "source": "/eng/kol-scout",
+      "destination": "/eng/kol-scout.html"
+    },
+    {
+      "source": "/eng/instagram-card-agent",
+      "destination": "/eng/instagram-card-agent.html"
+    },
+    {
+      "source": "/eng/kokochizu",
+      "destination": "/eng/kokochizu.html"
+    },
+    {
+      "source": "/eng/tonament",
+      "destination": "/eng/tonament.html"
+    },
+    {
+      "source": "/eng/chiklink",
+      "destination": "/eng/chiklink.html"
+    },
+    {
+      "source": "/eng/ownerbe",
+      "destination": "/eng/ownerbe.html"
+    }
+  ]
 }
