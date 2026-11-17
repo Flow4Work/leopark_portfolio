@@ -65,6 +65,28 @@ if (!lawPage.includes('<h1>Law Map</h1>') || /law\s+project/i.test(lawPage) || /
 }
 // Prevent future deployment regressions in the English-only route.
 const englishHome = fs.readFileSync(path.join(root, 'eng', 'index.html'), 'utf8');
+// Guard first-visit and incognito appearance, and honor a deliberate dark-mode choice.
+for (const [filename, locale] of [['index.html', 'ko'], ['eng/index.html', 'en']]) {
+  const home = fs.readFileSync(path.join(root, filename), 'utf8');
+  if (!home.includes(`<html lang="${locale}" data-theme="light">`)) failures.push(`${filename}: initial theme must be light.`);
+  if (!home.includes('<meta name="theme-color" content="#fafafa" />')) failures.push(`${filename}: browser theme-color must be light.`);
+  if (!/:root\s*\{\s*color-scheme:\s*light;/.test(home) || !/:root\[data-theme="dark"\]\s*\{\s*color-scheme:\s*dark;/.test(home)) failures.push(`${filename}: CSS defaults must be light with explicit dark override.`);
+  if (!home.includes('<span id="theme-label">DARK</span>') || !home.includes('aria-pressed="true"')) failures.push(`${filename}: initial theme-switch state must match light mode.`);
+  const script = [...home.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/gi)].map(match => match[1]).find(code => code.includes("localStorage.getItem('portfolio-theme')"));
+  if (!script) { failures.push(`${filename}: theme initialization script missing.`); continue; }
+  for (const [stored, expected] of [[null, 'light'], ['light', 'light'], ['dark', 'dark'], ['unknown', 'light']]) {
+    const doc = {documentElement: {lang: locale, dataset: {theme: 'light'}}};
+    try {
+      vm.runInNewContext(script, {document: doc, localStorage: {getItem: () => stored}}, {timeout: 1000});
+      if (doc.documentElement.dataset.theme !== expected) failures.push(`${filename}: stored theme ${stored} should resolve to ${expected}.`);
+    } catch (error) { failures.push(`${filename}: theme boot failed: ${error.message}`); }
+  }
+  const blockedDoc = {documentElement: {lang: locale, dataset: {theme: 'light'}}};
+  try {
+    vm.runInNewContext(script, {document: blockedDoc, localStorage: {getItem() { throw new Error('Storage blocked'); }}}, {timeout: 1000});
+    if (blockedDoc.documentElement.dataset.theme !== 'light') failures.push(`${filename}: blocked storage must keep light mode.`);
+  } catch (error) { failures.push(`${filename}: blocked storage caused an uncaught error: ${error.message}`); }
+}
 const config = JSON.parse(fs.readFileSync(path.join(root, 'vercel.json'), 'utf8'));
 const englishRoutes = ['law-project', 'kol-scout', 'instagram-card-agent', 'kokochizu', 'tonament', 'chiklink', 'ownerbe'];
 if (!englishHome.includes('<html lang="en"') || !englishHome.includes("const language = 'en';")) {
